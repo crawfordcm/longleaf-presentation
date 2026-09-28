@@ -1,0 +1,62 @@
+---
+title: "Key Features of Computing Clusters"
+subtitle: "Nodes, queues, memory, storage, and the scheduler"
+description: "The core ideas needed to understand how a shared computing cluster works."
+---
+
+::: {.module-lead}
+**Estimated time:** 8 minutes  
+**Guiding question:** What happens between logging in and a computation actually running?
+:::
+
+## Learning goals
+
+By the end of this module, participants should be able to:
+
+- distinguish a login node from a compute node;
+- explain what a scheduler and queue do; and
+- interpret basic requests for CPUs, memory, and time.
+
+## The path through a cluster
+
+::: {.workflow}
+::: {.workflow-step}
+**1 · Connect**
+
+Begin from a laptop, terminal, or browser.
+:::
+
+::: {.workflow-step}
+**2 · Prepare**
+
+Use a login node to organize files and describe the job.
+:::
+
+::: {.workflow-step}
+**3 · Schedule**
+
+Slurm places the request in a queue and finds suitable resources.
+:::
+
+::: {.workflow-step}
+**4 · Compute**
+
+A compute node runs the job and writes its output.
+:::
+:::
+
+## What is a node?
+
+A node is an individual computer within the cluster. Introduce the distinct roles of login nodes and compute nodes before discussing detailed hardware.
+
+## What is a queue?
+
+Explain that a queue is how a shared cluster orders work while matching each job to the resources it requested.
+
+## What does memory mean on a cluster?
+
+Connect memory requests to the size and behavior of the analysis. Emphasize that requesting more memory reserves capacity but does not automatically make code faster.
+
+## Key takeaway
+
+Users describe the work and resources it needs; the scheduler decides when and where that work runs.

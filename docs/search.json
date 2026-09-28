@@ -1,0 +1,460 @@
+[
+  {
+    "objectID": "modules/05-r-on-longleaf.html",
+    "href": "modules/05-r-on-longleaf.html",
+    "title": "R on Longleaf",
+    "section": "",
+    "text": "Estimated time: 15 minutes\nGuiding question: When should R be run interactively, and when should it become a scheduled job?",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "5 · R on Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/05-r-on-longleaf.html#learning-goals",
+    "href": "modules/05-r-on-longleaf.html#learning-goals",
+    "title": "R on Longleaf",
+    "section": "Learning goals",
+    "text": "Learning goals\nBy the end of this module, participants should be able to:\n\nidentify an available R installation;\ndistinguish shared and personal package libraries;\nstart an interactive R workflow appropriately; and\nsubmit a simple R script as a scheduled job.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "5 · R on Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/05-r-on-longleaf.html#r-installations-on-longleaf",
+    "href": "modules/05-r-on-longleaf.html#r-installations-on-longleaf",
+    "title": "R on Longleaf",
+    "section": "R installations on Longleaf",
+    "text": "R installations on Longleaf",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "5 · R on Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/05-r-on-longleaf.html#where-packages-live",
+    "href": "modules/05-r-on-longleaf.html#where-packages-live",
+    "title": "R on Longleaf",
+    "section": "Where packages live",
+    "text": "Where packages live\nExplain the difference between packages included with R, centrally installed packages, and packages installed in a user’s personal library.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "5 · R on Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/05-r-on-longleaf.html#interactive-r-or-a-scheduled-job",
+    "href": "modules/05-r-on-longleaf.html#interactive-r-or-a-scheduled-job",
+    "title": "R on Longleaf",
+    "section": "Interactive R or a scheduled job?",
+    "text": "Interactive R or a scheduled job?\n\n\n\n\n\n\n\nUse interactive R when…\nUse a scheduled job when…\n\n\n\n\ntesting a short command\nthe analysis may run for a long time\n\n\nchecking that packages load\nthe work should continue after disconnecting\n\n\ndebugging a small example\nthe analysis needs substantial memory or CPUs\n\n\nexploring an unfamiliar dataset\nthe same analysis will be repeated",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "5 · R on Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/05-r-on-longleaf.html#installing-packages",
+    "href": "modules/05-r-on-longleaf.html#installing-packages",
+    "title": "R on Longleaf",
+    "section": "Installing packages",
+    "text": "Installing packages",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "5 · R on Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/05-r-on-longleaf.html#submitting-a-single-r-job",
+    "href": "modules/05-r-on-longleaf.html#submitting-a-single-r-job",
+    "title": "R on Longleaf",
+    "section": "Submitting a single R job",
+    "text": "Submitting a single R job\nThe completed lesson will pair a small R script with a Slurm submission script in the examples/ directory.\nsbatch r-job.slurm\nsqueue -u \"$USER\"",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "5 · R on Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/05-r-on-longleaf.html#conditions-for-a-successful-job",
+    "href": "modules/05-r-on-longleaf.html#conditions-for-a-successful-job",
+    "title": "R on Longleaf",
+    "section": "Conditions for a successful job",
+    "text": "Conditions for a successful job\nBefore submitting, verify that the script uses correct file paths, required packages are available, the working directory is intentional, and the requested time and memory are realistic.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "5 · R on Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/05-r-on-longleaf.html#key-takeaway",
+    "href": "modules/05-r-on-longleaf.html#key-takeaway",
+    "title": "R on Longleaf",
+    "section": "Key takeaway",
+    "text": "Key takeaway\nDevelop with small interactive checks, then move stable and resource-intensive work into a reproducible scheduled job.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "5 · R on Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/03-accessing-longleaf.html",
+    "href": "modules/03-accessing-longleaf.html",
+    "title": "How Do You Actually Use It?",
+    "section": "",
+    "text": "Estimated time: 8 minutes\nGuiding question: Which access method should a new Longleaf user choose?",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "3 · Accessing Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/03-accessing-longleaf.html#learning-goals",
+    "href": "modules/03-accessing-longleaf.html#learning-goals",
+    "title": "How Do You Actually Use It?",
+    "section": "Learning goals",
+    "text": "Learning goals\nBy the end of this module, participants should be able to:\n\nidentify the steps required to request an account;\ncompare terminal, browser, and file-transfer access; and\nselect an appropriate method for a common task.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "3 · Accessing Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/03-accessing-longleaf.html#requesting-an-account",
+    "href": "modules/03-accessing-longleaf.html#requesting-an-account",
+    "title": "How Do You Actually Use It?",
+    "section": "Requesting an account",
+    "text": "Requesting an account",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "3 · Accessing Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/03-accessing-longleaf.html#ways-to-connect",
+    "href": "modules/03-accessing-longleaf.html#ways-to-connect",
+    "title": "How Do You Actually Use It?",
+    "section": "Ways to connect",
+    "text": "Ways to connect\n\n\n\n\n\n\n\n\nMethod\nBest for\nWhat the user sees\n\n\n\n\nTerminal connection\nDirect command-line work\nA shell prompt on a login node\n\n\nWeb portal\nBrowser-based interactive work\nFiles, applications, and interactive sessions\n\n\nSFTP client\nMoving files between systems\nA graphical local-and-remote file browser",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "3 · Accessing Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/03-accessing-longleaf.html#logging-in-from-a-terminal",
+    "href": "modules/03-accessing-longleaf.html#logging-in-from-a-terminal",
+    "title": "How Do You Actually Use It?",
+    "section": "Logging in from a terminal",
+    "text": "Logging in from a terminal",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "3 · Accessing Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/03-accessing-longleaf.html#working-through-the-browser",
+    "href": "modules/03-accessing-longleaf.html#working-through-the-browser",
+    "title": "How Do You Actually Use It?",
+    "section": "Working through the browser",
+    "text": "Working through the browser",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "3 · Accessing Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/03-accessing-longleaf.html#moving-files",
+    "href": "modules/03-accessing-longleaf.html#moving-files",
+    "title": "How Do You Actually Use It?",
+    "section": "Moving files",
+    "text": "Moving files\nIntroduce a graphical SFTP workflow first, then note when command-line tools are useful for larger or repeatable transfers.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "3 · Accessing Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/03-accessing-longleaf.html#demonstration-sequence",
+    "href": "modules/03-accessing-longleaf.html#demonstration-sequence",
+    "title": "How Do You Actually Use It?",
+    "section": "Demonstration sequence",
+    "text": "Demonstration sequence\n\nOpen the chosen access method.\nConnect and identify the login environment.\nLocate the home and project directories.\nTransfer one small example file.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "3 · Accessing Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/01-introduction.html",
+    "href": "modules/01-introduction.html",
+    "title": "Introduction to Longleaf",
+    "section": "",
+    "text": "Estimated time: 5 minutes\nGuiding question: When does a research problem belong on Longleaf rather than a laptop?",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "1 · Introduction to Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/01-introduction.html#learning-goals",
+    "href": "modules/01-introduction.html#learning-goals",
+    "title": "Introduction to Longleaf",
+    "section": "Learning goals",
+    "text": "Learning goals\nBy the end of this module, participants should be able to:\n\ndescribe Longleaf in plain language;\nidentify research tasks that benefit from shared computing resources; and\nexplain where Longleaf fits between a personal computer and a cloud service.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "1 · Introduction to Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/01-introduction.html#why-researchers-outgrow-laptops",
+    "href": "modules/01-introduction.html#why-researchers-outgrow-laptops",
+    "title": "Introduction to Longleaf",
+    "section": "Why researchers outgrow laptops",
+    "text": "Why researchers outgrow laptops\nFrame Longleaf around familiar research constraints: analyses that take too long, datasets that exceed local memory, repeated models that can run independently, or work that must continue after a laptop is disconnected.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "1 · Introduction to Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/01-introduction.html#what-longleaf-is",
+    "href": "modules/01-introduction.html#what-longleaf-is",
+    "title": "Introduction to Longleaf",
+    "section": "What Longleaf is",
+    "text": "What Longleaf is\nIntroduce Longleaf as a shared computing cluster: many computers coordinated so researchers can request the processing time, memory, and software needed for a particular job.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "1 · Introduction to Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/01-introduction.html#a-brief-history-and-context",
+    "href": "modules/01-introduction.html#a-brief-history-and-context",
+    "title": "Introduction to Longleaf",
+    "section": "A brief history and context",
+    "text": "A brief history and context",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "1 · Introduction to Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/01-introduction.html#key-takeaway",
+    "href": "modules/01-introduction.html#key-takeaway",
+    "title": "Introduction to Longleaf",
+    "section": "Key takeaway",
+    "text": "Key takeaway\nLongleaf is not simply a faster personal computer. It is a shared system where work is described as a job, assigned resources, and scheduled to run on an appropriate compute node.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "1 · Introduction to Longleaf"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Getting Started with Longleaf",
+    "section": "",
+    "text": "This workshop follows the path from first login to a submitted R job. The five modules are designed for a 45–60 minute presentation and remain available afterward as a practical reference.\nAudience: Researchers who are new to Longleaf or shared computing clusters\nFormat: Five short modules with demonstrations and reusable examples"
+  },
+  {
+    "objectID": "index.html#workshop-outline",
+    "href": "index.html#workshop-outline",
+    "title": "Getting Started with Longleaf",
+    "section": "Workshop outline",
+    "text": "Workshop outline\n\n\n\n01\n\nIntroduction to Longleaf\nWhat Longleaf is, why researchers use it, and where it fits in a research workflow.\nAbout 5 minutes\nOpen module\n\n\n\n\n\n02\n\nKey features of computing clusters\nNodes, queues, memory, storage, and the scheduler that coordinates shared resources.\nAbout 8 minutes\nOpen module\n\n\n\n\n\n03\n\nHow do you actually use it?\nRequesting access, logging in, working through the browser, and transferring files.\nAbout 8 minutes\nOpen module\n\n\n\n\n\n04\n\nInteracting with Longleaf\nEssential shell commands, Slurm, job status, cancellation, and responsible resource requests.\nAbout 12 minutes\nOpen module\n\n\n\n\n\n05\n\nR on Longleaf\nR installations, package libraries, interactive work, and submitting a reproducible batch job.\nAbout 15 minutes\nOpen module\n\n\n\n\n\nThe remaining time is reserved for a workflow recap, questions, and troubleshooting examples."
+  },
+  {
+    "objectID": "modules/02-cluster-basics.html",
+    "href": "modules/02-cluster-basics.html",
+    "title": "Key Features of Computing Clusters",
+    "section": "",
+    "text": "Estimated time: 8 minutes\nGuiding question: What happens between logging in and a computation actually running?",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "2 · Computing cluster basics"
+    ]
+  },
+  {
+    "objectID": "modules/02-cluster-basics.html#learning-goals",
+    "href": "modules/02-cluster-basics.html#learning-goals",
+    "title": "Key Features of Computing Clusters",
+    "section": "Learning goals",
+    "text": "Learning goals\nBy the end of this module, participants should be able to:\n\ndistinguish a login node from a compute node;\nexplain what a scheduler and queue do; and\ninterpret basic requests for CPUs, memory, and time.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "2 · Computing cluster basics"
+    ]
+  },
+  {
+    "objectID": "modules/02-cluster-basics.html#the-path-through-a-cluster",
+    "href": "modules/02-cluster-basics.html#the-path-through-a-cluster",
+    "title": "Key Features of Computing Clusters",
+    "section": "The path through a cluster",
+    "text": "The path through a cluster\n\n\n1 · Connect\nBegin from a laptop, terminal, or browser.\n\n\n2 · Prepare\nUse a login node to organize files and describe the job.\n\n\n3 · Schedule\nSlurm places the request in a queue and finds suitable resources.\n\n\n4 · Compute\nA compute node runs the job and writes its output.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "2 · Computing cluster basics"
+    ]
+  },
+  {
+    "objectID": "modules/02-cluster-basics.html#what-is-a-node",
+    "href": "modules/02-cluster-basics.html#what-is-a-node",
+    "title": "Key Features of Computing Clusters",
+    "section": "What is a node?",
+    "text": "What is a node?\nA node is an individual computer within the cluster. Introduce the distinct roles of login nodes and compute nodes before discussing detailed hardware.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "2 · Computing cluster basics"
+    ]
+  },
+  {
+    "objectID": "modules/02-cluster-basics.html#what-is-a-queue",
+    "href": "modules/02-cluster-basics.html#what-is-a-queue",
+    "title": "Key Features of Computing Clusters",
+    "section": "What is a queue?",
+    "text": "What is a queue?\nExplain that a queue is how a shared cluster orders work while matching each job to the resources it requested.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "2 · Computing cluster basics"
+    ]
+  },
+  {
+    "objectID": "modules/02-cluster-basics.html#what-does-memory-mean-on-a-cluster",
+    "href": "modules/02-cluster-basics.html#what-does-memory-mean-on-a-cluster",
+    "title": "Key Features of Computing Clusters",
+    "section": "What does memory mean on a cluster?",
+    "text": "What does memory mean on a cluster?\nConnect memory requests to the size and behavior of the analysis. Emphasize that requesting more memory reserves capacity but does not automatically make code faster.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "2 · Computing cluster basics"
+    ]
+  },
+  {
+    "objectID": "modules/02-cluster-basics.html#key-takeaway",
+    "href": "modules/02-cluster-basics.html#key-takeaway",
+    "title": "Key Features of Computing Clusters",
+    "section": "Key takeaway",
+    "text": "Key takeaway\nUsers describe the work and resources it needs; the scheduler decides when and where that work runs.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "2 · Computing cluster basics"
+    ]
+  },
+  {
+    "objectID": "modules/04-interacting-with-longleaf.html",
+    "href": "modules/04-interacting-with-longleaf.html",
+    "title": "Interacting with Longleaf",
+    "section": "",
+    "text": "Estimated time: 12 minutes\nGuiding question: How does a command become a managed job on a compute node?",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "4 · Interacting with Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/04-interacting-with-longleaf.html#learning-goals",
+    "href": "modules/04-interacting-with-longleaf.html#learning-goals",
+    "title": "Interacting with Longleaf",
+    "section": "Learning goals",
+    "text": "Learning goals\nBy the end of this module, participants should be able to:\n\nnavigate directories and inspect files from the shell;\ndescribe the lifecycle of a Slurm job;\ncheck or cancel a submitted job; and\nrecognize responsible resource requests.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "4 · Interacting with Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/04-interacting-with-longleaf.html#essential-shell-commands",
+    "href": "modules/04-interacting-with-longleaf.html#essential-shell-commands",
+    "title": "Interacting with Longleaf",
+    "section": "Essential shell commands",
+    "text": "Essential shell commands\n\n\n\nTask\nCommand\n\n\n\n\nShow the current directory\npwd\n\n\nList files\nls\n\n\nEnter a directory\ncd directory-name\n\n\nMove up one directory\ncd ..\n\n\nCreate a directory\nmkdir directory-name\n\n\nRead a text file\nless filename",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "4 · Interacting with Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/04-interacting-with-longleaf.html#the-slurm-job-lifecycle",
+    "href": "modules/04-interacting-with-longleaf.html#the-slurm-job-lifecycle",
+    "title": "Interacting with Longleaf",
+    "section": "The Slurm job lifecycle",
+    "text": "The Slurm job lifecycle\n\n\nDescribe\nWrite the commands and resource request.\n\n\nSubmit\nSend the job script to Slurm.\n\n\nMonitor\nCheck whether the job is pending, running, or complete.\n\n\nReview\nInspect output, errors, and resource use.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "4 · Interacting with Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/04-interacting-with-longleaf.html#core-slurm-actions",
+    "href": "modules/04-interacting-with-longleaf.html#core-slurm-actions",
+    "title": "Interacting with Longleaf",
+    "section": "Core Slurm actions",
+    "text": "Core Slurm actions\nsbatch job.slurm\nsqueue -u \"$USER\"\nscancel &lt;job-id&gt;",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "4 · Interacting with Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/04-interacting-with-longleaf.html#queue-rules-and-responsible-requests",
+    "href": "modules/04-interacting-with-longleaf.html#queue-rules-and-responsible-requests",
+    "title": "Interacting with Longleaf",
+    "section": "Queue rules and responsible requests",
+    "text": "Queue rules and responsible requests\n\n\n\n\n\n\n\nWarningKeep heavy work off login nodes\n\n\n\nLogin nodes are shared entry points. Resource-intensive analyses should run through the scheduler on compute nodes.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "4 · Interacting with Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/04-interacting-with-longleaf.html#demonstration-sequence",
+    "href": "modules/04-interacting-with-longleaf.html#demonstration-sequence",
+    "title": "Interacting with Longleaf",
+    "section": "Demonstration sequence",
+    "text": "Demonstration sequence\n\nInspect a small job script.\nSubmit it and record the job ID.\nCheck its state in the queue.\nFind the output file.\nShow how to cancel a job safely.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "4 · Interacting with Longleaf"
+    ]
+  }
+]

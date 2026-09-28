@@ -1,0 +1,82 @@
+---
+title: "Interacting with Longleaf"
+subtitle: "Shell basics, Slurm, and responsible job management"
+description: "A practical introduction to navigating Longleaf and managing scheduled jobs."
+---
+
+::: {.module-lead}
+**Estimated time:** 12 minutes  
+**Guiding question:** How does a command become a managed job on a compute node?
+:::
+
+## Learning goals
+
+By the end of this module, participants should be able to:
+
+- navigate directories and inspect files from the shell;
+- describe the lifecycle of a Slurm job;
+- check or cancel a submitted job; and
+- recognize responsible resource requests.
+
+## Essential shell commands
+
+| Task | Command |
+|---|---|
+| Show the current directory | `pwd` |
+| List files | `ls` |
+| Enter a directory | `cd directory-name` |
+| Move up one directory | `cd ..` |
+| Create a directory | `mkdir directory-name` |
+| Read a text file | `less filename` |
+
+## The Slurm job lifecycle
+
+::: {.workflow}
+::: {.workflow-step}
+**Describe**
+
+Write the commands and resource request.
+:::
+
+::: {.workflow-step}
+**Submit**
+
+Send the job script to Slurm.
+:::
+
+::: {.workflow-step}
+**Monitor**
+
+Check whether the job is pending, running, or complete.
+:::
+
+::: {.workflow-step}
+**Review**
+
+Inspect output, errors, and resource use.
+:::
+:::
+
+## Core Slurm actions
+
+```bash
+sbatch job.slurm
+squeue -u "$USER"
+scancel <job-id>
+```
+
+## Queue rules and responsible requests
+
+<!-- Add verified Longleaf partitions, limits, defaults, and guidance for choosing memory and runtime. -->
+
+::: {.callout-warning title="Keep heavy work off login nodes"}
+Login nodes are shared entry points. Resource-intensive analyses should run through the scheduler on compute nodes.
+:::
+
+## Demonstration sequence
+
+1. Inspect a small job script.
+2. Submit it and record the job ID.
+3. Check its state in the queue.
+4. Find the output file.
+5. Show how to cancel a job safely.

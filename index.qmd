@@ -1,0 +1,95 @@
+---
+title: "Getting Started with Longleaf"
+subtitle: "A practical introduction to cluster computing, Slurm, and R"
+description: "A five-module introduction to using UNC's Longleaf computing cluster."
+toc: false
+sidebar: false
+page-layout: full
+---
+
+::: {.workshop-intro}
+This workshop follows the path from first login to a submitted R job. The five modules are designed for a 45–60 minute presentation and remain available afterward as a practical reference.
+
+**Audience:** Researchers who are new to Longleaf or shared computing clusters  
+**Format:** Five short modules with demonstrations and reusable examples
+:::
+
+## Workshop outline
+
+::: {.grid .module-grid}
+
+::: {.g-col-12 .g-col-lg-6}
+::: {.module-card}
+<span class="module-number">01</span>
+
+### Introduction to Longleaf
+
+What Longleaf is, why researchers use it, and where it fits in a research workflow.
+
+<span class="module-time">About 5 minutes</span>
+
+[Open module](modules/01-introduction.qmd){.stretched-link aria-label="Open Introduction to Longleaf"}
+:::
+:::
+
+::: {.g-col-12 .g-col-lg-6}
+::: {.module-card}
+<span class="module-number">02</span>
+
+### Key features of computing clusters
+
+Nodes, queues, memory, storage, and the scheduler that coordinates shared resources.
+
+<span class="module-time">About 8 minutes</span>
+
+[Open module](modules/02-cluster-basics.qmd){.stretched-link aria-label="Open Key features of computing clusters"}
+:::
+:::
+
+::: {.g-col-12 .g-col-lg-6}
+::: {.module-card}
+<span class="module-number">03</span>
+
+### How do you actually use it?
+
+Requesting access, logging in, working through the browser, and transferring files.
+
+<span class="module-time">About 8 minutes</span>
+
+[Open module](modules/03-accessing-longleaf.qmd){.stretched-link aria-label="Open How do you actually use Longleaf"}
+:::
+:::
+
+::: {.g-col-12 .g-col-lg-6}
+::: {.module-card}
+<span class="module-number">04</span>
+
+### Interacting with Longleaf
+
+Essential shell commands, Slurm, job status, cancellation, and responsible resource requests.
+
+<span class="module-time">About 12 minutes</span>
+
+[Open module](modules/04-interacting-with-longleaf.qmd){.stretched-link aria-label="Open Interacting with Longleaf"}
+:::
+:::
+
+::: {.g-col-12 .g-col-lg-6}
+::: {.module-card}
+<span class="module-number">05</span>
+
+### R on Longleaf
+
+R installations, package libraries, interactive work, and submitting a reproducible batch job.
+
+<span class="module-time">About 15 minutes</span>
+
+[Open module](modules/05-r-on-longleaf.qmd){.stretched-link aria-label="Open R on Longleaf"}
+:::
+:::
+
+:::
+
+::: {.closing-note}
+The remaining time is reserved for a workflow recap, questions, and troubleshooting examples.
+:::

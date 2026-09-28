@@ -1,0 +1,231 @@
+:root {
+  --ll-navy: #13294b;
+  --ll-blue: #4b9cd3;
+  --ll-blue-soft: #e8f3fa;
+  --ll-green: #2f6f4e;
+  --ll-green-soft: #edf6f0;
+  --ll-ink: #17212b;
+  --ll-muted: #5f6d79;
+  --ll-line: #d9e1e8;
+  --ll-canvas: #f6f8fb;
+  --ll-white: #ffffff;
+}
+
+body {
+  background: var(--ll-canvas);
+  color: var(--ll-ink);
+  font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.68;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--ll-navy);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: clamp(2.3rem, 5vw, 4.25rem);
+  line-height: 1.05;
+}
+
+h2 {
+  margin-top: 2.6rem;
+  padding-bottom: 0.45rem;
+  border-bottom: 2px solid var(--ll-blue);
+}
+
+a {
+  color: #176a9e;
+  text-underline-offset: 0.17em;
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--ll-navy);
+}
+
+.navbar {
+  border-bottom: 4px solid var(--ll-blue);
+  box-shadow: 0 2px 12px rgb(19 41 75 / 12%);
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+  font-weight: 650;
+}
+
+.quarto-title-banner {
+  background: var(--ll-white);
+  border-bottom: 1px solid var(--ll-line);
+}
+
+.subtitle,
+.description {
+  color: var(--ll-muted);
+}
+
+.workshop-intro {
+  max-width: 920px;
+  margin: 1.25rem auto 2.5rem;
+  padding: 1.35rem 1.5rem;
+  background: var(--ll-blue-soft);
+  border-left: 5px solid var(--ll-blue);
+}
+
+.module-grid {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.module-card {
+  position: relative;
+  height: 100%;
+  padding: 1.45rem 1.5rem 1.3rem;
+  background: var(--ll-white);
+  border: 1px solid var(--ll-line);
+  border-top: 5px solid var(--ll-green);
+  border-radius: 0.45rem;
+  box-shadow: 0 8px 22px rgb(19 41 75 / 8%);
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+}
+
+.module-card:hover,
+.module-card:focus-within {
+  transform: translateY(-3px);
+  border-color: var(--ll-blue);
+  box-shadow: 0 12px 28px rgb(19 41 75 / 14%);
+}
+
+.module-card h3 {
+  margin: 0.8rem 0 0.6rem;
+  font-size: 1.45rem;
+}
+
+.module-card p {
+  color: var(--ll-muted);
+}
+
+.module-card > p:last-child {
+  margin-bottom: 0;
+}
+
+.module-card .stretched-link {
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.module-number {
+  display: inline-block;
+  padding: 0.22rem 0.55rem;
+  color: var(--ll-white);
+  background: var(--ll-navy);
+  border-radius: 0.2rem;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.module-time {
+  display: block;
+  margin: 1rem 0 0.35rem;
+  color: var(--ll-green);
+  font-size: 0.88rem;
+  font-weight: 750;
+}
+
+.module-lead {
+  margin: 0.5rem 0 2rem;
+  padding: 1rem 1.25rem;
+  background: var(--ll-green-soft);
+  border-left: 5px solid var(--ll-green);
+}
+
+.module-lead p:last-child,
+.closing-note p:last-child {
+  margin-bottom: 0;
+}
+
+.closing-note {
+  max-width: 760px;
+  margin: 2.5rem auto 0;
+  padding: 1rem 1.25rem;
+  text-align: center;
+  color: var(--ll-navy);
+  border-top: 1px solid var(--ll-line);
+}
+
+.workflow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin: 1.5rem 0;
+}
+
+.workflow-step {
+  position: relative;
+  min-height: 7rem;
+  padding: 1rem;
+  background: var(--ll-white);
+  border: 1px solid var(--ll-line);
+  border-bottom: 4px solid var(--ll-blue);
+}
+
+.workflow-step strong {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: var(--ll-navy);
+}
+
+pre.sourceCode {
+  border: 1px solid #263c57;
+  border-radius: 0.35rem;
+}
+
+.sourceCode {
+  font-size: 0.94rem;
+}
+
+.callout {
+  border-radius: 0.25rem;
+}
+
+#quarto-sidebar {
+  background: var(--ll-white);
+  border-right: 1px solid var(--ll-line);
+}
+
+.sidebar-item-text.sidebar-link.active {
+  color: var(--ll-navy);
+  font-weight: 750;
+}
+
+@media (max-width: 991px) {
+  .workflow {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    font-size: 1rem;
+  }
+
+  .workflow {
+    grid-template-columns: 1fr;
+  }
+
+  .module-card {
+    padding: 1.2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .module-card {
+    transition: none;
+  }
+}

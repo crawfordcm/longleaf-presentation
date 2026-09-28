@@ -1,0 +1,36 @@
+---
+title: "Introduction to Longleaf"
+subtitle: "What Longleaf is and when it belongs in a research workflow"
+description: "An introduction to Longleaf and the research problems that benefit from cluster computing."
+---
+
+::: {.module-lead}
+**Estimated time:** 5 minutes  
+**Guiding question:** When does a research problem belong on Longleaf rather than a laptop?
+:::
+
+## Learning goals
+
+By the end of this module, participants should be able to:
+
+- describe Longleaf in plain language;
+- identify research tasks that benefit from shared computing resources; and
+- explain where Longleaf fits between a personal computer and a cloud service.
+
+## Why researchers outgrow laptops
+
+Frame Longleaf around familiar research constraints: analyses that take too long, datasets that exceed local memory, repeated models that can run independently, or work that must continue after a laptop is disconnected.
+
+<!-- Add one audience-relevant research example and a simple laptop-versus-cluster comparison. -->
+
+## What Longleaf is
+
+Introduce Longleaf as a shared computing cluster: many computers coordinated so researchers can request the processing time, memory, and software needed for a particular job.
+
+## A brief history and context
+
+<!-- Add a short, verified Longleaf history and its role within UNC Research Computing. -->
+
+## Key takeaway
+
+Longleaf is not simply a faster personal computer. It is a shared system where work is described as a job, assigned resources, and scheduled to run on an appropriate compute node.

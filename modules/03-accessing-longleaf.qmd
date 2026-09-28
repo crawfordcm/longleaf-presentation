@@ -1,0 +1,49 @@
+---
+title: "How Do You Actually Use It?"
+subtitle: "Accounts, login options, the web portal, and file transfer"
+description: "The practical routes for obtaining access, connecting to Longleaf, and moving files."
+---
+
+::: {.module-lead}
+**Estimated time:** 8 minutes  
+**Guiding question:** Which access method should a new Longleaf user choose?
+:::
+
+## Learning goals
+
+By the end of this module, participants should be able to:
+
+- identify the steps required to request an account;
+- compare terminal, browser, and file-transfer access; and
+- select an appropriate method for a common task.
+
+## Requesting an account
+
+<!-- Add the verified account-request process, eligibility requirements, and expected approval path. -->
+
+## Ways to connect
+
+| Method | Best for | What the user sees |
+|---|---|---|
+| Terminal connection | Direct command-line work | A shell prompt on a login node |
+| Web portal | Browser-based interactive work | Files, applications, and interactive sessions |
+| SFTP client | Moving files between systems | A graphical local-and-remote file browser |
+
+## Logging in from a terminal
+
+<!-- Add the verified Longleaf hostname, authentication requirements, and first-login example. -->
+
+## Working through the browser
+
+<!-- Add a verified portal URL and one annotated screenshot showing the main entry points. -->
+
+## Moving files
+
+Introduce a graphical SFTP workflow first, then note when command-line tools are useful for larger or repeatable transfers.
+
+## Demonstration sequence
+
+1. Open the chosen access method.
+2. Connect and identify the login environment.
+3. Locate the home and project directories.
+4. Transfer one small example file.

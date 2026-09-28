@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Longleaf pine">
+  <rect width="64" height="64" rx="12" fill="#13294B"/>
+  <path d="M32 10 18 31h8L15 46h34L38 31h8L32 10Z" fill="#4B9CD3"/>
+  <path d="M29 43h6v13h-6z" fill="#FFFFFF"/>
+</svg>

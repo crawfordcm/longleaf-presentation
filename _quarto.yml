@@ -1,0 +1,58 @@
+project:
+  type: website
+  output-dir: docs
+  render:
+    - index.qmd
+    - modules/*.qmd
+  resources:
+    - examples/
+
+website:
+  title: "Getting Started with Longleaf"
+  description: "A practical introduction to cluster computing, Slurm, and R on Longleaf."
+  favicon: images/favicon.svg
+  page-navigation: true
+  navbar:
+    background: "#13294B"
+    foreground: "#FFFFFF"
+    left:
+      - text: "Workshop outline"
+        href: index.qmd
+    right:
+      - icon: github
+        href: https://github.com/crawfordcm/longleaf-presentation
+        aria-label: "View the source repository"
+  sidebar:
+    style: floating
+    collapse-level: 1
+    contents:
+      - section: "Workshop modules"
+        contents:
+          - text: "1 · Introduction to Longleaf"
+            href: modules/01-introduction.qmd
+          - text: "2 · Computing cluster basics"
+            href: modules/02-cluster-basics.qmd
+          - text: "3 · Accessing Longleaf"
+            href: modules/03-accessing-longleaf.qmd
+          - text: "4 · Interacting with Longleaf"
+            href: modules/04-interacting-with-longleaf.qmd
+          - text: "5 · R on Longleaf"
+            href: modules/05-r-on-longleaf.qmd
+  page-footer:
+    left: "Getting Started with Longleaf"
+    right: "University of North Carolina at Chapel Hill"
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    toc-title: "On this page"
+    smooth-scroll: true
+    code-copy: true
+    code-overflow: wrap
+    anchor-sections: true
+    link-external-newwindow: true
+
+execute:
+  enabled: false

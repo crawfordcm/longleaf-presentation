@@ -1,0 +1,59 @@
+---
+title: "R on Longleaf"
+subtitle: "R installations, package libraries, interactive work, and batch jobs"
+description: "A practical workflow for using R and packages on Longleaf."
+---
+
+::: {.module-lead}
+**Estimated time:** 15 minutes  
+**Guiding question:** When should R be run interactively, and when should it become a scheduled job?
+:::
+
+## Learning goals
+
+By the end of this module, participants should be able to:
+
+- identify an available R installation;
+- distinguish shared and personal package libraries;
+- start an interactive R workflow appropriately; and
+- submit a simple R script as a scheduled job.
+
+## R installations on Longleaf
+
+<!-- Add the verified commands for finding and loading supported R versions. -->
+
+## Where packages live
+
+Explain the difference between packages included with R, centrally installed packages, and packages installed in a user's personal library.
+
+<!-- Add verified library paths and the recommended personal-library setup. -->
+
+## Interactive R or a scheduled job?
+
+| Use interactive R when… | Use a scheduled job when… |
+|---|---|
+| testing a short command | the analysis may run for a long time |
+| checking that packages load | the work should continue after disconnecting |
+| debugging a small example | the analysis needs substantial memory or CPUs |
+| exploring an unfamiliar dataset | the same analysis will be repeated |
+
+## Installing packages
+
+<!-- Add a verified package-installation example and explain any network or compilation constraints. -->
+
+## Submitting a single R job
+
+The completed lesson will pair a small R script with a Slurm submission script in the `examples/` directory.
+
+```bash
+sbatch r-job.slurm
+squeue -u "$USER"
+```
+
+## Conditions for a successful job
+
+Before submitting, verify that the script uses correct file paths, required packages are available, the working directory is intentional, and the requested time and memory are realistic.
+
+## Key takeaway
+
+Develop with small interactive checks, then move stable and resource-intensive work into a reproducible scheduled job.
