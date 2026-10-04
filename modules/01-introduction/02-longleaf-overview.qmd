@@ -1,0 +1,70 @@
+---
+title: "Longleaf Overview"
+---
+
+## What is Longleaf?
+
+Longleaf is UNC-Chapel Hill's shared research computing cluster. It gives researchers access to computing power, memory, storage, and specialized software beyond what is typically available on a personal computer.
+
+Rather than relying on a single machine, Longleaf brings together many computers and makes their resources available to researchers across the university.
+
+## Why use a computing cluster?
+
+A computing cluster can provide:
+
+- more processors and memory than a personal computer
+- capacity for computations that are too large or numerous for a laptop
+- access to research software and specialized hardware
+- large working storage for research data
+- scheduling and job management for a shared system
+
+## High-performance and high-throughput computing
+
+Two terms are commonly used to describe work performed on computing clusters:
+
+| High-performance computing (HPC) | High-throughput computing (HTC) |
+|---|---|
+| Focuses on completing one large computation quickly | Focuses on completing many computations over time |
+| Often divides one calculation among processors or nodes working together | Often consists of independent serial or single-node jobs |
+| Example: one large simulation | Example: applying the same analysis to many files or parameter combinations |
+
+HPC and HTC describe patterns of computing rather than entirely separate kinds of machines. A shared computing cluster may support both patterns.
+
+## Longleaf's focus
+
+Longleaf was designed with high-throughput and data-intensive research in mind. This includes work involving:
+
+- large numbers of serial or single-node jobs
+- substantial memory requirements
+- large datasets
+- frequent reading and writing of data
+
+This design makes Longleaf useful for research in which the main challenge is the number, size, or resource requirements of the computations.
+
+## Computing resources
+
+Longleaf includes different kinds of compute nodes for different kinds of work:
+
+- **General-purpose nodes** support many common research applications.
+- **High-I/O nodes** support work that reads or writes large amounts of data.
+- **Large-memory nodes** support analyses that must hold substantial amounts of data in memory.
+- **GPU nodes** support software that can use graphics processors for computation.
+
+The available resources continue to change as the cluster evolves, so current hardware specifications should be checked in UNC Research Computing documentation when they matter for a project.
+
+## When might Longleaf help?
+
+Examples relevant to psychology, statistics, and related fields include:
+
+- applying the same analysis to many participants, datasets, or files
+- fitting many model specifications
+- running bootstrap, permutation, or simulation studies
+- processing files that are too large for a personal computer
+- running an analysis that requires more memory than a laptop provides
+- using research software or GPU resources that are unavailable locally
+
+## A shared resource
+
+Many researchers use Longleaf at the same time. Users describe the work they want to run and the resources it needs. A scheduler then determines when and where that work will run.
+
+The next module explains the parts of a computing cluster and how jobs move from a user's computer to a compute node.

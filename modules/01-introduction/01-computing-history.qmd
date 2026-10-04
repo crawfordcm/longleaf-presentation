@@ -1,0 +1,59 @@
+---
+title: "A Brief History of Computing at UNC"
+---
+
+## Computing comes to Carolina
+
+UNC's effort to acquire a digital computer began in 1951, when Kenan Professor of Mathematics and department chair William M. Whyburn wrote to Chancellor R.B. House. Whyburn had become interested in digital computing through conversations with mathematicians at Oak Ridge National Laboratory, where he worked as a consultant.
+
+UNC began canvassing the campus for interest in 1952. By 1955, eight academic departments had expressed interest: Economics, Business Administration, Mathematics, Mathematical Statistics, Biostatistics, Psychology, Psychometrics, and Physics.
+
+In 1959, UNC-Chapel Hill installed a Sperry Rand UNIVAC 1105 in the basement of Phillips Hall. It was one of the most advanced computers in existence at the time and represented a major institutional investment in scientific and administrative computing.
+
+![The UNIVAC 1105 at UNC-Chapel Hill.](../../images/Univac-1105.jpg.avif){fig-alt="Photograph of the UNIVAC 1105 computer at UNC-Chapel Hill" fig-align="center" width="90%"}
+
+The machine was so large and heavy that the floors of Phillips Hall had to be reinforced with steel beams before it could be installed.
+
+The UNIVAC arrived with an important assignment: it was one of only four computers in the United States used to process data for the 1960 U.S. Census. UNC also envisioned uses beyond the census. The University's new Computation Center was intended to support quantitative work across academic disciplines and help researchers “enlarge the boundaries of human knowledge.”
+
+## The UNIVAC by the numbers
+
+- **Cost:** $2.4 million in 1959—approximately $24 million in 2022 dollars
+- **Weight:** 19 tons
+- **Working memory:** 36–54 kilobytes
+- **Storage:** 5 megabytes of magnetic-tape storage
+- **Capacity:** One single-threaded, non-interruptible job at a time
+
+Although those specifications appear extremely limited today, the UNIVAC 1105 was a powerful and advanced machine by the standards of 1959.
+
+## How people accessed it
+
+The UNIVAC was a monolithic computer: one large, centralized machine rather than a collection of independently accessible computers.
+
+Users could not log in, open programs, or interact with the machine directly. Only system administrators operated the computer, so users accessed its computing capabilities through those administrators.
+
+The computer could process only one job at a time. Once a job began, it ran without interruption until it finished or failed. After the 1960 Census work was completed, the machine was used primarily by university departments and administrative units, including UNC Finance and UNC Human Resources.
+
+## Compared with a personal computer today
+
+For perspective, consider a current lightweight laptop with 16 gigabytes of memory, 512 gigabytes of storage, and a weight of approximately 2.7 pounds.
+
+| Feature | UNIVAC 1105 | Example current laptop |
+|---|---:|---:|
+| Working memory | 36–54 KB | 16 GB |
+| Storage | 5 MB of tape | 512 GB SSD |
+| Weight | 19 tons | 2.7 pounds |
+| Access | Through system administrators | Directly by its owner |
+| Workload | One job at a time | Many programs and processes |
+
+A laptop with 16 GB of memory has approximately **300,000 times as much working memory** as the upper end of the UNIVAC's reported memory.
+
+A 512 GB solid-state drive holds approximately **100,000 times as much data** as the UNIVAC's 5 MB of tape storage. A single compressed photograph from a modern phone can occupy several megabytes—potentially most of the UNIVAC's reported storage capacity.
+
+At 19 tons, the UNIVAC was approximately **14,000 times heavier** than a 2.7-pound laptop.
+
+## Sources
+
+- [“7 decades of difference: Carolina's 1st computer and its current cluster,” UNC-Chapel Hill](https://www.unc.edu/discover/7-decades-of-difference-carolinas-1st-computer-and-its-current-cluster-2/)
+- [“Visions of Tomorrow with Computers of Today: UNC's First Computer in 1959,” UNC University Libraries](https://blogs.lib.unc.edu/hill/2015/12/15/visions-of-tomorrow-with-computers-of-today-uncs-first-computer-in-1959/)
+- [Current MacBook Air technical specifications, Apple](https://www.apple.com/macbook-air/specs/)

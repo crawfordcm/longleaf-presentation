@@ -1,5 +1,400 @@
 [
   {
+    "objectID": "modules/01-introduction/03-when-to-use-longleaf.html",
+    "href": "modules/01-introduction/03-when-to-use-longleaf.html",
+    "title": "When to Use Longleaf",
+    "section": "",
+    "text": "Estimated time: To be determined\nGuiding question: When does a research problem belong on Longleaf rather than a laptop?",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "1 · Introduction to Longleaf",
+      "1.3 · When to use Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/01-introduction/01-computing-history.html",
+    "href": "modules/01-introduction/01-computing-history.html",
+    "title": "A Brief History of Computing at UNC",
+    "section": "",
+    "text": "UNC’s effort to acquire a digital computer began in 1951, when Kenan Professor of Mathematics and department chair William M. Whyburn wrote to Chancellor R.B. House. Whyburn had become interested in digital computing through conversations with mathematicians at Oak Ridge National Laboratory, where he worked as a consultant.\nUNC began canvassing the campus for interest in 1952. By 1955, eight academic departments had expressed interest: Economics, Business Administration, Mathematics, Mathematical Statistics, Biostatistics, Psychology, Psychometrics, and Physics.\nIn 1959, UNC-Chapel Hill installed a Sperry Rand UNIVAC 1105 in the basement of Phillips Hall. It was one of the most advanced computers in existence at the time and represented a major institutional investment in scientific and administrative computing.\n\n\n\nThe UNIVAC 1105 at UNC-Chapel Hill.\n\n\nThe machine was so large and heavy that the floors of Phillips Hall had to be reinforced with steel beams before it could be installed.\nThe UNIVAC arrived with an important assignment: it was one of only four computers in the United States used to process data for the 1960 U.S. Census. UNC also envisioned uses beyond the census. The University’s new Computation Center was intended to support quantitative work across academic disciplines and help researchers “enlarge the boundaries of human knowledge.”",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "1 · Introduction to Longleaf",
+      "1.1 · Computing history at UNC"
+    ]
+  },
+  {
+    "objectID": "modules/01-introduction/01-computing-history.html#computing-comes-to-carolina",
+    "href": "modules/01-introduction/01-computing-history.html#computing-comes-to-carolina",
+    "title": "A Brief History of Computing at UNC",
+    "section": "",
+    "text": "UNC’s effort to acquire a digital computer began in 1951, when Kenan Professor of Mathematics and department chair William M. Whyburn wrote to Chancellor R.B. House. Whyburn had become interested in digital computing through conversations with mathematicians at Oak Ridge National Laboratory, where he worked as a consultant.\nUNC began canvassing the campus for interest in 1952. By 1955, eight academic departments had expressed interest: Economics, Business Administration, Mathematics, Mathematical Statistics, Biostatistics, Psychology, Psychometrics, and Physics.\nIn 1959, UNC-Chapel Hill installed a Sperry Rand UNIVAC 1105 in the basement of Phillips Hall. It was one of the most advanced computers in existence at the time and represented a major institutional investment in scientific and administrative computing.\n\n\n\nThe UNIVAC 1105 at UNC-Chapel Hill.\n\n\nThe machine was so large and heavy that the floors of Phillips Hall had to be reinforced with steel beams before it could be installed.\nThe UNIVAC arrived with an important assignment: it was one of only four computers in the United States used to process data for the 1960 U.S. Census. UNC also envisioned uses beyond the census. The University’s new Computation Center was intended to support quantitative work across academic disciplines and help researchers “enlarge the boundaries of human knowledge.”",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "1 · Introduction to Longleaf",
+      "1.1 · Computing history at UNC"
+    ]
+  },
+  {
+    "objectID": "modules/01-introduction/01-computing-history.html#the-univac-by-the-numbers",
+    "href": "modules/01-introduction/01-computing-history.html#the-univac-by-the-numbers",
+    "title": "A Brief History of Computing at UNC",
+    "section": "The UNIVAC by the numbers",
+    "text": "The UNIVAC by the numbers\n\nCost: $2.4 million in 1959—approximately $24 million in 2022 dollars\nWeight: 19 tons\nWorking memory: 36–54 kilobytes\nStorage: 5 megabytes of magnetic-tape storage\nCapacity: One single-threaded, non-interruptible job at a time\n\nAlthough those specifications appear extremely limited today, the UNIVAC 1105 was a powerful and advanced machine by the standards of 1959.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "1 · Introduction to Longleaf",
+      "1.1 · Computing history at UNC"
+    ]
+  },
+  {
+    "objectID": "modules/01-introduction/01-computing-history.html#how-people-accessed-it",
+    "href": "modules/01-introduction/01-computing-history.html#how-people-accessed-it",
+    "title": "A Brief History of Computing at UNC",
+    "section": "How people accessed it",
+    "text": "How people accessed it\nThe UNIVAC was a monolithic computer: one large, centralized machine rather than a collection of independently accessible computers.\nUsers could not log in, open programs, or interact with the machine directly. Only system administrators operated the computer, so users accessed its computing capabilities through those administrators.\nThe computer could process only one job at a time. Once a job began, it ran without interruption until it finished or failed. After the 1960 Census work was completed, the machine was used primarily by university departments and administrative units, including UNC Finance and UNC Human Resources.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "1 · Introduction to Longleaf",
+      "1.1 · Computing history at UNC"
+    ]
+  },
+  {
+    "objectID": "modules/01-introduction/01-computing-history.html#compared-with-a-personal-computer-today",
+    "href": "modules/01-introduction/01-computing-history.html#compared-with-a-personal-computer-today",
+    "title": "A Brief History of Computing at UNC",
+    "section": "Compared with a personal computer today",
+    "text": "Compared with a personal computer today\nFor perspective, consider a current lightweight laptop with 16 gigabytes of memory, 512 gigabytes of storage, and a weight of approximately 2.7 pounds.\n\n\n\nFeature\nUNIVAC 1105\nExample current laptop\n\n\n\n\nWorking memory\n36–54 KB\n16 GB\n\n\nStorage\n5 MB of tape\n512 GB SSD\n\n\nWeight\n19 tons\n2.7 pounds\n\n\nAccess\nThrough system administrators\nDirectly by its owner\n\n\nWorkload\nOne job at a time\nMany programs and processes\n\n\n\nA laptop with 16 GB of memory has approximately 300,000 times as much working memory as the upper end of the UNIVAC’s reported memory.\nA 512 GB solid-state drive holds approximately 100,000 times as much data as the UNIVAC’s 5 MB of tape storage. A single compressed photograph from a modern phone can occupy several megabytes—potentially most of the UNIVAC’s reported storage capacity.\nAt 19 tons, the UNIVAC was approximately 14,000 times heavier than a 2.7-pound laptop.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "1 · Introduction to Longleaf",
+      "1.1 · Computing history at UNC"
+    ]
+  },
+  {
+    "objectID": "modules/01-introduction/01-computing-history.html#why-this-history-matters",
+    "href": "modules/01-introduction/01-computing-history.html#why-this-history-matters",
+    "title": "A Brief History of Computing at UNC",
+    "section": "Why this history matters",
+    "text": "Why this history matters\nThe UNIVAC should not be understood simply as a primitive version of a modern laptop. It was a remarkable research and administrative resource for its time.\nComputing was expensive, physically centralized, and available only through a small group of specialists. A resource that required reinforced floors, millions of dollars, and dedicated administrators in 1959 now has far less memory and storage than the personal computers people carry around campus every day.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "1 · Introduction to Longleaf",
+      "1.1 · Computing history at UNC"
+    ]
+  },
+  {
+    "objectID": "modules/01-introduction/01-computing-history.html#key-takeaway",
+    "href": "modules/01-introduction/01-computing-history.html#key-takeaway",
+    "title": "A Brief History of Computing at UNC",
+    "section": "Key takeaway",
+    "text": "Key takeaway\nIn 1959, advanced computing at UNC meant a 19-ton machine that cost millions of dollars, could be operated only by administrators, and handled one job at a time. Today, a lightweight personal computer contains hundreds of thousands of times more memory and storage.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "1 · Introduction to Longleaf",
+      "1.1 · Computing history at UNC"
+    ]
+  },
+  {
+    "objectID": "modules/01-introduction/01-computing-history.html#sources",
+    "href": "modules/01-introduction/01-computing-history.html#sources",
+    "title": "A Brief History of Computing at UNC",
+    "section": "Sources",
+    "text": "Sources\n\n“7 decades of difference: Carolina’s 1st computer and its current cluster,” UNC-Chapel Hill\n“Visions of Tomorrow with Computers of Today: UNC’s First Computer in 1959,” UNC University Libraries\nCurrent MacBook Air technical specifications, Apple",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "1 · Introduction to Longleaf",
+      "1.1 · Computing history at UNC"
+    ]
+  },
+  {
+    "objectID": "modules/04-interacting-with-longleaf.html",
+    "href": "modules/04-interacting-with-longleaf.html",
+    "title": "Interacting with Longleaf",
+    "section": "",
+    "text": "Estimated time: 12 minutes\nGuiding question: How does a command become a managed job on a compute node?",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "4 · Interacting with Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/04-interacting-with-longleaf.html#learning-goals",
+    "href": "modules/04-interacting-with-longleaf.html#learning-goals",
+    "title": "Interacting with Longleaf",
+    "section": "Learning goals",
+    "text": "Learning goals\nBy the end of this module, participants should be able to:\n\nnavigate directories and inspect files from the shell;\ndescribe the lifecycle of a Slurm job;\ncheck or cancel a submitted job; and\nrecognize responsible resource requests.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "4 · Interacting with Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/04-interacting-with-longleaf.html#essential-shell-commands",
+    "href": "modules/04-interacting-with-longleaf.html#essential-shell-commands",
+    "title": "Interacting with Longleaf",
+    "section": "Essential shell commands",
+    "text": "Essential shell commands\n\n\n\nTask\nCommand\n\n\n\n\nShow the current directory\npwd\n\n\nList files\nls\n\n\nEnter a directory\ncd directory-name\n\n\nMove up one directory\ncd ..\n\n\nCreate a directory\nmkdir directory-name\n\n\nRead a text file\nless filename",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "4 · Interacting with Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/04-interacting-with-longleaf.html#the-slurm-job-lifecycle",
+    "href": "modules/04-interacting-with-longleaf.html#the-slurm-job-lifecycle",
+    "title": "Interacting with Longleaf",
+    "section": "The Slurm job lifecycle",
+    "text": "The Slurm job lifecycle\n\n\nDescribe\nWrite the commands and resource request.\n\n\nSubmit\nSend the job script to Slurm.\n\n\nMonitor\nCheck whether the job is pending, running, or complete.\n\n\nReview\nInspect output, errors, and resource use.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "4 · Interacting with Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/04-interacting-with-longleaf.html#core-slurm-actions",
+    "href": "modules/04-interacting-with-longleaf.html#core-slurm-actions",
+    "title": "Interacting with Longleaf",
+    "section": "Core Slurm actions",
+    "text": "Core Slurm actions\nsbatch job.slurm\nsqueue -u \"$USER\"\nscancel &lt;job-id&gt;",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "4 · Interacting with Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/04-interacting-with-longleaf.html#queue-rules-and-responsible-requests",
+    "href": "modules/04-interacting-with-longleaf.html#queue-rules-and-responsible-requests",
+    "title": "Interacting with Longleaf",
+    "section": "Queue rules and responsible requests",
+    "text": "Queue rules and responsible requests\n\n\n\n\n\n\n\nWarningKeep heavy work off login nodes\n\n\n\nLogin nodes are shared entry points. Resource-intensive analyses should run through the scheduler on compute nodes.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "4 · Interacting with Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/04-interacting-with-longleaf.html#demonstration-sequence",
+    "href": "modules/04-interacting-with-longleaf.html#demonstration-sequence",
+    "title": "Interacting with Longleaf",
+    "section": "Demonstration sequence",
+    "text": "Demonstration sequence\n\nInspect a small job script.\nSubmit it and record the job ID.\nCheck its state in the queue.\nFind the output file.\nShow how to cancel a job safely.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "4 · Interacting with Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/02-cluster-basics.html",
+    "href": "modules/02-cluster-basics.html",
+    "title": "Key Features of Computing Clusters",
+    "section": "",
+    "text": "Estimated time: 8 minutes\nGuiding question: What happens between logging in and a computation actually running?",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "2 · Computing cluster basics"
+    ]
+  },
+  {
+    "objectID": "modules/02-cluster-basics.html#learning-goals",
+    "href": "modules/02-cluster-basics.html#learning-goals",
+    "title": "Key Features of Computing Clusters",
+    "section": "Learning goals",
+    "text": "Learning goals\nBy the end of this module, participants should be able to:\n\ndistinguish a login node from a compute node;\nexplain what a scheduler and queue do; and\ninterpret basic requests for CPUs, memory, and time.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "2 · Computing cluster basics"
+    ]
+  },
+  {
+    "objectID": "modules/02-cluster-basics.html#the-path-through-a-cluster",
+    "href": "modules/02-cluster-basics.html#the-path-through-a-cluster",
+    "title": "Key Features of Computing Clusters",
+    "section": "The path through a cluster",
+    "text": "The path through a cluster\n\n\n1 · Connect\nBegin from a laptop, terminal, or browser.\n\n\n2 · Prepare\nUse a login node to organize files and describe the job.\n\n\n3 · Schedule\nSlurm places the request in a queue and finds suitable resources.\n\n\n4 · Compute\nA compute node runs the job and writes its output.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "2 · Computing cluster basics"
+    ]
+  },
+  {
+    "objectID": "modules/02-cluster-basics.html#what-is-a-node",
+    "href": "modules/02-cluster-basics.html#what-is-a-node",
+    "title": "Key Features of Computing Clusters",
+    "section": "What is a node?",
+    "text": "What is a node?\nA node is an individual computer within the cluster. Introduce the distinct roles of login nodes and compute nodes before discussing detailed hardware.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "2 · Computing cluster basics"
+    ]
+  },
+  {
+    "objectID": "modules/02-cluster-basics.html#what-is-a-queue",
+    "href": "modules/02-cluster-basics.html#what-is-a-queue",
+    "title": "Key Features of Computing Clusters",
+    "section": "What is a queue?",
+    "text": "What is a queue?\nExplain that a queue is how a shared cluster orders work while matching each job to the resources it requested.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "2 · Computing cluster basics"
+    ]
+  },
+  {
+    "objectID": "modules/02-cluster-basics.html#what-does-memory-mean-on-a-cluster",
+    "href": "modules/02-cluster-basics.html#what-does-memory-mean-on-a-cluster",
+    "title": "Key Features of Computing Clusters",
+    "section": "What does memory mean on a cluster?",
+    "text": "What does memory mean on a cluster?\nConnect memory requests to the size and behavior of the analysis. Emphasize that requesting more memory reserves capacity but does not automatically make code faster.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "2 · Computing cluster basics"
+    ]
+  },
+  {
+    "objectID": "modules/02-cluster-basics.html#key-takeaway",
+    "href": "modules/02-cluster-basics.html#key-takeaway",
+    "title": "Key Features of Computing Clusters",
+    "section": "Key takeaway",
+    "text": "Key takeaway\nUsers describe the work and resources it needs; the scheduler decides when and where that work runs.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "2 · Computing cluster basics"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Getting Started with Longleaf",
+    "section": "",
+    "text": "This workshop follows the path from first login to a submitted R job. The five modules are designed for a 45–60 minute presentation and remain available afterward as a practical reference.\nAudience: Researchers who are new to Longleaf or shared computing clusters\nFormat: Five short modules with demonstrations and reusable examples"
+  },
+  {
+    "objectID": "index.html#workshop-outline",
+    "href": "index.html#workshop-outline",
+    "title": "Getting Started with Longleaf",
+    "section": "Workshop outline",
+    "text": "Workshop outline\n\n\n\n01\n\nIntroduction to Longleaf\nUNC’s computing history, what Longleaf is, and where it fits in a research workflow.\nAbout 5 minutes\nOpen module\n\n\n\n\n\n02\n\nKey features of computing clusters\nNodes, queues, memory, storage, and the scheduler that coordinates shared resources.\nAbout 8 minutes\nOpen module\n\n\n\n\n\n03\n\nHow do you actually use it?\nRequesting access, logging in, working through the browser, and transferring files.\nAbout 8 minutes\nOpen module\n\n\n\n\n\n04\n\nInteracting with Longleaf\nEssential shell commands, Slurm, job status, cancellation, and responsible resource requests.\nAbout 12 minutes\nOpen module\n\n\n\n\n\n05\n\nR on Longleaf\nR installations, package libraries, interactive work, and submitting a reproducible batch job.\nAbout 15 minutes\nOpen module\n\n\n\n\n\nThe remaining time is reserved for a workflow recap, questions, and troubleshooting examples."
+  },
+  {
+    "objectID": "modules/03-accessing-longleaf.html",
+    "href": "modules/03-accessing-longleaf.html",
+    "title": "How Do You Actually Use It?",
+    "section": "",
+    "text": "Estimated time: 8 minutes\nGuiding question: Which access method should a new Longleaf user choose?",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "3 · Accessing Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/03-accessing-longleaf.html#learning-goals",
+    "href": "modules/03-accessing-longleaf.html#learning-goals",
+    "title": "How Do You Actually Use It?",
+    "section": "Learning goals",
+    "text": "Learning goals\nBy the end of this module, participants should be able to:\n\nidentify the steps required to request an account;\ncompare terminal, browser, and file-transfer access; and\nselect an appropriate method for a common task.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "3 · Accessing Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/03-accessing-longleaf.html#requesting-an-account",
+    "href": "modules/03-accessing-longleaf.html#requesting-an-account",
+    "title": "How Do You Actually Use It?",
+    "section": "Requesting an account",
+    "text": "Requesting an account",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "3 · Accessing Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/03-accessing-longleaf.html#ways-to-connect",
+    "href": "modules/03-accessing-longleaf.html#ways-to-connect",
+    "title": "How Do You Actually Use It?",
+    "section": "Ways to connect",
+    "text": "Ways to connect\n\n\n\n\n\n\n\n\nMethod\nBest for\nWhat the user sees\n\n\n\n\nTerminal connection\nDirect command-line work\nA shell prompt on a login node\n\n\nWeb portal\nBrowser-based interactive work\nFiles, applications, and interactive sessions\n\n\nSFTP client\nMoving files between systems\nA graphical local-and-remote file browser",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "3 · Accessing Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/03-accessing-longleaf.html#logging-in-from-a-terminal",
+    "href": "modules/03-accessing-longleaf.html#logging-in-from-a-terminal",
+    "title": "How Do You Actually Use It?",
+    "section": "Logging in from a terminal",
+    "text": "Logging in from a terminal",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "3 · Accessing Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/03-accessing-longleaf.html#working-through-the-browser",
+    "href": "modules/03-accessing-longleaf.html#working-through-the-browser",
+    "title": "How Do You Actually Use It?",
+    "section": "Working through the browser",
+    "text": "Working through the browser",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "3 · Accessing Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/03-accessing-longleaf.html#moving-files",
+    "href": "modules/03-accessing-longleaf.html#moving-files",
+    "title": "How Do You Actually Use It?",
+    "section": "Moving files",
+    "text": "Moving files\nIntroduce a graphical SFTP workflow first, then note when command-line tools are useful for larger or repeatable transfers.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "3 · Accessing Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/03-accessing-longleaf.html#demonstration-sequence",
+    "href": "modules/03-accessing-longleaf.html#demonstration-sequence",
+    "title": "How Do You Actually Use It?",
+    "section": "Demonstration sequence",
+    "text": "Demonstration sequence\n\nOpen the chosen access method.\nConnect and identify the login environment.\nLocate the home and project directories.\nTransfer one small example file.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "3 · Accessing Longleaf"
+    ]
+  },
+  {
     "objectID": "modules/05-r-on-longleaf.html",
     "href": "modules/05-r-on-longleaf.html",
     "title": "R on Longleaf",
@@ -108,353 +503,107 @@
     ]
   },
   {
-    "objectID": "modules/03-accessing-longleaf.html",
-    "href": "modules/03-accessing-longleaf.html",
-    "title": "How Do You Actually Use It?",
+    "objectID": "modules/01-introduction/02-longleaf-overview.html",
+    "href": "modules/01-introduction/02-longleaf-overview.html",
+    "title": "Longleaf Overview",
     "section": "",
-    "text": "Estimated time: 8 minutes\nGuiding question: Which access method should a new Longleaf user choose?",
+    "text": "Longleaf is UNC-Chapel Hill’s shared research computing cluster. It gives researchers access to computing power, memory, storage, and specialized software beyond what is typically available on a personal computer.\nRather than relying on a single machine, Longleaf brings together many computers and makes their resources available to researchers across the university.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
-      "3 · Accessing Longleaf"
+      "1 · Introduction to Longleaf",
+      "1.2 · Longleaf overview"
     ]
   },
   {
-    "objectID": "modules/03-accessing-longleaf.html#learning-goals",
-    "href": "modules/03-accessing-longleaf.html#learning-goals",
-    "title": "How Do You Actually Use It?",
-    "section": "Learning goals",
-    "text": "Learning goals\nBy the end of this module, participants should be able to:\n\nidentify the steps required to request an account;\ncompare terminal, browser, and file-transfer access; and\nselect an appropriate method for a common task.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "3 · Accessing Longleaf"
-    ]
-  },
-  {
-    "objectID": "modules/03-accessing-longleaf.html#requesting-an-account",
-    "href": "modules/03-accessing-longleaf.html#requesting-an-account",
-    "title": "How Do You Actually Use It?",
-    "section": "Requesting an account",
-    "text": "Requesting an account",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "3 · Accessing Longleaf"
-    ]
-  },
-  {
-    "objectID": "modules/03-accessing-longleaf.html#ways-to-connect",
-    "href": "modules/03-accessing-longleaf.html#ways-to-connect",
-    "title": "How Do You Actually Use It?",
-    "section": "Ways to connect",
-    "text": "Ways to connect\n\n\n\n\n\n\n\n\nMethod\nBest for\nWhat the user sees\n\n\n\n\nTerminal connection\nDirect command-line work\nA shell prompt on a login node\n\n\nWeb portal\nBrowser-based interactive work\nFiles, applications, and interactive sessions\n\n\nSFTP client\nMoving files between systems\nA graphical local-and-remote file browser",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "3 · Accessing Longleaf"
-    ]
-  },
-  {
-    "objectID": "modules/03-accessing-longleaf.html#logging-in-from-a-terminal",
-    "href": "modules/03-accessing-longleaf.html#logging-in-from-a-terminal",
-    "title": "How Do You Actually Use It?",
-    "section": "Logging in from a terminal",
-    "text": "Logging in from a terminal",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "3 · Accessing Longleaf"
-    ]
-  },
-  {
-    "objectID": "modules/03-accessing-longleaf.html#working-through-the-browser",
-    "href": "modules/03-accessing-longleaf.html#working-through-the-browser",
-    "title": "How Do You Actually Use It?",
-    "section": "Working through the browser",
-    "text": "Working through the browser",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "3 · Accessing Longleaf"
-    ]
-  },
-  {
-    "objectID": "modules/03-accessing-longleaf.html#moving-files",
-    "href": "modules/03-accessing-longleaf.html#moving-files",
-    "title": "How Do You Actually Use It?",
-    "section": "Moving files",
-    "text": "Moving files\nIntroduce a graphical SFTP workflow first, then note when command-line tools are useful for larger or repeatable transfers.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "3 · Accessing Longleaf"
-    ]
-  },
-  {
-    "objectID": "modules/03-accessing-longleaf.html#demonstration-sequence",
-    "href": "modules/03-accessing-longleaf.html#demonstration-sequence",
-    "title": "How Do You Actually Use It?",
-    "section": "Demonstration sequence",
-    "text": "Demonstration sequence\n\nOpen the chosen access method.\nConnect and identify the login environment.\nLocate the home and project directories.\nTransfer one small example file.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "3 · Accessing Longleaf"
-    ]
-  },
-  {
-    "objectID": "modules/01-introduction.html",
-    "href": "modules/01-introduction.html",
-    "title": "Introduction to Longleaf",
+    "objectID": "modules/01-introduction/02-longleaf-overview.html#what-is-longleaf",
+    "href": "modules/01-introduction/02-longleaf-overview.html#what-is-longleaf",
+    "title": "Longleaf Overview",
     "section": "",
-    "text": "Estimated time: 5 minutes\nGuiding question: When does a research problem belong on Longleaf rather than a laptop?",
+    "text": "Longleaf is UNC-Chapel Hill’s shared research computing cluster. It gives researchers access to computing power, memory, storage, and specialized software beyond what is typically available on a personal computer.\nRather than relying on a single machine, Longleaf brings together many computers and makes their resources available to researchers across the university.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
-      "1 · Introduction to Longleaf"
+      "1 · Introduction to Longleaf",
+      "1.2 · Longleaf overview"
     ]
   },
   {
-    "objectID": "modules/01-introduction.html#learning-goals",
-    "href": "modules/01-introduction.html#learning-goals",
-    "title": "Introduction to Longleaf",
-    "section": "Learning goals",
-    "text": "Learning goals\nBy the end of this module, participants should be able to:\n\ndescribe Longleaf in plain language;\nidentify research tasks that benefit from shared computing resources; and\nexplain where Longleaf fits between a personal computer and a cloud service.",
+    "objectID": "modules/01-introduction/02-longleaf-overview.html#why-use-a-computing-cluster",
+    "href": "modules/01-introduction/02-longleaf-overview.html#why-use-a-computing-cluster",
+    "title": "Longleaf Overview",
+    "section": "Why use a computing cluster?",
+    "text": "Why use a computing cluster?\nA computing cluster can provide:\n\nmore processors and memory than a personal computer\ncapacity for computations that are too large or numerous for a laptop\naccess to research software and specialized hardware\nlarge working storage for research data\nscheduling and job management for a shared system",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
-      "1 · Introduction to Longleaf"
+      "1 · Introduction to Longleaf",
+      "1.2 · Longleaf overview"
     ]
   },
   {
-    "objectID": "modules/01-introduction.html#why-researchers-outgrow-laptops",
-    "href": "modules/01-introduction.html#why-researchers-outgrow-laptops",
-    "title": "Introduction to Longleaf",
-    "section": "Why researchers outgrow laptops",
-    "text": "Why researchers outgrow laptops\nFrame Longleaf around familiar research constraints: analyses that take too long, datasets that exceed local memory, repeated models that can run independently, or work that must continue after a laptop is disconnected.",
+    "objectID": "modules/01-introduction/02-longleaf-overview.html#high-performance-and-high-throughput-computing",
+    "href": "modules/01-introduction/02-longleaf-overview.html#high-performance-and-high-throughput-computing",
+    "title": "Longleaf Overview",
+    "section": "High-performance and high-throughput computing",
+    "text": "High-performance and high-throughput computing\nTwo terms are commonly used to describe work performed on computing clusters:\n\n\n\n\n\n\n\nHigh-performance computing (HPC)\nHigh-throughput computing (HTC)\n\n\n\n\nFocuses on completing one large computation quickly\nFocuses on completing many computations over time\n\n\nOften divides one calculation among processors or nodes working together\nOften consists of independent serial or single-node jobs\n\n\nExample: one large simulation\nExample: applying the same analysis to many files or parameter combinations\n\n\n\nHPC and HTC describe patterns of computing rather than entirely separate kinds of machines. A shared computing cluster may support both patterns.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
-      "1 · Introduction to Longleaf"
+      "1 · Introduction to Longleaf",
+      "1.2 · Longleaf overview"
     ]
   },
   {
-    "objectID": "modules/01-introduction.html#what-longleaf-is",
-    "href": "modules/01-introduction.html#what-longleaf-is",
-    "title": "Introduction to Longleaf",
-    "section": "What Longleaf is",
-    "text": "What Longleaf is\nIntroduce Longleaf as a shared computing cluster: many computers coordinated so researchers can request the processing time, memory, and software needed for a particular job.",
+    "objectID": "modules/01-introduction/02-longleaf-overview.html#longleafs-focus",
+    "href": "modules/01-introduction/02-longleaf-overview.html#longleafs-focus",
+    "title": "Longleaf Overview",
+    "section": "Longleaf’s focus",
+    "text": "Longleaf’s focus\nLongleaf was designed with high-throughput and data-intensive research in mind. This includes work involving:\n\nlarge numbers of serial or single-node jobs\nsubstantial memory requirements\nlarge datasets\nfrequent reading and writing of data\n\nThis design makes Longleaf useful for research in which the main challenge is the number, size, or resource requirements of the computations.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
-      "1 · Introduction to Longleaf"
+      "1 · Introduction to Longleaf",
+      "1.2 · Longleaf overview"
     ]
   },
   {
-    "objectID": "modules/01-introduction.html#a-brief-history-and-context",
-    "href": "modules/01-introduction.html#a-brief-history-and-context",
-    "title": "Introduction to Longleaf",
-    "section": "A brief history and context",
-    "text": "A brief history and context",
+    "objectID": "modules/01-introduction/02-longleaf-overview.html#computing-resources",
+    "href": "modules/01-introduction/02-longleaf-overview.html#computing-resources",
+    "title": "Longleaf Overview",
+    "section": "Computing resources",
+    "text": "Computing resources\nLongleaf includes different kinds of compute nodes for different kinds of work:\n\nGeneral-purpose nodes support many common research applications.\nHigh-I/O nodes support work that reads or writes large amounts of data.\nLarge-memory nodes support analyses that must hold substantial amounts of data in memory.\nGPU nodes support software that can use graphics processors for computation.\n\nThe available resources continue to change as the cluster evolves, so current hardware specifications should be checked in UNC Research Computing documentation when they matter for a project.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
-      "1 · Introduction to Longleaf"
+      "1 · Introduction to Longleaf",
+      "1.2 · Longleaf overview"
     ]
   },
   {
-    "objectID": "modules/01-introduction.html#key-takeaway",
-    "href": "modules/01-introduction.html#key-takeaway",
-    "title": "Introduction to Longleaf",
-    "section": "Key takeaway",
-    "text": "Key takeaway\nLongleaf is not simply a faster personal computer. It is a shared system where work is described as a job, assigned resources, and scheduled to run on an appropriate compute node.",
+    "objectID": "modules/01-introduction/02-longleaf-overview.html#when-might-longleaf-help",
+    "href": "modules/01-introduction/02-longleaf-overview.html#when-might-longleaf-help",
+    "title": "Longleaf Overview",
+    "section": "When might Longleaf help?",
+    "text": "When might Longleaf help?\nExamples relevant to psychology, statistics, and related fields include:\n\napplying the same analysis to many participants, datasets, or files\nfitting many model specifications\nrunning bootstrap, permutation, or simulation studies\nprocessing files that are too large for a personal computer\nrunning an analysis that requires more memory than a laptop provides\nusing research software or GPU resources that are unavailable locally",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
-      "1 · Introduction to Longleaf"
+      "1 · Introduction to Longleaf",
+      "1.2 · Longleaf overview"
     ]
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Getting Started with Longleaf",
-    "section": "",
-    "text": "This workshop follows the path from first login to a submitted R job. The five modules are designed for a 45–60 minute presentation and remain available afterward as a practical reference.\nAudience: Researchers who are new to Longleaf or shared computing clusters\nFormat: Five short modules with demonstrations and reusable examples"
-  },
-  {
-    "objectID": "index.html#workshop-outline",
-    "href": "index.html#workshop-outline",
-    "title": "Getting Started with Longleaf",
-    "section": "Workshop outline",
-    "text": "Workshop outline\n\n\n\n01\n\nIntroduction to Longleaf\nWhat Longleaf is, why researchers use it, and where it fits in a research workflow.\nAbout 5 minutes\nOpen module\n\n\n\n\n\n02\n\nKey features of computing clusters\nNodes, queues, memory, storage, and the scheduler that coordinates shared resources.\nAbout 8 minutes\nOpen module\n\n\n\n\n\n03\n\nHow do you actually use it?\nRequesting access, logging in, working through the browser, and transferring files.\nAbout 8 minutes\nOpen module\n\n\n\n\n\n04\n\nInteracting with Longleaf\nEssential shell commands, Slurm, job status, cancellation, and responsible resource requests.\nAbout 12 minutes\nOpen module\n\n\n\n\n\n05\n\nR on Longleaf\nR installations, package libraries, interactive work, and submitting a reproducible batch job.\nAbout 15 minutes\nOpen module\n\n\n\n\n\nThe remaining time is reserved for a workflow recap, questions, and troubleshooting examples."
-  },
-  {
-    "objectID": "modules/02-cluster-basics.html",
-    "href": "modules/02-cluster-basics.html",
-    "title": "Key Features of Computing Clusters",
-    "section": "",
-    "text": "Estimated time: 8 minutes\nGuiding question: What happens between logging in and a computation actually running?",
+    "objectID": "modules/01-introduction/02-longleaf-overview.html#a-shared-resource",
+    "href": "modules/01-introduction/02-longleaf-overview.html#a-shared-resource",
+    "title": "Longleaf Overview",
+    "section": "A shared resource",
+    "text": "A shared resource\nMany researchers use Longleaf at the same time. Users describe the work they want to run and the resources it needs. A scheduler then determines when and where that work will run.\nThe next module explains the parts of a computing cluster and how jobs move from a user’s computer to a compute node.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
-      "2 · Computing cluster basics"
-    ]
-  },
-  {
-    "objectID": "modules/02-cluster-basics.html#learning-goals",
-    "href": "modules/02-cluster-basics.html#learning-goals",
-    "title": "Key Features of Computing Clusters",
-    "section": "Learning goals",
-    "text": "Learning goals\nBy the end of this module, participants should be able to:\n\ndistinguish a login node from a compute node;\nexplain what a scheduler and queue do; and\ninterpret basic requests for CPUs, memory, and time.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "2 · Computing cluster basics"
-    ]
-  },
-  {
-    "objectID": "modules/02-cluster-basics.html#the-path-through-a-cluster",
-    "href": "modules/02-cluster-basics.html#the-path-through-a-cluster",
-    "title": "Key Features of Computing Clusters",
-    "section": "The path through a cluster",
-    "text": "The path through a cluster\n\n\n1 · Connect\nBegin from a laptop, terminal, or browser.\n\n\n2 · Prepare\nUse a login node to organize files and describe the job.\n\n\n3 · Schedule\nSlurm places the request in a queue and finds suitable resources.\n\n\n4 · Compute\nA compute node runs the job and writes its output.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "2 · Computing cluster basics"
-    ]
-  },
-  {
-    "objectID": "modules/02-cluster-basics.html#what-is-a-node",
-    "href": "modules/02-cluster-basics.html#what-is-a-node",
-    "title": "Key Features of Computing Clusters",
-    "section": "What is a node?",
-    "text": "What is a node?\nA node is an individual computer within the cluster. Introduce the distinct roles of login nodes and compute nodes before discussing detailed hardware.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "2 · Computing cluster basics"
-    ]
-  },
-  {
-    "objectID": "modules/02-cluster-basics.html#what-is-a-queue",
-    "href": "modules/02-cluster-basics.html#what-is-a-queue",
-    "title": "Key Features of Computing Clusters",
-    "section": "What is a queue?",
-    "text": "What is a queue?\nExplain that a queue is how a shared cluster orders work while matching each job to the resources it requested.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "2 · Computing cluster basics"
-    ]
-  },
-  {
-    "objectID": "modules/02-cluster-basics.html#what-does-memory-mean-on-a-cluster",
-    "href": "modules/02-cluster-basics.html#what-does-memory-mean-on-a-cluster",
-    "title": "Key Features of Computing Clusters",
-    "section": "What does memory mean on a cluster?",
-    "text": "What does memory mean on a cluster?\nConnect memory requests to the size and behavior of the analysis. Emphasize that requesting more memory reserves capacity but does not automatically make code faster.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "2 · Computing cluster basics"
-    ]
-  },
-  {
-    "objectID": "modules/02-cluster-basics.html#key-takeaway",
-    "href": "modules/02-cluster-basics.html#key-takeaway",
-    "title": "Key Features of Computing Clusters",
-    "section": "Key takeaway",
-    "text": "Key takeaway\nUsers describe the work and resources it needs; the scheduler decides when and where that work runs.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "2 · Computing cluster basics"
-    ]
-  },
-  {
-    "objectID": "modules/04-interacting-with-longleaf.html",
-    "href": "modules/04-interacting-with-longleaf.html",
-    "title": "Interacting with Longleaf",
-    "section": "",
-    "text": "Estimated time: 12 minutes\nGuiding question: How does a command become a managed job on a compute node?",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "4 · Interacting with Longleaf"
-    ]
-  },
-  {
-    "objectID": "modules/04-interacting-with-longleaf.html#learning-goals",
-    "href": "modules/04-interacting-with-longleaf.html#learning-goals",
-    "title": "Interacting with Longleaf",
-    "section": "Learning goals",
-    "text": "Learning goals\nBy the end of this module, participants should be able to:\n\nnavigate directories and inspect files from the shell;\ndescribe the lifecycle of a Slurm job;\ncheck or cancel a submitted job; and\nrecognize responsible resource requests.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "4 · Interacting with Longleaf"
-    ]
-  },
-  {
-    "objectID": "modules/04-interacting-with-longleaf.html#essential-shell-commands",
-    "href": "modules/04-interacting-with-longleaf.html#essential-shell-commands",
-    "title": "Interacting with Longleaf",
-    "section": "Essential shell commands",
-    "text": "Essential shell commands\n\n\n\nTask\nCommand\n\n\n\n\nShow the current directory\npwd\n\n\nList files\nls\n\n\nEnter a directory\ncd directory-name\n\n\nMove up one directory\ncd ..\n\n\nCreate a directory\nmkdir directory-name\n\n\nRead a text file\nless filename",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "4 · Interacting with Longleaf"
-    ]
-  },
-  {
-    "objectID": "modules/04-interacting-with-longleaf.html#the-slurm-job-lifecycle",
-    "href": "modules/04-interacting-with-longleaf.html#the-slurm-job-lifecycle",
-    "title": "Interacting with Longleaf",
-    "section": "The Slurm job lifecycle",
-    "text": "The Slurm job lifecycle\n\n\nDescribe\nWrite the commands and resource request.\n\n\nSubmit\nSend the job script to Slurm.\n\n\nMonitor\nCheck whether the job is pending, running, or complete.\n\n\nReview\nInspect output, errors, and resource use.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "4 · Interacting with Longleaf"
-    ]
-  },
-  {
-    "objectID": "modules/04-interacting-with-longleaf.html#core-slurm-actions",
-    "href": "modules/04-interacting-with-longleaf.html#core-slurm-actions",
-    "title": "Interacting with Longleaf",
-    "section": "Core Slurm actions",
-    "text": "Core Slurm actions\nsbatch job.slurm\nsqueue -u \"$USER\"\nscancel &lt;job-id&gt;",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "4 · Interacting with Longleaf"
-    ]
-  },
-  {
-    "objectID": "modules/04-interacting-with-longleaf.html#queue-rules-and-responsible-requests",
-    "href": "modules/04-interacting-with-longleaf.html#queue-rules-and-responsible-requests",
-    "title": "Interacting with Longleaf",
-    "section": "Queue rules and responsible requests",
-    "text": "Queue rules and responsible requests\n\n\n\n\n\n\n\nWarningKeep heavy work off login nodes\n\n\n\nLogin nodes are shared entry points. Resource-intensive analyses should run through the scheduler on compute nodes.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "4 · Interacting with Longleaf"
-    ]
-  },
-  {
-    "objectID": "modules/04-interacting-with-longleaf.html#demonstration-sequence",
-    "href": "modules/04-interacting-with-longleaf.html#demonstration-sequence",
-    "title": "Interacting with Longleaf",
-    "section": "Demonstration sequence",
-    "text": "Demonstration sequence\n\nInspect a small job script.\nSubmit it and record the job ID.\nCheck its state in the queue.\nFind the output file.\nShow how to cancel a job safely.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "4 · Interacting with Longleaf"
+      "1 · Introduction to Longleaf",
+      "1.2 · Longleaf overview"
     ]
   }
 ]

@@ -2,24 +2,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="An introduction to Longleaf and the research problems that benefit from cluster computing.">
 
-<title>Introduction to Longleaf – Getting Started with Longleaf</title>
+<title>Longleaf Overview – Getting Started with Longleaf</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
+code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: 1.5em;}
-div.column{flex: auto;}
-@media screen {
-div.columns{gap: min(4vw, 1.5em);}
-div.column{overflow-x: auto;}
-}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -30,25 +26,26 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../modules/02-cluster-basics.html" rel="next">
-<link href="../images/favicon.svg" rel="icon" type="image/svg+xml">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f20458148a103796fd5b126df1dc9b74.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../modules/02-cluster-basics.html" rel="next">
+<link href="../../modules/01-introduction/01-computing-history.html" rel="prev">
+<link href="../../images/favicon.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-7edcc8814b75f5ea399f37daf8a0b138.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -79,7 +76,7 @@ ul.task-list li input[type="checkbox"] {
 <style>html{ scroll-behavior: smooth; }</style>
 
 
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-sidebar floating nav-fixed quarto-light">
@@ -89,7 +86,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Getting Started with Longleaf</span>
     </a>
   </div>
@@ -100,7 +97,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Workshop outline</span></a>
   </li>  
 </ul>
@@ -121,7 +118,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../modules/01-introduction.html">Workshop modules</a></li><li class="breadcrumb-item"><a href="../modules/01-introduction.html">1 · Introduction to Longleaf</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Workshop modules</li><li class="breadcrumb-item"><a href="../../modules/01-introduction/01-computing-history.html">1 · Introduction to Longleaf</a></li><li class="breadcrumb-item"><a href="../../modules/01-introduction/02-longleaf-overview.html">1.2 · Longleaf overview</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -142,33 +139,50 @@ ul.task-list li input[type="checkbox"] {
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">1 · Introduction to Longleaf</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../modules/01-introduction.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">1 · Introduction to Longleaf</span></a>
+  <a href="../../modules/01-introduction/01-computing-history.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1.1 · Computing history at UNC</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../modules/02-cluster-basics.html" class="sidebar-item-text sidebar-link">
+  <a href="../../modules/01-introduction/02-longleaf-overview.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">1.2 · Longleaf overview</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/02-cluster-basics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">2 · Computing cluster basics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../modules/03-accessing-longleaf.html" class="sidebar-item-text sidebar-link">
+  <a href="../../modules/03-accessing-longleaf.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">3 · Accessing Longleaf</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../modules/04-interacting-with-longleaf.html" class="sidebar-item-text sidebar-link">
+  <a href="../../modules/04-interacting-with-longleaf.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">4 · Interacting with Longleaf</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../modules/05-r-on-longleaf.html" class="sidebar-item-text sidebar-link">
+  <a href="../../modules/05-r-on-longleaf.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">5 · R on Longleaf</span></a>
   </div>
 </li>
@@ -184,28 +198,24 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#learning-goals" id="toc-learning-goals" class="nav-link active" data-scroll-target="#learning-goals">Learning goals</a></li>
-  <li><a href="#why-researchers-outgrow-laptops" id="toc-why-researchers-outgrow-laptops" class="nav-link" data-scroll-target="#why-researchers-outgrow-laptops">Why researchers outgrow laptops</a></li>
-  <li><a href="#what-longleaf-is" id="toc-what-longleaf-is" class="nav-link" data-scroll-target="#what-longleaf-is">What Longleaf is</a></li>
-  <li><a href="#a-brief-history-and-context" id="toc-a-brief-history-and-context" class="nav-link" data-scroll-target="#a-brief-history-and-context">A brief history and context</a></li>
-  <li><a href="#key-takeaway" id="toc-key-takeaway" class="nav-link" data-scroll-target="#key-takeaway">Key takeaway</a></li>
+  <li><a href="#what-is-longleaf" id="toc-what-is-longleaf" class="nav-link active" data-scroll-target="#what-is-longleaf">What is Longleaf?</a></li>
+  <li><a href="#why-use-a-computing-cluster" id="toc-why-use-a-computing-cluster" class="nav-link" data-scroll-target="#why-use-a-computing-cluster">Why use a computing cluster?</a></li>
+  <li><a href="#high-performance-and-high-throughput-computing" id="toc-high-performance-and-high-throughput-computing" class="nav-link" data-scroll-target="#high-performance-and-high-throughput-computing">High-performance and high-throughput computing</a></li>
+  <li><a href="#longleafs-focus" id="toc-longleafs-focus" class="nav-link" data-scroll-target="#longleafs-focus">Longleaf’s focus</a></li>
+  <li><a href="#computing-resources" id="toc-computing-resources" class="nav-link" data-scroll-target="#computing-resources">Computing resources</a></li>
+  <li><a href="#when-might-longleaf-help" id="toc-when-might-longleaf-help" class="nav-link" data-scroll-target="#when-might-longleaf-help">When might Longleaf help?</a></li>
+  <li><a href="#a-shared-resource" id="toc-a-shared-resource" class="nav-link" data-scroll-target="#a-shared-resource">A shared resource</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../modules/01-introduction.html">Workshop modules</a></li><li class="breadcrumb-item"><a href="../modules/01-introduction.html">1 · Introduction to Longleaf</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Workshop modules</li><li class="breadcrumb-item"><a href="../../modules/01-introduction/01-computing-history.html">1 · Introduction to Longleaf</a></li><li class="breadcrumb-item"><a href="../../modules/01-introduction/02-longleaf-overview.html">1.2 · Longleaf overview</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Introduction to Longleaf</h1>
-<p class="subtitle lead">What Longleaf is and when it belongs in a research workflow</p>
+<h1 class="title">Longleaf Overview</h1>
 </div>
 
-<div>
-  <div class="description">
-    An introduction to Longleaf and the research problems that benefit from cluster computing.
-  </div>
-</div>
 
 
 <div class="quarto-title-meta">
@@ -220,35 +230,91 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="module-lead">
-<p><strong>Estimated time:</strong> 5 minutes<br>
-<strong>Guiding question:</strong> When does a research problem belong on Longleaf rather than a laptop?</p>
-</div>
-<section id="learning-goals" class="level2">
-<h2 class="anchored" data-anchor-id="learning-goals">Learning goals</h2>
-<p>By the end of this module, participants should be able to:</p>
+<section id="what-is-longleaf" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-longleaf">What is Longleaf?</h2>
+<p>Longleaf is UNC-Chapel Hill’s shared research computing cluster. It gives researchers access to computing power, memory, storage, and specialized software beyond what is typically available on a personal computer.</p>
+<p>Rather than relying on a single machine, Longleaf brings together many computers and makes their resources available to researchers across the university.</p>
+</section>
+<section id="why-use-a-computing-cluster" class="level2">
+<h2 class="anchored" data-anchor-id="why-use-a-computing-cluster">Why use a computing cluster?</h2>
+<p>A computing cluster can provide:</p>
 <ul>
-<li>describe Longleaf in plain language;</li>
-<li>identify research tasks that benefit from shared computing resources; and</li>
-<li>explain where Longleaf fits between a personal computer and a cloud service.</li>
+<li>more processors and memory than a personal computer</li>
+<li>capacity for computations that are too large or numerous for a laptop</li>
+<li>access to research software and specialized hardware</li>
+<li>large working storage for research data</li>
+<li>scheduling and job management for a shared system</li>
 </ul>
 </section>
-<section id="why-researchers-outgrow-laptops" class="level2">
-<h2 class="anchored" data-anchor-id="why-researchers-outgrow-laptops">Why researchers outgrow laptops</h2>
-<p>Frame Longleaf around familiar research constraints: analyses that take too long, datasets that exceed local memory, repeated models that can run independently, or work that must continue after a laptop is disconnected.</p>
-<!-- Add one audience-relevant research example and a simple laptop-versus-cluster comparison. -->
+<section id="high-performance-and-high-throughput-computing" class="level2">
+<h2 class="anchored" data-anchor-id="high-performance-and-high-throughput-computing">High-performance and high-throughput computing</h2>
+<p>Two terms are commonly used to describe work performed on computing clusters:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>High-performance computing (HPC)</th>
+<th>High-throughput computing (HTC)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Focuses on completing one large computation quickly</td>
+<td>Focuses on completing many computations over time</td>
+</tr>
+<tr class="even">
+<td>Often divides one calculation among processors or nodes working together</td>
+<td>Often consists of independent serial or single-node jobs</td>
+</tr>
+<tr class="odd">
+<td>Example: one large simulation</td>
+<td>Example: applying the same analysis to many files or parameter combinations</td>
+</tr>
+</tbody>
+</table>
+<p>HPC and HTC describe patterns of computing rather than entirely separate kinds of machines. A shared computing cluster may support both patterns.</p>
 </section>
-<section id="what-longleaf-is" class="level2">
-<h2 class="anchored" data-anchor-id="what-longleaf-is">What Longleaf is</h2>
-<p>Introduce Longleaf as a shared computing cluster: many computers coordinated so researchers can request the processing time, memory, and software needed for a particular job.</p>
+<section id="longleafs-focus" class="level2">
+<h2 class="anchored" data-anchor-id="longleafs-focus">Longleaf’s focus</h2>
+<p>Longleaf was designed with high-throughput and data-intensive research in mind. This includes work involving:</p>
+<ul>
+<li>large numbers of serial or single-node jobs</li>
+<li>substantial memory requirements</li>
+<li>large datasets</li>
+<li>frequent reading and writing of data</li>
+</ul>
+<p>This design makes Longleaf useful for research in which the main challenge is the number, size, or resource requirements of the computations.</p>
 </section>
-<section id="a-brief-history-and-context" class="level2">
-<h2 class="anchored" data-anchor-id="a-brief-history-and-context">A brief history and context</h2>
-<!-- Add a short, verified Longleaf history and its role within UNC Research Computing. -->
+<section id="computing-resources" class="level2">
+<h2 class="anchored" data-anchor-id="computing-resources">Computing resources</h2>
+<p>Longleaf includes different kinds of compute nodes for different kinds of work:</p>
+<ul>
+<li><strong>General-purpose nodes</strong> support many common research applications.</li>
+<li><strong>High-I/O nodes</strong> support work that reads or writes large amounts of data.</li>
+<li><strong>Large-memory nodes</strong> support analyses that must hold substantial amounts of data in memory.</li>
+<li><strong>GPU nodes</strong> support software that can use graphics processors for computation.</li>
+</ul>
+<p>The available resources continue to change as the cluster evolves, so current hardware specifications should be checked in UNC Research Computing documentation when they matter for a project.</p>
 </section>
-<section id="key-takeaway" class="level2">
-<h2 class="anchored" data-anchor-id="key-takeaway">Key takeaway</h2>
-<p>Longleaf is not simply a faster personal computer. It is a shared system where work is described as a job, assigned resources, and scheduled to run on an appropriate compute node.</p>
+<section id="when-might-longleaf-help" class="level2">
+<h2 class="anchored" data-anchor-id="when-might-longleaf-help">When might Longleaf help?</h2>
+<p>Examples relevant to psychology, statistics, and related fields include:</p>
+<ul>
+<li>applying the same analysis to many participants, datasets, or files</li>
+<li>fitting many model specifications</li>
+<li>running bootstrap, permutation, or simulation studies</li>
+<li>processing files that are too large for a personal computer</li>
+<li>running an analysis that requires more memory than a laptop provides</li>
+<li>using research software or GPU resources that are unavailable locally</li>
+</ul>
+</section>
+<section id="a-shared-resource" class="level2">
+<h2 class="anchored" data-anchor-id="a-shared-resource">A shared resource</h2>
+<p>Many researchers use Longleaf at the same time. Users describe the work they want to run and the resources it needs. A scheduler then determines when and where that work will run.</p>
+<p>The next module explains the parts of a computing cluster and how jobs move from a user’s computer to a compute node.</p>
 
 
 </section>
@@ -661,9 +727,12 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="../../modules/01-introduction/01-computing-history.html" class="pagination-link" aria-label="1.1 · Computing history at UNC">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">1.1 · Computing history at UNC</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../modules/02-cluster-basics.html" class="pagination-link" aria-label="2 · Computing cluster basics">
+      <a href="../../modules/02-cluster-basics.html" class="pagination-link" aria-label="2 · Computing cluster basics">
         <span class="nav-page-text">2 · Computing cluster basics</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -686,5 +755,5 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

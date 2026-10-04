@@ -4,6 +4,7 @@ project:
   render:
     - index.qmd
     - modules/*.qmd
+    - modules/01-introduction/*.qmd
   resources:
     - examples/
 
@@ -28,8 +29,12 @@ website:
     contents:
       - section: "Workshop modules"
         contents:
-          - text: "1 · Introduction to Longleaf"
-            href: modules/01-introduction.qmd
+          - section: "1 · Introduction to Longleaf"
+            contents:
+              - text: "1.1 · Computing history at UNC"
+                href: modules/01-introduction/01-computing-history.qmd
+              - text: "1.2 · Longleaf overview"
+                href: modules/01-introduction/02-longleaf-overview.qmd
           - text: "2 · Computing cluster basics"
             href: modules/02-cluster-basics.qmd
           - text: "3 · Accessing Longleaf"

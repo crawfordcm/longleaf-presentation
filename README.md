@@ -4,7 +4,7 @@ This repository contains the source for a 45–60 minute presentation and tutori
 
 ## Workshop outline
 
-1. [Introduction to Longleaf](modules/01-introduction.qmd)
+1. [Introduction to Longleaf](modules/01-introduction/01-computing-history.qmd)
 2. [Key features of computing clusters](modules/02-cluster-basics.qmd)
 3. [How do you actually use it?](modules/03-accessing-longleaf.qmd)
 4. [Interacting with Longleaf](modules/04-interacting-with-longleaf.qmd)
@@ -13,7 +13,7 @@ This repository contains the source for a 45–60 minute presentation and tutori
 ## Repository structure
 
 - `index.qmd` — clickable workshop outline and homepage
-- `modules/` — the five presentation/tutorial modules
+- `modules/` — the presentation/tutorial modules, with separate pages grouped into module folders where needed
 - `examples/` — downloadable R and Slurm examples as they are developed
 - `images/` — diagrams, screenshots, and the site icon
 - `styles.css` — the shared visual design

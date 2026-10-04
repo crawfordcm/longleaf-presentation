@@ -24,11 +24,11 @@ This workshop follows the path from first login to a submitted R job. The five m
 
 ### Introduction to Longleaf
 
-What Longleaf is, why researchers use it, and where it fits in a research workflow.
+UNC's computing history, what Longleaf is, and where it fits in a research workflow.
 
 <span class="module-time">About 5 minutes</span>
 
-[Open module](modules/01-introduction.qmd){.stretched-link aria-label="Open Introduction to Longleaf"}
+[Open module](modules/01-introduction/01-computing-history.qmd){.stretched-link aria-label="Open Introduction to Longleaf"}
 :::
 :::
 
