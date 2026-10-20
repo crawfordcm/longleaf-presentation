@@ -12,6 +12,10 @@ description: "The practical routes for obtaining access, connecting to Longleaf,
 
 <!-- Add the verified account-request process, eligibility requirements, and expected approval path. -->
 
+##Connecting to the Cluster
+
+<!-- Add links and description for cisco vpn-->
+
 ## Ways to connect
 
 | Method | Best for | What the user sees |
