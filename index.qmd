@@ -8,7 +8,7 @@ page-layout: full
 ---
 
 ::: {.workshop-intro}
-This workshop follows the path from first login to a submitted R job. The five modules are designed for a 45–60 minute presentation and remain available afterward as a practical reference.
+This workshop follows the path from first login to a submitted R job. The five modules can be presented live and remain available afterward as a practical reference.
 
 **Audience:** Researchers who are new to Longleaf or shared computing clusters  
 **Format:** Five short modules with demonstrations and reusable examples
@@ -26,8 +26,6 @@ This workshop follows the path from first login to a submitted R job. The five m
 
 UNC's computing history, what Longleaf is, and where it fits in a research workflow.
 
-<span class="module-time">About 5 minutes</span>
-
 [Open module](modules/01-introduction/01-computing-history.qmd){.stretched-link aria-label="Open Introduction to Longleaf"}
 :::
 :::
@@ -39,8 +37,6 @@ UNC's computing history, what Longleaf is, and where it fits in a research workf
 ### Key features of computing clusters
 
 Nodes, queues, memory, storage, and the scheduler that coordinates shared resources.
-
-<span class="module-time">About 8 minutes</span>
 
 [Open module](modules/02-cluster-basics/01-nodes.qmd){.stretched-link aria-label="Open Key features of computing clusters"}
 :::
@@ -54,8 +50,6 @@ Nodes, queues, memory, storage, and the scheduler that coordinates shared resour
 
 Requesting access, logging in, working through the browser, and transferring files.
 
-<span class="module-time">About 8 minutes</span>
-
 [Open module](modules/03-accessing-longleaf.qmd){.stretched-link aria-label="Open How do you actually use Longleaf"}
 :::
 :::
@@ -68,8 +62,6 @@ Requesting access, logging in, working through the browser, and transferring fil
 
 Essential shell commands, Slurm, job status, cancellation, and responsible resource requests.
 
-<span class="module-time">About 12 minutes</span>
-
 [Open module](modules/04-interacting-with-longleaf.qmd){.stretched-link aria-label="Open Interacting with Longleaf"}
 :::
 :::
@@ -81,8 +73,6 @@ Essential shell commands, Slurm, job status, cancellation, and responsible resou
 ### R on Longleaf
 
 R installations, package libraries, interactive work, and submitting a reproducible batch job.
-
-<span class="module-time">About 15 minutes</span>
 
 [Open module](modules/05-r-on-longleaf.qmd){.stretched-link aria-label="Open R on Longleaf"}
 :::

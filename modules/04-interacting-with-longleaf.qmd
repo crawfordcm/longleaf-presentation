@@ -5,18 +5,8 @@ description: "A practical introduction to navigating Longleaf and managing sched
 ---
 
 ::: {.module-lead}
-**Estimated time:** 12 minutes  
 **Guiding question:** How does a command become a managed job on a compute node?
 :::
-
-## Learning goals
-
-By the end of this module, participants should be able to:
-
-- navigate directories and inspect files from the shell;
-- describe the lifecycle of a Slurm job;
-- check or cancel a submitted job; and
-- recognize responsible resource requests.
 
 ## Essential shell commands
 

@@ -5,18 +5,8 @@ description: "A practical workflow for using R and packages on Longleaf."
 ---
 
 ::: {.module-lead}
-**Estimated time:** 15 minutes  
 **Guiding question:** When should R be run interactively, and when should it become a scheduled job?
 :::
-
-## Learning goals
-
-By the end of this module, participants should be able to:
-
-- identify an available R installation;
-- distinguish shared and personal package libraries;
-- start an interactive R workflow appropriately; and
-- submit a simple R script as a scheduled job.
 
 ## R installations on Longleaf
 
