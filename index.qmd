@@ -42,7 +42,7 @@ Nodes, queues, memory, storage, and the scheduler that coordinates shared resour
 
 <span class="module-time">About 8 minutes</span>
 
-[Open module](modules/02-cluster-basics.qmd){.stretched-link aria-label="Open Key features of computing clusters"}
+[Open module](modules/02-cluster-basics/01-nodes.qmd){.stretched-link aria-label="Open Key features of computing clusters"}
 :::
 :::
 

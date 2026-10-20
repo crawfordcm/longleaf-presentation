@@ -7,6 +7,7 @@ project:
     - index.qmd
     - modules/*.qmd
     - modules/01-introduction/*.qmd
+    - modules/02-cluster-basics/*.qmd
   resources:
     - examples/
 
@@ -37,8 +38,14 @@ website:
                 href: modules/01-introduction/01-computing-history.qmd
               - text: "1.2 · Longleaf overview"
                 href: modules/01-introduction/02-longleaf-overview.qmd
-          - text: "2 · Computing cluster basics"
-            href: modules/02-cluster-basics.qmd
+          - section: "2 · Computing cluster basics"
+            contents:
+              - text: "2.1 · Nodes"
+                href: modules/02-cluster-basics/01-nodes.qmd
+              - text: "2.2 · The scheduler and queue"
+                href: modules/02-cluster-basics/02-queue.qmd
+              - text: "2.3 · Memory and storage"
+                href: modules/02-cluster-basics/03-memory.qmd
           - text: "3 · Accessing Longleaf"
             href: modules/03-accessing-longleaf.qmd
           - text: "4 · Interacting with Longleaf"

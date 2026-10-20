@@ -57,6 +57,27 @@ Inspect output, errors, and resource use.
 :::
 :::
 
+## Describing a job
+
+A job request lists the resources the job needs, followed by the command it runs. UNC's Slurm guide uses this example:
+
+```bash
+#!/bin/bash
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+#SBATCH --time=01:00:00
+#SBATCH --mem=100m
+myexe
+```
+
+| Line | Request |
+|---|---|
+| `--ntasks=1` | Run one task |
+| `--cpus-per-task=1` | Give that task one CPU |
+| `--time=01:00:00` | Allow up to one hour |
+| `--mem=100m` | Reserve 100 MB of memory |
+| `myexe` | The command the job runs |
+
 ## Core Slurm actions
 
 ```bash
@@ -67,7 +88,18 @@ scancel <job-id>
 
 ## Queue rules and responsible requests
 
-<!-- Add verified Longleaf partitions, limits, defaults, and guidance for choosing memory and runtime. -->
+Every job runs in a partition, a group of nodes intended for a particular kind of work:
+
+| Partition | Used for | Maximum run time |
+|---|---|---|
+| `general` | Standard CPU jobs; suitable for most work | 11 days |
+| `interact` | Interactive sessions, such as running a graphical program or debugging code | 8 hours |
+| `datamover` | Copying large amounts of data between Longleaf file systems, or heavy downloading from the web | 11 days |
+| GPU partitions | Jobs that use a GPU | 11 days unless otherwise noted |
+
+`general` is the default partition. UNC recommends **not** specifying `--partition=general` in a job request: leaving it out allows Slurm to place the job on an idle node in another partition.
+
+<!-- Add verified per-user limits and guidance for choosing memory and runtime. -->
 
 ::: {.callout-warning title="Keep heavy work off login nodes"}
 Login nodes are shared entry points. Resource-intensive analyses should run through the scheduler on compute nodes.
@@ -80,3 +112,8 @@ Login nodes are shared entry points. Resource-intensive analyses should run thro
 3. Check its state in the queue.
 4. Find the output file.
 5. Show how to cancel a job safely.
+
+## Sources
+
+- [“Getting Started on Longleaf,” UNC Research Computing](https://help.rc.unc.edu/getting-started-on-longleaf/)
+- [“SLURM Guide,” UNC Research Computing](https://help.rc.unc.edu/slurm-guide/)

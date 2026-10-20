@@ -198,12 +198,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
       </ul>
   </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">2 · Computing cluster basics</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/02-cluster-basics/01-nodes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.1 · Nodes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/02-cluster-basics/02-queue.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.2 · The scheduler and queue</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../modules/02-cluster-basics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2 · Computing cluster basics</span></a>
+ <span class="menu-text">Remaining topics (draft)</span></a>
   </div>
 </li>
+      </ul>
+  </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../modules/03-accessing-longleaf.html" class="sidebar-item-text sidebar-link">
@@ -237,9 +260,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#learning-goals" id="toc-learning-goals" class="nav-link active" data-scroll-target="#learning-goals">Learning goals</a></li>
   <li><a href="#essential-shell-commands" id="toc-essential-shell-commands" class="nav-link" data-scroll-target="#essential-shell-commands">Essential shell commands</a></li>
   <li><a href="#the-slurm-job-lifecycle" id="toc-the-slurm-job-lifecycle" class="nav-link" data-scroll-target="#the-slurm-job-lifecycle">The Slurm job lifecycle</a></li>
+  <li><a href="#describing-a-job" id="toc-describing-a-job" class="nav-link" data-scroll-target="#describing-a-job">Describing a job</a></li>
   <li><a href="#core-slurm-actions" id="toc-core-slurm-actions" class="nav-link" data-scroll-target="#core-slurm-actions">Core Slurm actions</a></li>
   <li><a href="#queue-rules-and-responsible-requests" id="toc-queue-rules-and-responsible-requests" class="nav-link" data-scroll-target="#queue-rules-and-responsible-requests">Queue rules and responsible requests</a></li>
   <li><a href="#demonstration-sequence" id="toc-demonstration-sequence" class="nav-link" data-scroll-target="#demonstration-sequence">Demonstration sequence</a></li>
+  <li><a href="#sources" id="toc-sources" class="nav-link" data-scroll-target="#sources">Sources</a></li>
   </ul>
 </nav>
     </div>
@@ -343,15 +368,93 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
+<section id="describing-a-job" class="level2">
+<h2 class="anchored" data-anchor-id="describing-a-job">Describing a job</h2>
+<p>A job request lists the resources the job needs, followed by the command it runs. UNC’s Slurm guide uses this example:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --ntasks=1</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=1</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=01:00:00</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=100m</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">myexe</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Line</th>
+<th>Request</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>--ntasks=1</code></td>
+<td>Run one task</td>
+</tr>
+<tr class="even">
+<td><code>--cpus-per-task=1</code></td>
+<td>Give that task one CPU</td>
+</tr>
+<tr class="odd">
+<td><code>--time=01:00:00</code></td>
+<td>Allow up to one hour</td>
+</tr>
+<tr class="even">
+<td><code>--mem=100m</code></td>
+<td>Reserve 100 MB of memory</td>
+</tr>
+<tr class="odd">
+<td><code>myexe</code></td>
+<td>The command the job runs</td>
+</tr>
+</tbody>
+</table>
+</section>
 <section id="core-slurm-actions" class="level2">
 <h2 class="anchored" data-anchor-id="core-slurm-actions">Core Slurm actions</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> job.slurm</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">squeue</span> <span class="at">-u</span> <span class="st">"</span><span class="va">$USER</span><span class="st">"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">scancel</span> <span class="op">&lt;</span>job-id<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> job.slurm</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">squeue</span> <span class="at">-u</span> <span class="st">"</span><span class="va">$USER</span><span class="st">"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">scancel</span> <span class="op">&lt;</span>job-id<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="queue-rules-and-responsible-requests" class="level2">
 <h2 class="anchored" data-anchor-id="queue-rules-and-responsible-requests">Queue rules and responsible requests</h2>
-<!-- Add verified Longleaf partitions, limits, defaults, and guidance for choosing memory and runtime. -->
+<p>Every job runs in a partition, a group of nodes intended for a particular kind of work:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Partition</th>
+<th>Used for</th>
+<th>Maximum run time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>general</code></td>
+<td>Standard CPU jobs; suitable for most work</td>
+<td>11 days</td>
+</tr>
+<tr class="even">
+<td><code>interact</code></td>
+<td>Interactive sessions, such as running a graphical program or debugging code</td>
+<td>8 hours</td>
+</tr>
+<tr class="odd">
+<td><code>datamover</code></td>
+<td>Copying large amounts of data between Longleaf file systems, or heavy downloading from the web</td>
+<td>11 days</td>
+</tr>
+<tr class="even">
+<td>GPU partitions</td>
+<td>Jobs that use a GPU</td>
+<td>11 days unless otherwise noted</td>
+</tr>
+</tbody>
+</table>
+<p><code>general</code> is the default partition. UNC recommends <strong>not</strong> specifying <code>--partition=general</code> in a job request: leaving it out allows Slurm to place the job on an idle node in another partition.</p>
+<!-- Add verified per-user limits and guidance for choosing memory and runtime. -->
 <div class="callout callout-style-default callout-warning callout-titled" title="Keep heavy work off login nodes">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -375,6 +478,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Find the output file.</li>
 <li>Show how to cancel a job safely.</li>
 </ol>
+</section>
+<section id="sources" class="level2">
+<h2 class="anchored" data-anchor-id="sources">Sources</h2>
+<ul>
+<li><a href="https://help.rc.unc.edu/getting-started-on-longleaf/">“Getting Started on Longleaf,” UNC Research Computing</a></li>
+<li><a href="https://help.rc.unc.edu/slurm-guide/">“SLURM Guide,” UNC Research Computing</a></li>
+</ul>
 
 
 </section>

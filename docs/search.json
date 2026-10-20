@@ -326,11 +326,12 @@
     "href": "modules/02-cluster-basics.html",
     "title": "Key Features of Computing Clusters",
     "section": "",
-    "text": "By the end of this module, participants should be able to:\n\ndistinguish a login node from a compute node;\nexplain what a scheduler and queue do; and\ninterpret basic requests for CPUs, memory, and time.",
+    "text": "By the end of this module, participants should be able to:\n\ndistinguish a login node from a compute node;\nexplain what a scheduler and queue do;\ninterpret basic requests for CPUs, memory, and time; and\ndescribe where files are stored on a cluster.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
-      "2 · Computing cluster basics"
+      "2 · Computing cluster basics",
+      "Remaining topics (draft)"
     ]
   },
   {
@@ -338,11 +339,12 @@
     "href": "modules/02-cluster-basics.html#learning-goals",
     "title": "Key Features of Computing Clusters",
     "section": "",
-    "text": "By the end of this module, participants should be able to:\n\ndistinguish a login node from a compute node;\nexplain what a scheduler and queue do; and\ninterpret basic requests for CPUs, memory, and time.",
+    "text": "By the end of this module, participants should be able to:\n\ndistinguish a login node from a compute node;\nexplain what a scheduler and queue do;\ninterpret basic requests for CPUs, memory, and time; and\ndescribe where files are stored on a cluster.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
-      "2 · Computing cluster basics"
+      "2 · Computing cluster basics",
+      "Remaining topics (draft)"
     ]
   },
   {
@@ -354,7 +356,8 @@
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
-      "2 · Computing cluster basics"
+      "2 · Computing cluster basics",
+      "Remaining topics (draft)"
     ]
   },
   {
@@ -362,7 +365,7 @@
     "href": "modules/02-cluster-basics.html#what-is-a-node",
     "title": "Key Features of Computing Clusters",
     "section": "What is a node?",
-    "text": "What is a node?\nA node is an individual computer within the cluster. Introduce the distinct roles of login nodes and compute nodes before discussing detailed hardware.",
+    "text": "What is a node?\nA node is an individual computer within the cluster. Each node has its own processors, memory, and network connection, and the nodes are linked so they can share storage and receive work from the scheduler.\nNodes on a cluster have different roles:\n\nLogin nodes are where users arrive when they connect. They are used for organizing files, editing scripts, installing packages, and submitting jobs.\nCompute nodes are where the actual analyses run. Users do not normally log in to them directly; the scheduler sends work to them.\n\nLogin nodes are shared by everyone who is connected at the same time. Running a large analysis on a login node slows the system down for other users, so resource-intensive work should always be sent to a compute node.\nEach compute node contains many cores, the individual processing units that carry out computations. A single node may run several jobs at once, each using its own share of the node’s cores and memory.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
@@ -374,11 +377,12 @@
     "href": "modules/02-cluster-basics.html#what-is-a-queue",
     "title": "Key Features of Computing Clusters",
     "section": "What is a queue?",
-    "text": "What is a queue?\nExplain that a queue is how a shared cluster orders work while matching each job to the resources it requested.",
+    "text": "What is a queue?\nMany researchers submit work to Longleaf at the same time, and there are more requests than there are free resources at any given moment. A scheduler keeps track of what each job needs and what resources are available, then decides when and where each job will run. Longleaf uses a scheduler called Slurm.\nJobs that are waiting for resources sit in a queue. Slurm considers several factors when deciding which job runs next, including:\n\nthe resources the job requested\nhow busy the cluster is\nhow much the user has recently used the cluster\n\nGroups of nodes intended for different kinds of work are called partitions. For example, jobs that need very large amounts of memory or GPUs are sent to partitions made up of those kinds of nodes.\nA job that requests modest resources will often start sooner than one that requests a large share of a node, because it can fit into gaps that larger jobs cannot.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
-      "2 · Computing cluster basics"
+      "2 · Computing cluster basics",
+      "Remaining topics (draft)"
     ]
   },
   {
@@ -386,11 +390,12 @@
     "href": "modules/02-cluster-basics.html#what-does-memory-mean-on-a-cluster",
     "title": "Key Features of Computing Clusters",
     "section": "What does memory mean on a cluster?",
-    "text": "What does memory mean on a cluster?\nConnect memory requests to the size and behavior of the analysis. Emphasize that requesting more memory reserves capacity but does not automatically make code faster.",
+    "text": "What does memory mean on a cluster?\nMemory (RAM) is the space a program uses to hold data while it is working. It is different from storage, which is where files are kept when no program is using them. In R, objects in the environment occupy memory; files saved to disk occupy storage.\nOn a cluster, each job requests a specific amount of memory, and the scheduler reserves that amount on a compute node for the job:\n\nIf the job uses more memory than it requested, it will be stopped.\nIf the job requests far more memory than it uses, the extra memory sits idle, and the job may wait longer in the queue for a node with that much space available.\n\nRequesting more memory reserves capacity but does not make code run faster. A good estimate comes from testing a smaller version of the analysis, checking how much memory it actually used, and adding a reasonable margin.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
-      "2 · Computing cluster basics"
+      "2 · Computing cluster basics",
+      "Remaining topics (draft)"
     ]
   },
   {
@@ -398,11 +403,12 @@
     "href": "modules/02-cluster-basics.html#key-takeaway",
     "title": "Key Features of Computing Clusters",
     "section": "Key takeaway",
-    "text": "Key takeaway\nUsers describe the work and resources it needs; the scheduler decides when and where that work runs.",
+    "text": "Key takeaway\nUsers describe the work and the resources it needs; the scheduler decides when and where that work runs.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
-      "2 · Computing cluster basics"
+      "2 · Computing cluster basics",
+      "Remaining topics (draft)"
     ]
   },
   {
@@ -470,7 +476,7 @@
     "href": "modules/04-interacting-with-longleaf.html#queue-rules-and-responsible-requests",
     "title": "Interacting with Longleaf",
     "section": "Queue rules and responsible requests",
-    "text": "Queue rules and responsible requests\n\n\n\n\n\n\n\nWarningKeep heavy work off login nodes\n\n\n\nLogin nodes are shared entry points. Resource-intensive analyses should run through the scheduler on compute nodes.",
+    "text": "Queue rules and responsible requests\nEvery job runs in a partition, a group of nodes intended for a particular kind of work:\n\n\n\n\n\n\n\n\nPartition\nUsed for\nMaximum run time\n\n\n\n\ngeneral\nStandard CPU jobs; suitable for most work\n11 days\n\n\ninteract\nInteractive sessions, such as running a graphical program or debugging code\n8 hours\n\n\ndatamover\nCopying large amounts of data between Longleaf file systems, or heavy downloading from the web\n11 days\n\n\nGPU partitions\nJobs that use a GPU\n11 days unless otherwise noted\n\n\n\ngeneral is the default partition. UNC recommends not specifying --partition=general in a job request: leaving it out allows Slurm to place the job on an idle node in another partition.\n\n\n\n\n\n\n\nWarningKeep heavy work off login nodes\n\n\n\nLogin nodes are shared entry points. Resource-intensive analyses should run through the scheduler on compute nodes.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
@@ -565,6 +571,303 @@
       "Workshop modules",
       "1 · Introduction to Longleaf",
       "1.1 · Computing history at UNC"
+    ]
+  },
+  {
+    "objectID": "modules/02-cluster-basics.html#reading-a-resource-request",
+    "href": "modules/02-cluster-basics.html#reading-a-resource-request",
+    "title": "Key Features of Computing Clusters",
+    "section": "Reading a resource request",
+    "text": "Reading a resource request\nWhen submitting a job, users describe the resources it needs. A request for a typical single R analysis might look like this:\n#SBATCH --ntasks=1\n#SBATCH --cpus-per-task=1\n#SBATCH --mem=8G\n#SBATCH --time=02:00:00\n\n\n\nLine\nMeaning\n\n\n\n\n--ntasks=1\nRun one copy of the program\n\n\n--cpus-per-task=1\nGive that program one core\n\n\n--mem=8G\nReserve 8 gigabytes of memory\n\n\n--time=02:00:00\nAllow up to 2 hours of run time\n\n\n\nMost R code uses a single core unless it has been written to work in parallel, so requesting more cores does not speed up ordinary R scripts. If a job is still running when its time limit is reached, it will be stopped, so the time request should allow some room beyond the expected run time.\nModule 4 shows how to write and submit these requests.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "2 · Computing cluster basics",
+      "Remaining topics (draft)"
+    ]
+  },
+  {
+    "objectID": "modules/02-cluster-basics.html#where-do-files-live",
+    "href": "modules/02-cluster-basics.html#where-do-files-live",
+    "title": "Key Features of Computing Clusters",
+    "section": "Where do files live?",
+    "text": "Where do files live?\nAll nodes on a cluster can read and write the same shared storage. A file saved from a login node is available to a job running on a compute node, and output written by a job can be viewed from a login node afterward.\nLongleaf provides several storage locations with different purposes:\n\nHome directory: a small personal space for scripts, settings, and installed packages\nWork space: a larger space for datasets and job output while research is in progress\nProject space: shared storage that a research group can request for longer-term use\n\nThese locations differ in size, whether they are backed up, and whether files are removed after a period of inactivity. Current details should be checked in UNC Research Computing documentation before relying on any location for important data.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "2 · Computing cluster basics",
+      "Remaining topics (draft)"
+    ]
+  },
+  {
+    "objectID": "modules/02-cluster-basics/01-nodes.html",
+    "href": "modules/02-cluster-basics/01-nodes.html",
+    "title": "Nodes",
+    "section": "",
+    "text": "A node is a single computer within the cluster. Each node has its own processors (CPUs, or cores) and memory.\nLongleaf connects roughly 300 nodes, giving researchers access to far more computing power than any single machine can provide.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "2 · Computing cluster basics",
+      "2.1 · Nodes"
+    ]
+  },
+  {
+    "objectID": "modules/02-cluster-basics/01-nodes.html#what-is-a-node",
+    "href": "modules/02-cluster-basics/01-nodes.html#what-is-a-node",
+    "title": "Nodes",
+    "section": "",
+    "text": "A node is a single computer within the cluster. Each node has its own processors (CPUs, or cores) and memory.\nLongleaf connects roughly 300 nodes, giving researchers access to far more computing power than any single machine can provide.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "2 · Computing cluster basics",
+      "2.1 · Nodes"
+    ]
+  },
+  {
+    "objectID": "modules/02-cluster-basics/01-nodes.html#login-nodes-and-compute-nodes",
+    "href": "modules/02-cluster-basics/01-nodes.html#login-nodes-and-compute-nodes",
+    "title": "Nodes",
+    "section": "Login nodes and compute nodes",
+    "text": "Login nodes and compute nodes\nNodes on Longleaf play two different roles:\n\nLogin nodes are where you arrive when you connect to longleaf.unc.edu. This is where you edit code, run basic commands, and submit jobs to the scheduler.\nCompute nodes are where jobs actually run. You do not log in to them directly; the scheduler sends your work to them.\n\nMany people are connected to the same login node at the same time, so running an analysis there slows the system down for everyone.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "2 · Computing cluster basics",
+      "2.1 · Nodes"
+    ]
+  },
+  {
+    "objectID": "modules/02-cluster-basics/01-nodes.html#what-longleafs-compute-nodes-look-like",
+    "href": "modules/02-cluster-basics/01-nodes.html#what-longleafs-compute-nodes-look-like",
+    "title": "Nodes",
+    "section": "What Longleaf’s compute nodes look like",
+    "text": "What Longleaf’s compute nodes look like\nLongleaf’s compute nodes vary in size:\n\nCPUs per node: from 8 to 384\nMemory per node: from about 41 GB to nearly 3 TB\nGPUs: some nodes include NVIDIA A100, L40S, L40, V100, or GTX 1080 graphics processors\nMost common node: 48 CPUs and 355 GB of memory (99 nodes)\n\nThese correspond to the general-purpose, large-memory, and GPU nodes introduced in the Longleaf overview.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "2 · Computing cluster basics",
+      "2.1 · Nodes"
+    ]
+  },
+  {
+    "objectID": "modules/02-cluster-basics/01-nodes.html#longleaf-compared-with-a-laptop",
+    "href": "modules/02-cluster-basics/01-nodes.html#longleaf-compared-with-a-laptop",
+    "title": "Nodes",
+    "section": "Longleaf compared with a laptop",
+    "text": "Longleaf compared with a laptop\n\n\n\n\nTypical laptop\nMost common Longleaf node\n\n\n\n\nCPU cores\nabout 8–12\n48\n\n\nMemory\nabout 16 GB\n355 GB\n\n\n\nA single common Longleaf node has roughly four to six times the cores and more than twenty times the memory of a typical laptop—and Longleaf has hundreds of them.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "2 · Computing cluster basics",
+      "2.1 · Nodes"
+    ]
+  },
+  {
+    "objectID": "modules/02-cluster-basics/01-nodes.html#sources",
+    "href": "modules/02-cluster-basics/01-nodes.html#sources",
+    "title": "Nodes",
+    "section": "Sources",
+    "text": "Sources\n\n“Getting Started on Longleaf,” UNC Research Computing",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "2 · Computing cluster basics",
+      "2.1 · Nodes"
+    ]
+  },
+  {
+    "objectID": "modules/02-cluster-basics/02-queue.html",
+    "href": "modules/02-cluster-basics/02-queue.html",
+    "title": "The Scheduler and the Queue",
+    "section": "",
+    "text": "1 · Connect\nLog in to Longleaf from a terminal or browser.\n\n\n2 · Prepare\nUse the login node to organize files and describe the job.\n\n\n3 · Schedule\nSlurm places the job in a queue until suitable resources are free.\n\n\n4 · Compute\nA compute node runs the job and writes its output.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "2 · Computing cluster basics",
+      "2.2 · The scheduler and queue"
+    ]
+  },
+  {
+    "objectID": "modules/02-cluster-basics/02-queue.html#from-your-computer-to-a-compute-node",
+    "href": "modules/02-cluster-basics/02-queue.html#from-your-computer-to-a-compute-node",
+    "title": "The Scheduler and the Queue",
+    "section": "",
+    "text": "1 · Connect\nLog in to Longleaf from a terminal or browser.\n\n\n2 · Prepare\nUse the login node to organize files and describe the job.\n\n\n3 · Schedule\nSlurm places the job in a queue until suitable resources are free.\n\n\n4 · Compute\nA compute node runs the job and writes its output.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "2 · Computing cluster basics",
+      "2.2 · The scheduler and queue"
+    ]
+  },
+  {
+    "objectID": "modules/02-cluster-basics/02-queue.html#what-is-the-scheduler",
+    "href": "modules/02-cluster-basics/02-queue.html#what-is-the-scheduler",
+    "title": "The Scheduler and the Queue",
+    "section": "What is the scheduler?",
+    "text": "What is the scheduler?\nLongleaf is shared by researchers across the University, so users do not choose a compute node themselves. Instead, they submit a request to a scheduler, which decides when and where each job runs.\nLongleaf uses a scheduler called Slurm. According to UNC Research Computing, Slurm has three main functions:\n\ngiving users access to cluster resources for a period of time so they can run code\nstarting, running, and monitoring work on those resources\nmanaging competition for resources by keeping a queue of pending jobs",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "2 · Computing cluster basics",
+      "2.2 · The scheduler and queue"
+    ]
+  },
+  {
+    "objectID": "modules/02-cluster-basics/02-queue.html#what-is-a-queue",
+    "href": "modules/02-cluster-basics/02-queue.html#what-is-a-queue",
+    "title": "The Scheduler and the Queue",
+    "section": "What is a queue?",
+    "text": "What is a queue?\nWhen you submit a job, it goes into a queue, where it waits until Slurm dispatches it to run somewhere on the cluster.\nLongleaf uses a fair-share approach to decide which waiting jobs run next. Fair-share balances access among users and groups, taking into account how much of the cluster each has used recently.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "2 · Computing cluster basics",
+      "2.2 · The scheduler and queue"
+    ]
+  },
+  {
+    "objectID": "modules/02-cluster-basics/02-queue.html#what-do-you-ask-for",
+    "href": "modules/02-cluster-basics/02-queue.html#what-do-you-ask-for",
+    "title": "The Scheduler and the Queue",
+    "section": "What do you ask for?",
+    "text": "What do you ask for?\nA job request tells Slurm what the job needs: how many CPUs, how much memory, and how much time. Slurm then finds a compute node with that much free capacity and reserves it for the job. Module 4 shows how to write and submit these requests.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "2 · Computing cluster basics",
+      "2.2 · The scheduler and queue"
+    ]
+  },
+  {
+    "objectID": "modules/02-cluster-basics/02-queue.html#partitions",
+    "href": "modules/02-cluster-basics/02-queue.html#partitions",
+    "title": "The Scheduler and the Queue",
+    "section": "Partitions",
+    "text": "Partitions\nA partition is a group of nodes. Every job runs in a partition. Longleaf has CPU-only partitions for most work and GPU partitions for jobs that use a GPU.\nIf a job request does not name a partition, the job runs in the default partition, general, which suits most jobs.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "2 · Computing cluster basics",
+      "2.2 · The scheduler and queue"
+    ]
+  },
+  {
+    "objectID": "modules/02-cluster-basics/02-queue.html#sources",
+    "href": "modules/02-cluster-basics/02-queue.html#sources",
+    "title": "The Scheduler and the Queue",
+    "section": "Sources",
+    "text": "Sources\n\n“Getting Started on Longleaf,” UNC Research Computing\n“Fair Tree Fairshare Algorithm,” SchedMD",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "2 · Computing cluster basics",
+      "2.2 · The scheduler and queue"
+    ]
+  },
+  {
+    "objectID": "modules/04-interacting-with-longleaf.html#describing-a-job",
+    "href": "modules/04-interacting-with-longleaf.html#describing-a-job",
+    "title": "Interacting with Longleaf",
+    "section": "Describing a job",
+    "text": "Describing a job\nA job request lists the resources the job needs, followed by the command it runs. UNC’s Slurm guide uses this example:\n#!/bin/bash\n#SBATCH --ntasks=1\n#SBATCH --cpus-per-task=1\n#SBATCH --time=01:00:00\n#SBATCH --mem=100m\nmyexe\n\n\n\nLine\nRequest\n\n\n\n\n--ntasks=1\nRun one task\n\n\n--cpus-per-task=1\nGive that task one CPU\n\n\n--time=01:00:00\nAllow up to one hour\n\n\n--mem=100m\nReserve 100 MB of memory\n\n\nmyexe\nThe command the job runs",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "4 · Interacting with Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/04-interacting-with-longleaf.html#sources",
+    "href": "modules/04-interacting-with-longleaf.html#sources",
+    "title": "Interacting with Longleaf",
+    "section": "Sources",
+    "text": "Sources\n\n“Getting Started on Longleaf,” UNC Research Computing\n“SLURM Guide,” UNC Research Computing",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "4 · Interacting with Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/02-cluster-basics/03-memory.html",
+    "href": "modules/02-cluster-basics/03-memory.html",
+    "title": "Memory and Storage",
+    "section": "",
+    "text": "Computers hold data in two different places:\n\nMemory (RAM) is a computer’s short-term working space. It holds whatever a program is using right now, and it is cleared when the program ends.\nStorage is long-term space for files. Files stay in storage whether or not a program is using them.\n\nA useful comparison is a desk and a filing cabinet. Storage is the filing cabinet, where everything is kept. Memory is the desk, where you spread out the materials you are working with. A bigger desk lets you work with more at once, but it does not make you work faster.\nIn R, objects in your environment occupy memory. Files saved to disk occupy storage. Loading a large dataset into R requires enough memory to hold it.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "2 · Computing cluster basics",
+      "2.3 · Memory and storage"
+    ]
+  },
+  {
+    "objectID": "modules/02-cluster-basics/03-memory.html#memory-and-storage-are-different",
+    "href": "modules/02-cluster-basics/03-memory.html#memory-and-storage-are-different",
+    "title": "Memory and Storage",
+    "section": "",
+    "text": "Computers hold data in two different places:\n\nMemory (RAM) is a computer’s short-term working space. It holds whatever a program is using right now, and it is cleared when the program ends.\nStorage is long-term space for files. Files stay in storage whether or not a program is using them.\n\nA useful comparison is a desk and a filing cabinet. Storage is the filing cabinet, where everything is kept. Memory is the desk, where you spread out the materials you are working with. A bigger desk lets you work with more at once, but it does not make you work faster.\nIn R, objects in your environment occupy memory. Files saved to disk occupy storage. Loading a large dataset into R requires enough memory to hold it.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "2 · Computing cluster basics",
+      "2.3 · Memory and storage"
+    ]
+  },
+  {
+    "objectID": "modules/02-cluster-basics/03-memory.html#memory-on-longleaf",
+    "href": "modules/02-cluster-basics/03-memory.html#memory-on-longleaf",
+    "title": "Memory and Storage",
+    "section": "Memory on Longleaf",
+    "text": "Memory on Longleaf\nEach node on Longleaf has its own memory, ranging from about 41 GB to nearly 3 TB. When a job runs, Slurm reserves part of one node’s memory for that job, based on the amount requested.\nSeveral jobs can run on the same node at once, each using its own share of the node’s CPUs and memory.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "2 · Computing cluster basics",
+      "2.3 · Memory and storage"
+    ]
+  },
+  {
+    "objectID": "modules/02-cluster-basics/03-memory.html#why-the-memory-request-matters",
+    "href": "modules/02-cluster-basics/03-memory.html#why-the-memory-request-matters",
+    "title": "Memory and Storage",
+    "section": "Why the memory request matters",
+    "text": "Why the memory request matters\nThe amount of memory a job requests affects whether it succeeds and how soon it starts:\n\nToo little: if a job tries to use more memory than it requested, it will be stopped before it finishes.\nToo much: requesting extra memory does not make code run faster. Unused memory sits idle, unavailable to other users, and a large request may wait longer in the queue for a node with enough free memory.\n\nThe goal is to request what the job needs, plus a reasonable margin. Module 4 shows how to check how much memory a finished job actually used.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "2 · Computing cluster basics",
+      "2.3 · Memory and storage"
+    ]
+  },
+  {
+    "objectID": "modules/02-cluster-basics/03-memory.html#where-files-live",
+    "href": "modules/02-cluster-basics/03-memory.html#where-files-live",
+    "title": "Memory and Storage",
+    "section": "Where files live",
+    "text": "Where files live\nAll Longleaf nodes share the same storage. A file saved from the login node is available to a job running on a compute node, and output written by a job can be viewed from the login node afterward.\nLongleaf provides a few kinds of storage:\n\nHome directory: a small personal space for scripts, settings, and installed packages. It is backed up.\nPersonal work space: a larger personal space for data and results while research is in progress. It is not backed up.\nProject space: storage shared by a research group, requested by a PI.\n\nModule 3 covers where these locations are and how to move files to and from them.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "2 · Computing cluster basics",
+      "2.3 · Memory and storage"
+    ]
+  },
+  {
+    "objectID": "modules/02-cluster-basics/03-memory.html#sources",
+    "href": "modules/02-cluster-basics/03-memory.html#sources",
+    "title": "Memory and Storage",
+    "section": "Sources",
+    "text": "Sources\n\n“Getting Started on Longleaf,” UNC Research Computing",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "2 · Computing cluster basics",
+      "2.3 · Memory and storage"
     ]
   }
 ]

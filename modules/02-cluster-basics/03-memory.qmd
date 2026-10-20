@@ -1,0 +1,45 @@
+---
+title: "Memory and Storage"
+---
+
+## Memory and storage are different
+
+Computers hold data in two different places:
+
+- **Memory** (RAM) is a computer's short-term working space. It holds whatever a program is using right now, and it is cleared when the program ends.
+- **Storage** is long-term space for files. Files stay in storage whether or not a program is using them.
+
+A useful comparison is a desk and a filing cabinet. Storage is the filing cabinet, where everything is kept. Memory is the desk, where you spread out the materials you are working with. A bigger desk lets you work with more at once, but it does not make you work faster.
+
+In R, objects in your environment occupy memory. Files saved to disk occupy storage. Loading a large dataset into R requires enough memory to hold it.
+
+## Memory on Longleaf
+
+Each node on Longleaf has its own memory, ranging from about 41 GB to nearly 3 TB. When a job runs, Slurm reserves part of one node's memory for that job, based on the amount requested.
+
+Several jobs can run on the same node at once, each using its own share of the node's CPUs and memory.
+
+## Why the memory request matters
+
+The amount of memory a job requests affects whether it succeeds and how soon it starts:
+
+- **Too little:** if a job tries to use more memory than it requested, it will be stopped before it finishes.
+- **Too much:** requesting extra memory does not make code run faster. Unused memory sits idle, unavailable to other users, and a large request may wait longer in the queue for a node with enough free memory.
+
+The goal is to request what the job needs, plus a reasonable margin. Module 4 shows how to check how much memory a finished job actually used.
+
+## Where files live
+
+All Longleaf nodes share the same storage. A file saved from the login node is available to a job running on a compute node, and output written by a job can be viewed from the login node afterward.
+
+Longleaf provides a few kinds of storage:
+
+- **Home directory:** a small personal space for scripts, settings, and installed packages. It is backed up.
+- **Personal work space:** a larger personal space for data and results while research is in progress. It is not backed up.
+- **Project space:** storage shared by a research group, requested by a PI.
+
+Module 3 covers where these locations are and how to move files to and from them.
+
+## Sources
+
+- [“Getting Started on Longleaf,” UNC Research Computing](https://help.rc.unc.edu/getting-started-on-longleaf/)

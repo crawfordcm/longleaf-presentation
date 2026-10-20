@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="The core ideas needed to understand how a shared computing cluster works.">
 
-<title>Key Features of Computing Clusters – Getting Started with Longleaf</title>
+<title>Nodes – Getting Started with Longleaf</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -27,26 +26,26 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../modules/03-accessing-longleaf.html" rel="next">
-<link href="../modules/01-introduction/02-longleaf-overview.html" rel="prev">
-<link href="../images/favicon.svg" rel="icon" type="image/svg+xml">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-7edcc8814b75f5ea399f37daf8a0b138.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../modules/02-cluster-basics/02-queue.html" rel="next">
+<link href="../../modules/01-introduction/02-longleaf-overview.html" rel="prev">
+<link href="../../images/favicon.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-7edcc8814b75f5ea399f37daf8a0b138.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -77,7 +76,7 @@ ul.task-list li input[type="checkbox"] {
 <style>html{ scroll-behavior: smooth; }</style>
 
 
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-sidebar floating nav-fixed quarto-light">
@@ -87,7 +86,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Getting Started with Longleaf</span>
     </a>
   </div>
@@ -98,7 +97,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Workshop outline</span></a>
   </li>  
 </ul>
@@ -119,7 +118,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Workshop modules</li><li class="breadcrumb-item"><a href="../modules/02-cluster-basics.html">2 · Computing cluster basics</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Workshop modules</li><li class="breadcrumb-item"><a href="../../modules/02-cluster-basics/01-nodes.html">2 · Computing cluster basics</a></li><li class="breadcrumb-item"><a href="../../modules/02-cluster-basics/01-nodes.html">2.1 · Nodes</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -151,39 +150,62 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../modules/01-introduction/01-computing-history.html" class="sidebar-item-text sidebar-link">
+  <a href="../../modules/01-introduction/01-computing-history.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">1.1 · Computing history at UNC</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../modules/01-introduction/02-longleaf-overview.html" class="sidebar-item-text sidebar-link">
+  <a href="../../modules/01-introduction/02-longleaf-overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">1.2 · Longleaf overview</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">2 · Computing cluster basics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/02-cluster-basics/01-nodes.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">2.1 · Nodes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/02-cluster-basics/02-queue.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.2 · The scheduler and queue</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/02-cluster-basics/03-memory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.3 · Memory and storage</span></a>
   </div>
 </li>
       </ul>
   </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../modules/02-cluster-basics.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">2 · Computing cluster basics</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../modules/03-accessing-longleaf.html" class="sidebar-item-text sidebar-link">
+  <a href="../../modules/03-accessing-longleaf.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">3 · Accessing Longleaf</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../modules/04-interacting-with-longleaf.html" class="sidebar-item-text sidebar-link">
+  <a href="../../modules/04-interacting-with-longleaf.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">4 · Interacting with Longleaf</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../modules/05-r-on-longleaf.html" class="sidebar-item-text sidebar-link">
+  <a href="../../modules/05-r-on-longleaf.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">5 · R on Longleaf</span></a>
   </div>
 </li>
@@ -199,29 +221,22 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#learning-goals" id="toc-learning-goals" class="nav-link active" data-scroll-target="#learning-goals">Learning goals</a></li>
-  <li><a href="#the-path-through-a-cluster" id="toc-the-path-through-a-cluster" class="nav-link" data-scroll-target="#the-path-through-a-cluster">The path through a cluster</a></li>
-  <li><a href="#what-is-a-node" id="toc-what-is-a-node" class="nav-link" data-scroll-target="#what-is-a-node">What is a node?</a></li>
-  <li><a href="#what-is-a-queue" id="toc-what-is-a-queue" class="nav-link" data-scroll-target="#what-is-a-queue">What is a queue?</a></li>
-  <li><a href="#what-does-memory-mean-on-a-cluster" id="toc-what-does-memory-mean-on-a-cluster" class="nav-link" data-scroll-target="#what-does-memory-mean-on-a-cluster">What does memory mean on a cluster?</a></li>
-  <li><a href="#key-takeaway" id="toc-key-takeaway" class="nav-link" data-scroll-target="#key-takeaway">Key takeaway</a></li>
+  <li><a href="#what-is-a-node" id="toc-what-is-a-node" class="nav-link active" data-scroll-target="#what-is-a-node">What is a node?</a></li>
+  <li><a href="#login-nodes-and-compute-nodes" id="toc-login-nodes-and-compute-nodes" class="nav-link" data-scroll-target="#login-nodes-and-compute-nodes">Login nodes and compute nodes</a></li>
+  <li><a href="#what-longleafs-compute-nodes-look-like" id="toc-what-longleafs-compute-nodes-look-like" class="nav-link" data-scroll-target="#what-longleafs-compute-nodes-look-like">What Longleaf’s compute nodes look like</a></li>
+  <li><a href="#longleaf-compared-with-a-laptop" id="toc-longleaf-compared-with-a-laptop" class="nav-link" data-scroll-target="#longleaf-compared-with-a-laptop">Longleaf compared with a laptop</a></li>
+  <li><a href="#sources" id="toc-sources" class="nav-link" data-scroll-target="#sources">Sources</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Workshop modules</li><li class="breadcrumb-item"><a href="../modules/02-cluster-basics.html">2 · Computing cluster basics</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Workshop modules</li><li class="breadcrumb-item"><a href="../../modules/02-cluster-basics/01-nodes.html">2 · Computing cluster basics</a></li><li class="breadcrumb-item"><a href="../../modules/02-cluster-basics/01-nodes.html">2.1 · Nodes</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Key Features of Computing Clusters</h1>
-<p class="subtitle lead">Nodes, queues, memory, storage, and the scheduler</p>
+<h1 class="title">Nodes</h1>
 </div>
 
-<div>
-  <div class="description">
-    The core ideas needed to understand how a shared computing cluster works.
-  </div>
-</div>
 
 
 <div class="quarto-title-meta">
@@ -236,51 +251,61 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="learning-goals" class="level2">
-<h2 class="anchored" data-anchor-id="learning-goals">Learning goals</h2>
-<p>By the end of this module, participants should be able to:</p>
-<ul>
-<li>distinguish a login node from a compute node;</li>
-<li>explain what a scheduler and queue do; and</li>
-<li>interpret basic requests for CPUs, memory, and time.</li>
-</ul>
-</section>
-<section id="the-path-through-a-cluster" class="level2">
-<h2 class="anchored" data-anchor-id="the-path-through-a-cluster">The path through a cluster</h2>
-<div class="workflow">
-<div class="workflow-step">
-<p><strong>1 · Connect</strong></p>
-<p>Begin from a laptop, terminal, or browser.</p>
-</div>
-<div class="workflow-step">
-<p><strong>2 · Prepare</strong></p>
-<p>Use a login node to organize files and describe the job.</p>
-</div>
-<div class="workflow-step">
-<p><strong>3 · Schedule</strong></p>
-<p>Slurm places the request in a queue and finds suitable resources.</p>
-</div>
-<div class="workflow-step">
-<p><strong>4 · Compute</strong></p>
-<p>A compute node runs the job and writes its output.</p>
-</div>
-</div>
-</section>
 <section id="what-is-a-node" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-a-node">What is a node?</h2>
-<p>A node is an individual computer within the cluster. Introduce the distinct roles of login nodes and compute nodes before discussing detailed hardware.</p>
+<p>A node is a single computer within the cluster. Each node has its own processors (CPUs, or cores) and memory.</p>
+<p>Longleaf connects roughly 300 nodes, giving researchers access to far more computing power than any single machine can provide.</p>
 </section>
-<section id="what-is-a-queue" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-a-queue">What is a queue?</h2>
-<p>Explain that a queue is how a shared cluster orders work while matching each job to the resources it requested.</p>
+<section id="login-nodes-and-compute-nodes" class="level2">
+<h2 class="anchored" data-anchor-id="login-nodes-and-compute-nodes">Login nodes and compute nodes</h2>
+<p>Nodes on Longleaf play two different roles:</p>
+<ul>
+<li><strong>Login nodes</strong> are where you arrive when you connect to <code>longleaf.unc.edu</code>. This is where you edit code, run basic commands, and submit jobs to the scheduler.</li>
+<li><strong>Compute nodes</strong> are where jobs actually run. You do not log in to them directly; the scheduler sends your work to them.</li>
+</ul>
+<p>Many people are connected to the same login node at the same time, so running an analysis there slows the system down for everyone.</p>
 </section>
-<section id="what-does-memory-mean-on-a-cluster" class="level2">
-<h2 class="anchored" data-anchor-id="what-does-memory-mean-on-a-cluster">What does memory mean on a cluster?</h2>
-<p>Connect memory requests to the size and behavior of the analysis. Emphasize that requesting more memory reserves capacity but does not automatically make code faster.</p>
+<section id="what-longleafs-compute-nodes-look-like" class="level2">
+<h2 class="anchored" data-anchor-id="what-longleafs-compute-nodes-look-like">What Longleaf’s compute nodes look like</h2>
+<p>Longleaf’s compute nodes vary in size:</p>
+<ul>
+<li><strong>CPUs per node:</strong> from 8 to 384</li>
+<li><strong>Memory per node:</strong> from about 41 GB to nearly 3 TB</li>
+<li><strong>GPUs:</strong> some nodes include NVIDIA A100, L40S, L40, V100, or GTX 1080 graphics processors</li>
+<li><strong>Most common node:</strong> 48 CPUs and 355 GB of memory (99 nodes)</li>
+</ul>
+<p>These correspond to the general-purpose, large-memory, and GPU nodes introduced in the <a href="../../modules/01-introduction/02-longleaf-overview.html">Longleaf overview</a>.</p>
 </section>
-<section id="key-takeaway" class="level2">
-<h2 class="anchored" data-anchor-id="key-takeaway">Key takeaway</h2>
-<p>Users describe the work and resources it needs; the scheduler decides when and where that work runs.</p>
+<section id="longleaf-compared-with-a-laptop" class="level2">
+<h2 class="anchored" data-anchor-id="longleaf-compared-with-a-laptop">Longleaf compared with a laptop</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>Typical laptop</th>
+<th>Most common Longleaf node</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CPU cores</td>
+<td>about 8–12</td>
+<td>48</td>
+</tr>
+<tr class="even">
+<td>Memory</td>
+<td>about 16 GB</td>
+<td>355 GB</td>
+</tr>
+</tbody>
+</table>
+<p>A single common Longleaf node has roughly four to six times the cores and more than twenty times the memory of a typical laptop—and Longleaf has hundreds of them.</p>
+</section>
+<section id="sources" class="level2">
+<h2 class="anchored" data-anchor-id="sources">Sources</h2>
+<ul>
+<li><a href="https://help.rc.unc.edu/getting-started-on-longleaf/">“Getting Started on Longleaf,” UNC Research Computing</a></li>
+</ul>
 
 
 </section>
@@ -693,13 +718,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../modules/01-introduction/02-longleaf-overview.html" class="pagination-link" aria-label="1.2 · Longleaf overview">
+      <a href="../../modules/01-introduction/02-longleaf-overview.html" class="pagination-link" aria-label="1.2 · Longleaf overview">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">1.2 · Longleaf overview</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../modules/03-accessing-longleaf.html" class="pagination-link" aria-label="3 · Accessing Longleaf">
-        <span class="nav-page-text">3 · Accessing Longleaf</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../modules/02-cluster-basics/02-queue.html" class="pagination-link" aria-label="2.2 · The scheduler and queue">
+        <span class="nav-page-text">2.2 · The scheduler and queue</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -721,5 +746,5 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
