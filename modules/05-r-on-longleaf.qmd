@@ -31,14 +31,546 @@ Explain the difference between packages included with R, centrally installed pac
 
 <!-- Add a verified package-installation example and explain any network or compilation constraints. -->
 
-## Submitting a single R job
+## Three examples
 
-The completed lesson will pair a small R script with a Slurm submission script in the `examples/` directory.
+The rest of this module follows the progression most projects take:
+
+1. **Interactive R** on a compute node, for testing and debugging.
+2. **A single scheduled job** that runs one R script once.
+3. **A batch of scheduled jobs** that run the same script under many parameter settings.
+
+The files for Examples 2 and 3 are in the [`examples/` folder](https://github.com/crawfordcm/longleaf-presentation/tree/main/examples) of this site's repository, and each file is linked below. In the commands that follow, replace `<onyen>` with your ONYEN.
+
+## Example 1 · Interactive R
+
+An interactive session gives you a shell, or RStudio, on a compute node. Exploratory work then runs on resources reserved for you instead of competing with everyone else on the login node.
+
+### From a terminal
+
+Log in, then ask Slurm for an interactive shell on the `interact` partition:
 
 ```bash
-sbatch r-job.slurm
-squeue -u "$USER"
+ssh <onyen>@longleaf.unc.edu
+srun -t 1:00:00 -p interact -n 1 --cpus-per-task=1 --mem=4g --pty /bin/bash
 ```
+
+| Flag | Request |
+|---|---|
+| `-t 1:00:00` | Allow up to one hour; the `interact` partition allows at most 8 hours |
+| `-p interact` | Use the partition reserved for interactive work |
+| `-n 1 --cpus-per-task=1` | One task with one CPU |
+| `--mem=4g` | Reserve 4 GB of memory |
+| `--pty /bin/bash` | Attach a terminal and start a shell in it |
+
+The prompt changes to show a compute node's name once the session starts. Load R and start it:
+
+```bash
+module add r
+R
+```
+
+Inside R, confirm where you are and try a few commands:
+
+```r
+Sys.info()[["nodename"]]   # a compute node, not a login node
+R.version.string
+x <- rnorm(1e6); mean(x)
+```
+
+Leave R, then the session, so the node is released for other users:
+
+```r
+q()
+```
+
+```bash
+exit
+```
+
+If you need graphics windows (for example `plot()`), log in with `ssh -X` and add `--x11=first` to the `srun` command.
+
+### From the browser
+
+Open OnDemand at <https://ondemand.rc.unc.edu> has an **RStudio Server** app under *Interactive Apps*. Choose the number of hours, CPUs, memory, and the R module, and RStudio opens on a compute node in a browser tab. UNC recommends requesting at least two CPUs for RStudio sessions.
+
+::: {.callout-tip title="Interactive sessions are for development"}
+Anything that takes more than a few minutes, needs to keep running after you disconnect, or will be repeated belongs in a scheduled job. Examples 2 and 3 show how, and an interactive session is the right place to test their scripts before submitting them.
+:::
+
+## Example 2 · Submitting a single R job
+
+The simplest scheduled workflow: one R script that runs once and saves its output. The files are in `examples/example2_single_job/`.
+
+| File | Purpose |
+|---|---|
+| [`hello_longleaf.R`](../examples/example2_single_job/hello_longleaf.R) | The R script. Simulates data, fits `lm()`, and saves a list to `results/hello_results.rds`. |
+| [`submit_single.sl`](../examples/example2_single_job/submit_single.sl) | The Slurm submission script: the resources the job needs and the command it runs. |
+| `logs/` | Where Slurm writes the job's console output (`.out`) and errors (`.err`). |
+| `results/` | Where the R script writes its `.rds` file. |
+
+### The submission script
+
+```{.bash filename="submit_single.sl"}
+#!/bin/bash
+# submit_single.sl -- SLURM submission script for Example 2 (one R job)
+#
+# Submit from inside this folder with:   sbatch submit_single.sl
+# Check status with:                     squeue -u $USER
+#
+# Everything starting with "#SBATCH" is a directive read by the scheduler.
+# Lines starting with a plain "#" are ordinary comments.
+
+#SBATCH --job-name=hello_longleaf
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=2g
+#SBATCH --time=00:10:00
+#SBATCH --partition=general
+#SBATCH --output=logs/hello_%j.out
+#SBATCH --error=logs/hello_%j.err
+#SBATCH --mail-type=END,FAIL
+#SBATCH --mail-user=<onyen>@unc.edu
+
+# ---- Load R -----------------------------------------------------------------
+# "module add r" loads the cluster's default R. To pin a version, run
+# "module avail r" on a login node and use, e.g., "module add r/4.4.0".
+module add r
+
+# ---- Run the script ---------------------------------------------------------
+# SLURM starts the job in the directory you ran sbatch from, so relative
+# paths (hello_longleaf.R, results/, logs/) resolve as expected.
+Rscript --vanilla hello_longleaf.R
+```
+
+| Directive | Request |
+|---|---|
+| `--job-name=hello_longleaf` | The name shown by `squeue` |
+| `--nodes=1 --ntasks=1 --cpus-per-task=1` | One task with one CPU on one node |
+| `--mem=2g` | Reserve 2 GB of memory |
+| `--time=00:10:00` | Allow up to ten minutes |
+| `--output` and `--error` | Where to write the logs; `%j` becomes the job ID |
+| `--mail-type` and `--mail-user` | Email when the job ends or fails |
+
+After the directives, the script loads R and runs the R script with `Rscript`. Slurm starts the job in the directory you ran `sbatch` from, so the relative paths to the script, `logs/`, and `results/` resolve as expected.
+
+### The R script
+
+The script is ordinary R. The only cluster-specific lines print the host name and Slurm job ID at the start, which makes it easy to confirm from the log that the job ran on a compute node.
+
+::: {.callout-note collapse="true" title="hello_longleaf.R"}
+```{.r filename="hello_longleaf.R"}
+###############################################################################
+# hello_longleaf.R -- Example 2: a single, self-contained R job
+#
+# What it does:
+#   1. Simulates a small dataset
+#   2. Fits a linear model and computes a few summary numbers
+#   3. Saves everything to results/hello_results.rds
+#
+# Run locally:   Rscript hello_longleaf.R
+# Run on Longleaf: sbatch submit_single.sl   (see README.md)
+###############################################################################
+
+# ---- 0. Settings you may want to change -------------------------------------
+n       <- 500                      # sample size
+seed    <- 2026                     # for reproducibility
+out_dir <- "results"                # relative to the folder you sbatch from
+outfile <- file.path(out_dir, "hello_results.rds")
+
+dir.create(out_dir, showWarnings = FALSE, recursive = TRUE)
+
+# ---- 1. Report where/when we are running (handy for debugging on the cluster)
+cat("Started:   ", format(Sys.time()), "\n")
+cat("Host:      ", Sys.info()[["nodename"]], "\n")
+cat("Working dir:", getwd(), "\n")
+cat("SLURM job: ", Sys.getenv("SLURM_JOB_ID", unset = "(not running under SLURM)"), "\n")
+
+# ---- 2. Simulate data and fit a model ---------------------------------------
+set.seed(seed)
+x <- rnorm(n)
+y <- 1 + 2 * x + rnorm(n, sd = 0.5)
+fit <- lm(y ~ x)
+
+# ---- 3. Bundle the results into a list --------------------------------------
+results <- list(
+  n            = n,
+  seed         = seed,
+  coefficients = coef(fit),
+  r_squared    = summary(fit)$r.squared,
+  mean_y       = mean(y),
+  sd_y         = sd(y),
+  hostname     = Sys.info()[["nodename"]],
+  slurm_job_id = Sys.getenv("SLURM_JOB_ID", unset = NA),
+  r_version    = R.version.string,
+  finished_at  = Sys.time()
+)
+
+# ---- 4. Save to disk --------------------------------------------------------
+saveRDS(results, outfile)
+cat("Saved results to:", normalizePath(outfile), "\n")
+cat("Finished:  ", format(Sys.time()), "\n")
+```
+:::
+
+### Step by step
+
+1. **Copy the folder to Longleaf and go to it.** This puts it in your home directory.
+
+   ```bash
+   rsync -av example2_single_job/ <onyen>@longleaf.unc.edu:example2_single_job/
+   ssh <onyen>@longleaf.unc.edu
+   cd ~/example2_single_job
+   ```
+
+2. **Edit `submit_single.sl`.** Set `--mail-user` to your email, or delete the two `--mail-*` lines. Raise `--time` or `--mem` if a real job needs more. Jobs that exceed their limits are killed, so ask for a little more than you expect.
+
+3. **Submit.** Slurm replies with `Submitted batch job 12345678`. That number is the job ID.
+
+   ```bash
+   sbatch submit_single.sl
+   ```
+
+4. **Monitor.**
+
+   ```bash
+   squeue -u "$USER"               # pending (PD) or running (R)?
+   sacct -j 12345678               # state and exit code after it finishes
+   cat logs/hello_12345678.out     # what the script printed
+   ```
+
+5. **Look at the results**, on Longleaf or after copying them back to your laptop.
+
+   ```bash
+   module add r
+   Rscript -e 'str(readRDS("results/hello_results.rds"))'
+   ```
+
+   ```bash
+   rsync -av <onyen>@longleaf.unc.edu:example2_single_job/results/ ./results/
+   ```
+
+::: {.callout-warning title="Create the log directory before submitting"}
+Slurm will not create `logs/`. If it is missing, the job fails immediately and leaves no output to explain why. The example folder includes an empty `logs/` for this reason.
+:::
+
+## Example 3 · Submitting a batch of jobs with parameters
+
+Instead of editing the R script and resubmitting it for every setting, write each combination of settings as one row of a plain text file, submit a Slurm **job array** with one task per row, and let each task pass its row to R as command-line arguments. Twelve rows become twelve independent jobs that run in parallel on whatever nodes are free, each saving its own result file. The files are in `examples/example3_conditions_array/`.
+
+### How the pieces fit together
+
+```{.default}
+sbatch submit_array.sl
+   │   #SBATCH --array=1-12  → Slurm starts 12 tasks, SLURM_ARRAY_TASK_ID = 1..12
+   │
+   └─▶ sh runcode.sh $SLURM_ARRAY_TASK_ID          (task 7 shown)
+          │   sed "7q;d" conditions.txt   →   "7 50 0 2"
+          │
+          └─▶ Rscript run_condition.R 7 50 0 2
+                 │   commandArgs() → c("7", "50", "0", "2")
+                 │
+                 └─▶ results/result_n50_beta0.0_rep02.rds
+```
+
+| File | Purpose |
+|---|---|
+| [`make_conditions.R`](../examples/example3_conditions_array/make_conditions.R) | Builds `conditions.txt` from an `expand.grid()` of settings. Rerun it whenever the grid changes. |
+| [`conditions.txt`](../examples/example3_conditions_array/conditions.txt) | One row per job. Space-separated, no header. Columns: `row_id n beta rep`. |
+| [`run_condition.R`](../examples/example3_conditions_array/run_condition.R) | The worker. Reads four command-line arguments, simulates, and saves one `.rds`. |
+| [`runcode.sh`](../examples/example3_conditions_array/runcode.sh) | Picks one line of `conditions.txt` and calls R with it. |
+| [`submit_array.sl`](../examples/example3_conditions_array/submit_array.sl) | The Slurm job array submission script. |
+| [`collect_results.R`](../examples/example3_conditions_array/collect_results.R) | Stacks every `.rds` into one data frame and lists any rows that are missing. |
+
+### The conditions file
+
+Each row is one job. `make_conditions.R` builds the file from every combination of two sample sizes, two slopes, and three replications, with the row number as the first column so each job knows its own ID.
+
+```{.default filename="conditions.txt"}
+1 50 0 1
+2 200 0 1
+3 50 0.5 1
+4 200 0.5 1
+5 50 0 2
+6 200 0 2
+7 50 0.5 2
+8 200 0.5 2
+9 50 0 3
+10 200 0 3
+11 50 0.5 3
+12 200 0.5 3
+```
+
+::: {.callout-note collapse="true" title="make_conditions.R"}
+```{.r filename="make_conditions.R"}
+###############################################################################
+# make_conditions.R -- builds conditions.txt for Example 3
+#
+# Each ROW of conditions.txt is one job in the SLURM array. Columns are
+# separated by spaces and there is NO header row (the shell script reads
+# lines by number, so a header would be mistaken for condition 1).
+#
+# Run:  Rscript make_conditions.R
+###############################################################################
+
+grid <- expand.grid(
+  n    = c(50, 200),           # sample size
+  beta = c(0, 0.5),            # true slope
+  rep  = 1:3,                  # replication
+  stringsAsFactors = FALSE
+)
+
+# Add the row number as the first column so each job knows its own ID.
+grid <- cbind(row_id = seq_len(nrow(grid)), grid)
+
+write.table(grid, "conditions.txt",
+            row.names = FALSE, col.names = FALSE, quote = FALSE)
+
+cat(sprintf("Wrote conditions.txt with %d rows (use --array=1-%d)\n",
+            nrow(grid), nrow(grid)))
+print(grid)
+```
+:::
+
+### The submission script
+
+```{.bash filename="submit_array.sl"}
+#!/bin/bash
+# submit_array.sl -- SLURM job array for Example 3
+#
+# Submit from inside this folder with:   sbatch submit_array.sl
+#
+# --array=1-12 launches 12 copies of this script. Each copy gets a different
+# value of $SLURM_ARRAY_TASK_ID (1, 2, ..., 12), which we use to pick a line
+# from conditions.txt. The range MUST match the number of lines in that file
+# (wc -l conditions.txt). Add %N to throttle, e.g. --array=1-500%50 runs at
+# most 50 at a time.
+
+#SBATCH --job-name=cond_array
+#SBATCH --array=1-12
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=1g
+#SBATCH --time=00:05:00
+#SBATCH --partition=general
+#SBATCH --output=logs/cond_%A_%a.out
+#SBATCH --error=logs/cond_%A_%a.err
+#SBATCH --mail-type=FAIL
+#SBATCH --mail-user=<onyen>@unc.edu
+
+# %A = the array's master job ID, %a = this task's index, so each task
+# gets its own log file, e.g. logs/cond_12345678_7.out
+
+sh runcode.sh $SLURM_ARRAY_TASK_ID
+```
+
+The one new directive is `--array=1-12`. It launches twelve copies of the script, each with a different value of `SLURM_ARRAY_TASK_ID`. The range must match the number of lines in `conditions.txt`. In the log file names, `%A` is the array's job ID and `%a` is the task index, so each task gets its own log.
+
+### The glue script
+
+Each task runs this short shell script, which pulls its own line out of `conditions.txt` and hands the values to R:
+
+```{.bash filename="runcode.sh"}
+#!/bin/bash
+# runcode.sh -- glue between SLURM and R for Example 3
+#
+# Usage:  sh runcode.sh <line_number>
+#
+# Picks line <line_number> out of conditions.txt and passes its contents to
+# run_condition.R as command-line arguments. submit_array.sl calls this with
+# $SLURM_ARRAY_TASK_ID, so array task 7 runs row 7 of conditions.txt.
+
+CONDITIONS=conditions.txt
+
+# sed "Nq;d" prints line N of the file and nothing else.
+input=$(sed "${1}q;d" $CONDITIONS)
+
+if [ -z "$input" ]; then
+  echo "ERROR: no line $1 in $CONDITIONS" >&2
+  exit 1
+fi
+
+echo "Task $1 -> conditions: $input"
+
+module add r
+Rscript --vanilla run_condition.R $input
+```
+
+### The worker script
+
+Only the top of `run_condition.R` is specific to the array. R receives the arguments as text, so the script converts each one:
+
+```{.r filename="run_condition.R (excerpt)"}
+args <- commandArgs(trailingOnly = TRUE)
+if (length(args) != 4) {
+  stop("Usage: Rscript run_condition.R <row_id> <n> <beta> <rep>\n",
+       "Got ", length(args), " argument(s): ", paste(args, collapse = " "))
+}
+
+row_id <- as.integer(args[1])
+n      <- as.integer(args[2])
+beta   <- as.numeric(args[3])
+rep_i  <- as.integer(args[4])
+```
+
+The rest simulates data, fits a model, and saves a result file whose name encodes the condition. The seed is derived from the condition values rather than the task ID, so rerunning row 7 always gives the same answer, and appending rows to `conditions.txt` never changes earlier results.
+
+::: {.callout-note collapse="true" title="run_condition.R"}
+```{.r filename="run_condition.R"}
+###############################################################################
+# run_condition.R -- Example 3 worker script: ONE row of conditions.txt
+#
+# Called by runcode.sh as:
+#   Rscript --vanilla run_condition.R <row_id> <n> <beta> <rep>
+#
+# The four values after the script name are one line of conditions.txt.
+# R receives them as a character vector from commandArgs(); convert types
+# yourself.
+###############################################################################
+
+# ---- 1. Read the command-line arguments -------------------------------------
+args <- commandArgs(trailingOnly = TRUE)
+if (length(args) != 4) {
+  stop("Usage: Rscript run_condition.R <row_id> <n> <beta> <rep>\n",
+       "Got ", length(args), " argument(s): ", paste(args, collapse = " "))
+}
+
+row_id <- as.integer(args[1])
+n      <- as.integer(args[2])
+beta   <- as.numeric(args[3])
+rep_i  <- as.integer(args[4])
+
+cat(sprintf("=== Row %d: n=%d, beta=%.2f, rep=%d ===\n", row_id, n, beta, rep_i))
+cat("Host:", Sys.info()[["nodename"]],
+    " SLURM task:", Sys.getenv("SLURM_ARRAY_TASK_ID", unset = "(none)"), "\n")
+
+# ---- 2. Seed from the condition, not from the row order ---------------------
+# This way re-running row 7 always gives the same answer, and adding rows to
+# the bottom of conditions.txt never changes earlier results.
+set.seed(1000 * n + 100 * round(beta * 10) + rep_i)
+
+# ---- 3. Do the (trivial) work -----------------------------------------------
+x   <- rnorm(n)
+y   <- beta * x + rnorm(n)
+fit <- lm(y ~ x)
+
+results <- list(
+  row_id     = row_id,
+  n          = n,
+  beta_true  = beta,
+  rep        = rep_i,
+  beta_hat   = unname(coef(fit)["x"]),
+  p_value    = summary(fit)$coefficients["x", "Pr(>|t|)"],
+  hostname   = Sys.info()[["nodename"]],
+  finished   = Sys.time()
+)
+
+# ---- 4. Save with a filename that encodes the condition ---------------------
+out_dir <- "results"
+dir.create(out_dir, showWarnings = FALSE, recursive = TRUE)
+outfile <- file.path(out_dir,
+                     sprintf("result_n%d_beta%.1f_rep%02d.rds", n, beta, rep_i))
+saveRDS(results, outfile)
+cat("Saved:", outfile, "\n")
+```
+:::
+
+::: {.callout-note collapse="true" title="collect_results.R"}
+```{.r filename="collect_results.R"}
+###############################################################################
+# collect_results.R -- stack every results/*.rds into one data frame
+#
+# Run after the array finishes:  Rscript collect_results.R
+# Also reports any conditions.txt rows that have no result file (failed or
+# still-running tasks), so you know exactly which array indices to resubmit.
+###############################################################################
+
+files <- list.files("results", pattern = "\\.rds$", full.names = TRUE)
+cat(sprintf("Found %d result files\n", length(files)))
+
+rows <- lapply(files, function(f) {
+  r <- readRDS(f)
+  data.frame(row_id = r$row_id, n = r$n, beta_true = r$beta_true, rep = r$rep,
+             beta_hat = r$beta_hat, p_value = r$p_value,
+             hostname = r$hostname)
+})
+all_results <- do.call(rbind, rows)
+all_results <- all_results[order(all_results$row_id), ]
+rownames(all_results) <- NULL
+print(all_results)
+
+# Which rows of conditions.txt are missing?
+cond <- read.table("conditions.txt",
+                   col.names = c("row_id", "n", "beta", "rep"))
+missing <- setdiff(cond$row_id, all_results$row_id)
+if (length(missing) == 0) {
+  cat("\nAll conditions complete.\n")
+} else {
+  cat("\nMISSING rows (resubmit with --array=",
+      paste(missing, collapse = ","), "):\n", sep = "")
+  print(cond[cond$row_id %in% missing, ])
+}
+
+saveRDS(all_results, "all_results.rds")
+cat("Saved all_results.rds\n")
+```
+:::
+
+### Step by step
+
+1. **Build the conditions file** on your laptop or on Longleaf, and note the number of rows.
+
+   ```bash
+   Rscript make_conditions.R
+   wc -l conditions.txt
+   ```
+
+2. **Copy the folder to Longleaf and go to it.**
+
+   ```bash
+   rsync -av example3_conditions_array/ <onyen>@longleaf.unc.edu:example3_conditions_array/
+   ssh <onyen>@longleaf.unc.edu
+   cd ~/example3_conditions_array
+   ```
+
+3. **Edit `submit_array.sl`.** Make `--array=1-12` match the row count. This is the line people forget: too small and some conditions never run, too large and the extra tasks fail with "no line N". Set or delete the `--mail-*` lines, and remember that `--time` and `--mem` apply per task, not to the whole array. For big arrays add a throttle, such as `--array=1-2000%100`, so you do not monopolize the partition.
+
+4. **Test one row interactively before submitting hundreds.** Use an interactive session from Example 1. If this works, the array will work.
+
+   ```bash
+   module add r
+   sh runcode.sh 1
+   ls results/
+   ```
+
+5. **Submit and monitor.** `squeue` shows one line per running or pending task.
+
+   ```bash
+   sbatch submit_array.sl
+   squeue -u "$USER"
+   sacct -j <jobid> --format=JobID,State,ExitCode,Elapsed
+   tail logs/cond_<jobid>_7.out
+   ```
+
+6. **Collect.** This prints a table of all results, writes `all_results.rds`, and lists any rows that have no result file.
+
+   ```bash
+   Rscript collect_results.R
+   ```
+
+   To rerun only the missing rows, submit again with an explicit list. A command-line `--array` overrides the one inside the file.
+
+   ```bash
+   sbatch --array=3,8,11 submit_array.sl
+   ```
+
+### Adapting the pattern to your own project
+
+- **Changing which variables are passed.** Three places must agree: the columns of the grid in `make_conditions.R`, the number and order of arguments read in `run_condition.R`, and the column names used to read `conditions.txt` back in `collect_results.R`. The glue script and the submission script do not care how many columns there are.
+- **Strings are fine as values**, such as `high` or `identity`, as long as they contain no spaces. R receives everything as character; convert with `as.integer()` or `as.numeric()` as needed.
+- **Paths.** As in Example 2, everything is relative to the folder you run `sbatch` from. Anything large belongs in your work space rather than your home directory.
+- **Several methods on the same conditions.** Either add a `method` column to the grid, or keep one `conditions.txt` and write one submission script per method that passes the method name as an extra argument.
 
 ## Conditions for a successful job
 
@@ -47,3 +579,9 @@ Before submitting, verify that the script uses correct file paths, required pack
 ## Key takeaway
 
 Develop with small interactive checks, then move stable and resource-intensive work into a reproducible scheduled job.
+
+## Sources
+
+- [“Longleaf Cluster SLURM examples,” UNC Research Computing](https://help.rc.unc.edu/longleaf-slurm-examples/)
+- [“Open OnDemand,” UNC Research Computing](https://help.rc.unc.edu/ondemand/)
+- [“RStudio Server and RStudio Desktop OOD apps,” UNC Research Computing](https://help.rc.unc.edu/rstudio-apps/)

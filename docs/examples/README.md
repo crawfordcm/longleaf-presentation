@@ -1,10 +1,13 @@
 # Workshop examples
 
-This directory is reserved for the small, downloadable files used during the presentation. The completed workshop should include:
+The files used in Module 5, "R on Longleaf". Each folder is self-contained and can be copied to Longleaf as-is.
 
-- a short R script that reads data, performs one computation, and saves a result;
-- a matching Slurm submission script;
-- a sample output file; and
-- optionally, a package-library setup example.
+| Folder | Example | Contents |
+|---|---|---|
+| `example1_interactive_r/` | Interactive R | A README with the commands for a terminal session or RStudio Server. |
+| `example2_single_job/` | Submitting a single R job | One R script, one Slurm submission script, and the `logs/` and `results/` folders they write to. |
+| `example3_conditions_array/` | Submitting a batch of jobs with parameters | A conditions file, a Slurm job array, and the R scripts that build the conditions, run one row, and collect the results. |
+
+Each folder's README walks through its example step by step.
 
 Keep each example short enough to explain on screen. Before publishing operational scripts, verify Longleaf account, partition, module, memory, runtime, and filesystem requirements against current UNC Research Computing guidance.
