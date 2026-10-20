@@ -130,14 +130,6 @@ a:focus-visible {
   letter-spacing: 0.08em;
 }
 
-.module-time {
-  display: block;
-  margin: 1rem 0 0.35rem;
-  color: var(--ll-green);
-  font-size: 0.88rem;
-  font-weight: 750;
-}
-
 .module-lead {
   margin: 0.5rem 0 2rem;
   padding: 1rem 1.25rem;

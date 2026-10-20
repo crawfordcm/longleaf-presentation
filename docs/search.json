@@ -238,19 +238,7 @@
     "href": "modules/04-interacting-with-longleaf.html",
     "title": "Interacting with Longleaf",
     "section": "",
-    "text": "Estimated time: 12 minutes\nGuiding question: How does a command become a managed job on a compute node?",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "4 · Interacting with Longleaf"
-    ]
-  },
-  {
-    "objectID": "modules/04-interacting-with-longleaf.html#learning-goals",
-    "href": "modules/04-interacting-with-longleaf.html#learning-goals",
-    "title": "Interacting with Longleaf",
-    "section": "Learning goals",
-    "text": "Learning goals\nBy the end of this module, participants should be able to:\n\nnavigate directories and inspect files from the shell;\ndescribe the lifecycle of a Slurm job;\ncheck or cancel a submitted job; and\nrecognize responsible resource requests.",
+    "text": "Guiding question: How does a command become a managed job on a compute node?",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
@@ -346,33 +334,21 @@
     "href": "index.html",
     "title": "Getting Started with Longleaf",
     "section": "",
-    "text": "This workshop follows the path from first login to a submitted R job. The five modules are designed for a 45–60 minute presentation and remain available afterward as a practical reference.\nAudience: Researchers who are new to Longleaf or shared computing clusters\nFormat: Five short modules with demonstrations and reusable examples"
+    "text": "This workshop follows the path from first login to a submitted R job. The five modules can be presented live and remain available afterward as a practical reference.\nAudience: Researchers who are new to Longleaf or shared computing clusters\nFormat: Five short modules with demonstrations and reusable examples"
   },
   {
     "objectID": "index.html#workshop-outline",
     "href": "index.html#workshop-outline",
     "title": "Getting Started with Longleaf",
     "section": "Workshop outline",
-    "text": "Workshop outline\n\n\n\n01\n\nIntroduction to Longleaf\nUNC’s computing history, what Longleaf is, and where it fits in a research workflow.\nAbout 5 minutes\nOpen module\n\n\n\n\n\n02\n\nKey features of computing clusters\nNodes, queues, memory, storage, and the scheduler that coordinates shared resources.\nAbout 8 minutes\nOpen module\n\n\n\n\n\n03\n\nHow do you actually use it?\nRequesting access, logging in, working through the browser, and transferring files.\nAbout 8 minutes\nOpen module\n\n\n\n\n\n04\n\nInteracting with Longleaf\nEssential shell commands, Slurm, job status, cancellation, and responsible resource requests.\nAbout 12 minutes\nOpen module\n\n\n\n\n\n05\n\nR on Longleaf\nR installations, package libraries, interactive work, and submitting a reproducible batch job.\nAbout 15 minutes\nOpen module\n\n\n\n\n\nThe remaining time is reserved for a workflow recap, questions, and troubleshooting examples."
+    "text": "Workshop outline\n\n\n\n01\n\nIntroduction to Longleaf\nUNC’s computing history, what Longleaf is, and where it fits in a research workflow.\nOpen module\n\n\n\n\n\n02\n\nKey features of computing clusters\nNodes, queues, memory, storage, and the scheduler that coordinates shared resources.\nOpen module\n\n\n\n\n\n03\n\nHow do you actually use it?\nRequesting access, logging in, working through the browser, and transferring files.\nOpen module\n\n\n\n\n\n04\n\nInteracting with Longleaf\nEssential shell commands, Slurm, job status, cancellation, and responsible resource requests.\nOpen module\n\n\n\n\n\n05\n\nR on Longleaf\nR installations, package libraries, interactive work, and submitting a reproducible batch job.\nOpen module\n\n\n\n\n\nThe remaining time is reserved for a workflow recap, questions, and troubleshooting examples."
   },
   {
     "objectID": "modules/03-accessing-longleaf.html",
     "href": "modules/03-accessing-longleaf.html",
     "title": "How Do You Actually Use It?",
     "section": "",
-    "text": "Estimated time: 8 minutes\nGuiding question: Which access method should a new Longleaf user choose?",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "3 · Accessing Longleaf"
-    ]
-  },
-  {
-    "objectID": "modules/03-accessing-longleaf.html#learning-goals",
-    "href": "modules/03-accessing-longleaf.html#learning-goals",
-    "title": "How Do You Actually Use It?",
-    "section": "Learning goals",
-    "text": "Learning goals\nBy the end of this module, participants should be able to:\n\nidentify the steps required to request an account;\ncompare terminal, browser, and file-transfer access; and\nselect an appropriate method for a common task.",
+    "text": "Guiding question: Which access method should a new Longleaf user choose?",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
@@ -456,19 +432,7 @@
     "href": "modules/05-r-on-longleaf.html",
     "title": "R on Longleaf",
     "section": "",
-    "text": "Estimated time: 15 minutes\nGuiding question: When should R be run interactively, and when should it become a scheduled job?",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "5 · R on Longleaf"
-    ]
-  },
-  {
-    "objectID": "modules/05-r-on-longleaf.html#learning-goals",
-    "href": "modules/05-r-on-longleaf.html#learning-goals",
-    "title": "R on Longleaf",
-    "section": "Learning goals",
-    "text": "Learning goals\nBy the end of this module, participants should be able to:\n\nidentify an available R installation;\ndistinguish shared and personal package libraries;\nstart an interactive R workflow appropriately; and\nsubmit a simple R script as a scheduled job.",
+    "text": "Guiding question: When should R be run interactively, and when should it become a scheduled job?",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
