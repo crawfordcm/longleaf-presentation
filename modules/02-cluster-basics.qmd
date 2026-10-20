@@ -4,11 +4,6 @@ subtitle: "Nodes, queues, memory, storage, and the scheduler"
 description: "The core ideas needed to understand how a shared computing cluster works."
 ---
 
-::: {.module-lead}
-**Estimated time:** 8 minutes  
-**Guiding question:** What happens between logging in and a computation actually running?
-:::
-
 ## Learning goals
 
 By the end of this module, participants should be able to:

@@ -108,7 +108,7 @@
     "href": "modules/01-introduction/01-computing-history.html#sources",
     "title": "A Brief History of Computing at UNC",
     "section": "Sources",
-    "text": "Sources\n\n“7 decades of difference: Carolina’s 1st computer and its current cluster,” UNC-Chapel Hill\n“Visions of Tomorrow with Computers of Today: UNC’s First Computer in 1959,” UNC University Libraries\nCurrent MacBook Air technical specifications, Apple",
+    "text": "Sources\n\n“7 decades of difference: Carolina’s 1st computer and its current cluster,” UNC-Chapel Hill\n“Visions of Tomorrow with Computers of Today: UNC’s First Computer in 1959,” UNC University Libraries",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
@@ -205,7 +205,7 @@
     "href": "modules/02-cluster-basics.html",
     "title": "Key Features of Computing Clusters",
     "section": "",
-    "text": "Estimated time: 8 minutes\nGuiding question: What happens between logging in and a computation actually running?",
+    "text": "By the end of this module, participants should be able to:\n\ndistinguish a login node from a compute node;\nexplain what a scheduler and queue do; and\ninterpret basic requests for CPUs, memory, and time.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
@@ -216,8 +216,8 @@
     "objectID": "modules/02-cluster-basics.html#learning-goals",
     "href": "modules/02-cluster-basics.html#learning-goals",
     "title": "Key Features of Computing Clusters",
-    "section": "Learning goals",
-    "text": "Learning goals\nBy the end of this module, participants should be able to:\n\ndistinguish a login node from a compute node;\nexplain what a scheduler and queue do; and\ninterpret basic requests for CPUs, memory, and time.",
+    "section": "",
+    "text": "By the end of this module, participants should be able to:\n\ndistinguish a login node from a compute node;\nexplain what a scheduler and queue do; and\ninterpret basic requests for CPUs, memory, and time.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
