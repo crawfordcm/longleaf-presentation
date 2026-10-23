@@ -45,17 +45,45 @@ Users normally do not select or log in directly to a compute node. They request 
 Many people share each login node. Running an analysis there can slow the system for everyone. Submit computational work through Slurm so that it runs on a compute node.
 :::
 
-## Jobs, Slurm, and the queue
+## What is Slurm?
 
-A **job** is a request to run a program using specified cluster resources. Longleaf uses **Slurm** to manage those requests.
+A **job** is a request to run a program using specified cluster resources. Longleaf uses **Slurm**, a workload manager and job scheduler, to coordinate those requests.
+
+Users do not normally select a compute node and start an analysis directly. Instead, they tell Slurm what program to run and what resources it needs. Slurm then manages the job from submission through completion.
+
+## Why Longleaf needs a scheduler
+
+Longleaf has many users, many jobs, and a limited supply of compute nodes with different amounts of memory and different kinds of hardware. Slurm provides an orderly way to share those resources.
 
 Slurm:
 
 - keeps track of available cluster resources;
-- holds waiting jobs in a queue; and
-- assigns each job to suitable compute resources when they become available.
+- holds waiting jobs in a queue;
+- matches jobs with appropriate compute resources;
+- starts and monitors work on the assigned resources; and
+- releases the resources when a job finishes.
 
-A pending job has not necessarily encountered a problem. It may simply be waiting for the requested resources or waiting behind jobs with higher priority.
+This prevents users from competing directly for compute nodes and keeps one job from using resources that Slurm has assigned to another.
+
+## What happens after submission?
+
+1. Slurm checks the job request and assigns it a unique job ID.
+2. The job enters the queue, usually with a **pending** status.
+3. Slurm waits until suitable CPUs, memory, and any specialized hardware are available.
+4. Slurm allocates those resources and starts the job on a compute node.
+5. The job finishes or stops, Slurm records its status, and the resources become available again.
+
+A pending job has not necessarily encountered a problem. It may be waiting because the requested resources are currently in use, no available node has enough memory, the job needs specialized hardware, or other jobs currently have higher priority.
+
+## What Slurm does not do
+
+Slurm manages resources and jobs, but it does not rewrite or optimize the program being submitted. In particular:
+
+- requesting more CPUs does not make single-threaded code use them;
+- requesting more memory does not make code run faster; and
+- Slurm does not automatically know how much time or memory a program will need.
+
+Users therefore need to make reasonable initial requests and refine them using information from completed jobs. Module 3 shows how to submit and monitor jobs and review their resource use.
 
 ## What does a job request?
 
