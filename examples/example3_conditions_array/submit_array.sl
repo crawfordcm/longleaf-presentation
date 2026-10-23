@@ -16,7 +16,6 @@
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=1g
 #SBATCH --time=00:05:00
-#SBATCH --partition=general
 #SBATCH --output=logs/cond_%A_%a.out
 #SBATCH --error=logs/cond_%A_%a.err
 #SBATCH --mail-type=FAIL

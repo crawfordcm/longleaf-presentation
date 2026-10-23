@@ -1,6 +1,6 @@
 # Workshop examples
 
-The files used in Module 5, "R on Longleaf". Each folder is self-contained and can be copied to Longleaf as-is.
+The files used in Module 4, "R on Longleaf". Each folder is self-contained and can be copied to Longleaf as-is.
 
 | Folder | Example | Contents |
 |---|---|---|

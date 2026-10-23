@@ -67,4 +67,4 @@ Examples relevant to psychology, statistics, and related fields include:
 
 Many researchers use Longleaf at the same time. Users describe the work they want to run and the resources it needs. A scheduler then determines when and where that work will run.
 
-The next module explains the parts of a computing cluster and how jobs move from a user's computer to a compute node.
+The next page follows that process from a user's computer to a Longleaf compute node.

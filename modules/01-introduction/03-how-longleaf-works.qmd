@@ -1,0 +1,91 @@
+---
+title: "How Longleaf Works"
+---
+
+Longleaf is made up of many connected computers that are shared by researchers across UNC. Users prepare their work in one place, then ask the cluster to run it using the resources it needs.
+
+## From your computer to a compute node
+
+::: {.workflow}
+::: {.workflow-step}
+**1 · Connect**
+
+Connect to Longleaf from a terminal or web browser. You arrive on a login node.
+:::
+
+::: {.workflow-step}
+**2 · Prepare**
+
+Use the login node to organize files, edit code, and describe the resources the work needs.
+:::
+
+::: {.workflow-step}
+**3 · Schedule**
+
+Submit the work as a job. Slurm holds the job in a queue until suitable resources are available.
+:::
+
+::: {.workflow-step}
+**4 · Compute**
+
+A compute node runs the job and writes its output to storage.
+:::
+:::
+
+## Login nodes and compute nodes
+
+A **node** is one computer within the cluster. Longleaf nodes serve different purposes:
+
+- A **login node** is the shared entry point. Use it to work with files, edit scripts, run basic commands, and submit jobs.
+- A **compute node** supplies the processors and memory that run an analysis.
+
+Users normally do not select or log in directly to a compute node. They request resources through Slurm, which places the work on an appropriate node.
+
+::: {.callout-warning title="Keep demanding work off the login node"}
+Many people share each login node. Running an analysis there can slow the system for everyone. Submit computational work through Slurm so that it runs on a compute node.
+:::
+
+## Jobs, Slurm, and the queue
+
+A **job** is a request to run a program using specified cluster resources. Longleaf uses **Slurm** to manage those requests.
+
+Slurm:
+
+- keeps track of available cluster resources;
+- holds waiting jobs in a queue; and
+- assigns each job to suitable compute resources when they become available.
+
+A pending job has not necessarily encountered a problem. It may simply be waiting for the requested resources or waiting behind jobs with higher priority.
+
+## What does a job request?
+
+For most introductory jobs, the essential requests are:
+
+| Resource | What it means |
+|---|---|
+| **CPUs** | The processor capacity available to the job |
+| **Memory** | The short-term working space, or RAM, available while the program runs |
+| **Time** | The maximum amount of time the job is allowed to run |
+
+Asking for more resources does not automatically make a program run faster. A program must be written to use multiple CPUs, and unused memory does not improve its speed. Requests that are close to what the job actually needs also make it easier for Slurm to find a place for the job to run.
+
+## Memory and storage
+
+Memory and storage serve different purposes:
+
+- **Memory** holds the data and instructions a program is actively using. It is temporary and belongs to the compute node running the job.
+- **Storage** holds scripts, datasets, logs, and results as files. Files remain available after a job ends.
+
+One useful comparison is a desk and a filing cabinet. Memory is the desk where current work is spread out. Storage is the filing cabinet where materials are kept between tasks. A larger desk lets you work with more material at once, but it does not necessarily make the work faster.
+
+## The essential idea
+
+You use a login node to prepare and submit work. Slurm finds appropriate resources, a compute node runs the job, and the results are written to storage.
+
+Later modules show how to connect to Longleaf, submit a job, and choose appropriate resource requests.
+
+## Sources
+
+- [“Getting Started on Longleaf,” UNC Research Computing](https://help.rc.unc.edu/getting-started-on-longleaf/)
+- [“SLURM Guide,” UNC Research Computing](https://help.rc.unc.edu/slurm-guide/)
+- [“Quick Start User Guide,” SchedMD](https://slurm.schedmd.com/quickstart.html)

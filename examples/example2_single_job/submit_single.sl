@@ -13,7 +13,6 @@
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=2g
 #SBATCH --time=00:10:00
-#SBATCH --partition=general
 #SBATCH --output=logs/hello_%j.out
 #SBATCH --error=logs/hello_%j.err
 #SBATCH --mail-type=END,FAIL

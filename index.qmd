@@ -1,17 +1,17 @@
 ---
 title: "Getting Started with Longleaf"
 subtitle: "A practical introduction to cluster computing, Slurm, and R"
-description: "A five-module introduction to using UNC's Longleaf computing cluster."
+description: "A four-module introduction to using UNC's Longleaf computing cluster."
 toc: false
 sidebar: false
 page-layout: full
 ---
 
 ::: {.workshop-intro}
-This workshop follows the path from first login to a submitted R job. The five modules can be presented live and remain available afterward as a practical reference.
+This workshop follows the path from first login to a submitted R job. The four modules can be presented live and remain available afterward as a practical reference.
 
 **Audience:** Researchers who are new to Longleaf or shared computing clusters  
-**Format:** Five short modules with demonstrations and reusable examples
+**Format:** Four short modules with demonstrations and reusable examples
 :::
 
 ## Workshop outline
@@ -24,7 +24,7 @@ This workshop follows the path from first login to a submitted R job. The five m
 
 ### Introduction to Longleaf
 
-UNC's computing history, what Longleaf is, and where it fits in a research workflow.
+UNC's computing history, what Longleaf is, and how work moves through the cluster.
 
 [Open module](modules/01-introduction/01-computing-history.qmd){.stretched-link aria-label="Open Introduction to Longleaf"}
 :::
@@ -34,11 +34,11 @@ UNC's computing history, what Longleaf is, and where it fits in a research workf
 ::: {.module-card}
 <span class="module-number">02</span>
 
-### Key features of computing clusters
+### How do you actually use it?
 
-Nodes, queues, memory, storage, and the scheduler that coordinates shared resources.
+Requesting access, logging in, working through the browser, and transferring files.
 
-[Open module](modules/02-cluster-basics/01-nodes.qmd){.stretched-link aria-label="Open Key features of computing clusters"}
+[Open module](modules/02-accessing-longleaf.qmd){.stretched-link aria-label="Open How do you actually use Longleaf"}
 :::
 :::
 
@@ -46,11 +46,11 @@ Nodes, queues, memory, storage, and the scheduler that coordinates shared resour
 ::: {.module-card}
 <span class="module-number">03</span>
 
-### How do you actually use it?
+### Interacting with Longleaf
 
-Requesting access, logging in, working through the browser, and transferring files.
+Essential shell commands, Slurm, job status, cancellation, and responsible resource requests.
 
-[Open module](modules/03-accessing-longleaf.qmd){.stretched-link aria-label="Open How do you actually use Longleaf"}
+[Open module](modules/03-interacting-with-longleaf.qmd){.stretched-link aria-label="Open Interacting with Longleaf"}
 :::
 :::
 
@@ -58,23 +58,11 @@ Requesting access, logging in, working through the browser, and transferring fil
 ::: {.module-card}
 <span class="module-number">04</span>
 
-### Interacting with Longleaf
-
-Essential shell commands, Slurm, job status, cancellation, and responsible resource requests.
-
-[Open module](modules/04-interacting-with-longleaf.qmd){.stretched-link aria-label="Open Interacting with Longleaf"}
-:::
-:::
-
-::: {.g-col-12 .g-col-lg-6}
-::: {.module-card}
-<span class="module-number">05</span>
-
 ### R on Longleaf
 
 R installations, package libraries, interactive work, and submitting a reproducible batch job.
 
-[Open module](modules/05-r-on-longleaf.qmd){.stretched-link aria-label="Open R on Longleaf"}
+[Open module](modules/04-r-on-longleaf.qmd){.stretched-link aria-label="Open R on Longleaf"}
 :::
 :::
 

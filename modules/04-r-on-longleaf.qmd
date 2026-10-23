@@ -126,7 +126,6 @@ The simplest scheduled workflow: one R script that runs once and saves its outpu
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=2g
 #SBATCH --time=00:10:00
-#SBATCH --partition=general
 #SBATCH --output=logs/hello_%j.out
 #SBATCH --error=logs/hello_%j.err
 #SBATCH --mail-type=END,FAIL
@@ -353,7 +352,6 @@ print(grid)
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=1g
 #SBATCH --time=00:05:00
-#SBATCH --partition=general
 #SBATCH --output=logs/cond_%A_%a.out
 #SBATCH --error=logs/cond_%A_%a.err
 #SBATCH --mail-type=FAIL

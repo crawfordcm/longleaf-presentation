@@ -5,10 +5,9 @@ This repository contains the source for a 45–60 minute presentation and tutori
 ## Workshop outline
 
 1. [Introduction to Longleaf](modules/01-introduction/01-computing-history.qmd)
-2. [Key features of computing clusters](modules/02-cluster-basics/01-nodes.qmd)
-3. [How do you actually use it?](modules/03-accessing-longleaf.qmd)
-4. [Interacting with Longleaf](modules/04-interacting-with-longleaf.qmd)
-5. [R on Longleaf](modules/05-r-on-longleaf.qmd)
+2. [How do you actually use it?](modules/02-accessing-longleaf.qmd)
+3. [Interacting with Longleaf](modules/03-interacting-with-longleaf.qmd)
+4. [R on Longleaf](modules/04-r-on-longleaf.qmd)
 
 ## Repository structure
 

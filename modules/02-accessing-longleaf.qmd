@@ -12,7 +12,7 @@ description: "The practical routes for obtaining access, connecting to Longleaf,
 
 <!-- Add the verified account-request process, eligibility requirements, and expected approval path. -->
 
-##Connecting to the Cluster
+## Connecting to the cluster
 
 <!-- Add links and description for cisco vpn-->
 
@@ -36,9 +36,25 @@ description: "The practical routes for obtaining access, connecting to Longleaf,
 
 Introduce a graphical SFTP workflow first, then note when command-line tools are useful for larger or repeatable transfers.
 
+## Where files live
+
+Longleaf's login and compute nodes can access the same shared storage. A script prepared on a login node can therefore read data and write results while it runs on a compute node.
+
+The main storage locations for new users are:
+
+- **Home directory:** `/nas/longleaf/home/<onyen>` is a relatively small, backed-up space for scripts, settings, and personal software. It is not intended for data-intensive computing.
+- **Personal data space:** `/hickory/users/<o>/<n>/<onyen>` provides a larger location for active and inactive personal research data. It is not backed up.
+- **Project space:** research groups may have shared storage under `/proj`, `/hickory/proj`, or `/vast/som`. Its location and quota depend on the group, and it is not backed up by default.
+
+Some established users also have older `/work` or `/users` directories. UNC is moving new personal storage to `/hickory/users`, so users should check the current Research Computing guidance before choosing a location for important data.
+
 ## Demonstration sequence
 
 1. Open the chosen access method.
 2. Connect and identify the login environment.
 3. Locate the home and project directories.
 4. Transfer one small example file.
+
+## Sources
+
+- [“Getting Started on Longleaf,” UNC Research Computing](https://help.rc.unc.edu/getting-started-on-longleaf/)
