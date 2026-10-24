@@ -77,9 +77,32 @@ a:focus-visible {
   border-left: 5px solid var(--ll-blue);
 }
 
+.pre-workshop {
+  max-width: 920px;
+  margin: 0 auto 2.5rem;
+}
+
+.pre-workshop .callout {
+  margin: 0;
+}
+
 .module-grid {
   max-width: 1180px;
   margin: 0 auto;
+}
+
+/* Draft notes for the authors. Find them with: grep -rn '{.todo}' index.qmd modules */
+.todo {
+  margin: 1.25rem 0;
+  padding: 0.85rem 1.1rem;
+  color: #5a3f00;
+  background: #fff8e1;
+  border: 2px dashed #c58b00;
+  border-radius: 0.35rem;
+}
+
+.todo p:last-child {
+  margin-bottom: 0;
 }
 
 .module-card {

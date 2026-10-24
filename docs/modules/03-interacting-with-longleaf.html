@@ -238,10 +238,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#essential-shell-commands" id="toc-essential-shell-commands" class="nav-link active" data-scroll-target="#essential-shell-commands">Essential shell commands</a></li>
+  <li><a href="#software-modules" id="toc-software-modules" class="nav-link" data-scroll-target="#software-modules">Software modules</a></li>
   <li><a href="#the-slurm-job-lifecycle" id="toc-the-slurm-job-lifecycle" class="nav-link" data-scroll-target="#the-slurm-job-lifecycle">The Slurm job lifecycle</a></li>
   <li><a href="#describing-a-job" id="toc-describing-a-job" class="nav-link" data-scroll-target="#describing-a-job">Describing a job</a></li>
   <li><a href="#choosing-resource-requests" id="toc-choosing-resource-requests" class="nav-link" data-scroll-target="#choosing-resource-requests">Choosing resource requests</a></li>
   <li><a href="#core-slurm-actions" id="toc-core-slurm-actions" class="nav-link" data-scroll-target="#core-slurm-actions">Core Slurm actions</a></li>
+  <li><a href="#interactive-jobs" id="toc-interactive-jobs" class="nav-link" data-scroll-target="#interactive-jobs">Interactive jobs</a></li>
   <li><a href="#queue-rules-and-responsible-requests" id="toc-queue-rules-and-responsible-requests" class="nav-link" data-scroll-target="#queue-rules-and-responsible-requests">Queue rules and responsible requests</a></li>
   <li><a href="#demonstration-sequence" id="toc-demonstration-sequence" class="nav-link" data-scroll-target="#demonstration-sequence">Demonstration sequence</a></li>
   <li><a href="#sources" id="toc-sources" class="nav-link" data-scroll-target="#sources">Sources</a></li>
@@ -306,15 +308,84 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><code>cd ..</code></td>
 </tr>
 <tr class="odd">
+<td>Go to your home directory</td>
+<td><code>cd ~</code></td>
+</tr>
+<tr class="even">
 <td>Create a directory</td>
 <td><code>mkdir directory-name</code></td>
 </tr>
+<tr class="odd">
+<td>Print a short file</td>
+<td><code>cat filename</code></td>
+</tr>
 <tr class="even">
-<td>Read a text file</td>
-<td><code>less filename</code></td>
+<td>Show the last lines of a file</td>
+<td><code>tail filename</code></td>
+</tr>
+<tr class="odd">
+<td>Page through a long file</td>
+<td><code>less filename</code> (press <code>q</code> to quit)</td>
+</tr>
+<tr class="even">
+<td>Count the lines in a file</td>
+<td><code>wc -l filename</code></td>
+</tr>
+<tr class="odd">
+<td>Edit a text file</td>
+<td><code>nano filename</code></td>
+</tr>
+<tr class="even">
+<td>Leave Longleaf</td>
+<td><code>exit</code></td>
 </tr>
 </tbody>
 </table>
+<p><code>~</code> is shorthand for your home directory, so <code>cd ~/example2_single_job</code> works from anywhere. <code>nano</code> is a small editor that runs in the terminal: edit, press Ctrl+O to save, and Ctrl+X to leave. FileZilla’s View/Edit (Module 2) is the alternative for people who prefer an editor on their own computer.</p>
+</section>
+<section id="software-modules" class="level2">
+<h2 class="anchored" data-anchor-id="software-modules">Software modules</h2>
+<p>Longleaf has many versions of many programs installed, and none of them are available when you log in. <strong>Modules</strong> turn them on for the current session:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>See what is available</td>
+<td><code>module avail</code></td>
+</tr>
+<tr class="even">
+<td>Search for one program</td>
+<td><code>module avail r</code></td>
+</tr>
+<tr class="odd">
+<td>Load the default version</td>
+<td><code>module add r</code></td>
+</tr>
+<tr class="even">
+<td>Load a specific version</td>
+<td><code>module add r/4.4.0</code></td>
+</tr>
+<tr class="odd">
+<td>Show what is loaded</td>
+<td><code>module list</code></td>
+</tr>
+<tr class="even">
+<td>Unload everything</td>
+<td><code>module purge</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>module avail r</code> lists every R module, with the default marked <code>(D)</code>. A loaded module lasts only until you log out, and two rules follow from that:</p>
+<ul>
+<li><strong>Job scripts load their own modules.</strong> A batch job starts with a clean environment, so the script must contain the <code>module add</code> line it needs. UNC recommends a <code>module purge</code> first, so the job does not depend on whatever happened to be loaded when you submitted it.</li>
+<li><strong>Pin the version when it matters.</strong> <code>module add r</code> gives you today’s default, which can change. <code>module add r/4.4.0</code> gives the same R every time, which is what a project that runs for months needs.</li>
+</ul>
+<p><code>module save</code> stores your current set of modules so they load at every login. Jobs still ignore it, so keep the <code>module add</code> lines in your scripts.</p>
 </section>
 <section id="the-slurm-job-lifecycle" class="level2">
 <h2 class="anchored" data-anchor-id="the-slurm-job-lifecycle">The Slurm job lifecycle</h2>
@@ -339,43 +410,69 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="describing-a-job" class="level2">
 <h2 class="anchored" data-anchor-id="describing-a-job">Describing a job</h2>
-<p>A job request lists the resources the job needs, followed by the command it runs. UNC’s Slurm guide uses this example:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --ntasks=1</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=1</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=01:00:00</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=100m</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">myexe</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>A job is described by a short shell script. Lines starting with <code>#SBATCH</code> are directives that tell Slurm what the job needs. Everything after them is what the job runs. This is the script Module 4 submits in Example 2, <a href="../examples/example2_single_job/submit_single.sl"><code>submit_single.sl</code></a>, with its comments removed:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>submit_single.sl</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-filename="submit_single.sl"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --job-name=hello_longleaf</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --nodes=1</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --ntasks=1</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=1</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=2g</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=00:10:00</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --output=logs/hello_%j.out</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --error=logs/hello_%j.err</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mail-type=</span><span class="re">END</span><span class="co">,FAIL</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mail-user=&lt;onyen&gt;@unc.edu</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> add r</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ex">Rscript</span> <span class="at">--vanilla</span> hello_longleaf.R</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
 <thead>
 <tr class="header">
-<th>Line</th>
+<th>Directive</th>
 <th>Request</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>--ntasks=1</code></td>
-<td>Run one task</td>
+<td><code>--job-name</code></td>
+<td>The name shown in the queue</td>
 </tr>
 <tr class="even">
-<td><code>--cpus-per-task=1</code></td>
-<td>Give that task one CPU</td>
+<td><code>--nodes=1 --ntasks=1 --cpus-per-task=1</code></td>
+<td>One task with one CPU on one node, which is what an ordinary R script needs</td>
 </tr>
 <tr class="odd">
-<td><code>--time=01:00:00</code></td>
-<td>Allow up to one hour</td>
+<td><code>--mem=2g</code></td>
+<td>Reserve 2 GB of memory</td>
 </tr>
 <tr class="even">
-<td><code>--mem=100m</code></td>
-<td>Reserve 100 MB of memory</td>
+<td><code>--time=00:10:00</code></td>
+<td>Allow up to ten minutes</td>
 </tr>
 <tr class="odd">
-<td><code>myexe</code></td>
-<td>The command the job runs</td>
+<td><code>--output</code> and <code>--error</code></td>
+<td>Files for what the job prints and for its errors; <code>%j</code> becomes the job ID</td>
+</tr>
+<tr class="even">
+<td><code>--mail-type</code> and <code>--mail-user</code></td>
+<td>Email when the job ends or fails</td>
 </tr>
 </tbody>
 </table>
+<p>The two lines after the directives are the job itself: load R, then run the script. Two details matter more than they look:</p>
+<ul>
+<li><strong>The job starts in the directory you ran <code>sbatch</code> from.</strong> Relative paths such as <code>logs/</code> and <code>hello_longleaf.R</code> are resolved there, so submit from inside the project folder.</li>
+<li><strong>Slurm does not create the log directory.</strong> If <code>logs/</code> does not exist, the job fails immediately and leaves no output to explain why. Create it before submitting.</li>
+</ul>
 </section>
 <section id="choosing-resource-requests" class="level2">
 <h2 class="anchored" data-anchor-id="choosing-resource-requests">Choosing resource requests</h2>
@@ -391,9 +488,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="core-slurm-actions" class="level2">
 <h2 class="anchored" data-anchor-id="core-slurm-actions">Core Slurm actions</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> job.slurm</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">squeue</span> <span class="at">-u</span> <span class="st">"</span><span class="va">$USER</span><span class="st">"</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">scancel</span> <span class="op">&lt;</span>job-id<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> submit_single.sl      <span class="co"># submit; Slurm replies with the job ID</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">squeue</span> <span class="at">-u</span> <span class="st">"</span><span class="va">$USER</span><span class="st">"</span>            <span class="co"># list your pending and running jobs</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">scancel</span> <span class="op">&lt;</span>job-id<span class="op">&gt;</span>             <span class="co"># cancel one job</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">sacct</span> <span class="at">-j</span> <span class="op">&lt;</span>job-id<span class="op">&gt;</span>            <span class="co"># state, exit code, and resource use after it finishes</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>squeue</code> shows one line per job with its state in the <code>ST</code> column:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Code</th>
+<th>State</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>PD</code></td>
+<td>Pending</td>
+<td>Waiting in the queue. The <code>NODELIST(REASON)</code> column says why, such as <code>Priority</code> or <code>Resources</code>.</td>
+</tr>
+<tr class="even">
+<td><code>R</code></td>
+<td>Running</td>
+<td>On a compute node now.</td>
+</tr>
+<tr class="odd">
+<td><code>CG</code></td>
+<td>Completing</td>
+<td>Finishing up. It disappears from the list a moment later.</td>
+</tr>
+</tbody>
+</table>
+<p>A job that has finished no longer appears in <code>squeue</code>. Use <code>sacct -j &lt;job-id&gt;</code> to see whether it completed, failed, or was killed for exceeding its limits.</p>
+</section>
+<section id="interactive-jobs" class="level2">
+<h2 class="anchored" data-anchor-id="interactive-jobs">Interactive jobs</h2>
+<p>Not every job is a script. When you want a prompt on a compute node, to test code or install packages before submitting the real thing, ask Slurm for an <strong>interactive job</strong>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">srun</span> <span class="at">-t</span> 1:00:00 <span class="at">-p</span> interact <span class="at">-n</span> 1 <span class="at">--cpus-per-task</span><span class="op">=</span>1 <span class="at">--mem</span><span class="op">=</span>4g <span class="at">--pty</span> /bin/bash</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>srun</code> takes the same resource flags as the <code>#SBATCH</code> lines, but it waits for the allocation and then opens a shell on the compute node instead of running a script. The prompt changes to show the compute node’s name. When you are done, <code>exit</code> returns you to the login node and releases the resources. Example 1 in Module 4 uses this to run R interactively.</p>
 </section>
 <section id="queue-rules-and-responsible-requests" class="level2">
 <h2 class="anchored" data-anchor-id="queue-rules-and-responsible-requests">Queue rules and responsible requests</h2>
@@ -465,6 +602,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><a href="https://help.rc.unc.edu/getting-started-on-longleaf/">“Getting Started on Longleaf,” UNC Research Computing</a></li>
 <li><a href="https://help.rc.unc.edu/slurm-guide/">“SLURM Guide,” UNC Research Computing</a></li>
+<li><a href="https://help.rc.unc.edu/modules/">“Modules Approach to Software Management,” UNC Research Computing</a></li>
 </ul>
 
 

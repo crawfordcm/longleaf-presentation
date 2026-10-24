@@ -1,158 +1,145 @@
 [
   {
-    "objectID": "modules/02-cluster-basics/03-memory.html",
-    "href": "modules/02-cluster-basics/03-memory.html",
-    "title": "Memory and Storage",
+    "objectID": "modules/01-introduction/03-how-longleaf-works.html",
+    "href": "modules/01-introduction/03-how-longleaf-works.html",
+    "title": "How Longleaf Works",
     "section": "",
-    "text": "Computers hold data in two different places:\n\nMemory (RAM) is a computer’s short-term working space. It holds whatever a program is using right now, and it is cleared when the program ends.\nStorage is long-term space for files. Files stay in storage whether or not a program is using them.\n\nA useful comparison is a desk and a filing cabinet. Storage is the filing cabinet, where everything is kept. Memory is the desk, where you spread out the materials you are working with. A bigger desk lets you work with more at once, but it does not make you work faster.\nIn R, objects in your environment occupy memory. Files saved to disk occupy storage. Loading a large dataset into R requires enough memory to hold it.",
+    "text": "Longleaf is made up of many connected computers that are shared by researchers across UNC. Users prepare their work in one place, then ask the cluster to run it using the resources it needs.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
-      "2 · Computing cluster basics",
-      "2.3 · Memory and storage"
+      "1 · Introduction to Longleaf",
+      "1.3 · How Longleaf works"
     ]
   },
   {
-    "objectID": "modules/02-cluster-basics/03-memory.html#memory-and-storage-are-different",
-    "href": "modules/02-cluster-basics/03-memory.html#memory-and-storage-are-different",
-    "title": "Memory and Storage",
-    "section": "",
-    "text": "Computers hold data in two different places:\n\nMemory (RAM) is a computer’s short-term working space. It holds whatever a program is using right now, and it is cleared when the program ends.\nStorage is long-term space for files. Files stay in storage whether or not a program is using them.\n\nA useful comparison is a desk and a filing cabinet. Storage is the filing cabinet, where everything is kept. Memory is the desk, where you spread out the materials you are working with. A bigger desk lets you work with more at once, but it does not make you work faster.\nIn R, objects in your environment occupy memory. Files saved to disk occupy storage. Loading a large dataset into R requires enough memory to hold it.",
+    "objectID": "modules/01-introduction/03-how-longleaf-works.html#from-your-computer-to-a-compute-node",
+    "href": "modules/01-introduction/03-how-longleaf-works.html#from-your-computer-to-a-compute-node",
+    "title": "How Longleaf Works",
+    "section": "From your computer to a compute node",
+    "text": "From your computer to a compute node\n\n\n1 · Connect\nConnect to Longleaf from a terminal or web browser. You arrive on a login node.\n\n\n2 · Prepare\nUse the login node to organize files, edit code, load software, and describe the resources the work needs.\n\n\n3 · Schedule\nSubmit the work as a job. Slurm holds the job in a queue until suitable resources are available.\n\n\n4 · Compute\nA compute node runs the job and writes its output to storage.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
-      "2 · Computing cluster basics",
-      "2.3 · Memory and storage"
+      "1 · Introduction to Longleaf",
+      "1.3 · How Longleaf works"
     ]
   },
   {
-    "objectID": "modules/02-cluster-basics/03-memory.html#memory-on-longleaf",
-    "href": "modules/02-cluster-basics/03-memory.html#memory-on-longleaf",
-    "title": "Memory and Storage",
-    "section": "Memory on Longleaf",
-    "text": "Memory on Longleaf\nEach node on Longleaf has its own memory, ranging from about 41 GB to nearly 3 TB. When a job runs, Slurm reserves part of one node’s memory for that job, based on the amount requested.\nSeveral jobs can run on the same node at once, each using its own share of the node’s CPUs and memory.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "2 · Computing cluster basics",
-      "2.3 · Memory and storage"
-    ]
-  },
-  {
-    "objectID": "modules/02-cluster-basics/03-memory.html#why-the-memory-request-matters",
-    "href": "modules/02-cluster-basics/03-memory.html#why-the-memory-request-matters",
-    "title": "Memory and Storage",
-    "section": "Why the memory request matters",
-    "text": "Why the memory request matters\nThe amount of memory a job requests affects whether it succeeds and how soon it starts:\n\nToo little: if a job tries to use more memory than it requested, it will be stopped before it finishes.\nToo much: requesting extra memory does not make code run faster. Unused memory sits idle, unavailable to other users, and a large request may wait longer in the queue for a node with enough free memory.\n\nThe goal is to request what the job needs, plus a reasonable margin. Module 4 shows how to check how much memory a finished job actually used.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "2 · Computing cluster basics",
-      "2.3 · Memory and storage"
-    ]
-  },
-  {
-    "objectID": "modules/02-cluster-basics/03-memory.html#where-files-live",
-    "href": "modules/02-cluster-basics/03-memory.html#where-files-live",
-    "title": "Memory and Storage",
-    "section": "Where files live",
-    "text": "Where files live\nAll Longleaf nodes share the same storage. A file saved from the login node is available to a job running on a compute node, and output written by a job can be viewed from the login node afterward.\nLongleaf provides a few kinds of storage:\n\nHome directory: a small personal space for scripts, settings, and installed packages. It is backed up.\nPersonal work space: a larger personal space for data and results while research is in progress. It is not backed up.\nProject space: storage shared by a research group, requested by a PI.\n\nModule 3 covers where these locations are and how to move files to and from them.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "2 · Computing cluster basics",
-      "2.3 · Memory and storage"
-    ]
-  },
-  {
-    "objectID": "modules/02-cluster-basics/03-memory.html#sources",
-    "href": "modules/02-cluster-basics/03-memory.html#sources",
-    "title": "Memory and Storage",
-    "section": "Sources",
-    "text": "Sources\n\n“Getting Started on Longleaf,” UNC Research Computing",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "2 · Computing cluster basics",
-      "2.3 · Memory and storage"
-    ]
-  },
-  {
-    "objectID": "modules/02-cluster-basics/01-nodes.html",
-    "href": "modules/02-cluster-basics/01-nodes.html",
-    "title": "Nodes",
-    "section": "",
-    "text": "A node is a single computer within the cluster. Each node has its own processors (CPUs, or cores) and memory.\nLongleaf connects roughly 300 nodes, giving researchers access to far more computing power than any single machine can provide.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "2 · Computing cluster basics",
-      "2.1 · Nodes"
-    ]
-  },
-  {
-    "objectID": "modules/02-cluster-basics/01-nodes.html#what-is-a-node",
-    "href": "modules/02-cluster-basics/01-nodes.html#what-is-a-node",
-    "title": "Nodes",
-    "section": "",
-    "text": "A node is a single computer within the cluster. Each node has its own processors (CPUs, or cores) and memory.\nLongleaf connects roughly 300 nodes, giving researchers access to far more computing power than any single machine can provide.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "2 · Computing cluster basics",
-      "2.1 · Nodes"
-    ]
-  },
-  {
-    "objectID": "modules/02-cluster-basics/01-nodes.html#login-nodes-and-compute-nodes",
-    "href": "modules/02-cluster-basics/01-nodes.html#login-nodes-and-compute-nodes",
-    "title": "Nodes",
+    "objectID": "modules/01-introduction/03-how-longleaf-works.html#login-nodes-and-compute-nodes",
+    "href": "modules/01-introduction/03-how-longleaf-works.html#login-nodes-and-compute-nodes",
+    "title": "How Longleaf Works",
     "section": "Login nodes and compute nodes",
-    "text": "Login nodes and compute nodes\nNodes on Longleaf play two different roles:\n\nLogin nodes are where you arrive when you connect to longleaf.unc.edu. This is where you edit code, run basic commands, and submit jobs to the scheduler.\nCompute nodes are where jobs actually run. You do not log in to them directly; the scheduler sends your work to them.\n\nMany people are connected to the same login node at the same time, so running an analysis there slows the system down for everyone.",
+    "text": "Login nodes and compute nodes\nA node is one computer within the cluster. Longleaf nodes serve different purposes:\n\nA login node is the shared entry point. Use it to work with files, edit scripts, run basic commands, and submit jobs.\nA compute node supplies the processors and memory that run an analysis.\n\nUsers normally do not select or log in directly to a compute node. They request resources through Slurm, which places the work on an appropriate node.\n\n\n\n\n\n\nWarningKeep demanding work off the login node\n\n\n\nMany people share each login node. Running an analysis there can slow the system for everyone. Submit computational work through Slurm so that it runs on a compute node.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
-      "2 · Computing cluster basics",
-      "2.1 · Nodes"
+      "1 · Introduction to Longleaf",
+      "1.3 · How Longleaf works"
     ]
   },
   {
-    "objectID": "modules/02-cluster-basics/01-nodes.html#what-longleafs-compute-nodes-look-like",
-    "href": "modules/02-cluster-basics/01-nodes.html#what-longleafs-compute-nodes-look-like",
-    "title": "Nodes",
-    "section": "What Longleaf’s compute nodes look like",
-    "text": "What Longleaf’s compute nodes look like\nLongleaf’s compute nodes vary in size:\n\nCPUs per node: from 8 to 384\nMemory per node: from about 41 GB to nearly 3 TB\nGPUs: some nodes include NVIDIA A100, L40S, L40, V100, or GTX 1080 graphics processors\nMost common node: 48 CPUs and 355 GB of memory (99 nodes)\n\nThese correspond to the general-purpose, large-memory, and GPU nodes introduced in the Longleaf overview.",
+    "objectID": "modules/01-introduction/03-how-longleaf-works.html#what-is-slurm",
+    "href": "modules/01-introduction/03-how-longleaf-works.html#what-is-slurm",
+    "title": "How Longleaf Works",
+    "section": "What is Slurm?",
+    "text": "What is Slurm?\nA job is a request to run a program using specified cluster resources. Longleaf uses Slurm, a workload manager and job scheduler, to coordinate those requests.\nUsers do not normally select a compute node and start an analysis directly. Instead, they tell Slurm what program to run and what resources it needs. Slurm then manages the job from submission through completion.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
-      "2 · Computing cluster basics",
-      "2.1 · Nodes"
+      "1 · Introduction to Longleaf",
+      "1.3 · How Longleaf works"
     ]
   },
   {
-    "objectID": "modules/02-cluster-basics/01-nodes.html#longleaf-compared-with-a-laptop",
-    "href": "modules/02-cluster-basics/01-nodes.html#longleaf-compared-with-a-laptop",
-    "title": "Nodes",
-    "section": "Longleaf compared with a laptop",
-    "text": "Longleaf compared with a laptop\n\n\n\n\nTypical laptop\nMost common Longleaf node\n\n\n\n\nCPU cores\nabout 8–12\n48\n\n\nMemory\nabout 16 GB\n355 GB\n\n\n\nA single common Longleaf node has roughly four to six times the cores and more than twenty times the memory of a typical laptop—and Longleaf has hundreds of them.",
+    "objectID": "modules/01-introduction/03-how-longleaf-works.html#why-longleaf-needs-a-scheduler",
+    "href": "modules/01-introduction/03-how-longleaf-works.html#why-longleaf-needs-a-scheduler",
+    "title": "How Longleaf Works",
+    "section": "Why Longleaf needs a scheduler",
+    "text": "Why Longleaf needs a scheduler\nLongleaf has many users, many jobs, and a limited supply of compute nodes with different amounts of memory and different kinds of hardware. Slurm provides an orderly way to share those resources.\nSlurm:\n\nkeeps track of available cluster resources;\nholds waiting jobs in a queue;\nmatches jobs with appropriate compute resources;\nstarts and monitors work on the assigned resources; and\nreleases the resources when a job finishes.\n\nThis prevents users from competing directly for compute nodes and keeps one job from using resources that Slurm has assigned to another.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
-      "2 · Computing cluster basics",
-      "2.1 · Nodes"
+      "1 · Introduction to Longleaf",
+      "1.3 · How Longleaf works"
     ]
   },
   {
-    "objectID": "modules/02-cluster-basics/01-nodes.html#sources",
-    "href": "modules/02-cluster-basics/01-nodes.html#sources",
-    "title": "Nodes",
+    "objectID": "modules/01-introduction/03-how-longleaf-works.html#what-happens-after-submission",
+    "href": "modules/01-introduction/03-how-longleaf-works.html#what-happens-after-submission",
+    "title": "How Longleaf Works",
+    "section": "What happens after submission?",
+    "text": "What happens after submission?\n\nSlurm checks the job request and assigns it a unique job ID.\nThe job enters the queue, usually with a pending status.\nSlurm waits until suitable CPUs, memory, and any specialized hardware are available.\nSlurm allocates those resources and starts the job on a compute node.\nThe job finishes or stops, Slurm records its status, and the resources become available again.\n\nA pending job has not necessarily encountered a problem. It may be waiting because the requested resources are currently in use, no available node has enough memory, the job needs specialized hardware, or other jobs currently have higher priority.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "1 · Introduction to Longleaf",
+      "1.3 · How Longleaf works"
+    ]
+  },
+  {
+    "objectID": "modules/01-introduction/03-how-longleaf-works.html#what-slurm-does-not-do",
+    "href": "modules/01-introduction/03-how-longleaf-works.html#what-slurm-does-not-do",
+    "title": "How Longleaf Works",
+    "section": "What Slurm does not do",
+    "text": "What Slurm does not do\nSlurm manages resources and jobs, but it does not rewrite or optimize the program being submitted. In particular:\n\nrequesting more CPUs does not make single-threaded code use them;\nrequesting more memory does not make code run faster; and\nSlurm does not automatically know how much time or memory a program will need.\n\nUsers therefore need to make reasonable initial requests and refine them using information from completed jobs. Module 3 shows how to submit and monitor jobs and review their resource use.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "1 · Introduction to Longleaf",
+      "1.3 · How Longleaf works"
+    ]
+  },
+  {
+    "objectID": "modules/01-introduction/03-how-longleaf-works.html#what-does-a-job-request",
+    "href": "modules/01-introduction/03-how-longleaf-works.html#what-does-a-job-request",
+    "title": "How Longleaf Works",
+    "section": "What does a job request?",
+    "text": "What does a job request?\nFor most introductory jobs, the essential requests are:\n\n\n\n\n\n\n\nResource\nWhat it means\n\n\n\n\nCPUs\nThe processor capacity available to the job\n\n\nMemory\nThe short-term working space, or RAM, available while the program runs\n\n\nTime\nThe maximum amount of time the job is allowed to run\n\n\n\nAsking for more resources does not automatically make a program run faster. A program must be written to use multiple CPUs, and unused memory does not improve its speed. Requests that are close to what the job actually needs also make it easier for Slurm to find a place for the job to run.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "1 · Introduction to Longleaf",
+      "1.3 · How Longleaf works"
+    ]
+  },
+  {
+    "objectID": "modules/01-introduction/03-how-longleaf-works.html#memory-and-storage",
+    "href": "modules/01-introduction/03-how-longleaf-works.html#memory-and-storage",
+    "title": "How Longleaf Works",
+    "section": "Memory and storage",
+    "text": "Memory and storage\nMemory and storage serve different purposes:\n\nMemory holds the data and instructions a program is actively using. It is temporary and belongs to the compute node running the job.\nStorage holds scripts, datasets, logs, and results as files. Files remain available after a job ends.\n\nOne useful comparison is a desk and a filing cabinet. Memory is the desk where current work is spread out. Storage is the filing cabinet where materials are kept between tasks. A larger desk lets you work with more material at once, but it does not necessarily make the work faster.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "1 · Introduction to Longleaf",
+      "1.3 · How Longleaf works"
+    ]
+  },
+  {
+    "objectID": "modules/01-introduction/03-how-longleaf-works.html#the-essential-idea",
+    "href": "modules/01-introduction/03-how-longleaf-works.html#the-essential-idea",
+    "title": "How Longleaf Works",
+    "section": "The essential idea",
+    "text": "The essential idea\nYou use a login node to prepare and submit work. Slurm finds appropriate resources, a compute node runs the job, and the results are written to storage.\nLater modules show how to connect to Longleaf, submit a job, and choose appropriate resource requests.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "1 · Introduction to Longleaf",
+      "1.3 · How Longleaf works"
+    ]
+  },
+  {
+    "objectID": "modules/01-introduction/03-how-longleaf-works.html#sources",
+    "href": "modules/01-introduction/03-how-longleaf-works.html#sources",
+    "title": "How Longleaf Works",
     "section": "Sources",
-    "text": "Sources\n\n“Getting Started on Longleaf,” UNC Research Computing",
+    "text": "Sources\n\n“Getting Started on Longleaf,” UNC Research Computing\n“SLURM Guide,” UNC Research Computing\n“Quick Start User Guide,” SchedMD",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
-      "2 · Computing cluster basics",
-      "2.1 · Nodes"
+      "1 · Introduction to Longleaf",
+      "1.3 · How Longleaf works"
     ]
   },
   {
@@ -234,99 +221,135 @@
     ]
   },
   {
-    "objectID": "modules/04-interacting-with-longleaf.html",
-    "href": "modules/04-interacting-with-longleaf.html",
+    "objectID": "modules/03-interacting-with-longleaf.html",
+    "href": "modules/03-interacting-with-longleaf.html",
     "title": "Interacting with Longleaf",
     "section": "",
     "text": "Guiding question: How does a command become a managed job on a compute node?",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
-      "4 · Interacting with Longleaf"
+      "3 · Interacting with Longleaf"
     ]
   },
   {
-    "objectID": "modules/04-interacting-with-longleaf.html#essential-shell-commands",
-    "href": "modules/04-interacting-with-longleaf.html#essential-shell-commands",
+    "objectID": "modules/03-interacting-with-longleaf.html#essential-shell-commands",
+    "href": "modules/03-interacting-with-longleaf.html#essential-shell-commands",
     "title": "Interacting with Longleaf",
     "section": "Essential shell commands",
-    "text": "Essential shell commands\n\n\n\nTask\nCommand\n\n\n\n\nShow the current directory\npwd\n\n\nList files\nls\n\n\nEnter a directory\ncd directory-name\n\n\nMove up one directory\ncd ..\n\n\nCreate a directory\nmkdir directory-name\n\n\nRead a text file\nless filename",
+    "text": "Essential shell commands\n\n\n\nTask\nCommand\n\n\n\n\nShow the current directory\npwd\n\n\nList files\nls\n\n\nEnter a directory\ncd directory-name\n\n\nMove up one directory\ncd ..\n\n\nGo to your home directory\ncd ~\n\n\nCreate a directory\nmkdir directory-name\n\n\nPrint a short file\ncat filename\n\n\nShow the last lines of a file\ntail filename\n\n\nPage through a long file\nless filename (press q to quit)\n\n\nCount the lines in a file\nwc -l filename\n\n\nEdit a text file\nnano filename\n\n\nLeave Longleaf\nexit\n\n\n\n~ is shorthand for your home directory, so cd ~/example2_single_job works from anywhere. nano is a small editor that runs in the terminal: edit, press Ctrl+O to save, and Ctrl+X to leave. FileZilla’s View/Edit (Module 2) is the alternative for people who prefer an editor on their own computer.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
-      "4 · Interacting with Longleaf"
+      "3 · Interacting with Longleaf"
     ]
   },
   {
-    "objectID": "modules/04-interacting-with-longleaf.html#the-slurm-job-lifecycle",
-    "href": "modules/04-interacting-with-longleaf.html#the-slurm-job-lifecycle",
+    "objectID": "modules/03-interacting-with-longleaf.html#software-modules",
+    "href": "modules/03-interacting-with-longleaf.html#software-modules",
+    "title": "Interacting with Longleaf",
+    "section": "Software modules",
+    "text": "Software modules\nLongleaf has many versions of many programs installed, and none of them are available when you log in. Modules turn them on for the current session:\n\n\n\nTask\nCommand\n\n\n\n\nSee what is available\nmodule avail\n\n\nSearch for one program\nmodule avail r\n\n\nLoad the default version\nmodule add r\n\n\nLoad a specific version\nmodule add r/4.4.0\n\n\nShow what is loaded\nmodule list\n\n\nUnload everything\nmodule purge\n\n\n\nmodule avail r lists every R module, with the default marked (D). A loaded module lasts only until you log out, and two rules follow from that:\n\nJob scripts load their own modules. A batch job starts with a clean environment, so the script must contain the module add line it needs. UNC recommends a module purge first, so the job does not depend on whatever happened to be loaded when you submitted it.\nPin the version when it matters. module add r gives you today’s default, which can change. module add r/4.4.0 gives the same R every time, which is what a project that runs for months needs.\n\nmodule save stores your current set of modules so they load at every login. Jobs still ignore it, so keep the module add lines in your scripts.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "3 · Interacting with Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/03-interacting-with-longleaf.html#the-slurm-job-lifecycle",
+    "href": "modules/03-interacting-with-longleaf.html#the-slurm-job-lifecycle",
     "title": "Interacting with Longleaf",
     "section": "The Slurm job lifecycle",
     "text": "The Slurm job lifecycle\n\n\nDescribe\nWrite the commands and resource request.\n\n\nSubmit\nSend the job script to Slurm.\n\n\nMonitor\nCheck whether the job is pending, running, or complete.\n\n\nReview\nInspect output, errors, and resource use.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
-      "4 · Interacting with Longleaf"
+      "3 · Interacting with Longleaf"
     ]
   },
   {
-    "objectID": "modules/04-interacting-with-longleaf.html#describing-a-job",
-    "href": "modules/04-interacting-with-longleaf.html#describing-a-job",
+    "objectID": "modules/03-interacting-with-longleaf.html#describing-a-job",
+    "href": "modules/03-interacting-with-longleaf.html#describing-a-job",
     "title": "Interacting with Longleaf",
     "section": "Describing a job",
-    "text": "Describing a job\nA job request lists the resources the job needs, followed by the command it runs. UNC’s Slurm guide uses this example:\n#!/bin/bash\n#SBATCH --ntasks=1\n#SBATCH --cpus-per-task=1\n#SBATCH --time=01:00:00\n#SBATCH --mem=100m\nmyexe\n\n\n\nLine\nRequest\n\n\n\n\n--ntasks=1\nRun one task\n\n\n--cpus-per-task=1\nGive that task one CPU\n\n\n--time=01:00:00\nAllow up to one hour\n\n\n--mem=100m\nReserve 100 MB of memory\n\n\nmyexe\nThe command the job runs",
+    "text": "Describing a job\nA job is described by a short shell script. Lines starting with #SBATCH are directives that tell Slurm what the job needs. Everything after them is what the job runs. This is the script Module 4 submits in Example 2, submit_single.sl, with its comments removed:\n\n\nsubmit_single.sl\n\n#!/bin/bash\n#SBATCH --job-name=hello_longleaf\n#SBATCH --nodes=1\n#SBATCH --ntasks=1\n#SBATCH --cpus-per-task=1\n#SBATCH --mem=2g\n#SBATCH --time=00:10:00\n#SBATCH --output=logs/hello_%j.out\n#SBATCH --error=logs/hello_%j.err\n#SBATCH --mail-type=END,FAIL\n#SBATCH --mail-user=&lt;onyen&gt;@unc.edu\n\nmodule add r\nRscript --vanilla hello_longleaf.R\n\n\n\n\n\n\n\n\nDirective\nRequest\n\n\n\n\n--job-name\nThe name shown in the queue\n\n\n--nodes=1 --ntasks=1 --cpus-per-task=1\nOne task with one CPU on one node, which is what an ordinary R script needs\n\n\n--mem=2g\nReserve 2 GB of memory\n\n\n--time=00:10:00\nAllow up to ten minutes\n\n\n--output and --error\nFiles for what the job prints and for its errors; %j becomes the job ID\n\n\n--mail-type and --mail-user\nEmail when the job ends or fails\n\n\n\nThe two lines after the directives are the job itself: load R, then run the script. Two details matter more than they look:\n\nThe job starts in the directory you ran sbatch from. Relative paths such as logs/ and hello_longleaf.R are resolved there, so submit from inside the project folder.\nSlurm does not create the log directory. If logs/ does not exist, the job fails immediately and leaves no output to explain why. Create it before submitting.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
-      "4 · Interacting with Longleaf"
+      "3 · Interacting with Longleaf"
     ]
   },
   {
-    "objectID": "modules/04-interacting-with-longleaf.html#core-slurm-actions",
-    "href": "modules/04-interacting-with-longleaf.html#core-slurm-actions",
+    "objectID": "modules/03-interacting-with-longleaf.html#choosing-resource-requests",
+    "href": "modules/03-interacting-with-longleaf.html#choosing-resource-requests",
+    "title": "Interacting with Longleaf",
+    "section": "Choosing resource requests",
+    "text": "Choosing resource requests\nResource requests affect both whether a job succeeds and when it can start:\n\nToo little memory or time: the job may be stopped before it finishes.\nToo much memory or time: unused resources remain unavailable to other users, and the job may wait longer for a suitable opening.\nMore CPUs: additional CPUs help only when the program is able to use them.\n\nStart with a reasonable estimate plus a modest margin. After a job finishes, use sacct to compare the request with the time and memory the job actually used:\nsacct -j &lt;job-id&gt; --format=JobID,State,Elapsed,MaxRSS\nUse that information to improve the next request rather than repeatedly reserving the largest possible amount.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "3 · Interacting with Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/03-interacting-with-longleaf.html#core-slurm-actions",
+    "href": "modules/03-interacting-with-longleaf.html#core-slurm-actions",
     "title": "Interacting with Longleaf",
     "section": "Core Slurm actions",
-    "text": "Core Slurm actions\nsbatch job.slurm\nsqueue -u \"$USER\"\nscancel &lt;job-id&gt;",
+    "text": "Core Slurm actions\nsbatch submit_single.sl      # submit; Slurm replies with the job ID\nsqueue -u \"$USER\"            # list your pending and running jobs\nscancel &lt;job-id&gt;             # cancel one job\nsacct -j &lt;job-id&gt;            # state, exit code, and resource use after it finishes\nsqueue shows one line per job with its state in the ST column:\n\n\n\n\n\n\n\n\nCode\nState\nMeaning\n\n\n\n\nPD\nPending\nWaiting in the queue. The NODELIST(REASON) column says why, such as Priority or Resources.\n\n\nR\nRunning\nOn a compute node now.\n\n\nCG\nCompleting\nFinishing up. It disappears from the list a moment later.\n\n\n\nA job that has finished no longer appears in squeue. Use sacct -j &lt;job-id&gt; to see whether it completed, failed, or was killed for exceeding its limits.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
-      "4 · Interacting with Longleaf"
+      "3 · Interacting with Longleaf"
     ]
   },
   {
-    "objectID": "modules/04-interacting-with-longleaf.html#queue-rules-and-responsible-requests",
-    "href": "modules/04-interacting-with-longleaf.html#queue-rules-and-responsible-requests",
+    "objectID": "modules/03-interacting-with-longleaf.html#interactive-jobs",
+    "href": "modules/03-interacting-with-longleaf.html#interactive-jobs",
+    "title": "Interacting with Longleaf",
+    "section": "Interactive jobs",
+    "text": "Interactive jobs\nNot every job is a script. When you want a prompt on a compute node, to test code or install packages before submitting the real thing, ask Slurm for an interactive job:\nsrun -t 1:00:00 -p interact -n 1 --cpus-per-task=1 --mem=4g --pty /bin/bash\nsrun takes the same resource flags as the #SBATCH lines, but it waits for the allocation and then opens a shell on the compute node instead of running a script. The prompt changes to show the compute node’s name. When you are done, exit returns you to the login node and releases the resources. Example 1 in Module 4 uses this to run R interactively.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "3 · Interacting with Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/03-interacting-with-longleaf.html#queue-rules-and-responsible-requests",
+    "href": "modules/03-interacting-with-longleaf.html#queue-rules-and-responsible-requests",
     "title": "Interacting with Longleaf",
     "section": "Queue rules and responsible requests",
-    "text": "Queue rules and responsible requests\nEvery job runs in a partition, a group of nodes intended for a particular kind of work:\n\n\n\n\n\n\n\n\nPartition\nUsed for\nMaximum run time\n\n\n\n\ngeneral\nStandard CPU jobs; suitable for most work\n11 days\n\n\ninteract\nInteractive sessions, such as running a graphical program or debugging code\n8 hours\n\n\ndatamover\nCopying large amounts of data between Longleaf file systems, or heavy downloading from the web\n11 days\n\n\nGPU partitions\nJobs that use a GPU\n11 days unless otherwise noted\n\n\n\ngeneral is the default partition. UNC recommends not specifying --partition=general in a job request: leaving it out allows Slurm to place the job on an idle node in another partition.\n\n\n\n\n\n\n\nWarningKeep heavy work off login nodes\n\n\n\nLogin nodes are shared entry points. Resource-intensive analyses should run through the scheduler on compute nodes.",
+    "text": "Queue rules and responsible requests\nEvery job runs in a partition, a group of nodes intended for a particular kind of work:\n\n\n\n\n\n\n\n\nPartition\nUsed for\nMaximum run time\n\n\n\n\ngeneral\nStandard CPU jobs; suitable for most work\n11 days\n\n\ninteract\nInteractive sessions, such as running a graphical program or debugging code\n8 hours\n\n\ndatamover\nCopying large amounts of data between Longleaf file systems, or heavy downloading from the web\n11 days\n\n\nGPU partitions\nJobs that use a GPU\n11 days unless otherwise noted\n\n\n\ngeneral is the default partition. UNC recommends not specifying --partition=general in a job request: leaving it out allows Slurm to place the job on an idle node in another partition.\nPartition limits and available hardware can change. Check UNC Research Computing’s current Longleaf documentation when a job has unusual runtime, memory, or GPU requirements.\n\n\n\n\n\n\nWarningKeep heavy work off login nodes\n\n\n\nLogin nodes are shared entry points. Resource-intensive analyses should run through the scheduler on compute nodes.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
-      "4 · Interacting with Longleaf"
+      "3 · Interacting with Longleaf"
     ]
   },
   {
-    "objectID": "modules/04-interacting-with-longleaf.html#demonstration-sequence",
-    "href": "modules/04-interacting-with-longleaf.html#demonstration-sequence",
+    "objectID": "modules/03-interacting-with-longleaf.html#demonstration-sequence",
+    "href": "modules/03-interacting-with-longleaf.html#demonstration-sequence",
     "title": "Interacting with Longleaf",
     "section": "Demonstration sequence",
     "text": "Demonstration sequence\n\nInspect a small job script.\nSubmit it and record the job ID.\nCheck its state in the queue.\nFind the output file.\nShow how to cancel a job safely.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
-      "4 · Interacting with Longleaf"
+      "3 · Interacting with Longleaf"
     ]
   },
   {
-    "objectID": "modules/04-interacting-with-longleaf.html#sources",
-    "href": "modules/04-interacting-with-longleaf.html#sources",
+    "objectID": "modules/03-interacting-with-longleaf.html#sources",
+    "href": "modules/03-interacting-with-longleaf.html#sources",
     "title": "Interacting with Longleaf",
     "section": "Sources",
-    "text": "Sources\n\n“Getting Started on Longleaf,” UNC Research Computing\n“SLURM Guide,” UNC Research Computing",
+    "text": "Sources\n\n“Getting Started on Longleaf,” UNC Research Computing\n“SLURM Guide,” UNC Research Computing\n“Modules Approach to Software Management,” UNC Research Computing",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
-      "4 · Interacting with Longleaf"
+      "3 · Interacting with Longleaf"
     ]
   },
   {
@@ -341,234 +364,270 @@
     "href": "index.html#workshop-outline",
     "title": "Getting Started with Longleaf",
     "section": "Workshop outline",
-    "text": "Workshop outline\n\n\n\n01\n\nIntroduction to Longleaf\nUNC’s computing history, what Longleaf is, and how work moves through the cluster.\nOpen module\n\n\n\n\n\n02\n\nHow do you actually use it?\nRequesting access, logging in, working through the browser, and transferring files.\nOpen module\n\n\n\n\n\n03\n\nInteracting with Longleaf\nEssential shell commands, Slurm, job status, cancellation, and responsible resource requests.\nOpen module\n\n\n\n\n\n04\n\nR on Longleaf\nR installations, package libraries, interactive work, and submitting a reproducible batch job.\nOpen module\n\n\n\n\n\nThe remaining time is reserved for a workflow recap, questions, and troubleshooting examples."
+    "text": "Workshop outline\n\n\n\n01\n\nIntroduction to Longleaf\nUNC’s computing history, what Longleaf is, and how work moves through the cluster.\nOpen module\n\n\n\n\n\n02\n\nAccessing Longleaf\nHow do you actually use it? Requesting an account, logging in, Open OnDemand, and moving files with FileZilla.\nOpen module\n\n\n\n\n\n03\n\nInteracting with Longleaf\nEssential shell commands, Slurm, job status, cancellation, and responsible resource requests.\nOpen module\n\n\n\n\n\n04\n\nR on Longleaf\nR installations, package libraries, interactive work, and submitting a reproducible batch job.\nOpen module\n\n\n\n\n\nThe remaining time is reserved for a workflow recap, questions, and troubleshooting examples."
   },
   {
-    "objectID": "modules/03-accessing-longleaf.html",
-    "href": "modules/03-accessing-longleaf.html",
-    "title": "How Do You Actually Use It?",
+    "objectID": "modules/02-accessing-longleaf.html",
+    "href": "modules/02-accessing-longleaf.html",
+    "title": "Accessing Longleaf",
     "section": "",
     "text": "Guiding question: Which access method should a new Longleaf user choose?",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
-      "3 · Accessing Longleaf"
+      "2 · Accessing Longleaf"
     ]
   },
   {
-    "objectID": "modules/03-accessing-longleaf.html#requesting-an-account",
-    "href": "modules/03-accessing-longleaf.html#requesting-an-account",
-    "title": "How Do You Actually Use It?",
+    "objectID": "modules/02-accessing-longleaf.html#requesting-an-account",
+    "href": "modules/02-accessing-longleaf.html#requesting-an-account",
+    "title": "Accessing Longleaf",
     "section": "Requesting an account",
-    "text": "Requesting an account",
+    "text": "Requesting an account\nA Longleaf account is separate from your ONYEN and is not created automatically. Request one before the workshop:\n\nOpen UNC Research Computing’s Request a Cluster Account page.\nChoose Longleaf Cluster as the subscription type and submit the form.\nWait for the email saying the account has been created. Until it arrives, logins to Longleaf and Open OnDemand fail.\n\nOnce the account exists, your username on Longleaf is your ONYEN and the password is your ONYEN password.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
-      "3 · Accessing Longleaf"
+      "2 · Accessing Longleaf"
     ]
   },
   {
-    "objectID": "modules/03-accessing-longleaf.html#ways-to-connect",
-    "href": "modules/03-accessing-longleaf.html#ways-to-connect",
-    "title": "How Do You Actually Use It?",
+    "objectID": "modules/02-accessing-longleaf.html#connecting-to-the-cluster",
+    "href": "modules/02-accessing-longleaf.html#connecting-to-the-cluster",
+    "title": "Accessing Longleaf",
+    "section": "Connecting to the cluster",
+    "text": "Connecting to the cluster\nLongleaf is reachable directly from the campus network. From anywhere else, connect to the UNC VPN first. Every method on this page, including FileZilla, needs that connection.\nThe VPN client is Cisco Secure Client, distributed by UNC ITS. Install it, connect to vpn.unc.edu, and sign in with your ONYEN, your password, and Duo. Search for “VPN” on the ITS help site for the current installation steps for your operating system.\n\nTo do: confirm the VPN details above (vpn.unc.edu, Duo) against the ITS article and replace the help.unc.edu link with a direct link to it.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "2 · Accessing Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/02-accessing-longleaf.html#ways-to-connect",
+    "href": "modules/02-accessing-longleaf.html#ways-to-connect",
+    "title": "Accessing Longleaf",
     "section": "Ways to connect",
-    "text": "Ways to connect\n\n\n\n\n\n\n\n\nMethod\nBest for\nWhat the user sees\n\n\n\n\nTerminal connection\nDirect command-line work\nA shell prompt on a login node\n\n\nWeb portal\nBrowser-based interactive work\nFiles, applications, and interactive sessions\n\n\nSFTP client\nMoving files between systems\nA graphical local-and-remote file browser",
+    "text": "Ways to connect\n\n\n\n\n\n\n\n\nMethod\nBest for\nWhat the user sees\n\n\n\n\nTerminal (ssh)\nDirect command-line work; what Modules 3 and 4 use\nA shell prompt on a login node\n\n\nOpen OnDemand\nRStudio in the browser, a terminal without installing one, browsing files\nA dashboard with Files, Shell, and Interactive Apps\n\n\nFileZilla\nMoving files between your computer and Longleaf\nA two-pane file browser: your computer on the left, Longleaf on the right",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
-      "3 · Accessing Longleaf"
+      "2 · Accessing Longleaf"
     ]
   },
   {
-    "objectID": "modules/03-accessing-longleaf.html#logging-in-from-a-terminal",
-    "href": "modules/03-accessing-longleaf.html#logging-in-from-a-terminal",
-    "title": "How Do You Actually Use It?",
+    "objectID": "modules/02-accessing-longleaf.html#logging-in-from-a-terminal",
+    "href": "modules/02-accessing-longleaf.html#logging-in-from-a-terminal",
+    "title": "Accessing Longleaf",
     "section": "Logging in from a terminal",
-    "text": "Logging in from a terminal",
+    "text": "Logging in from a terminal\nThe terminal is the route the rest of this workshop uses. Modules 3 and 4 run every command from a terminal connected to a login node.\nOn a Mac, open Terminal (in Applications › Utilities) and type:\nssh &lt;onyen&gt;@longleaf.unc.edu\nOn Windows, UNC Research Computing recommends MobaXterm (Home Edition): start a new SSH session with longleaf.unc.edu as the remote host, port 22, and your ONYEN as the username. Windows Terminal and PowerShell also have ssh built in, so the command above works there too.\nThe first time you connect, ssh asks whether to trust the host; type yes. Then enter your ONYEN password. Nothing appears while you type it, which is normal.\nOnce connected, the prompt changes to show your ONYEN and the name of a login node. A login node is the place to edit files, load software, and submit jobs. It is shared with everyone else who is logged in, so do not run analyses on it; Module 3 shows how to send them to a compute node.\nTo leave, type exit. If a program needs to open a graphics window, connect with ssh -X &lt;onyen&gt;@longleaf.unc.edu instead.\n\nTo do: add a screenshot of a first login from Terminal, saved as images/terminal-login.png.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
-      "3 · Accessing Longleaf"
+      "2 · Accessing Longleaf"
     ]
   },
   {
-    "objectID": "modules/03-accessing-longleaf.html#working-through-the-browser",
-    "href": "modules/03-accessing-longleaf.html#working-through-the-browser",
-    "title": "How Do You Actually Use It?",
+    "objectID": "modules/02-accessing-longleaf.html#working-through-the-browser",
+    "href": "modules/02-accessing-longleaf.html#working-through-the-browser",
+    "title": "Accessing Longleaf",
     "section": "Working through the browser",
-    "text": "Working through the browser",
+    "text": "Working through the browser\nOpen OnDemand is Longleaf’s web portal at https://ondemand.rc.unc.edu. Sign in with your ONYEN and password. It needs a Longleaf account; without one, the page shows instructions for requesting it. If it does not load from off campus, connect to the VPN first.\nThe dashboard’s menus cover most of what a new user needs:\n\n\n\n\n\n\n\nMenu\nWhat it offers\n\n\n\n\nFiles\nA file browser for your home directory and other Longleaf storage, with upload and download by drag and drop.\n\n\nClusters › Shell Access\nA terminal in a browser tab, identical to an ssh session. Useful on a computer without a terminal program.\n\n\nInteractive Apps › RStudio Server\nRStudio running on a compute node. You choose the hours, CPUs, memory, and R module; UNC recommends at least two CPUs. Module 4 uses this.\n\n\nJobs › Job Composer\nA form-based way to submit batch jobs. This workshop submits jobs from a terminal instead, so the scripts and paths stay the same everywhere.\n\n\n\nSessions started from Interactive Apps wait in the queue like any other job, so start one a few minutes before you need it.\n\nTo do: add an annotated screenshot of the OnDemand dashboard showing the Files, Clusters, and Interactive Apps menus, saved as images/ondemand-dashboard.png.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
-      "3 · Accessing Longleaf"
+      "2 · Accessing Longleaf"
     ]
   },
   {
-    "objectID": "modules/03-accessing-longleaf.html#moving-files",
-    "href": "modules/03-accessing-longleaf.html#moving-files",
-    "title": "How Do You Actually Use It?",
-    "section": "Moving files",
-    "text": "Moving files\nIntroduce a graphical SFTP workflow first, then note when command-line tools are useful for larger or repeatable transfers.",
+    "objectID": "modules/02-accessing-longleaf.html#moving-files-with-filezilla",
+    "href": "modules/02-accessing-longleaf.html#moving-files-with-filezilla",
+    "title": "Accessing Longleaf",
+    "section": "Moving files with FileZilla",
+    "text": "Moving files with FileZilla\nFileZilla is a free file-transfer program for Mac, Windows, and Linux. It shows your computer on the left and Longleaf on the right, and you move files by dragging them across. It uses the same login as the terminal, so there is nothing to set up on Longleaf.\n\nInstall\nDownload FileZilla Client from https://filezilla-project.org/. The site also offers FileZilla Server, which you do not want. On Windows, the installer may offer additional software during setup; decline it.\n\n\nConnect\nThe quickest route is the Quickconnect bar at the top of the window:\n\n\n\nField\nValue\n\n\n\n\nHost\nsftp://longleaf.unc.edu\n\n\nUsername\nyour ONYEN\n\n\nPassword\nyour ONYEN password\n\n\nPort\n22\n\n\n\nClick Quickconnect. The first time, FileZilla asks whether to trust the server’s host key; click OK. If the connection times out, confirm that you are on campus or connected to the VPN.\nTo avoid retyping, save the connection. Open File › Site Manager, click New site, set Protocol to SFTP - SSH File Transfer Protocol, enter the host, port, and your ONYEN as the user, set Logon Type to Ask for password, and click Connect.\n\n\nTransfer\nAfter connecting, the right pane shows your home directory on Longleaf.\n\nUpload: drag a file or folder from the left pane to the right pane. Dragging a folder copies everything inside it.\nDownload: drag from the right pane to the left.\nGo somewhere else on Longleaf: type a path from the next section into the Remote site box and press Enter.\nSee new files: FileZilla does not notice files a job wrote after you connected. Press F5 to refresh.\n\nProgress appears in the transfer queue at the bottom of the window.\n\nTo do: add a screenshot of FileZilla connected to Longleaf with both panes visible, saved as images/filezilla-connected.png.\n\n\n\n\n\n\n\nTipEdit a script in place\n\n\n\nRight-click a text file in the Longleaf pane and choose View/Edit. FileZilla opens it in an editor on your computer. When you save, it asks whether to upload the changed file; click Yes. This is enough for small changes such as setting the email address in a submission script.\n\n\nFor very large datasets or transfers you repeat often, command-line tools such as rsync are easier to script. FileZilla covers everything in this workshop.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
-      "3 · Accessing Longleaf"
+      "2 · Accessing Longleaf"
     ]
   },
   {
-    "objectID": "modules/03-accessing-longleaf.html#demonstration-sequence",
-    "href": "modules/03-accessing-longleaf.html#demonstration-sequence",
-    "title": "How Do You Actually Use It?",
+    "objectID": "modules/02-accessing-longleaf.html#where-files-live",
+    "href": "modules/02-accessing-longleaf.html#where-files-live",
+    "title": "Accessing Longleaf",
+    "section": "Where files live",
+    "text": "Where files live\nLongleaf’s login and compute nodes can access the same shared storage. A script prepared on a login node can therefore read data and write results while it runs on a compute node.\nThe main storage locations for new users are:\n\nHome directory: /nas/longleaf/home/&lt;onyen&gt; is a relatively small (50 GB), backed-up space for scripts, settings, and personal software, including your R packages. It is not intended for data-intensive computing.\nPersonal data space: /hickory/users/&lt;o&gt;/&lt;n&gt;/&lt;onyen&gt; provides a much larger location (2 TB) for active and inactive personal research data. It is not backed up. &lt;o&gt; and &lt;n&gt; are the first and second letters of your ONYEN, so the ONYEN jdoe has /hickory/users/j/d/jdoe.\nProject space: research groups may have shared storage under /proj, /hickory/proj, or /vast/som. Its location and quota depend on the group, and it is not backed up by default.\n\nAccounts created before summer 2026 may also have older /work or /users directories. New accounts get /hickory/users only, and this workshop uses it for anything too large for the home directory.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "2 · Accessing Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/02-accessing-longleaf.html#demonstration-sequence",
+    "href": "modules/02-accessing-longleaf.html#demonstration-sequence",
+    "title": "Accessing Longleaf",
     "section": "Demonstration sequence",
-    "text": "Demonstration sequence\n\nOpen the chosen access method.\nConnect and identify the login environment.\nLocate the home and project directories.\nTransfer one small example file.",
+    "text": "Demonstration sequence\n\nLog in from a terminal and read the prompt.\nSign in to Open OnDemand and open the Files app.\nConnect FileZilla and find the home directory.\nUpload one small file with FileZilla and list it from the terminal with ls.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
-      "3 · Accessing Longleaf"
+      "2 · Accessing Longleaf"
     ]
   },
   {
-    "objectID": "modules/05-r-on-longleaf.html",
-    "href": "modules/05-r-on-longleaf.html",
+    "objectID": "modules/02-accessing-longleaf.html#sources",
+    "href": "modules/02-accessing-longleaf.html#sources",
+    "title": "Accessing Longleaf",
+    "section": "Sources",
+    "text": "Sources\n\n“Getting Started on Longleaf,” UNC Research Computing\n“Open OnDemand,” UNC Research Computing\n“Request a Cluster Account,” UNC Research Computing\nFileZilla Client documentation",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "2 · Accessing Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/04-r-on-longleaf.html",
+    "href": "modules/04-r-on-longleaf.html",
     "title": "R on Longleaf",
     "section": "",
     "text": "Guiding question: When should R be run interactively, and when should it become a scheduled job?",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
-      "5 · R on Longleaf"
+      "4 · R on Longleaf"
     ]
   },
   {
-    "objectID": "modules/05-r-on-longleaf.html#r-installations-on-longleaf",
-    "href": "modules/05-r-on-longleaf.html#r-installations-on-longleaf",
+    "objectID": "modules/04-r-on-longleaf.html#r-installations-on-longleaf",
+    "href": "modules/04-r-on-longleaf.html#r-installations-on-longleaf",
     "title": "R on Longleaf",
     "section": "R installations on Longleaf",
-    "text": "R installations on Longleaf",
+    "text": "R installations on Longleaf\nR is installed as a software module (Module 3), with several versions available. Nothing is loaded when you log in, so every session, and every job script, starts by loading one:\nmodule avail r        # list the R modules; the default is marked (D)\nmodule add r          # load the default version\nmodule add r/4.4.0    # or pin a specific version\nR --version           # confirm which R you have\nPin the version in any project that will run for a while. The default can change, and your personal package library is tied to the version, as the next section explains.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
-      "5 · R on Longleaf"
+      "4 · R on Longleaf"
     ]
   },
   {
-    "objectID": "modules/05-r-on-longleaf.html#where-packages-live",
-    "href": "modules/05-r-on-longleaf.html#where-packages-live",
+    "objectID": "modules/04-r-on-longleaf.html#where-packages-live",
+    "href": "modules/04-r-on-longleaf.html#where-packages-live",
     "title": "R on Longleaf",
     "section": "Where packages live",
-    "text": "Where packages live\nExplain the difference between packages included with R, centrally installed packages, and packages installed in a user’s personal library.",
+    "text": "Where packages live\nR looks for packages in a short list of folders. On Longleaf, two of them matter:\n\nThe R module’s library. The packages that ship with R, and any that Research Computing has installed centrally, live inside the R installation that module add r loads. Everyone can use them, and nobody can change them.\nYour personal library. Anything you install yourself goes into a folder in your home directory. R creates it for you the first time you install a package. The default location is ~/R/x86_64-pc-linux-gnu-library/4.4, where 4.4 matches the version of R you loaded.\n\n\nTo do: verify the personal-library path on Longleaf. Run module add r and then R -e '.libPaths(); Sys.getenv(\"R_LIBS_USER\")', and correct the path above if it differs.\n\nInside R, .libPaths() prints these folders in the order R searches them.\nTwo consequences follow from that layout. Your home directory is shared storage, so a package installed once is available in RStudio Server, interactive sessions, and batch jobs alike, as long as they load the same R module. And the personal library belongs to one R version: patch releases such as 4.4.0 and 4.4.2 share it, but an R module with a different minor version looks in a different folder, so packages installed under the old version are not found until you install them again.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
-      "5 · R on Longleaf"
+      "4 · R on Longleaf"
     ]
   },
   {
-    "objectID": "modules/05-r-on-longleaf.html#interactive-r-or-a-scheduled-job",
-    "href": "modules/05-r-on-longleaf.html#interactive-r-or-a-scheduled-job",
+    "objectID": "modules/04-r-on-longleaf.html#interactive-r-or-a-scheduled-job",
+    "href": "modules/04-r-on-longleaf.html#interactive-r-or-a-scheduled-job",
     "title": "R on Longleaf",
     "section": "Interactive R or a scheduled job?",
     "text": "Interactive R or a scheduled job?\n\n\n\n\n\n\n\nUse interactive R when…\nUse a scheduled job when…\n\n\n\n\ntesting a short command\nthe analysis may run for a long time\n\n\nchecking that packages load\nthe work should continue after disconnecting\n\n\ndebugging a small example\nthe analysis needs substantial memory or CPUs\n\n\nexploring an unfamiliar dataset\nthe same analysis will be repeated",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
-      "5 · R on Longleaf"
+      "4 · R on Longleaf"
     ]
   },
   {
-    "objectID": "modules/05-r-on-longleaf.html#installing-packages",
-    "href": "modules/05-r-on-longleaf.html#installing-packages",
+    "objectID": "modules/04-r-on-longleaf.html#installing-packages",
+    "href": "modules/04-r-on-longleaf.html#installing-packages",
     "title": "R on Longleaf",
     "section": "Installing packages",
-    "text": "Installing packages",
+    "text": "Installing packages\nInstall packages from an interactive R session, not from a job script. Start a session as in Example 1, load R, and call install.packages():\nsrun -t 1:00:00 -p interact -n 1 --cpus-per-task=1 --mem=4g --pty /bin/bash\nmodule add r\nR\ninstall.packages(\"jsonlite\", repos = \"https://cloud.r-project.org\")\nThe repos argument skips the CRAN mirror menu that R otherwise shows in a terminal. The first time you install anything, R notices that it cannot write to the module’s library and asks two questions. Answer yes to both:\nWould you like to use a personal library instead? (yes/No/cancel) yes\nWould you like to create a personal library\n'~/R/x86_64-pc-linux-gnu-library/4.4'\nto install packages into? (yes/No/cancel) yes\n\nTo do: confirm the two prompts above with one first-time install.packages() on Longleaf. If Longleaf pre-creates the personal library, the prompts never appear and this paragraph should say so.\n\nFrom then on, every install.packages() call goes straight to your personal library without asking. Confirm the package loads and see where it went:\nlibrary(jsonlite)\n.libPaths()\nPackages with compiled code take a few minutes to build. That is normal; wait for the prompt to return.\n\n\n\n\n\n\nTipInstall once, interactively\n\n\n\nA job script should load R and run your code, nothing more. Installing inside a job is slow, and the twelve tasks of a job array all trying to install the same package at once will interfere with each other. Install in an interactive session, confirm library() works, then submit.\n\n\nBioconductor packages use their own installer. Install it once from CRAN, then use it for the rest:\ninstall.packages(\"BiocManager\", repos = \"https://cloud.r-project.org\")\nBiocManager::install(\"limma\")\n\nInstalling from a file you upload\nSome packages are not on CRAN: one a collaborator sent you, one you are developing, or one you downloaded from GitHub as a source archive. In that case, upload the package’s .tar.gz file to your home directory on Longleaf with FileZilla, then point install.packages() at the file instead of a repository:\ninstall.packages(\"~/mypackage_0.1.0.tar.gz\", repos = NULL, type = \"source\")\nrepos = NULL tells R to install from the file. R does not download dependencies in this mode, so if the installation stops with there is no package called 'xyz', install xyz from CRAN first and run the command again. The package lands in the same personal library as everything else.\nIf you have the package as a folder rather than an archive, build the archive on your laptop first. From the folder’s parent directory, R CMD build mypackage produces the .tar.gz file to upload.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
-      "5 · R on Longleaf"
+      "4 · R on Longleaf"
     ]
   },
   {
-    "objectID": "modules/05-r-on-longleaf.html#three-examples",
-    "href": "modules/05-r-on-longleaf.html#three-examples",
+    "objectID": "modules/04-r-on-longleaf.html#three-examples",
+    "href": "modules/04-r-on-longleaf.html#three-examples",
     "title": "R on Longleaf",
     "section": "Three examples",
     "text": "Three examples\nThe rest of this module follows the progression most projects take:\n\nInteractive R on a compute node, for testing and debugging.\nA single scheduled job that runs one R script once.\nA batch of scheduled jobs that run the same script under many parameter settings.\n\nThe files for Examples 2 and 3 are in the examples/ folder of this site’s repository, and each file is linked below. In the commands that follow, replace &lt;onyen&gt; with your ONYEN.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
-      "5 · R on Longleaf"
+      "4 · R on Longleaf"
     ]
   },
   {
-    "objectID": "modules/05-r-on-longleaf.html#example-1-interactive-r",
-    "href": "modules/05-r-on-longleaf.html#example-1-interactive-r",
+    "objectID": "modules/04-r-on-longleaf.html#example-1-interactive-r",
+    "href": "modules/04-r-on-longleaf.html#example-1-interactive-r",
     "title": "R on Longleaf",
     "section": "Example 1 · Interactive R",
-    "text": "Example 1 · Interactive R\nAn interactive session gives you a shell, or RStudio, on a compute node. Exploratory work then runs on resources reserved for you instead of competing with everyone else on the login node.\n\nFrom a terminal\nLog in, then ask Slurm for an interactive shell on the interact partition:\nssh &lt;onyen&gt;@longleaf.unc.edu\nsrun -t 1:00:00 -p interact -n 1 --cpus-per-task=1 --mem=4g --pty /bin/bash\n\n\n\n\n\n\n\nFlag\nRequest\n\n\n\n\n-t 1:00:00\nAllow up to one hour; the interact partition allows at most 8 hours\n\n\n-p interact\nUse the partition reserved for interactive work\n\n\n-n 1 --cpus-per-task=1\nOne task with one CPU\n\n\n--mem=4g\nReserve 4 GB of memory\n\n\n--pty /bin/bash\nAttach a terminal and start a shell in it\n\n\n\nThe prompt changes to show a compute node’s name once the session starts. Load R and start it:\nmodule add r\nR\nInside R, confirm where you are and try a few commands:\nSys.info()[[\"nodename\"]]   # a compute node, not a login node\nR.version.string\nx &lt;- rnorm(1e6); mean(x)\nLeave R, then the session, so the node is released for other users:\nq()\nexit\nIf you need graphics windows (for example plot()), log in with ssh -X and add --x11=first to the srun command.\n\n\nFrom the browser\nOpen OnDemand at https://ondemand.rc.unc.edu has an RStudio Server app under Interactive Apps. Choose the number of hours, CPUs, memory, and the R module, and RStudio opens on a compute node in a browser tab. UNC recommends requesting at least two CPUs for RStudio sessions.\n\n\n\n\n\n\nTipInteractive sessions are for development\n\n\n\nAnything that takes more than a few minutes, needs to keep running after you disconnect, or will be repeated belongs in a scheduled job. Examples 2 and 3 show how, and an interactive session is the right place to test their scripts before submitting them.",
+    "text": "Example 1 · Interactive R\nAn interactive session gives you a shell, or RStudio, on a compute node. Exploratory work then runs on resources reserved for you instead of competing with everyone else on the login node.\n\nFrom a terminal\nLog in, then ask Slurm for an interactive shell on the interact partition:\nssh &lt;onyen&gt;@longleaf.unc.edu\nsrun -t 1:00:00 -p interact -n 1 --cpus-per-task=1 --mem=4g --pty /bin/bash\n\n\n\n\n\n\n\nFlag\nRequest\n\n\n\n\n-t 1:00:00\nAllow up to one hour; the interact partition allows at most 8 hours\n\n\n-p interact\nUse the partition reserved for interactive work\n\n\n-n 1 --cpus-per-task=1\nOne task with one CPU\n\n\n--mem=4g\nReserve 4 GB of memory\n\n\n--pty /bin/bash\nAttach a terminal and start a shell in it\n\n\n\nThe prompt changes to show a compute node’s name once the session starts. Load R and start it:\nmodule add r\nR\nInside R, confirm where you are and try a few commands:\nSys.info()[[\"nodename\"]]   # a compute node, not a login node\nR.version.string\nx &lt;- rnorm(1e6); mean(x)\nLeave R, then the session, so the node is released for other users:\nq()\nexit\nIf you need graphics windows (for example plot()), log in with ssh -X and add --x11=first to the srun command.\n\n\nFrom the browser\nOpen OnDemand, the web portal introduced in Module 2 at https://ondemand.rc.unc.edu, has an RStudio Server app under Interactive Apps. Choose the number of hours, CPUs, memory, and the R module, and RStudio opens on a compute node in a browser tab. UNC recommends requesting at least two CPUs for RStudio sessions.\n\n\n\n\n\n\nTipInteractive sessions are for development\n\n\n\nAnything that takes more than a few minutes, needs to keep running after you disconnect, or will be repeated belongs in a scheduled job. Examples 2 and 3 show how, and an interactive session is the right place to test their scripts before submitting them.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
-      "5 · R on Longleaf"
+      "4 · R on Longleaf"
     ]
   },
   {
-    "objectID": "modules/05-r-on-longleaf.html#example-2-submitting-a-single-r-job",
-    "href": "modules/05-r-on-longleaf.html#example-2-submitting-a-single-r-job",
+    "objectID": "modules/04-r-on-longleaf.html#example-2-submitting-a-single-r-job",
+    "href": "modules/04-r-on-longleaf.html#example-2-submitting-a-single-r-job",
     "title": "R on Longleaf",
     "section": "Example 2 · Submitting a single R job",
-    "text": "Example 2 · Submitting a single R job\nThe simplest scheduled workflow: one R script that runs once and saves its output. The files are in examples/example2_single_job/.\n\n\n\nFile\nPurpose\n\n\n\n\nhello_longleaf.R\nThe R script. Simulates data, fits lm(), and saves a list to results/hello_results.rds.\n\n\nsubmit_single.sl\nThe Slurm submission script: the resources the job needs and the command it runs.\n\n\nlogs/\nWhere Slurm writes the job’s console output (.out) and errors (.err).\n\n\nresults/\nWhere the R script writes its .rds file.\n\n\n\n\nThe submission script\n\n\nsubmit_single.sl\n\n#!/bin/bash\n# submit_single.sl -- SLURM submission script for Example 2 (one R job)\n#\n# Submit from inside this folder with:   sbatch submit_single.sl\n# Check status with:                     squeue -u $USER\n#\n# Everything starting with \"#SBATCH\" is a directive read by the scheduler.\n# Lines starting with a plain \"#\" are ordinary comments.\n\n#SBATCH --job-name=hello_longleaf\n#SBATCH --nodes=1\n#SBATCH --ntasks=1\n#SBATCH --cpus-per-task=1\n#SBATCH --mem=2g\n#SBATCH --time=00:10:00\n#SBATCH --partition=general\n#SBATCH --output=logs/hello_%j.out\n#SBATCH --error=logs/hello_%j.err\n#SBATCH --mail-type=END,FAIL\n#SBATCH --mail-user=&lt;onyen&gt;@unc.edu\n\n# ---- Load R -----------------------------------------------------------------\n# \"module add r\" loads the cluster's default R. To pin a version, run\n# \"module avail r\" on a login node and use, e.g., \"module add r/4.4.0\".\nmodule add r\n\n# ---- Run the script ---------------------------------------------------------\n# SLURM starts the job in the directory you ran sbatch from, so relative\n# paths (hello_longleaf.R, results/, logs/) resolve as expected.\nRscript --vanilla hello_longleaf.R\n\n\n\n\n\n\n\n\nDirective\nRequest\n\n\n\n\n--job-name=hello_longleaf\nThe name shown by squeue\n\n\n--nodes=1 --ntasks=1 --cpus-per-task=1\nOne task with one CPU on one node\n\n\n--mem=2g\nReserve 2 GB of memory\n\n\n--time=00:10:00\nAllow up to ten minutes\n\n\n--output and --error\nWhere to write the logs; %j becomes the job ID\n\n\n--mail-type and --mail-user\nEmail when the job ends or fails\n\n\n\nAfter the directives, the script loads R and runs the R script with Rscript. Slurm starts the job in the directory you ran sbatch from, so the relative paths to the script, logs/, and results/ resolve as expected.\n\n\nThe R script\nThe script is ordinary R. The only cluster-specific lines print the host name and Slurm job ID at the start, which makes it easy to confirm from the log that the job ran on a compute node.\n\n\n\n\n\n\nNotehello_longleaf.R\n\n\n\n\n\n\n\nhello_longleaf.R\n\n###############################################################################\n# hello_longleaf.R -- Example 2: a single, self-contained R job\n#\n# What it does:\n#   1. Simulates a small dataset\n#   2. Fits a linear model and computes a few summary numbers\n#   3. Saves everything to results/hello_results.rds\n#\n# Run locally:   Rscript hello_longleaf.R\n# Run on Longleaf: sbatch submit_single.sl   (see README.md)\n###############################################################################\n\n# ---- 0. Settings you may want to change -------------------------------------\nn       &lt;- 500                      # sample size\nseed    &lt;- 2026                     # for reproducibility\nout_dir &lt;- \"results\"                # relative to the folder you sbatch from\noutfile &lt;- file.path(out_dir, \"hello_results.rds\")\n\ndir.create(out_dir, showWarnings = FALSE, recursive = TRUE)\n\n# ---- 1. Report where/when we are running (handy for debugging on the cluster)\ncat(\"Started:   \", format(Sys.time()), \"\\n\")\ncat(\"Host:      \", Sys.info()[[\"nodename\"]], \"\\n\")\ncat(\"Working dir:\", getwd(), \"\\n\")\ncat(\"SLURM job: \", Sys.getenv(\"SLURM_JOB_ID\", unset = \"(not running under SLURM)\"), \"\\n\")\n\n# ---- 2. Simulate data and fit a model ---------------------------------------\nset.seed(seed)\nx &lt;- rnorm(n)\ny &lt;- 1 + 2 * x + rnorm(n, sd = 0.5)\nfit &lt;- lm(y ~ x)\n\n# ---- 3. Bundle the results into a list --------------------------------------\nresults &lt;- list(\n  n            = n,\n  seed         = seed,\n  coefficients = coef(fit),\n  r_squared    = summary(fit)$r.squared,\n  mean_y       = mean(y),\n  sd_y         = sd(y),\n  hostname     = Sys.info()[[\"nodename\"]],\n  slurm_job_id = Sys.getenv(\"SLURM_JOB_ID\", unset = NA),\n  r_version    = R.version.string,\n  finished_at  = Sys.time()\n)\n\n# ---- 4. Save to disk --------------------------------------------------------\nsaveRDS(results, outfile)\ncat(\"Saved results to:\", normalizePath(outfile), \"\\n\")\ncat(\"Finished:  \", format(Sys.time()), \"\\n\")\n\n\n\n\n\n\nStep by step\n\nCopy the folder to Longleaf and go to it. This puts it in your home directory.\nrsync -av example2_single_job/ &lt;onyen&gt;@longleaf.unc.edu:example2_single_job/\nssh &lt;onyen&gt;@longleaf.unc.edu\ncd ~/example2_single_job\nEdit submit_single.sl. Set --mail-user to your email, or delete the two --mail-* lines. Raise --time or --mem if a real job needs more. Jobs that exceed their limits are killed, so ask for a little more than you expect.\nSubmit. Slurm replies with Submitted batch job 12345678. That number is the job ID.\nsbatch submit_single.sl\nMonitor.\nsqueue -u \"$USER\"               # pending (PD) or running (R)?\nsacct -j 12345678               # state and exit code after it finishes\ncat logs/hello_12345678.out     # what the script printed\nLook at the results, on Longleaf or after copying them back to your laptop.\nmodule add r\nRscript -e 'str(readRDS(\"results/hello_results.rds\"))'\nrsync -av &lt;onyen&gt;@longleaf.unc.edu:example2_single_job/results/ ./results/\n\n\n\n\n\n\n\nWarningCreate the log directory before submitting\n\n\n\nSlurm will not create logs/. If it is missing, the job fails immediately and leaves no output to explain why. The example folder includes an empty logs/ for this reason.",
+    "text": "Example 2 · Submitting a single R job\nThe simplest scheduled workflow: one R script that runs once and saves its output. The files are in examples/example2_single_job/.\n\n\n\nFile\nPurpose\n\n\n\n\nhello_longleaf.R\nThe R script. Simulates data, fits lm(), and saves a list to results/hello_results.rds.\n\n\nsubmit_single.sl\nThe Slurm submission script: the resources the job needs and the command it runs.\n\n\nlogs/\nWhere Slurm writes the job’s console output (.out) and errors (.err).\n\n\nresults/\nWhere the R script writes its .rds file.\n\n\n\n\nThe submission script\n\n\nsubmit_single.sl\n\n#!/bin/bash\n# submit_single.sl -- SLURM submission script for Example 2 (one R job)\n#\n# Submit from inside this folder with:   sbatch submit_single.sl\n# Check status with:                     squeue -u $USER\n#\n# Everything starting with \"#SBATCH\" is a directive read by the scheduler.\n# Lines starting with a plain \"#\" are ordinary comments.\n\n#SBATCH --job-name=hello_longleaf\n#SBATCH --nodes=1\n#SBATCH --ntasks=1\n#SBATCH --cpus-per-task=1\n#SBATCH --mem=2g\n#SBATCH --time=00:10:00\n#SBATCH --output=logs/hello_%j.out\n#SBATCH --error=logs/hello_%j.err\n#SBATCH --mail-type=END,FAIL\n#SBATCH --mail-user=&lt;onyen&gt;@unc.edu\n\n# ---- Load R -----------------------------------------------------------------\n# \"module add r\" loads the cluster's default R. To pin a version, run\n# \"module avail r\" on a login node and use, e.g., \"module add r/4.4.0\".\nmodule add r\n\n# ---- Run the script ---------------------------------------------------------\n# SLURM starts the job in the directory you ran sbatch from, so relative\n# paths (hello_longleaf.R, results/, logs/) resolve as expected.\nRscript --vanilla hello_longleaf.R\n\n\n\n\n\n\n\n\nDirective\nRequest\n\n\n\n\n--job-name=hello_longleaf\nThe name shown by squeue\n\n\n--nodes=1 --ntasks=1 --cpus-per-task=1\nOne task with one CPU on one node\n\n\n--mem=2g\nReserve 2 GB of memory\n\n\n--time=00:10:00\nAllow up to ten minutes\n\n\n--output and --error\nWhere to write the logs; %j becomes the job ID\n\n\n--mail-type and --mail-user\nEmail when the job ends or fails\n\n\n\nAfter the directives, the script loads R and runs the R script with Rscript. Slurm starts the job in the directory you ran sbatch from, so the relative paths to the script, logs/, and results/ resolve as expected.\n\n\nThe R script\nThe script is ordinary R. The only cluster-specific lines print the host name and Slurm job ID at the start, which makes it easy to confirm from the log that the job ran on a compute node.\n\n\n\n\n\n\nNotehello_longleaf.R\n\n\n\n\n\n\n\nhello_longleaf.R\n\n###############################################################################\n# hello_longleaf.R -- Example 2: a single, self-contained R job\n#\n# What it does:\n#   1. Simulates a small dataset\n#   2. Fits a linear model and computes a few summary numbers\n#   3. Saves everything to results/hello_results.rds\n#\n# Run locally:   Rscript hello_longleaf.R\n# Run on Longleaf: sbatch submit_single.sl   (see README.md)\n###############################################################################\n\n# ---- 0. Settings you may want to change -------------------------------------\nn       &lt;- 500                      # sample size\nseed    &lt;- 2026                     # for reproducibility\nout_dir &lt;- \"results\"                # relative to the folder you sbatch from\noutfile &lt;- file.path(out_dir, \"hello_results.rds\")\n\ndir.create(out_dir, showWarnings = FALSE, recursive = TRUE)\n\n# ---- 1. Report where/when we are running (handy for debugging on the cluster)\ncat(\"Started:   \", format(Sys.time()), \"\\n\")\ncat(\"Host:      \", Sys.info()[[\"nodename\"]], \"\\n\")\ncat(\"Working dir:\", getwd(), \"\\n\")\ncat(\"SLURM job: \", Sys.getenv(\"SLURM_JOB_ID\", unset = \"(not running under SLURM)\"), \"\\n\")\n\n# ---- 2. Simulate data and fit a model ---------------------------------------\nset.seed(seed)\nx &lt;- rnorm(n)\ny &lt;- 1 + 2 * x + rnorm(n, sd = 0.5)\nfit &lt;- lm(y ~ x)\n\n# ---- 3. Bundle the results into a list --------------------------------------\nresults &lt;- list(\n  n            = n,\n  seed         = seed,\n  coefficients = coef(fit),\n  r_squared    = summary(fit)$r.squared,\n  mean_y       = mean(y),\n  sd_y         = sd(y),\n  hostname     = Sys.info()[[\"nodename\"]],\n  slurm_job_id = Sys.getenv(\"SLURM_JOB_ID\", unset = NA),\n  r_version    = R.version.string,\n  finished_at  = Sys.time()\n)\n\n# ---- 4. Save to disk --------------------------------------------------------\nsaveRDS(results, outfile)\ncat(\"Saved results to:\", normalizePath(outfile), \"\\n\")\ncat(\"Finished:  \", format(Sys.time()), \"\\n\")\n\n\n\n\n\n\nStep by step\n\nCopy the folder to Longleaf and go to it. In FileZilla, drag example2_single_job from your computer into your home directory on Longleaf, as shown in Module 2. Then log in and go to it:\nssh &lt;onyen&gt;@longleaf.unc.edu\ncd ~/example2_single_job\nEdit submit_single.sl. Set --mail-user to your email, or delete the two --mail-* lines. Raise --time or --mem if a real job needs more. Jobs that exceed their limits are killed, so ask for a little more than you expect. FileZilla’s View/Edit, described in Module 2, is the easiest way to make this change.\nSubmit. Slurm replies with Submitted batch job 12345678. That number is the job ID.\nsbatch submit_single.sl\nMonitor.\nsqueue -u \"$USER\"               # pending (PD) or running (R)?\nsacct -j 12345678               # state and exit code after it finishes\ncat logs/hello_12345678.out     # what the script printed\nLook at the results, on Longleaf or after copying them back to your laptop.\nmodule add r\nRscript -e 'str(readRDS(\"results/hello_results.rds\"))'\nTo work with the file on your laptop, press F5 in FileZilla so the new files appear, then drag results from the Longleaf pane to your computer.\n\n\n\n\n\n\n\nWarningCreate the log directory before submitting\n\n\n\nSlurm will not create logs/. If it is missing, the job fails immediately and leaves no output to explain why. The example folder includes an empty logs/ for this reason.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
-      "5 · R on Longleaf"
+      "4 · R on Longleaf"
     ]
   },
   {
-    "objectID": "modules/05-r-on-longleaf.html#example-3-submitting-a-batch-of-jobs-with-parameters",
-    "href": "modules/05-r-on-longleaf.html#example-3-submitting-a-batch-of-jobs-with-parameters",
+    "objectID": "modules/04-r-on-longleaf.html#example-3-submitting-a-batch-of-jobs-with-parameters",
+    "href": "modules/04-r-on-longleaf.html#example-3-submitting-a-batch-of-jobs-with-parameters",
     "title": "R on Longleaf",
     "section": "Example 3 · Submitting a batch of jobs with parameters",
-    "text": "Example 3 · Submitting a batch of jobs with parameters\nInstead of editing the R script and resubmitting it for every setting, write each combination of settings as one row of a plain text file, submit a Slurm job array with one task per row, and let each task pass its row to R as command-line arguments. Twelve rows become twelve independent jobs that run in parallel on whatever nodes are free, each saving its own result file. The files are in examples/example3_conditions_array/.\n\nHow the pieces fit together\nsbatch submit_array.sl\n   │   #SBATCH --array=1-12  → Slurm starts 12 tasks, SLURM_ARRAY_TASK_ID = 1..12\n   │\n   └─▶ sh runcode.sh $SLURM_ARRAY_TASK_ID          (task 7 shown)\n          │   sed \"7q;d\" conditions.txt   →   \"7 50 0 2\"\n          │\n          └─▶ Rscript run_condition.R 7 50 0 2\n                 │   commandArgs() → c(\"7\", \"50\", \"0\", \"2\")\n                 │\n                 └─▶ results/result_n50_beta0.0_rep02.rds\n\n\n\nFile\nPurpose\n\n\n\n\nmake_conditions.R\nBuilds conditions.txt from an expand.grid() of settings. Rerun it whenever the grid changes.\n\n\nconditions.txt\nOne row per job. Space-separated, no header. Columns: row_id n beta rep.\n\n\nrun_condition.R\nThe worker. Reads four command-line arguments, simulates, and saves one .rds.\n\n\nruncode.sh\nPicks one line of conditions.txt and calls R with it.\n\n\nsubmit_array.sl\nThe Slurm job array submission script.\n\n\ncollect_results.R\nStacks every .rds into one data frame and lists any rows that are missing.\n\n\n\n\n\nThe conditions file\nEach row is one job. make_conditions.R builds the file from every combination of two sample sizes, two slopes, and three replications, with the row number as the first column so each job knows its own ID.\n\n\nconditions.txt\n\n1 50 0 1\n2 200 0 1\n3 50 0.5 1\n4 200 0.5 1\n5 50 0 2\n6 200 0 2\n7 50 0.5 2\n8 200 0.5 2\n9 50 0 3\n10 200 0 3\n11 50 0.5 3\n12 200 0.5 3\n\n\n\n\n\n\n\nNotemake_conditions.R\n\n\n\n\n\n\n\nmake_conditions.R\n\n###############################################################################\n# make_conditions.R -- builds conditions.txt for Example 3\n#\n# Each ROW of conditions.txt is one job in the SLURM array. Columns are\n# separated by spaces and there is NO header row (the shell script reads\n# lines by number, so a header would be mistaken for condition 1).\n#\n# Run:  Rscript make_conditions.R\n###############################################################################\n\ngrid &lt;- expand.grid(\n  n    = c(50, 200),           # sample size\n  beta = c(0, 0.5),            # true slope\n  rep  = 1:3,                  # replication\n  stringsAsFactors = FALSE\n)\n\n# Add the row number as the first column so each job knows its own ID.\ngrid &lt;- cbind(row_id = seq_len(nrow(grid)), grid)\n\nwrite.table(grid, \"conditions.txt\",\n            row.names = FALSE, col.names = FALSE, quote = FALSE)\n\ncat(sprintf(\"Wrote conditions.txt with %d rows (use --array=1-%d)\\n\",\n            nrow(grid), nrow(grid)))\nprint(grid)\n\n\n\n\n\n\nThe submission script\n\n\nsubmit_array.sl\n\n#!/bin/bash\n# submit_array.sl -- SLURM job array for Example 3\n#\n# Submit from inside this folder with:   sbatch submit_array.sl\n#\n# --array=1-12 launches 12 copies of this script. Each copy gets a different\n# value of $SLURM_ARRAY_TASK_ID (1, 2, ..., 12), which we use to pick a line\n# from conditions.txt. The range MUST match the number of lines in that file\n# (wc -l conditions.txt). Add %N to throttle, e.g. --array=1-500%50 runs at\n# most 50 at a time.\n\n#SBATCH --job-name=cond_array\n#SBATCH --array=1-12\n#SBATCH --nodes=1\n#SBATCH --ntasks=1\n#SBATCH --cpus-per-task=1\n#SBATCH --mem=1g\n#SBATCH --time=00:05:00\n#SBATCH --partition=general\n#SBATCH --output=logs/cond_%A_%a.out\n#SBATCH --error=logs/cond_%A_%a.err\n#SBATCH --mail-type=FAIL\n#SBATCH --mail-user=&lt;onyen&gt;@unc.edu\n\n# %A = the array's master job ID, %a = this task's index, so each task\n# gets its own log file, e.g. logs/cond_12345678_7.out\n\nsh runcode.sh $SLURM_ARRAY_TASK_ID\n\nThe one new directive is --array=1-12. It launches twelve copies of the script, each with a different value of SLURM_ARRAY_TASK_ID. The range must match the number of lines in conditions.txt. In the log file names, %A is the array’s job ID and %a is the task index, so each task gets its own log.\n\n\nThe glue script\nEach task runs this short shell script, which pulls its own line out of conditions.txt and hands the values to R:\n\n\nruncode.sh\n\n#!/bin/bash\n# runcode.sh -- glue between SLURM and R for Example 3\n#\n# Usage:  sh runcode.sh &lt;line_number&gt;\n#\n# Picks line &lt;line_number&gt; out of conditions.txt and passes its contents to\n# run_condition.R as command-line arguments. submit_array.sl calls this with\n# $SLURM_ARRAY_TASK_ID, so array task 7 runs row 7 of conditions.txt.\n\nCONDITIONS=conditions.txt\n\n# sed \"Nq;d\" prints line N of the file and nothing else.\ninput=$(sed \"${1}q;d\" $CONDITIONS)\n\nif [ -z \"$input\" ]; then\n  echo \"ERROR: no line $1 in $CONDITIONS\" &gt;&2\n  exit 1\nfi\n\necho \"Task $1 -&gt; conditions: $input\"\n\nmodule add r\nRscript --vanilla run_condition.R $input\n\n\n\nThe worker script\nOnly the top of run_condition.R is specific to the array. R receives the arguments as text, so the script converts each one:\n\n\nrun_condition.R (excerpt)\n\nargs &lt;- commandArgs(trailingOnly = TRUE)\nif (length(args) != 4) {\n  stop(\"Usage: Rscript run_condition.R &lt;row_id&gt; &lt;n&gt; &lt;beta&gt; &lt;rep&gt;\\n\",\n       \"Got \", length(args), \" argument(s): \", paste(args, collapse = \" \"))\n}\n\nrow_id &lt;- as.integer(args[1])\nn      &lt;- as.integer(args[2])\nbeta   &lt;- as.numeric(args[3])\nrep_i  &lt;- as.integer(args[4])\n\nThe rest simulates data, fits a model, and saves a result file whose name encodes the condition. The seed is derived from the condition values rather than the task ID, so rerunning row 7 always gives the same answer, and appending rows to conditions.txt never changes earlier results.\n\n\n\n\n\n\nNoterun_condition.R\n\n\n\n\n\n\n\nrun_condition.R\n\n###############################################################################\n# run_condition.R -- Example 3 worker script: ONE row of conditions.txt\n#\n# Called by runcode.sh as:\n#   Rscript --vanilla run_condition.R &lt;row_id&gt; &lt;n&gt; &lt;beta&gt; &lt;rep&gt;\n#\n# The four values after the script name are one line of conditions.txt.\n# R receives them as a character vector from commandArgs(); convert types\n# yourself.\n###############################################################################\n\n# ---- 1. Read the command-line arguments -------------------------------------\nargs &lt;- commandArgs(trailingOnly = TRUE)\nif (length(args) != 4) {\n  stop(\"Usage: Rscript run_condition.R &lt;row_id&gt; &lt;n&gt; &lt;beta&gt; &lt;rep&gt;\\n\",\n       \"Got \", length(args), \" argument(s): \", paste(args, collapse = \" \"))\n}\n\nrow_id &lt;- as.integer(args[1])\nn      &lt;- as.integer(args[2])\nbeta   &lt;- as.numeric(args[3])\nrep_i  &lt;- as.integer(args[4])\n\ncat(sprintf(\"=== Row %d: n=%d, beta=%.2f, rep=%d ===\\n\", row_id, n, beta, rep_i))\ncat(\"Host:\", Sys.info()[[\"nodename\"]],\n    \" SLURM task:\", Sys.getenv(\"SLURM_ARRAY_TASK_ID\", unset = \"(none)\"), \"\\n\")\n\n# ---- 2. Seed from the condition, not from the row order ---------------------\n# This way re-running row 7 always gives the same answer, and adding rows to\n# the bottom of conditions.txt never changes earlier results.\nset.seed(1000 * n + 100 * round(beta * 10) + rep_i)\n\n# ---- 3. Do the (trivial) work -----------------------------------------------\nx   &lt;- rnorm(n)\ny   &lt;- beta * x + rnorm(n)\nfit &lt;- lm(y ~ x)\n\nresults &lt;- list(\n  row_id     = row_id,\n  n          = n,\n  beta_true  = beta,\n  rep        = rep_i,\n  beta_hat   = unname(coef(fit)[\"x\"]),\n  p_value    = summary(fit)$coefficients[\"x\", \"Pr(&gt;|t|)\"],\n  hostname   = Sys.info()[[\"nodename\"]],\n  finished   = Sys.time()\n)\n\n# ---- 4. Save with a filename that encodes the condition ---------------------\nout_dir &lt;- \"results\"\ndir.create(out_dir, showWarnings = FALSE, recursive = TRUE)\noutfile &lt;- file.path(out_dir,\n                     sprintf(\"result_n%d_beta%.1f_rep%02d.rds\", n, beta, rep_i))\nsaveRDS(results, outfile)\ncat(\"Saved:\", outfile, \"\\n\")\n\n\n\n\n\n\n\n\n\n\nNotecollect_results.R\n\n\n\n\n\n\n\ncollect_results.R\n\n###############################################################################\n# collect_results.R -- stack every results/*.rds into one data frame\n#\n# Run after the array finishes:  Rscript collect_results.R\n# Also reports any conditions.txt rows that have no result file (failed or\n# still-running tasks), so you know exactly which array indices to resubmit.\n###############################################################################\n\nfiles &lt;- list.files(\"results\", pattern = \"\\\\.rds$\", full.names = TRUE)\ncat(sprintf(\"Found %d result files\\n\", length(files)))\n\nrows &lt;- lapply(files, function(f) {\n  r &lt;- readRDS(f)\n  data.frame(row_id = r$row_id, n = r$n, beta_true = r$beta_true, rep = r$rep,\n             beta_hat = r$beta_hat, p_value = r$p_value,\n             hostname = r$hostname)\n})\nall_results &lt;- do.call(rbind, rows)\nall_results &lt;- all_results[order(all_results$row_id), ]\nrownames(all_results) &lt;- NULL\nprint(all_results)\n\n# Which rows of conditions.txt are missing?\ncond &lt;- read.table(\"conditions.txt\",\n                   col.names = c(\"row_id\", \"n\", \"beta\", \"rep\"))\nmissing &lt;- setdiff(cond$row_id, all_results$row_id)\nif (length(missing) == 0) {\n  cat(\"\\nAll conditions complete.\\n\")\n} else {\n  cat(\"\\nMISSING rows (resubmit with --array=\",\n      paste(missing, collapse = \",\"), \"):\\n\", sep = \"\")\n  print(cond[cond$row_id %in% missing, ])\n}\n\nsaveRDS(all_results, \"all_results.rds\")\ncat(\"Saved all_results.rds\\n\")\n\n\n\n\n\n\nStep by step\n\nBuild the conditions file on your laptop or on Longleaf, and note the number of rows.\nRscript make_conditions.R\nwc -l conditions.txt\nCopy the folder to Longleaf and go to it.\nrsync -av example3_conditions_array/ &lt;onyen&gt;@longleaf.unc.edu:example3_conditions_array/\nssh &lt;onyen&gt;@longleaf.unc.edu\ncd ~/example3_conditions_array\nEdit submit_array.sl. Make --array=1-12 match the row count. This is the line people forget: too small and some conditions never run, too large and the extra tasks fail with “no line N”. Set or delete the --mail-* lines, and remember that --time and --mem apply per task, not to the whole array. For big arrays add a throttle, such as --array=1-2000%100, so you do not monopolize the partition.\nTest one row interactively before submitting hundreds. Use an interactive session from Example 1. If this works, the array will work.\nmodule add r\nsh runcode.sh 1\nls results/\nSubmit and monitor. squeue shows one line per running or pending task.\nsbatch submit_array.sl\nsqueue -u \"$USER\"\nsacct -j &lt;jobid&gt; --format=JobID,State,ExitCode,Elapsed\ntail logs/cond_&lt;jobid&gt;_7.out\nCollect. This prints a table of all results, writes all_results.rds, and lists any rows that have no result file.\nRscript collect_results.R\nTo rerun only the missing rows, submit again with an explicit list. A command-line --array overrides the one inside the file.\nsbatch --array=3,8,11 submit_array.sl\n\n\n\nAdapting the pattern to your own project\n\nChanging which variables are passed. Three places must agree: the columns of the grid in make_conditions.R, the number and order of arguments read in run_condition.R, and the column names used to read conditions.txt back in collect_results.R. The glue script and the submission script do not care how many columns there are.\nStrings are fine as values, such as high or identity, as long as they contain no spaces. R receives everything as character; convert with as.integer() or as.numeric() as needed.\nPaths. As in Example 2, everything is relative to the folder you run sbatch from. Anything large belongs in your work space rather than your home directory.\nSeveral methods on the same conditions. Either add a method column to the grid, or keep one conditions.txt and write one submission script per method that passes the method name as an extra argument.",
+    "text": "Example 3 · Submitting a batch of jobs with parameters\nInstead of editing the R script and resubmitting it for every setting, write each combination of settings as one row of a plain text file, submit a Slurm job array with one task per row, and let each task pass its row to R as command-line arguments. Twelve rows become twelve independent jobs that run in parallel on whatever nodes are free, each saving its own result file. The files are in examples/example3_conditions_array/.\n\nHow the pieces fit together\nsbatch submit_array.sl\n   │   #SBATCH --array=1-12  → Slurm starts 12 tasks, SLURM_ARRAY_TASK_ID = 1..12\n   │\n   └─▶ sh runcode.sh $SLURM_ARRAY_TASK_ID          (task 7 shown)\n          │   sed \"7q;d\" conditions.txt   →   \"7 50 0 2\"\n          │\n          └─▶ Rscript run_condition.R 7 50 0 2\n                 │   commandArgs() → c(\"7\", \"50\", \"0\", \"2\")\n                 │\n                 └─▶ results/result_n50_beta0.0_rep02.rds\n\n\n\nFile\nPurpose\n\n\n\n\nmake_conditions.R\nBuilds conditions.txt from an expand.grid() of settings. Rerun it whenever the grid changes.\n\n\nconditions.txt\nOne row per job. Space-separated, no header. Columns: row_id n beta rep.\n\n\nrun_condition.R\nThe worker. Reads four command-line arguments, simulates, and saves one .rds.\n\n\nruncode.sh\nPicks one line of conditions.txt and calls R with it.\n\n\nsubmit_array.sl\nThe Slurm job array submission script.\n\n\ncollect_results.R\nStacks every .rds into one data frame and lists any rows that are missing.\n\n\n\n\n\nThe conditions file\nEach row is one job. make_conditions.R builds the file from every combination of two sample sizes, two slopes, and three replications, with the row number as the first column so each job knows its own ID.\n\n\nconditions.txt\n\n1 50 0 1\n2 200 0 1\n3 50 0.5 1\n4 200 0.5 1\n5 50 0 2\n6 200 0 2\n7 50 0.5 2\n8 200 0.5 2\n9 50 0 3\n10 200 0 3\n11 50 0.5 3\n12 200 0.5 3\n\n\n\n\n\n\n\nNotemake_conditions.R\n\n\n\n\n\n\n\nmake_conditions.R\n\n###############################################################################\n# make_conditions.R -- builds conditions.txt for Example 3\n#\n# Each ROW of conditions.txt is one job in the SLURM array. Columns are\n# separated by spaces and there is NO header row (the shell script reads\n# lines by number, so a header would be mistaken for condition 1).\n#\n# Run:  Rscript make_conditions.R\n###############################################################################\n\ngrid &lt;- expand.grid(\n  n    = c(50, 200),           # sample size\n  beta = c(0, 0.5),            # true slope\n  rep  = 1:3,                  # replication\n  stringsAsFactors = FALSE\n)\n\n# Add the row number as the first column so each job knows its own ID.\ngrid &lt;- cbind(row_id = seq_len(nrow(grid)), grid)\n\nwrite.table(grid, \"conditions.txt\",\n            row.names = FALSE, col.names = FALSE, quote = FALSE)\n\ncat(sprintf(\"Wrote conditions.txt with %d rows (use --array=1-%d)\\n\",\n            nrow(grid), nrow(grid)))\nprint(grid)\n\n\n\n\n\n\nThe submission script\n\n\nsubmit_array.sl\n\n#!/bin/bash\n# submit_array.sl -- SLURM job array for Example 3\n#\n# Submit from inside this folder with:   sbatch submit_array.sl\n#\n# --array=1-12 launches 12 copies of this script. Each copy gets a different\n# value of $SLURM_ARRAY_TASK_ID (1, 2, ..., 12), which we use to pick a line\n# from conditions.txt. The range MUST match the number of lines in that file\n# (wc -l conditions.txt). Add %N to throttle, e.g. --array=1-500%50 runs at\n# most 50 at a time.\n\n#SBATCH --job-name=cond_array\n#SBATCH --array=1-12\n#SBATCH --nodes=1\n#SBATCH --ntasks=1\n#SBATCH --cpus-per-task=1\n#SBATCH --mem=1g\n#SBATCH --time=00:05:00\n#SBATCH --output=logs/cond_%A_%a.out\n#SBATCH --error=logs/cond_%A_%a.err\n#SBATCH --mail-type=FAIL\n#SBATCH --mail-user=&lt;onyen&gt;@unc.edu\n\n# %A = the array's master job ID, %a = this task's index, so each task\n# gets its own log file, e.g. logs/cond_12345678_7.out\n\nsh runcode.sh $SLURM_ARRAY_TASK_ID\n\nThe one new directive is --array=1-12. It launches twelve copies of the script, each with a different value of SLURM_ARRAY_TASK_ID. The range must match the number of lines in conditions.txt. In the log file names, %A is the array’s job ID and %a is the task index, so each task gets its own log.\n\n\nThe glue script\nEach task runs this short shell script, which pulls its own line out of conditions.txt and hands the values to R:\n\n\nruncode.sh\n\n#!/bin/bash\n# runcode.sh -- glue between SLURM and R for Example 3\n#\n# Usage:  sh runcode.sh &lt;line_number&gt;\n#\n# Picks line &lt;line_number&gt; out of conditions.txt and passes its contents to\n# run_condition.R as command-line arguments. submit_array.sl calls this with\n# $SLURM_ARRAY_TASK_ID, so array task 7 runs row 7 of conditions.txt.\n\nCONDITIONS=conditions.txt\n\n# sed \"Nq;d\" prints line N of the file and nothing else.\ninput=$(sed \"${1}q;d\" $CONDITIONS)\n\nif [ -z \"$input\" ]; then\n  echo \"ERROR: no line $1 in $CONDITIONS\" &gt;&2\n  exit 1\nfi\n\necho \"Task $1 -&gt; conditions: $input\"\n\nmodule add r\nRscript --vanilla run_condition.R $input\n\n\n\nThe worker script\nOnly the top of run_condition.R is specific to the array. R receives the arguments as text, so the script converts each one:\n\n\nrun_condition.R (excerpt)\n\nargs &lt;- commandArgs(trailingOnly = TRUE)\nif (length(args) != 4) {\n  stop(\"Usage: Rscript run_condition.R &lt;row_id&gt; &lt;n&gt; &lt;beta&gt; &lt;rep&gt;\\n\",\n       \"Got \", length(args), \" argument(s): \", paste(args, collapse = \" \"))\n}\n\nrow_id &lt;- as.integer(args[1])\nn      &lt;- as.integer(args[2])\nbeta   &lt;- as.numeric(args[3])\nrep_i  &lt;- as.integer(args[4])\n\nThe rest simulates data, fits a model, and saves a result file whose name encodes the condition. The seed is derived from the condition values rather than the task ID, so rerunning row 7 always gives the same answer, and appending rows to conditions.txt never changes earlier results.\n\n\n\n\n\n\nNoterun_condition.R\n\n\n\n\n\n\n\nrun_condition.R\n\n###############################################################################\n# run_condition.R -- Example 3 worker script: ONE row of conditions.txt\n#\n# Called by runcode.sh as:\n#   Rscript --vanilla run_condition.R &lt;row_id&gt; &lt;n&gt; &lt;beta&gt; &lt;rep&gt;\n#\n# The four values after the script name are one line of conditions.txt.\n# R receives them as a character vector from commandArgs(); convert types\n# yourself.\n###############################################################################\n\n# ---- 1. Read the command-line arguments -------------------------------------\nargs &lt;- commandArgs(trailingOnly = TRUE)\nif (length(args) != 4) {\n  stop(\"Usage: Rscript run_condition.R &lt;row_id&gt; &lt;n&gt; &lt;beta&gt; &lt;rep&gt;\\n\",\n       \"Got \", length(args), \" argument(s): \", paste(args, collapse = \" \"))\n}\n\nrow_id &lt;- as.integer(args[1])\nn      &lt;- as.integer(args[2])\nbeta   &lt;- as.numeric(args[3])\nrep_i  &lt;- as.integer(args[4])\n\ncat(sprintf(\"=== Row %d: n=%d, beta=%.2f, rep=%d ===\\n\", row_id, n, beta, rep_i))\ncat(\"Host:\", Sys.info()[[\"nodename\"]],\n    \" SLURM task:\", Sys.getenv(\"SLURM_ARRAY_TASK_ID\", unset = \"(none)\"), \"\\n\")\n\n# ---- 2. Seed from the condition, not from the row order ---------------------\n# This way re-running row 7 always gives the same answer, and adding rows to\n# the bottom of conditions.txt never changes earlier results.\nset.seed(1000 * n + 100 * round(beta * 10) + rep_i)\n\n# ---- 3. Do the (trivial) work -----------------------------------------------\nx   &lt;- rnorm(n)\ny   &lt;- beta * x + rnorm(n)\nfit &lt;- lm(y ~ x)\n\nresults &lt;- list(\n  row_id     = row_id,\n  n          = n,\n  beta_true  = beta,\n  rep        = rep_i,\n  beta_hat   = unname(coef(fit)[\"x\"]),\n  p_value    = summary(fit)$coefficients[\"x\", \"Pr(&gt;|t|)\"],\n  hostname   = Sys.info()[[\"nodename\"]],\n  finished   = Sys.time()\n)\n\n# ---- 4. Save with a filename that encodes the condition ---------------------\nout_dir &lt;- \"results\"\ndir.create(out_dir, showWarnings = FALSE, recursive = TRUE)\noutfile &lt;- file.path(out_dir,\n                     sprintf(\"result_n%d_beta%.1f_rep%02d.rds\", n, beta, rep_i))\nsaveRDS(results, outfile)\ncat(\"Saved:\", outfile, \"\\n\")\n\n\n\n\n\n\n\n\n\n\nNotecollect_results.R\n\n\n\n\n\n\n\ncollect_results.R\n\n###############################################################################\n# collect_results.R -- stack every results/*.rds into one data frame\n#\n# Run after the array finishes:  Rscript collect_results.R\n# Also reports any conditions.txt rows that have no result file (failed or\n# still-running tasks), so you know exactly which array indices to resubmit.\n###############################################################################\n\nfiles &lt;- list.files(\"results\", pattern = \"\\\\.rds$\", full.names = TRUE)\ncat(sprintf(\"Found %d result files\\n\", length(files)))\n\nrows &lt;- lapply(files, function(f) {\n  r &lt;- readRDS(f)\n  data.frame(row_id = r$row_id, n = r$n, beta_true = r$beta_true, rep = r$rep,\n             beta_hat = r$beta_hat, p_value = r$p_value,\n             hostname = r$hostname)\n})\nall_results &lt;- do.call(rbind, rows)\nall_results &lt;- all_results[order(all_results$row_id), ]\nrownames(all_results) &lt;- NULL\nprint(all_results)\n\n# Which rows of conditions.txt are missing?\ncond &lt;- read.table(\"conditions.txt\",\n                   col.names = c(\"row_id\", \"n\", \"beta\", \"rep\"))\nmissing &lt;- setdiff(cond$row_id, all_results$row_id)\nif (length(missing) == 0) {\n  cat(\"\\nAll conditions complete.\\n\")\n} else {\n  cat(\"\\nMISSING rows (resubmit with --array=\",\n      paste(missing, collapse = \",\"), \"):\\n\", sep = \"\")\n  print(cond[cond$row_id %in% missing, ])\n}\n\nsaveRDS(all_results, \"all_results.rds\")\ncat(\"Saved all_results.rds\\n\")\n\n\n\n\n\n\nStep by step\n\nBuild the conditions file on your laptop or on Longleaf, and note the number of rows.\nRscript make_conditions.R\nwc -l conditions.txt\nCopy the folder to Longleaf and go to it. Drag example3_conditions_array into your home directory with FileZilla, then log in and go to it:\nssh &lt;onyen&gt;@longleaf.unc.edu\ncd ~/example3_conditions_array\nEdit submit_array.sl. Make --array=1-12 match the row count. This is the line people forget: too small and some conditions never run, too large and the extra tasks fail with “no line N”. Set or delete the --mail-* lines, and remember that --time and --mem apply per task, not to the whole array. For big arrays add a throttle, such as --array=1-2000%100, so you do not monopolize the partition.\nTest one row interactively before submitting hundreds. Use an interactive session from Example 1. If this works, the array will work.\nmodule add r\nsh runcode.sh 1\nls results/\nSubmit and monitor. squeue shows one line per running or pending task.\nsbatch submit_array.sl\nsqueue -u \"$USER\"\nsacct -j &lt;jobid&gt; --format=JobID,State,ExitCode,Elapsed\ntail logs/cond_&lt;jobid&gt;_7.out\nCollect. This prints a table of all results, writes all_results.rds, and lists any rows that have no result file.\nRscript collect_results.R\nTo rerun only the missing rows, submit again with an explicit list. A command-line --array overrides the one inside the file.\nsbatch --array=3,8,11 submit_array.sl\n\n\n\nAdapting the pattern to your own project\n\nChanging which variables are passed. Three places must agree: the columns of the grid in make_conditions.R, the number and order of arguments read in run_condition.R, and the column names used to read conditions.txt back in collect_results.R. The glue script and the submission script do not care how many columns there are.\nStrings are fine as values, such as high or identity, as long as they contain no spaces. R receives everything as character; convert with as.integer() or as.numeric() as needed.\nPaths. As in Example 2, everything is relative to the folder you run sbatch from. Anything large belongs in your personal data space, /hickory/users/&lt;o&gt;/&lt;n&gt;/&lt;onyen&gt; (Module 2), rather than your home directory.\nSeveral methods on the same conditions. Either add a method column to the grid, or keep one conditions.txt and write one submission script per method that passes the method name as an extra argument.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
-      "5 · R on Longleaf"
+      "4 · R on Longleaf"
     ]
   },
   {
-    "objectID": "modules/05-r-on-longleaf.html#conditions-for-a-successful-job",
-    "href": "modules/05-r-on-longleaf.html#conditions-for-a-successful-job",
+    "objectID": "modules/04-r-on-longleaf.html#conditions-for-a-successful-job",
+    "href": "modules/04-r-on-longleaf.html#conditions-for-a-successful-job",
     "title": "R on Longleaf",
     "section": "Conditions for a successful job",
     "text": "Conditions for a successful job\nBefore submitting, verify that the script uses correct file paths, required packages are available, the working directory is intentional, and the requested time and memory are realistic.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
-      "5 · R on Longleaf"
+      "4 · R on Longleaf"
     ]
   },
   {
-    "objectID": "modules/05-r-on-longleaf.html#key-takeaway",
-    "href": "modules/05-r-on-longleaf.html#key-takeaway",
+    "objectID": "modules/04-r-on-longleaf.html#key-takeaway",
+    "href": "modules/04-r-on-longleaf.html#key-takeaway",
     "title": "R on Longleaf",
     "section": "Key takeaway",
     "text": "Key takeaway\nDevelop with small interactive checks, then move stable and resource-intensive work into a reproducible scheduled job.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
-      "5 · R on Longleaf"
+      "4 · R on Longleaf"
     ]
   },
   {
-    "objectID": "modules/05-r-on-longleaf.html#sources",
-    "href": "modules/05-r-on-longleaf.html#sources",
+    "objectID": "modules/04-r-on-longleaf.html#sources",
+    "href": "modules/04-r-on-longleaf.html#sources",
     "title": "R on Longleaf",
     "section": "Sources",
     "text": "Sources\n\n“Longleaf Cluster SLURM examples,” UNC Research Computing\n“Open OnDemand,” UNC Research Computing\n“RStudio Server and RStudio Desktop OOD apps,” UNC Research Computing",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
-      "5 · R on Longleaf"
+      "4 · R on Longleaf"
     ]
   },
   {
@@ -673,625 +732,6 @@
       "Workshop modules",
       "1 · Introduction to Longleaf",
       "1.2 · Longleaf overview"
-    ]
-  },
-  {
-    "objectID": "modules/02-cluster-basics/02-queue.html",
-    "href": "modules/02-cluster-basics/02-queue.html",
-    "title": "The Scheduler and the Queue",
-    "section": "",
-    "text": "1 · Connect\nLog in to Longleaf from a terminal or browser.\n\n\n2 · Prepare\nUse the login node to organize files and describe the job.\n\n\n3 · Schedule\nSlurm places the job in a queue until suitable resources are free.\n\n\n4 · Compute\nA compute node runs the job and writes its output.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "2 · Computing cluster basics",
-      "2.2 · The scheduler and queue"
-    ]
-  },
-  {
-    "objectID": "modules/02-cluster-basics/02-queue.html#from-your-computer-to-a-compute-node",
-    "href": "modules/02-cluster-basics/02-queue.html#from-your-computer-to-a-compute-node",
-    "title": "The Scheduler and the Queue",
-    "section": "",
-    "text": "1 · Connect\nLog in to Longleaf from a terminal or browser.\n\n\n2 · Prepare\nUse the login node to organize files and describe the job.\n\n\n3 · Schedule\nSlurm places the job in a queue until suitable resources are free.\n\n\n4 · Compute\nA compute node runs the job and writes its output.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "2 · Computing cluster basics",
-      "2.2 · The scheduler and queue"
-    ]
-  },
-  {
-    "objectID": "modules/02-cluster-basics/02-queue.html#what-is-the-scheduler",
-    "href": "modules/02-cluster-basics/02-queue.html#what-is-the-scheduler",
-    "title": "The Scheduler and the Queue",
-    "section": "What is the scheduler?",
-    "text": "What is the scheduler?\nLongleaf is shared by researchers across the University, so users do not choose a compute node themselves. Instead, they submit a request to a scheduler, which decides when and where each job runs.\nLongleaf uses a scheduler called Slurm. According to UNC Research Computing, Slurm has three main functions:\n\ngiving users access to cluster resources for a period of time so they can run code\nstarting, running, and monitoring work on those resources\nmanaging competition for resources by keeping a queue of pending jobs",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "2 · Computing cluster basics",
-      "2.2 · The scheduler and queue"
-    ]
-  },
-  {
-    "objectID": "modules/02-cluster-basics/02-queue.html#what-is-a-queue",
-    "href": "modules/02-cluster-basics/02-queue.html#what-is-a-queue",
-    "title": "The Scheduler and the Queue",
-    "section": "What is a queue?",
-    "text": "What is a queue?\nWhen you submit a job, it goes into a queue, where it waits until Slurm dispatches it to run somewhere on the cluster.\nLongleaf uses a fair-share approach to decide which waiting jobs run next. Fair-share balances access among users and groups, taking into account how much of the cluster each has used recently.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "2 · Computing cluster basics",
-      "2.2 · The scheduler and queue"
-    ]
-  },
-  {
-    "objectID": "modules/02-cluster-basics/02-queue.html#what-do-you-ask-for",
-    "href": "modules/02-cluster-basics/02-queue.html#what-do-you-ask-for",
-    "title": "The Scheduler and the Queue",
-    "section": "What do you ask for?",
-    "text": "What do you ask for?\nA job request tells Slurm what the job needs: how many CPUs, how much memory, and how much time. Slurm then finds a compute node with that much free capacity and reserves it for the job. Module 4 shows how to write and submit these requests.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "2 · Computing cluster basics",
-      "2.2 · The scheduler and queue"
-    ]
-  },
-  {
-    "objectID": "modules/02-cluster-basics/02-queue.html#partitions",
-    "href": "modules/02-cluster-basics/02-queue.html#partitions",
-    "title": "The Scheduler and the Queue",
-    "section": "Partitions",
-    "text": "Partitions\nA partition is a group of nodes. Every job runs in a partition. Longleaf has CPU-only partitions for most work and GPU partitions for jobs that use a GPU.\nIf a job request does not name a partition, the job runs in the default partition, general, which suits most jobs.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "2 · Computing cluster basics",
-      "2.2 · The scheduler and queue"
-    ]
-  },
-  {
-    "objectID": "modules/02-cluster-basics/02-queue.html#sources",
-    "href": "modules/02-cluster-basics/02-queue.html#sources",
-    "title": "The Scheduler and the Queue",
-    "section": "Sources",
-    "text": "Sources\n\n“Getting Started on Longleaf,” UNC Research Computing\n“Fair Tree Fairshare Algorithm,” SchedMD",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "2 · Computing cluster basics",
-      "2.2 · The scheduler and queue"
-    ]
-  },
-  {
-    "objectID": "modules/01-introduction/03-how-longleaf-works.html",
-    "href": "modules/01-introduction/03-how-longleaf-works.html",
-    "title": "How Longleaf Works",
-    "section": "",
-    "text": "Longleaf is made up of many connected computers that are shared by researchers across UNC. Users prepare their work in one place, then ask the cluster to run it using the resources it needs.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "1 · Introduction to Longleaf",
-      "1.3 · How Longleaf works"
-    ]
-  },
-  {
-    "objectID": "modules/01-introduction/03-how-longleaf-works.html#from-your-computer-to-a-compute-node",
-    "href": "modules/01-introduction/03-how-longleaf-works.html#from-your-computer-to-a-compute-node",
-    "title": "How Longleaf Works",
-    "section": "From your computer to a compute node",
-    "text": "From your computer to a compute node\n\n\n1 · Connect\nConnect to Longleaf from a terminal or web browser. You arrive on a login node.\n\n\n2 · Prepare\nUse the login node to organize files, edit code, and describe the resources the work needs.\n\n\n3 · Schedule\nSubmit the work as a job. Slurm holds the job in a queue until suitable resources are available.\n\n\n4 · Compute\nA compute node runs the job and writes its output to storage.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "1 · Introduction to Longleaf",
-      "1.3 · How Longleaf works"
-    ]
-  },
-  {
-    "objectID": "modules/01-introduction/03-how-longleaf-works.html#login-nodes-and-compute-nodes",
-    "href": "modules/01-introduction/03-how-longleaf-works.html#login-nodes-and-compute-nodes",
-    "title": "How Longleaf Works",
-    "section": "Login nodes and compute nodes",
-    "text": "Login nodes and compute nodes\nA node is one computer within the cluster. Longleaf nodes serve different purposes:\n\nA login node is the shared entry point. Use it to work with files, edit scripts, run basic commands, and submit jobs.\nA compute node supplies the processors and memory that run an analysis.\n\nUsers normally do not select or log in directly to a compute node. They request resources through Slurm, which places the work on an appropriate node.\n\n\n\n\n\n\nWarningKeep demanding work off the login node\n\n\n\nMany people share each login node. Running an analysis there can slow the system for everyone. Submit computational work through Slurm so that it runs on a compute node.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "1 · Introduction to Longleaf",
-      "1.3 · How Longleaf works"
-    ]
-  },
-  {
-    "objectID": "modules/01-introduction/03-how-longleaf-works.html#jobs-slurm-and-the-queue",
-    "href": "modules/01-introduction/03-how-longleaf-works.html#jobs-slurm-and-the-queue",
-    "title": "How Longleaf Works",
-    "section": "Jobs, Slurm, and the queue",
-    "text": "Jobs, Slurm, and the queue\nA job is a request to run a program using specified cluster resources. Longleaf uses Slurm to manage those requests.\nSlurm:\n\nkeeps track of available cluster resources;\nholds waiting jobs in a queue; and\nassigns each job to suitable compute resources when they become available.\n\nA pending job has not necessarily encountered a problem. It may simply be waiting for the requested resources or waiting behind jobs with higher priority.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "1 · Introduction to Longleaf",
-      "1.3 · How Longleaf works"
-    ]
-  },
-  {
-    "objectID": "modules/01-introduction/03-how-longleaf-works.html#what-does-a-job-request",
-    "href": "modules/01-introduction/03-how-longleaf-works.html#what-does-a-job-request",
-    "title": "How Longleaf Works",
-    "section": "What does a job request?",
-    "text": "What does a job request?\nFor most introductory jobs, the essential requests are:\n\n\n\n\n\n\n\nResource\nWhat it means\n\n\n\n\nCPUs\nThe processor capacity available to the job\n\n\nMemory\nThe short-term working space, or RAM, available while the program runs\n\n\nTime\nThe maximum amount of time the job is allowed to run\n\n\n\nAsking for more resources does not automatically make a program run faster. A program must be written to use multiple CPUs, and unused memory does not improve its speed. Requests that are close to what the job actually needs also make it easier for Slurm to find a place for the job to run.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "1 · Introduction to Longleaf",
-      "1.3 · How Longleaf works"
-    ]
-  },
-  {
-    "objectID": "modules/01-introduction/03-how-longleaf-works.html#memory-and-storage",
-    "href": "modules/01-introduction/03-how-longleaf-works.html#memory-and-storage",
-    "title": "How Longleaf Works",
-    "section": "Memory and storage",
-    "text": "Memory and storage\nMemory and storage serve different purposes:\n\nMemory holds the data and instructions a program is actively using. It is temporary and belongs to the compute node running the job.\nStorage holds scripts, datasets, logs, and results as files. Files remain available after a job ends.\n\nOne useful comparison is a desk and a filing cabinet. Memory is the desk where current work is spread out. Storage is the filing cabinet where materials are kept between tasks. A larger desk lets you work with more material at once, but it does not necessarily make the work faster.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "1 · Introduction to Longleaf",
-      "1.3 · How Longleaf works"
-    ]
-  },
-  {
-    "objectID": "modules/01-introduction/03-how-longleaf-works.html#the-essential-idea",
-    "href": "modules/01-introduction/03-how-longleaf-works.html#the-essential-idea",
-    "title": "How Longleaf Works",
-    "section": "The essential idea",
-    "text": "The essential idea\nYou use a login node to prepare and submit work. Slurm finds appropriate resources, a compute node runs the job, and the results are written to storage.\nLater modules show how to connect to Longleaf, submit a job, and choose appropriate resource requests.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "1 · Introduction to Longleaf",
-      "1.3 · How Longleaf works"
-    ]
-  },
-  {
-    "objectID": "modules/01-introduction/03-how-longleaf-works.html#sources",
-    "href": "modules/01-introduction/03-how-longleaf-works.html#sources",
-    "title": "How Longleaf Works",
-    "section": "Sources",
-    "text": "Sources\n\n“Getting Started on Longleaf,” UNC Research Computing\n“SLURM Guide,” UNC Research Computing\n“Quick Start User Guide,” SchedMD",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "1 · Introduction to Longleaf",
-      "1.3 · How Longleaf works"
-    ]
-  },
-  {
-    "objectID": "modules/03-interacting-with-longleaf.html",
-    "href": "modules/03-interacting-with-longleaf.html",
-    "title": "Interacting with Longleaf",
-    "section": "",
-    "text": "Guiding question: How does a command become a managed job on a compute node?",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "3 · Interacting with Longleaf"
-    ]
-  },
-  {
-    "objectID": "modules/03-interacting-with-longleaf.html#essential-shell-commands",
-    "href": "modules/03-interacting-with-longleaf.html#essential-shell-commands",
-    "title": "Interacting with Longleaf",
-    "section": "Essential shell commands",
-    "text": "Essential shell commands\n\n\n\nTask\nCommand\n\n\n\n\nShow the current directory\npwd\n\n\nList files\nls\n\n\nEnter a directory\ncd directory-name\n\n\nMove up one directory\ncd ..\n\n\nCreate a directory\nmkdir directory-name\n\n\nRead a text file\nless filename",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "3 · Interacting with Longleaf"
-    ]
-  },
-  {
-    "objectID": "modules/03-interacting-with-longleaf.html#the-slurm-job-lifecycle",
-    "href": "modules/03-interacting-with-longleaf.html#the-slurm-job-lifecycle",
-    "title": "Interacting with Longleaf",
-    "section": "The Slurm job lifecycle",
-    "text": "The Slurm job lifecycle\n\n\nDescribe\nWrite the commands and resource request.\n\n\nSubmit\nSend the job script to Slurm.\n\n\nMonitor\nCheck whether the job is pending, running, or complete.\n\n\nReview\nInspect output, errors, and resource use.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "3 · Interacting with Longleaf"
-    ]
-  },
-  {
-    "objectID": "modules/03-interacting-with-longleaf.html#describing-a-job",
-    "href": "modules/03-interacting-with-longleaf.html#describing-a-job",
-    "title": "Interacting with Longleaf",
-    "section": "Describing a job",
-    "text": "Describing a job\nA job request lists the resources the job needs, followed by the command it runs. UNC’s Slurm guide uses this example:\n#!/bin/bash\n#SBATCH --ntasks=1\n#SBATCH --cpus-per-task=1\n#SBATCH --time=01:00:00\n#SBATCH --mem=100m\nmyexe\n\n\n\nLine\nRequest\n\n\n\n\n--ntasks=1\nRun one task\n\n\n--cpus-per-task=1\nGive that task one CPU\n\n\n--time=01:00:00\nAllow up to one hour\n\n\n--mem=100m\nReserve 100 MB of memory\n\n\nmyexe\nThe command the job runs",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "3 · Interacting with Longleaf"
-    ]
-  },
-  {
-    "objectID": "modules/03-interacting-with-longleaf.html#choosing-resource-requests",
-    "href": "modules/03-interacting-with-longleaf.html#choosing-resource-requests",
-    "title": "Interacting with Longleaf",
-    "section": "Choosing resource requests",
-    "text": "Choosing resource requests\nResource requests affect both whether a job succeeds and when it can start:\n\nToo little memory or time: the job may be stopped before it finishes.\nToo much memory or time: unused resources remain unavailable to other users, and the job may wait longer for a suitable opening.\nMore CPUs: additional CPUs help only when the program is able to use them.\n\nStart with a reasonable estimate plus a modest margin. After a job finishes, use sacct to compare the request with the time and memory the job actually used:\nsacct -j &lt;job-id&gt; --format=JobID,State,Elapsed,MaxRSS\nUse that information to improve the next request rather than repeatedly reserving the largest possible amount.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "3 · Interacting with Longleaf"
-    ]
-  },
-  {
-    "objectID": "modules/03-interacting-with-longleaf.html#core-slurm-actions",
-    "href": "modules/03-interacting-with-longleaf.html#core-slurm-actions",
-    "title": "Interacting with Longleaf",
-    "section": "Core Slurm actions",
-    "text": "Core Slurm actions\nsbatch job.slurm\nsqueue -u \"$USER\"\nscancel &lt;job-id&gt;",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "3 · Interacting with Longleaf"
-    ]
-  },
-  {
-    "objectID": "modules/03-interacting-with-longleaf.html#queue-rules-and-responsible-requests",
-    "href": "modules/03-interacting-with-longleaf.html#queue-rules-and-responsible-requests",
-    "title": "Interacting with Longleaf",
-    "section": "Queue rules and responsible requests",
-    "text": "Queue rules and responsible requests\nEvery job runs in a partition, a group of nodes intended for a particular kind of work:\n\n\n\n\n\n\n\n\nPartition\nUsed for\nMaximum run time\n\n\n\n\ngeneral\nStandard CPU jobs; suitable for most work\n11 days\n\n\ninteract\nInteractive sessions, such as running a graphical program or debugging code\n8 hours\n\n\ndatamover\nCopying large amounts of data between Longleaf file systems, or heavy downloading from the web\n11 days\n\n\nGPU partitions\nJobs that use a GPU\n11 days unless otherwise noted\n\n\n\ngeneral is the default partition. UNC recommends not specifying --partition=general in a job request: leaving it out allows Slurm to place the job on an idle node in another partition.\nPartition limits and available hardware can change. Check UNC Research Computing’s current Longleaf documentation when a job has unusual runtime, memory, or GPU requirements.\n\n\n\n\n\n\nWarningKeep heavy work off login nodes\n\n\n\nLogin nodes are shared entry points. Resource-intensive analyses should run through the scheduler on compute nodes.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "3 · Interacting with Longleaf"
-    ]
-  },
-  {
-    "objectID": "modules/03-interacting-with-longleaf.html#demonstration-sequence",
-    "href": "modules/03-interacting-with-longleaf.html#demonstration-sequence",
-    "title": "Interacting with Longleaf",
-    "section": "Demonstration sequence",
-    "text": "Demonstration sequence\n\nInspect a small job script.\nSubmit it and record the job ID.\nCheck its state in the queue.\nFind the output file.\nShow how to cancel a job safely.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "3 · Interacting with Longleaf"
-    ]
-  },
-  {
-    "objectID": "modules/03-interacting-with-longleaf.html#sources",
-    "href": "modules/03-interacting-with-longleaf.html#sources",
-    "title": "Interacting with Longleaf",
-    "section": "Sources",
-    "text": "Sources\n\n“Getting Started on Longleaf,” UNC Research Computing\n“SLURM Guide,” UNC Research Computing",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "3 · Interacting with Longleaf"
-    ]
-  },
-  {
-    "objectID": "modules/02-accessing-longleaf.html",
-    "href": "modules/02-accessing-longleaf.html",
-    "title": "How Do You Actually Use It?",
-    "section": "",
-    "text": "Guiding question: Which access method should a new Longleaf user choose?",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "2 · Accessing Longleaf"
-    ]
-  },
-  {
-    "objectID": "modules/02-accessing-longleaf.html#requesting-an-account",
-    "href": "modules/02-accessing-longleaf.html#requesting-an-account",
-    "title": "How Do You Actually Use It?",
-    "section": "Requesting an account",
-    "text": "Requesting an account",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "2 · Accessing Longleaf"
-    ]
-  },
-  {
-    "objectID": "modules/02-accessing-longleaf.html#connecting-to-the-cluster",
-    "href": "modules/02-accessing-longleaf.html#connecting-to-the-cluster",
-    "title": "How Do You Actually Use It?",
-    "section": "Connecting to the cluster",
-    "text": "Connecting to the cluster",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "2 · Accessing Longleaf"
-    ]
-  },
-  {
-    "objectID": "modules/02-accessing-longleaf.html#ways-to-connect",
-    "href": "modules/02-accessing-longleaf.html#ways-to-connect",
-    "title": "How Do You Actually Use It?",
-    "section": "Ways to connect",
-    "text": "Ways to connect\n\n\n\n\n\n\n\n\nMethod\nBest for\nWhat the user sees\n\n\n\n\nTerminal connection\nDirect command-line work\nA shell prompt on a login node\n\n\nWeb portal\nBrowser-based interactive work\nFiles, applications, and interactive sessions\n\n\nSFTP client\nMoving files between systems\nA graphical local-and-remote file browser",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "2 · Accessing Longleaf"
-    ]
-  },
-  {
-    "objectID": "modules/02-accessing-longleaf.html#logging-in-from-a-terminal",
-    "href": "modules/02-accessing-longleaf.html#logging-in-from-a-terminal",
-    "title": "How Do You Actually Use It?",
-    "section": "Logging in from a terminal",
-    "text": "Logging in from a terminal",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "2 · Accessing Longleaf"
-    ]
-  },
-  {
-    "objectID": "modules/02-accessing-longleaf.html#working-through-the-browser",
-    "href": "modules/02-accessing-longleaf.html#working-through-the-browser",
-    "title": "How Do You Actually Use It?",
-    "section": "Working through the browser",
-    "text": "Working through the browser",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "2 · Accessing Longleaf"
-    ]
-  },
-  {
-    "objectID": "modules/02-accessing-longleaf.html#moving-files",
-    "href": "modules/02-accessing-longleaf.html#moving-files",
-    "title": "How Do You Actually Use It?",
-    "section": "Moving files",
-    "text": "Moving files\nIntroduce a graphical SFTP workflow first, then note when command-line tools are useful for larger or repeatable transfers.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "2 · Accessing Longleaf"
-    ]
-  },
-  {
-    "objectID": "modules/02-accessing-longleaf.html#where-files-live",
-    "href": "modules/02-accessing-longleaf.html#where-files-live",
-    "title": "How Do You Actually Use It?",
-    "section": "Where files live",
-    "text": "Where files live\nLongleaf’s login and compute nodes can access the same shared storage. A script prepared on a login node can therefore read data and write results while it runs on a compute node.\nThe main storage locations for new users are:\n\nHome directory: /nas/longleaf/home/&lt;onyen&gt; is a relatively small, backed-up space for scripts, settings, and personal software. It is not intended for data-intensive computing.\nPersonal data space: /hickory/users/&lt;o&gt;/&lt;n&gt;/&lt;onyen&gt; provides a larger location for active and inactive personal research data. It is not backed up.\nProject space: research groups may have shared storage under /proj, /hickory/proj, or /vast/som. Its location and quota depend on the group, and it is not backed up by default.\n\nSome established users also have older /work or /users directories. UNC is moving new personal storage to /hickory/users, so users should check the current Research Computing guidance before choosing a location for important data.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "2 · Accessing Longleaf"
-    ]
-  },
-  {
-    "objectID": "modules/02-accessing-longleaf.html#demonstration-sequence",
-    "href": "modules/02-accessing-longleaf.html#demonstration-sequence",
-    "title": "How Do You Actually Use It?",
-    "section": "Demonstration sequence",
-    "text": "Demonstration sequence\n\nOpen the chosen access method.\nConnect and identify the login environment.\nLocate the home and project directories.\nTransfer one small example file.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "2 · Accessing Longleaf"
-    ]
-  },
-  {
-    "objectID": "modules/02-accessing-longleaf.html#sources",
-    "href": "modules/02-accessing-longleaf.html#sources",
-    "title": "How Do You Actually Use It?",
-    "section": "Sources",
-    "text": "Sources\n\n“Getting Started on Longleaf,” UNC Research Computing",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "2 · Accessing Longleaf"
-    ]
-  },
-  {
-    "objectID": "modules/04-r-on-longleaf.html",
-    "href": "modules/04-r-on-longleaf.html",
-    "title": "R on Longleaf",
-    "section": "",
-    "text": "Guiding question: When should R be run interactively, and when should it become a scheduled job?",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "4 · R on Longleaf"
-    ]
-  },
-  {
-    "objectID": "modules/04-r-on-longleaf.html#r-installations-on-longleaf",
-    "href": "modules/04-r-on-longleaf.html#r-installations-on-longleaf",
-    "title": "R on Longleaf",
-    "section": "R installations on Longleaf",
-    "text": "R installations on Longleaf",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "4 · R on Longleaf"
-    ]
-  },
-  {
-    "objectID": "modules/04-r-on-longleaf.html#where-packages-live",
-    "href": "modules/04-r-on-longleaf.html#where-packages-live",
-    "title": "R on Longleaf",
-    "section": "Where packages live",
-    "text": "Where packages live\nR looks for packages in a short list of folders. On Longleaf, two of them matter:\n\nThe R module’s library. The packages that ship with R, and any that Research Computing has installed centrally, live inside the R installation that module add r loads. Everyone can use them, and nobody can change them.\nYour personal library. Anything you install yourself goes into a folder in your home directory. R creates it for you the first time you install a package. The default location is ~/R/x86_64-pc-linux-gnu-library/4.4, where 4.4 matches the version of R you loaded.\n\n\nInside R, .libPaths() prints these folders in the order R searches them.\nTwo consequences follow from that layout. Your home directory is shared storage, so a package installed once is available in RStudio Server, interactive sessions, and batch jobs alike, as long as they load the same R module. And the personal library belongs to one R version: patch releases such as 4.4.0 and 4.4.2 share it, but an R module with a different minor version looks in a different folder, so packages installed under the old version are not found until you install them again.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "4 · R on Longleaf"
-    ]
-  },
-  {
-    "objectID": "modules/04-r-on-longleaf.html#interactive-r-or-a-scheduled-job",
-    "href": "modules/04-r-on-longleaf.html#interactive-r-or-a-scheduled-job",
-    "title": "R on Longleaf",
-    "section": "Interactive R or a scheduled job?",
-    "text": "Interactive R or a scheduled job?\n\n\n\n\n\n\n\nUse interactive R when…\nUse a scheduled job when…\n\n\n\n\ntesting a short command\nthe analysis may run for a long time\n\n\nchecking that packages load\nthe work should continue after disconnecting\n\n\ndebugging a small example\nthe analysis needs substantial memory or CPUs\n\n\nexploring an unfamiliar dataset\nthe same analysis will be repeated",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "4 · R on Longleaf"
-    ]
-  },
-  {
-    "objectID": "modules/04-r-on-longleaf.html#installing-packages",
-    "href": "modules/04-r-on-longleaf.html#installing-packages",
-    "title": "R on Longleaf",
-    "section": "Installing packages",
-    "text": "Installing packages\nInstall packages from an interactive R session, not from a job script. Start a session as in Example 1, load R, and call install.packages():\nsrun -t 1:00:00 -p interact -n 1 --cpus-per-task=1 --mem=4g --pty /bin/bash\nmodule add r\nR\ninstall.packages(\"jsonlite\", repos = \"https://cloud.r-project.org\")\nThe repos argument skips the CRAN mirror menu that R otherwise shows in a terminal. The first time you install anything, R notices that it cannot write to the module’s library and asks two questions. Answer yes to both:\nWould you like to use a personal library instead? (yes/No/cancel) yes\nWould you like to create a personal library\n'~/R/x86_64-pc-linux-gnu-library/4.4'\nto install packages into? (yes/No/cancel) yes\n\nFrom then on, every install.packages() call goes straight to your personal library without asking. Confirm the package loads and see where it went:\nlibrary(jsonlite)\n.libPaths()\nPackages with compiled code take a few minutes to build. That is normal; wait for the prompt to return.\n\n\n\n\n\n\nTipInstall once, interactively\n\n\n\nA job script should load R and run your code, nothing more. Installing inside a job is slow, and the twelve tasks of a job array all trying to install the same package at once will interfere with each other. Install in an interactive session, confirm library() works, then submit.\n\n\nBioconductor packages use their own installer. Install it once from CRAN, then use it for the rest:\ninstall.packages(\"BiocManager\", repos = \"https://cloud.r-project.org\")\nBiocManager::install(\"limma\")\n\nInstalling from a file you upload\nSome packages are not on CRAN: one a collaborator sent you, one you are developing, or one you downloaded from GitHub as a source archive. In that case, copy the package’s .tar.gz file to Longleaf with rsync, scp, or the SFTP client from Module 2, then point install.packages() at the file instead of a repository:\nrsync -av mypackage_0.1.0.tar.gz &lt;onyen&gt;@longleaf.unc.edu:\ninstall.packages(\"~/mypackage_0.1.0.tar.gz\", repos = NULL, type = \"source\")\nrepos = NULL tells R to install from the file. R does not download dependencies in this mode, so if the installation stops with there is no package called 'xyz', install xyz from CRAN first and run the command again. The package lands in the same personal library as everything else.\nIf you have the package as a folder rather than an archive, build the archive on your laptop first. From the folder’s parent directory, R CMD build mypackage produces the .tar.gz file to upload.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "4 · R on Longleaf"
-    ]
-  },
-  {
-    "objectID": "modules/04-r-on-longleaf.html#three-examples",
-    "href": "modules/04-r-on-longleaf.html#three-examples",
-    "title": "R on Longleaf",
-    "section": "Three examples",
-    "text": "Three examples\nThe rest of this module follows the progression most projects take:\n\nInteractive R on a compute node, for testing and debugging.\nA single scheduled job that runs one R script once.\nA batch of scheduled jobs that run the same script under many parameter settings.\n\nThe files for Examples 2 and 3 are in the examples/ folder of this site’s repository, and each file is linked below. In the commands that follow, replace &lt;onyen&gt; with your ONYEN.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "4 · R on Longleaf"
-    ]
-  },
-  {
-    "objectID": "modules/04-r-on-longleaf.html#example-1-interactive-r",
-    "href": "modules/04-r-on-longleaf.html#example-1-interactive-r",
-    "title": "R on Longleaf",
-    "section": "Example 1 · Interactive R",
-    "text": "Example 1 · Interactive R\nAn interactive session gives you a shell, or RStudio, on a compute node. Exploratory work then runs on resources reserved for you instead of competing with everyone else on the login node.\n\nFrom a terminal\nLog in, then ask Slurm for an interactive shell on the interact partition:\nssh &lt;onyen&gt;@longleaf.unc.edu\nsrun -t 1:00:00 -p interact -n 1 --cpus-per-task=1 --mem=4g --pty /bin/bash\n\n\n\n\n\n\n\nFlag\nRequest\n\n\n\n\n-t 1:00:00\nAllow up to one hour; the interact partition allows at most 8 hours\n\n\n-p interact\nUse the partition reserved for interactive work\n\n\n-n 1 --cpus-per-task=1\nOne task with one CPU\n\n\n--mem=4g\nReserve 4 GB of memory\n\n\n--pty /bin/bash\nAttach a terminal and start a shell in it\n\n\n\nThe prompt changes to show a compute node’s name once the session starts. Load R and start it:\nmodule add r\nR\nInside R, confirm where you are and try a few commands:\nSys.info()[[\"nodename\"]]   # a compute node, not a login node\nR.version.string\nx &lt;- rnorm(1e6); mean(x)\nLeave R, then the session, so the node is released for other users:\nq()\nexit\nIf you need graphics windows (for example plot()), log in with ssh -X and add --x11=first to the srun command.\n\n\nFrom the browser\nOpen OnDemand at https://ondemand.rc.unc.edu has an RStudio Server app under Interactive Apps. Choose the number of hours, CPUs, memory, and the R module, and RStudio opens on a compute node in a browser tab. UNC recommends requesting at least two CPUs for RStudio sessions.\n\n\n\n\n\n\nTipInteractive sessions are for development\n\n\n\nAnything that takes more than a few minutes, needs to keep running after you disconnect, or will be repeated belongs in a scheduled job. Examples 2 and 3 show how, and an interactive session is the right place to test their scripts before submitting them.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "4 · R on Longleaf"
-    ]
-  },
-  {
-    "objectID": "modules/04-r-on-longleaf.html#example-2-submitting-a-single-r-job",
-    "href": "modules/04-r-on-longleaf.html#example-2-submitting-a-single-r-job",
-    "title": "R on Longleaf",
-    "section": "Example 2 · Submitting a single R job",
-    "text": "Example 2 · Submitting a single R job\nThe simplest scheduled workflow: one R script that runs once and saves its output. The files are in examples/example2_single_job/.\n\n\n\nFile\nPurpose\n\n\n\n\nhello_longleaf.R\nThe R script. Simulates data, fits lm(), and saves a list to results/hello_results.rds.\n\n\nsubmit_single.sl\nThe Slurm submission script: the resources the job needs and the command it runs.\n\n\nlogs/\nWhere Slurm writes the job’s console output (.out) and errors (.err).\n\n\nresults/\nWhere the R script writes its .rds file.\n\n\n\n\nThe submission script\n\n\nsubmit_single.sl\n\n#!/bin/bash\n# submit_single.sl -- SLURM submission script for Example 2 (one R job)\n#\n# Submit from inside this folder with:   sbatch submit_single.sl\n# Check status with:                     squeue -u $USER\n#\n# Everything starting with \"#SBATCH\" is a directive read by the scheduler.\n# Lines starting with a plain \"#\" are ordinary comments.\n\n#SBATCH --job-name=hello_longleaf\n#SBATCH --nodes=1\n#SBATCH --ntasks=1\n#SBATCH --cpus-per-task=1\n#SBATCH --mem=2g\n#SBATCH --time=00:10:00\n#SBATCH --output=logs/hello_%j.out\n#SBATCH --error=logs/hello_%j.err\n#SBATCH --mail-type=END,FAIL\n#SBATCH --mail-user=&lt;onyen&gt;@unc.edu\n\n# ---- Load R -----------------------------------------------------------------\n# \"module add r\" loads the cluster's default R. To pin a version, run\n# \"module avail r\" on a login node and use, e.g., \"module add r/4.4.0\".\nmodule add r\n\n# ---- Run the script ---------------------------------------------------------\n# SLURM starts the job in the directory you ran sbatch from, so relative\n# paths (hello_longleaf.R, results/, logs/) resolve as expected.\nRscript --vanilla hello_longleaf.R\n\n\n\n\n\n\n\n\nDirective\nRequest\n\n\n\n\n--job-name=hello_longleaf\nThe name shown by squeue\n\n\n--nodes=1 --ntasks=1 --cpus-per-task=1\nOne task with one CPU on one node\n\n\n--mem=2g\nReserve 2 GB of memory\n\n\n--time=00:10:00\nAllow up to ten minutes\n\n\n--output and --error\nWhere to write the logs; %j becomes the job ID\n\n\n--mail-type and --mail-user\nEmail when the job ends or fails\n\n\n\nAfter the directives, the script loads R and runs the R script with Rscript. Slurm starts the job in the directory you ran sbatch from, so the relative paths to the script, logs/, and results/ resolve as expected.\n\n\nThe R script\nThe script is ordinary R. The only cluster-specific lines print the host name and Slurm job ID at the start, which makes it easy to confirm from the log that the job ran on a compute node.\n\n\n\n\n\n\nNotehello_longleaf.R\n\n\n\n\n\n\n\nhello_longleaf.R\n\n###############################################################################\n# hello_longleaf.R -- Example 2: a single, self-contained R job\n#\n# What it does:\n#   1. Simulates a small dataset\n#   2. Fits a linear model and computes a few summary numbers\n#   3. Saves everything to results/hello_results.rds\n#\n# Run locally:   Rscript hello_longleaf.R\n# Run on Longleaf: sbatch submit_single.sl   (see README.md)\n###############################################################################\n\n# ---- 0. Settings you may want to change -------------------------------------\nn       &lt;- 500                      # sample size\nseed    &lt;- 2026                     # for reproducibility\nout_dir &lt;- \"results\"                # relative to the folder you sbatch from\noutfile &lt;- file.path(out_dir, \"hello_results.rds\")\n\ndir.create(out_dir, showWarnings = FALSE, recursive = TRUE)\n\n# ---- 1. Report where/when we are running (handy for debugging on the cluster)\ncat(\"Started:   \", format(Sys.time()), \"\\n\")\ncat(\"Host:      \", Sys.info()[[\"nodename\"]], \"\\n\")\ncat(\"Working dir:\", getwd(), \"\\n\")\ncat(\"SLURM job: \", Sys.getenv(\"SLURM_JOB_ID\", unset = \"(not running under SLURM)\"), \"\\n\")\n\n# ---- 2. Simulate data and fit a model ---------------------------------------\nset.seed(seed)\nx &lt;- rnorm(n)\ny &lt;- 1 + 2 * x + rnorm(n, sd = 0.5)\nfit &lt;- lm(y ~ x)\n\n# ---- 3. Bundle the results into a list --------------------------------------\nresults &lt;- list(\n  n            = n,\n  seed         = seed,\n  coefficients = coef(fit),\n  r_squared    = summary(fit)$r.squared,\n  mean_y       = mean(y),\n  sd_y         = sd(y),\n  hostname     = Sys.info()[[\"nodename\"]],\n  slurm_job_id = Sys.getenv(\"SLURM_JOB_ID\", unset = NA),\n  r_version    = R.version.string,\n  finished_at  = Sys.time()\n)\n\n# ---- 4. Save to disk --------------------------------------------------------\nsaveRDS(results, outfile)\ncat(\"Saved results to:\", normalizePath(outfile), \"\\n\")\ncat(\"Finished:  \", format(Sys.time()), \"\\n\")\n\n\n\n\n\n\nStep by step\n\nCopy the folder to Longleaf and go to it. This puts it in your home directory.\nrsync -av example2_single_job/ &lt;onyen&gt;@longleaf.unc.edu:example2_single_job/\nssh &lt;onyen&gt;@longleaf.unc.edu\ncd ~/example2_single_job\nEdit submit_single.sl. Set --mail-user to your email, or delete the two --mail-* lines. Raise --time or --mem if a real job needs more. Jobs that exceed their limits are killed, so ask for a little more than you expect.\nSubmit. Slurm replies with Submitted batch job 12345678. That number is the job ID.\nsbatch submit_single.sl\nMonitor.\nsqueue -u \"$USER\"               # pending (PD) or running (R)?\nsacct -j 12345678               # state and exit code after it finishes\ncat logs/hello_12345678.out     # what the script printed\nLook at the results, on Longleaf or after copying them back to your laptop.\nmodule add r\nRscript -e 'str(readRDS(\"results/hello_results.rds\"))'\nrsync -av &lt;onyen&gt;@longleaf.unc.edu:example2_single_job/results/ ./results/\n\n\n\n\n\n\n\nWarningCreate the log directory before submitting\n\n\n\nSlurm will not create logs/. If it is missing, the job fails immediately and leaves no output to explain why. The example folder includes an empty logs/ for this reason.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "4 · R on Longleaf"
-    ]
-  },
-  {
-    "objectID": "modules/04-r-on-longleaf.html#example-3-submitting-a-batch-of-jobs-with-parameters",
-    "href": "modules/04-r-on-longleaf.html#example-3-submitting-a-batch-of-jobs-with-parameters",
-    "title": "R on Longleaf",
-    "section": "Example 3 · Submitting a batch of jobs with parameters",
-    "text": "Example 3 · Submitting a batch of jobs with parameters\nInstead of editing the R script and resubmitting it for every setting, write each combination of settings as one row of a plain text file, submit a Slurm job array with one task per row, and let each task pass its row to R as command-line arguments. Twelve rows become twelve independent jobs that run in parallel on whatever nodes are free, each saving its own result file. The files are in examples/example3_conditions_array/.\n\nHow the pieces fit together\nsbatch submit_array.sl\n   │   #SBATCH --array=1-12  → Slurm starts 12 tasks, SLURM_ARRAY_TASK_ID = 1..12\n   │\n   └─▶ sh runcode.sh $SLURM_ARRAY_TASK_ID          (task 7 shown)\n          │   sed \"7q;d\" conditions.txt   →   \"7 50 0 2\"\n          │\n          └─▶ Rscript run_condition.R 7 50 0 2\n                 │   commandArgs() → c(\"7\", \"50\", \"0\", \"2\")\n                 │\n                 └─▶ results/result_n50_beta0.0_rep02.rds\n\n\n\nFile\nPurpose\n\n\n\n\nmake_conditions.R\nBuilds conditions.txt from an expand.grid() of settings. Rerun it whenever the grid changes.\n\n\nconditions.txt\nOne row per job. Space-separated, no header. Columns: row_id n beta rep.\n\n\nrun_condition.R\nThe worker. Reads four command-line arguments, simulates, and saves one .rds.\n\n\nruncode.sh\nPicks one line of conditions.txt and calls R with it.\n\n\nsubmit_array.sl\nThe Slurm job array submission script.\n\n\ncollect_results.R\nStacks every .rds into one data frame and lists any rows that are missing.\n\n\n\n\n\nThe conditions file\nEach row is one job. make_conditions.R builds the file from every combination of two sample sizes, two slopes, and three replications, with the row number as the first column so each job knows its own ID.\n\n\nconditions.txt\n\n1 50 0 1\n2 200 0 1\n3 50 0.5 1\n4 200 0.5 1\n5 50 0 2\n6 200 0 2\n7 50 0.5 2\n8 200 0.5 2\n9 50 0 3\n10 200 0 3\n11 50 0.5 3\n12 200 0.5 3\n\n\n\n\n\n\n\nNotemake_conditions.R\n\n\n\n\n\n\n\nmake_conditions.R\n\n###############################################################################\n# make_conditions.R -- builds conditions.txt for Example 3\n#\n# Each ROW of conditions.txt is one job in the SLURM array. Columns are\n# separated by spaces and there is NO header row (the shell script reads\n# lines by number, so a header would be mistaken for condition 1).\n#\n# Run:  Rscript make_conditions.R\n###############################################################################\n\ngrid &lt;- expand.grid(\n  n    = c(50, 200),           # sample size\n  beta = c(0, 0.5),            # true slope\n  rep  = 1:3,                  # replication\n  stringsAsFactors = FALSE\n)\n\n# Add the row number as the first column so each job knows its own ID.\ngrid &lt;- cbind(row_id = seq_len(nrow(grid)), grid)\n\nwrite.table(grid, \"conditions.txt\",\n            row.names = FALSE, col.names = FALSE, quote = FALSE)\n\ncat(sprintf(\"Wrote conditions.txt with %d rows (use --array=1-%d)\\n\",\n            nrow(grid), nrow(grid)))\nprint(grid)\n\n\n\n\n\n\nThe submission script\n\n\nsubmit_array.sl\n\n#!/bin/bash\n# submit_array.sl -- SLURM job array for Example 3\n#\n# Submit from inside this folder with:   sbatch submit_array.sl\n#\n# --array=1-12 launches 12 copies of this script. Each copy gets a different\n# value of $SLURM_ARRAY_TASK_ID (1, 2, ..., 12), which we use to pick a line\n# from conditions.txt. The range MUST match the number of lines in that file\n# (wc -l conditions.txt). Add %N to throttle, e.g. --array=1-500%50 runs at\n# most 50 at a time.\n\n#SBATCH --job-name=cond_array\n#SBATCH --array=1-12\n#SBATCH --nodes=1\n#SBATCH --ntasks=1\n#SBATCH --cpus-per-task=1\n#SBATCH --mem=1g\n#SBATCH --time=00:05:00\n#SBATCH --output=logs/cond_%A_%a.out\n#SBATCH --error=logs/cond_%A_%a.err\n#SBATCH --mail-type=FAIL\n#SBATCH --mail-user=&lt;onyen&gt;@unc.edu\n\n# %A = the array's master job ID, %a = this task's index, so each task\n# gets its own log file, e.g. logs/cond_12345678_7.out\n\nsh runcode.sh $SLURM_ARRAY_TASK_ID\n\nThe one new directive is --array=1-12. It launches twelve copies of the script, each with a different value of SLURM_ARRAY_TASK_ID. The range must match the number of lines in conditions.txt. In the log file names, %A is the array’s job ID and %a is the task index, so each task gets its own log.\n\n\nThe glue script\nEach task runs this short shell script, which pulls its own line out of conditions.txt and hands the values to R:\n\n\nruncode.sh\n\n#!/bin/bash\n# runcode.sh -- glue between SLURM and R for Example 3\n#\n# Usage:  sh runcode.sh &lt;line_number&gt;\n#\n# Picks line &lt;line_number&gt; out of conditions.txt and passes its contents to\n# run_condition.R as command-line arguments. submit_array.sl calls this with\n# $SLURM_ARRAY_TASK_ID, so array task 7 runs row 7 of conditions.txt.\n\nCONDITIONS=conditions.txt\n\n# sed \"Nq;d\" prints line N of the file and nothing else.\ninput=$(sed \"${1}q;d\" $CONDITIONS)\n\nif [ -z \"$input\" ]; then\n  echo \"ERROR: no line $1 in $CONDITIONS\" &gt;&2\n  exit 1\nfi\n\necho \"Task $1 -&gt; conditions: $input\"\n\nmodule add r\nRscript --vanilla run_condition.R $input\n\n\n\nThe worker script\nOnly the top of run_condition.R is specific to the array. R receives the arguments as text, so the script converts each one:\n\n\nrun_condition.R (excerpt)\n\nargs &lt;- commandArgs(trailingOnly = TRUE)\nif (length(args) != 4) {\n  stop(\"Usage: Rscript run_condition.R &lt;row_id&gt; &lt;n&gt; &lt;beta&gt; &lt;rep&gt;\\n\",\n       \"Got \", length(args), \" argument(s): \", paste(args, collapse = \" \"))\n}\n\nrow_id &lt;- as.integer(args[1])\nn      &lt;- as.integer(args[2])\nbeta   &lt;- as.numeric(args[3])\nrep_i  &lt;- as.integer(args[4])\n\nThe rest simulates data, fits a model, and saves a result file whose name encodes the condition. The seed is derived from the condition values rather than the task ID, so rerunning row 7 always gives the same answer, and appending rows to conditions.txt never changes earlier results.\n\n\n\n\n\n\nNoterun_condition.R\n\n\n\n\n\n\n\nrun_condition.R\n\n###############################################################################\n# run_condition.R -- Example 3 worker script: ONE row of conditions.txt\n#\n# Called by runcode.sh as:\n#   Rscript --vanilla run_condition.R &lt;row_id&gt; &lt;n&gt; &lt;beta&gt; &lt;rep&gt;\n#\n# The four values after the script name are one line of conditions.txt.\n# R receives them as a character vector from commandArgs(); convert types\n# yourself.\n###############################################################################\n\n# ---- 1. Read the command-line arguments -------------------------------------\nargs &lt;- commandArgs(trailingOnly = TRUE)\nif (length(args) != 4) {\n  stop(\"Usage: Rscript run_condition.R &lt;row_id&gt; &lt;n&gt; &lt;beta&gt; &lt;rep&gt;\\n\",\n       \"Got \", length(args), \" argument(s): \", paste(args, collapse = \" \"))\n}\n\nrow_id &lt;- as.integer(args[1])\nn      &lt;- as.integer(args[2])\nbeta   &lt;- as.numeric(args[3])\nrep_i  &lt;- as.integer(args[4])\n\ncat(sprintf(\"=== Row %d: n=%d, beta=%.2f, rep=%d ===\\n\", row_id, n, beta, rep_i))\ncat(\"Host:\", Sys.info()[[\"nodename\"]],\n    \" SLURM task:\", Sys.getenv(\"SLURM_ARRAY_TASK_ID\", unset = \"(none)\"), \"\\n\")\n\n# ---- 2. Seed from the condition, not from the row order ---------------------\n# This way re-running row 7 always gives the same answer, and adding rows to\n# the bottom of conditions.txt never changes earlier results.\nset.seed(1000 * n + 100 * round(beta * 10) + rep_i)\n\n# ---- 3. Do the (trivial) work -----------------------------------------------\nx   &lt;- rnorm(n)\ny   &lt;- beta * x + rnorm(n)\nfit &lt;- lm(y ~ x)\n\nresults &lt;- list(\n  row_id     = row_id,\n  n          = n,\n  beta_true  = beta,\n  rep        = rep_i,\n  beta_hat   = unname(coef(fit)[\"x\"]),\n  p_value    = summary(fit)$coefficients[\"x\", \"Pr(&gt;|t|)\"],\n  hostname   = Sys.info()[[\"nodename\"]],\n  finished   = Sys.time()\n)\n\n# ---- 4. Save with a filename that encodes the condition ---------------------\nout_dir &lt;- \"results\"\ndir.create(out_dir, showWarnings = FALSE, recursive = TRUE)\noutfile &lt;- file.path(out_dir,\n                     sprintf(\"result_n%d_beta%.1f_rep%02d.rds\", n, beta, rep_i))\nsaveRDS(results, outfile)\ncat(\"Saved:\", outfile, \"\\n\")\n\n\n\n\n\n\n\n\n\n\nNotecollect_results.R\n\n\n\n\n\n\n\ncollect_results.R\n\n###############################################################################\n# collect_results.R -- stack every results/*.rds into one data frame\n#\n# Run after the array finishes:  Rscript collect_results.R\n# Also reports any conditions.txt rows that have no result file (failed or\n# still-running tasks), so you know exactly which array indices to resubmit.\n###############################################################################\n\nfiles &lt;- list.files(\"results\", pattern = \"\\\\.rds$\", full.names = TRUE)\ncat(sprintf(\"Found %d result files\\n\", length(files)))\n\nrows &lt;- lapply(files, function(f) {\n  r &lt;- readRDS(f)\n  data.frame(row_id = r$row_id, n = r$n, beta_true = r$beta_true, rep = r$rep,\n             beta_hat = r$beta_hat, p_value = r$p_value,\n             hostname = r$hostname)\n})\nall_results &lt;- do.call(rbind, rows)\nall_results &lt;- all_results[order(all_results$row_id), ]\nrownames(all_results) &lt;- NULL\nprint(all_results)\n\n# Which rows of conditions.txt are missing?\ncond &lt;- read.table(\"conditions.txt\",\n                   col.names = c(\"row_id\", \"n\", \"beta\", \"rep\"))\nmissing &lt;- setdiff(cond$row_id, all_results$row_id)\nif (length(missing) == 0) {\n  cat(\"\\nAll conditions complete.\\n\")\n} else {\n  cat(\"\\nMISSING rows (resubmit with --array=\",\n      paste(missing, collapse = \",\"), \"):\\n\", sep = \"\")\n  print(cond[cond$row_id %in% missing, ])\n}\n\nsaveRDS(all_results, \"all_results.rds\")\ncat(\"Saved all_results.rds\\n\")\n\n\n\n\n\n\nStep by step\n\nBuild the conditions file on your laptop or on Longleaf, and note the number of rows.\nRscript make_conditions.R\nwc -l conditions.txt\nCopy the folder to Longleaf and go to it.\nrsync -av example3_conditions_array/ &lt;onyen&gt;@longleaf.unc.edu:example3_conditions_array/\nssh &lt;onyen&gt;@longleaf.unc.edu\ncd ~/example3_conditions_array\nEdit submit_array.sl. Make --array=1-12 match the row count. This is the line people forget: too small and some conditions never run, too large and the extra tasks fail with “no line N”. Set or delete the --mail-* lines, and remember that --time and --mem apply per task, not to the whole array. For big arrays add a throttle, such as --array=1-2000%100, so you do not monopolize the partition.\nTest one row interactively before submitting hundreds. Use an interactive session from Example 1. If this works, the array will work.\nmodule add r\nsh runcode.sh 1\nls results/\nSubmit and monitor. squeue shows one line per running or pending task.\nsbatch submit_array.sl\nsqueue -u \"$USER\"\nsacct -j &lt;jobid&gt; --format=JobID,State,ExitCode,Elapsed\ntail logs/cond_&lt;jobid&gt;_7.out\nCollect. This prints a table of all results, writes all_results.rds, and lists any rows that have no result file.\nRscript collect_results.R\nTo rerun only the missing rows, submit again with an explicit list. A command-line --array overrides the one inside the file.\nsbatch --array=3,8,11 submit_array.sl\n\n\n\nAdapting the pattern to your own project\n\nChanging which variables are passed. Three places must agree: the columns of the grid in make_conditions.R, the number and order of arguments read in run_condition.R, and the column names used to read conditions.txt back in collect_results.R. The glue script and the submission script do not care how many columns there are.\nStrings are fine as values, such as high or identity, as long as they contain no spaces. R receives everything as character; convert with as.integer() or as.numeric() as needed.\nPaths. As in Example 2, everything is relative to the folder you run sbatch from. Anything large belongs in your work space rather than your home directory.\nSeveral methods on the same conditions. Either add a method column to the grid, or keep one conditions.txt and write one submission script per method that passes the method name as an extra argument.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "4 · R on Longleaf"
-    ]
-  },
-  {
-    "objectID": "modules/04-r-on-longleaf.html#conditions-for-a-successful-job",
-    "href": "modules/04-r-on-longleaf.html#conditions-for-a-successful-job",
-    "title": "R on Longleaf",
-    "section": "Conditions for a successful job",
-    "text": "Conditions for a successful job\nBefore submitting, verify that the script uses correct file paths, required packages are available, the working directory is intentional, and the requested time and memory are realistic.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "4 · R on Longleaf"
-    ]
-  },
-  {
-    "objectID": "modules/04-r-on-longleaf.html#key-takeaway",
-    "href": "modules/04-r-on-longleaf.html#key-takeaway",
-    "title": "R on Longleaf",
-    "section": "Key takeaway",
-    "text": "Key takeaway\nDevelop with small interactive checks, then move stable and resource-intensive work into a reproducible scheduled job.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "4 · R on Longleaf"
-    ]
-  },
-  {
-    "objectID": "modules/04-r-on-longleaf.html#sources",
-    "href": "modules/04-r-on-longleaf.html#sources",
-    "title": "R on Longleaf",
-    "section": "Sources",
-    "text": "Sources\n\n“Longleaf Cluster SLURM examples,” UNC Research Computing\n“Open OnDemand,” UNC Research Computing\n“RStudio Server and RStudio Desktop OOD apps,” UNC Research Computing",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "4 · R on Longleaf"
-    ]
-  },
-  {
-    "objectID": "modules/01-introduction/03-how-longleaf-works.html#what-is-slurm",
-    "href": "modules/01-introduction/03-how-longleaf-works.html#what-is-slurm",
-    "title": "How Longleaf Works",
-    "section": "What is Slurm?",
-    "text": "What is Slurm?\nA job is a request to run a program using specified cluster resources. Longleaf uses Slurm, a workload manager and job scheduler, to coordinate those requests.\nUsers do not normally select a compute node and start an analysis directly. Instead, they tell Slurm what program to run and what resources it needs. Slurm then manages the job from submission through completion.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "1 · Introduction to Longleaf",
-      "1.3 · How Longleaf works"
-    ]
-  },
-  {
-    "objectID": "modules/01-introduction/03-how-longleaf-works.html#why-longleaf-needs-a-scheduler",
-    "href": "modules/01-introduction/03-how-longleaf-works.html#why-longleaf-needs-a-scheduler",
-    "title": "How Longleaf Works",
-    "section": "Why Longleaf needs a scheduler",
-    "text": "Why Longleaf needs a scheduler\nLongleaf has many users, many jobs, and a limited supply of compute nodes with different amounts of memory and different kinds of hardware. Slurm provides an orderly way to share those resources.\nSlurm:\n\nkeeps track of available cluster resources;\nholds waiting jobs in a queue;\nmatches jobs with appropriate compute resources;\nstarts and monitors work on the assigned resources; and\nreleases the resources when a job finishes.\n\nThis prevents users from competing directly for compute nodes and keeps one job from using resources that Slurm has assigned to another.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "1 · Introduction to Longleaf",
-      "1.3 · How Longleaf works"
-    ]
-  },
-  {
-    "objectID": "modules/01-introduction/03-how-longleaf-works.html#what-happens-after-submission",
-    "href": "modules/01-introduction/03-how-longleaf-works.html#what-happens-after-submission",
-    "title": "How Longleaf Works",
-    "section": "What happens after submission?",
-    "text": "What happens after submission?\n\nSlurm checks the job request and assigns it a unique job ID.\nThe job enters the queue, usually with a pending status.\nSlurm waits until suitable CPUs, memory, and any specialized hardware are available.\nSlurm allocates those resources and starts the job on a compute node.\nThe job finishes or stops, Slurm records its status, and the resources become available again.\n\nA pending job has not necessarily encountered a problem. It may be waiting because the requested resources are currently in use, no available node has enough memory, the job needs specialized hardware, or other jobs currently have higher priority.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "1 · Introduction to Longleaf",
-      "1.3 · How Longleaf works"
-    ]
-  },
-  {
-    "objectID": "modules/01-introduction/03-how-longleaf-works.html#what-slurm-does-not-do",
-    "href": "modules/01-introduction/03-how-longleaf-works.html#what-slurm-does-not-do",
-    "title": "How Longleaf Works",
-    "section": "What Slurm does not do",
-    "text": "What Slurm does not do\nSlurm manages resources and jobs, but it does not rewrite or optimize the program being submitted. In particular:\n\nrequesting more CPUs does not make single-threaded code use them;\nrequesting more memory does not make code run faster; and\nSlurm does not automatically know how much time or memory a program will need.\n\nUsers therefore need to make reasonable initial requests and refine them using information from completed jobs. Module 3 shows how to submit and monitor jobs and review their resource use.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "1 · Introduction to Longleaf",
-      "1.3 · How Longleaf works"
     ]
   }
 ]

@@ -60,8 +60,11 @@ wc -l conditions.txt          # note the number of rows
 
 ### 2. Copy the folder to Longleaf
 
+Drag `example3_conditions_array/` into your home directory on Longleaf with
+FileZilla (or `rsync -av example3_conditions_array/ <onyen>@longleaf.unc.edu:example3_conditions_array/`
+from a terminal). Then log in and go to it:
+
 ```bash
-rsync -av example3_conditions_array/ <onyen>@longleaf.unc.edu:example3_conditions_array/
 ssh <onyen>@longleaf.unc.edu
 cd ~/example3_conditions_array
 ```
@@ -134,7 +137,7 @@ no spaces. R receives everything as character; convert with `as.integer()`,
 
 **Paths.** As in Example 2, everything is relative to the folder you run
 `sbatch` from. If you point `results/` somewhere else, create the directory
-first and prefer `/work/users/<o>/<n>/<onyen>/...` for anything large.
+first and prefer `/hickory/users/<o>/<n>/<onyen>/...` for anything large.
 
 **Seeds.** Derive the seed from the condition values (as `run_condition.R`
 does), not from `SLURM_ARRAY_TASK_ID`, so results are reproducible even if

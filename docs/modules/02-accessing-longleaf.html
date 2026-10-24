@@ -8,7 +8,7 @@
 
 <meta name="description" content="The practical routes for obtaining access, connecting to Longleaf, and moving files.">
 
-<title>How Do You Actually Use It? – Getting Started with Longleaf</title>
+<title>Accessing Longleaf – Getting Started with Longleaf</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,6 +26,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -207,7 +242,12 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#ways-to-connect" id="toc-ways-to-connect" class="nav-link" data-scroll-target="#ways-to-connect">Ways to connect</a></li>
   <li><a href="#logging-in-from-a-terminal" id="toc-logging-in-from-a-terminal" class="nav-link" data-scroll-target="#logging-in-from-a-terminal">Logging in from a terminal</a></li>
   <li><a href="#working-through-the-browser" id="toc-working-through-the-browser" class="nav-link" data-scroll-target="#working-through-the-browser">Working through the browser</a></li>
-  <li><a href="#moving-files" id="toc-moving-files" class="nav-link" data-scroll-target="#moving-files">Moving files</a></li>
+  <li><a href="#moving-files-with-filezilla" id="toc-moving-files-with-filezilla" class="nav-link" data-scroll-target="#moving-files-with-filezilla">Moving files with FileZilla</a>
+  <ul class="collapse">
+  <li><a href="#install" id="toc-install" class="nav-link" data-scroll-target="#install">Install</a></li>
+  <li><a href="#connect" id="toc-connect" class="nav-link" data-scroll-target="#connect">Connect</a></li>
+  <li><a href="#transfer" id="toc-transfer" class="nav-link" data-scroll-target="#transfer">Transfer</a></li>
+  </ul></li>
   <li><a href="#where-files-live" id="toc-where-files-live" class="nav-link" data-scroll-target="#where-files-live">Where files live</a></li>
   <li><a href="#demonstration-sequence" id="toc-demonstration-sequence" class="nav-link" data-scroll-target="#demonstration-sequence">Demonstration sequence</a></li>
   <li><a href="#sources" id="toc-sources" class="nav-link" data-scroll-target="#sources">Sources</a></li>
@@ -219,8 +259,8 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Workshop modules</li><li class="breadcrumb-item"><a href="../modules/02-accessing-longleaf.html">2 · Accessing Longleaf</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">How Do You Actually Use It?</h1>
-<p class="subtitle lead">Accounts, login options, the web portal, and file transfer</p>
+<h1 class="title">Accessing Longleaf</h1>
+<p class="subtitle lead">How do you actually use it? Accounts, login options, the web portal, and file transfer</p>
 </div>
 
 <div>
@@ -247,11 +287,21 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <section id="requesting-an-account" class="level2">
 <h2 class="anchored" data-anchor-id="requesting-an-account">Requesting an account</h2>
-<!-- Add the verified account-request process, eligibility requirements, and expected approval path. -->
+<p>A Longleaf account is separate from your ONYEN and is not created automatically. Request one before the workshop:</p>
+<ol type="1">
+<li>Open UNC Research Computing’s <a href="https://help.rc.unc.edu/request-a-cluster-account">Request a Cluster Account</a> page.</li>
+<li>Choose <strong>Longleaf Cluster</strong> as the subscription type and submit the form.</li>
+<li>Wait for the email saying the account has been created. Until it arrives, logins to Longleaf and Open OnDemand fail.</li>
+</ol>
+<p>Once the account exists, your username on Longleaf is your ONYEN and the password is your ONYEN password.</p>
 </section>
 <section id="connecting-to-the-cluster" class="level2">
 <h2 class="anchored" data-anchor-id="connecting-to-the-cluster">Connecting to the cluster</h2>
-<!-- Add links and description for cisco vpn-->
+<p>Longleaf is reachable directly from the campus network. From anywhere else, connect to the UNC VPN first. Every method on this page, including FileZilla, needs that connection.</p>
+<p>The VPN client is Cisco Secure Client, distributed by UNC ITS. Install it, connect to <code>vpn.unc.edu</code>, and sign in with your ONYEN, your password, and Duo. Search for “VPN” on the <a href="https://help.unc.edu/">ITS help site</a> for the current installation steps for your operating system.</p>
+<div class="todo">
+<p><strong>To do:</strong> confirm the VPN details above (<code>vpn.unc.edu</code>, Duo) against the ITS article and replace the help.unc.edu link with a direct link to it.</p>
+</div>
 </section>
 <section id="ways-to-connect" class="level2">
 <h2 class="anchored" data-anchor-id="ways-to-connect">Ways to connect</h2>
@@ -270,59 +320,170 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td>Terminal connection</td>
-<td>Direct command-line work</td>
+<td>Terminal (ssh)</td>
+<td>Direct command-line work; what Modules 3 and 4 use</td>
 <td>A shell prompt on a login node</td>
 </tr>
 <tr class="even">
-<td>Web portal</td>
-<td>Browser-based interactive work</td>
-<td>Files, applications, and interactive sessions</td>
+<td>Open OnDemand</td>
+<td>RStudio in the browser, a terminal without installing one, browsing files</td>
+<td>A dashboard with Files, Shell, and Interactive Apps</td>
 </tr>
 <tr class="odd">
-<td>SFTP client</td>
-<td>Moving files between systems</td>
-<td>A graphical local-and-remote file browser</td>
+<td>FileZilla</td>
+<td>Moving files between your computer and Longleaf</td>
+<td>A two-pane file browser: your computer on the left, Longleaf on the right</td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="logging-in-from-a-terminal" class="level2">
 <h2 class="anchored" data-anchor-id="logging-in-from-a-terminal">Logging in from a terminal</h2>
-<!-- Add the verified Longleaf hostname, authentication requirements, and first-login example. -->
+<p>The terminal is the route the rest of this workshop uses. Modules 3 and 4 run every command from a terminal connected to a login node.</p>
+<p><strong>On a Mac</strong>, open Terminal (in Applications › Utilities) and type:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="op">&lt;</span>onyen<span class="op">&gt;</span>@longleaf.unc.edu</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>On Windows</strong>, UNC Research Computing recommends <a href="https://mobaxterm.mobatek.net/">MobaXterm</a> (Home Edition): start a new SSH session with <code>longleaf.unc.edu</code> as the remote host, port 22, and your ONYEN as the username. Windows Terminal and PowerShell also have <code>ssh</code> built in, so the command above works there too.</p>
+<p>The first time you connect, ssh asks whether to trust the host; type <code>yes</code>. Then enter your ONYEN password. Nothing appears while you type it, which is normal.</p>
+<p>Once connected, the prompt changes to show your ONYEN and the name of a login node. A login node is the place to edit files, load software, and submit jobs. It is shared with everyone else who is logged in, so do not run analyses on it; Module 3 shows how to send them to a compute node.</p>
+<p>To leave, type <code>exit</code>. If a program needs to open a graphics window, connect with <code>ssh -X &lt;onyen&gt;@longleaf.unc.edu</code> instead.</p>
+<div class="todo">
+<p><strong>To do:</strong> add a screenshot of a first login from Terminal, saved as <code>images/terminal-login.png</code>.</p>
+</div>
 </section>
 <section id="working-through-the-browser" class="level2">
 <h2 class="anchored" data-anchor-id="working-through-the-browser">Working through the browser</h2>
-<!-- Add a verified portal URL and one annotated screenshot showing the main entry points. -->
+<p>Open OnDemand is Longleaf’s web portal at <a href="https://ondemand.rc.unc.edu" class="uri">https://ondemand.rc.unc.edu</a>. Sign in with your ONYEN and password. It needs a Longleaf account; without one, the page shows instructions for requesting it. If it does not load from off campus, connect to the VPN first.</p>
+<p>The dashboard’s menus cover most of what a new user needs:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Menu</th>
+<th>What it offers</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Files</strong></td>
+<td>A file browser for your home directory and other Longleaf storage, with upload and download by drag and drop.</td>
+</tr>
+<tr class="even">
+<td><strong>Clusters › Shell Access</strong></td>
+<td>A terminal in a browser tab, identical to an ssh session. Useful on a computer without a terminal program.</td>
+</tr>
+<tr class="odd">
+<td><strong>Interactive Apps › RStudio Server</strong></td>
+<td>RStudio running on a compute node. You choose the hours, CPUs, memory, and R module; UNC recommends at least two CPUs. Module 4 uses this.</td>
+</tr>
+<tr class="even">
+<td><strong>Jobs › Job Composer</strong></td>
+<td>A form-based way to submit batch jobs. This workshop submits jobs from a terminal instead, so the scripts and paths stay the same everywhere.</td>
+</tr>
+</tbody>
+</table>
+<p>Sessions started from <em>Interactive Apps</em> wait in the queue like any other job, so start one a few minutes before you need it.</p>
+<div class="todo">
+<p><strong>To do:</strong> add an annotated screenshot of the OnDemand dashboard showing the Files, Clusters, and Interactive Apps menus, saved as <code>images/ondemand-dashboard.png</code>.</p>
+</div>
 </section>
-<section id="moving-files" class="level2">
-<h2 class="anchored" data-anchor-id="moving-files">Moving files</h2>
-<p>Introduce a graphical SFTP workflow first, then note when command-line tools are useful for larger or repeatable transfers.</p>
+<section id="moving-files-with-filezilla" class="level2">
+<h2 class="anchored" data-anchor-id="moving-files-with-filezilla">Moving files with FileZilla</h2>
+<p>FileZilla is a free file-transfer program for Mac, Windows, and Linux. It shows your computer on the left and Longleaf on the right, and you move files by dragging them across. It uses the same login as the terminal, so there is nothing to set up on Longleaf.</p>
+<section id="install" class="level3">
+<h3 class="anchored" data-anchor-id="install">Install</h3>
+<p>Download <strong>FileZilla Client</strong> from <a href="https://filezilla-project.org/" class="uri">https://filezilla-project.org/</a>. The site also offers FileZilla Server, which you do not want. On Windows, the installer may offer additional software during setup; decline it.</p>
+</section>
+<section id="connect" class="level3">
+<h3 class="anchored" data-anchor-id="connect">Connect</h3>
+<p>The quickest route is the Quickconnect bar at the top of the window:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Host</td>
+<td><code>sftp://longleaf.unc.edu</code></td>
+</tr>
+<tr class="even">
+<td>Username</td>
+<td>your ONYEN</td>
+</tr>
+<tr class="odd">
+<td>Password</td>
+<td>your ONYEN password</td>
+</tr>
+<tr class="even">
+<td>Port</td>
+<td><code>22</code></td>
+</tr>
+</tbody>
+</table>
+<p>Click <strong>Quickconnect</strong>. The first time, FileZilla asks whether to trust the server’s host key; click <strong>OK</strong>. If the connection times out, confirm that you are on campus or connected to the VPN.</p>
+<p>To avoid retyping, save the connection. Open <strong>File › Site Manager</strong>, click <strong>New site</strong>, set <em>Protocol</em> to <strong>SFTP - SSH File Transfer Protocol</strong>, enter the host, port, and your ONYEN as the user, set <em>Logon Type</em> to <strong>Ask for password</strong>, and click <strong>Connect</strong>.</p>
+</section>
+<section id="transfer" class="level3">
+<h3 class="anchored" data-anchor-id="transfer">Transfer</h3>
+<p>After connecting, the right pane shows your home directory on Longleaf.</p>
+<ul>
+<li><strong>Upload:</strong> drag a file or folder from the left pane to the right pane. Dragging a folder copies everything inside it.</li>
+<li><strong>Download:</strong> drag from the right pane to the left.</li>
+<li><strong>Go somewhere else on Longleaf:</strong> type a path from the next section into the <em>Remote site</em> box and press Enter.</li>
+<li><strong>See new files:</strong> FileZilla does not notice files a job wrote after you connected. Press <strong>F5</strong> to refresh.</li>
+</ul>
+<p>Progress appears in the transfer queue at the bottom of the window.</p>
+<div class="todo">
+<p><strong>To do:</strong> add a screenshot of FileZilla connected to Longleaf with both panes visible, saved as <code>images/filezilla-connected.png</code>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Edit a script in place">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Edit a script in place
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Right-click a text file in the Longleaf pane and choose <strong>View/Edit</strong>. FileZilla opens it in an editor on your computer. When you save, it asks whether to upload the changed file; click <strong>Yes</strong>. This is enough for small changes such as setting the email address in a submission script.</p>
+</div>
+</div>
+<p>For very large datasets or transfers you repeat often, command-line tools such as <code>rsync</code> are easier to script. FileZilla covers everything in this workshop.</p>
+</section>
 </section>
 <section id="where-files-live" class="level2">
 <h2 class="anchored" data-anchor-id="where-files-live">Where files live</h2>
 <p>Longleaf’s login and compute nodes can access the same shared storage. A script prepared on a login node can therefore read data and write results while it runs on a compute node.</p>
 <p>The main storage locations for new users are:</p>
 <ul>
-<li><strong>Home directory:</strong> <code>/nas/longleaf/home/&lt;onyen&gt;</code> is a relatively small, backed-up space for scripts, settings, and personal software. It is not intended for data-intensive computing.</li>
-<li><strong>Personal data space:</strong> <code>/hickory/users/&lt;o&gt;/&lt;n&gt;/&lt;onyen&gt;</code> provides a larger location for active and inactive personal research data. It is not backed up.</li>
+<li><strong>Home directory:</strong> <code>/nas/longleaf/home/&lt;onyen&gt;</code> is a relatively small (50 GB), backed-up space for scripts, settings, and personal software, including your R packages. It is not intended for data-intensive computing.</li>
+<li><strong>Personal data space:</strong> <code>/hickory/users/&lt;o&gt;/&lt;n&gt;/&lt;onyen&gt;</code> provides a much larger location (2 TB) for active and inactive personal research data. It is not backed up. <code>&lt;o&gt;</code> and <code>&lt;n&gt;</code> are the first and second letters of your ONYEN, so the ONYEN <code>jdoe</code> has <code>/hickory/users/j/d/jdoe</code>.</li>
 <li><strong>Project space:</strong> research groups may have shared storage under <code>/proj</code>, <code>/hickory/proj</code>, or <code>/vast/som</code>. Its location and quota depend on the group, and it is not backed up by default.</li>
 </ul>
-<p>Some established users also have older <code>/work</code> or <code>/users</code> directories. UNC is moving new personal storage to <code>/hickory/users</code>, so users should check the current Research Computing guidance before choosing a location for important data.</p>
+<p>Accounts created before summer 2026 may also have older <code>/work</code> or <code>/users</code> directories. New accounts get <code>/hickory/users</code> only, and this workshop uses it for anything too large for the home directory.</p>
 </section>
 <section id="demonstration-sequence" class="level2">
 <h2 class="anchored" data-anchor-id="demonstration-sequence">Demonstration sequence</h2>
 <ol type="1">
-<li>Open the chosen access method.</li>
-<li>Connect and identify the login environment.</li>
-<li>Locate the home and project directories.</li>
-<li>Transfer one small example file.</li>
+<li>Log in from a terminal and read the prompt.</li>
+<li>Sign in to Open OnDemand and open the Files app.</li>
+<li>Connect FileZilla and find the home directory.</li>
+<li>Upload one small file with FileZilla and list it from the terminal with <code>ls</code>.</li>
 </ol>
 </section>
 <section id="sources" class="level2">
 <h2 class="anchored" data-anchor-id="sources">Sources</h2>
 <ul>
 <li><a href="https://help.rc.unc.edu/getting-started-on-longleaf/">“Getting Started on Longleaf,” UNC Research Computing</a></li>
+<li><a href="https://help.rc.unc.edu/ondemand/">“Open OnDemand,” UNC Research Computing</a></li>
+<li><a href="https://help.rc.unc.edu/request-a-cluster-account">“Request a Cluster Account,” UNC Research Computing</a></li>
+<li><a href="https://wiki.filezilla-project.org/Documentation">FileZilla Client documentation</a></li>
 </ul>
 
 

@@ -14,6 +14,19 @@ This workshop follows the path from first login to a submitted R job. The four m
 **Format:** Four short modules with demonstrations and reusable examples
 :::
 
+::: {.pre-workshop}
+::: {.callout-note title="Before the workshop"}
+Module 4 assumes four things are already in place. Each takes a few minutes, except the account, which can take longer to approve.
+
+1. **A Longleaf account.** Request one on the [Request a Cluster Account](https://help.rc.unc.edu/request-a-cluster-account) page, choosing *Longleaf Cluster* as the subscription type.
+2. **The UNC VPN**, if you will connect from off campus.
+3. **[FileZilla Client](https://filezilla-project.org/)** installed on your laptop.
+4. **The example files.** [Download the repository as a ZIP](https://github.com/crawfordcm/longleaf-presentation/archive/refs/heads/main.zip), unzip it, and find the `examples/` folder inside.
+
+Module 2 explains each of these.
+:::
+:::
+
 ## Workshop outline
 
 ::: {.grid .module-grid}
@@ -34,11 +47,11 @@ UNC's computing history, what Longleaf is, and how work moves through the cluste
 ::: {.module-card}
 <span class="module-number">02</span>
 
-### How do you actually use it?
+### Accessing Longleaf
 
-Requesting access, logging in, working through the browser, and transferring files.
+How do you actually use it? Requesting an account, logging in, Open OnDemand, and moving files with FileZilla.
 
-[Open module](modules/02-accessing-longleaf.qmd){.stretched-link aria-label="Open How do you actually use Longleaf"}
+[Open module](modules/02-accessing-longleaf.qmd){.stretched-link aria-label="Open Accessing Longleaf"}
 :::
 :::
 

@@ -16,7 +16,7 @@ Connect to Longleaf from a terminal or web browser. You arrive on a login node.
 ::: {.workflow-step}
 **2 · Prepare**
 
-Use the login node to organize files, edit code, and describe the resources the work needs.
+Use the login node to organize files, edit code, load software, and describe the resources the work needs.
 :::
 
 ::: {.workflow-step}

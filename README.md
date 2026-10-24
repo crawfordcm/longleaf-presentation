@@ -5,7 +5,7 @@ This repository contains the source for a 45–60 minute presentation and tutori
 ## Workshop outline
 
 1. [Introduction to Longleaf](modules/01-introduction/01-computing-history.qmd)
-2. [How do you actually use it?](modules/02-accessing-longleaf.qmd)
+2. [Accessing Longleaf](modules/02-accessing-longleaf.qmd)
 3. [Interacting with Longleaf](modules/03-interacting-with-longleaf.qmd)
 4. [R on Longleaf](modules/04-r-on-longleaf.qmd)
 

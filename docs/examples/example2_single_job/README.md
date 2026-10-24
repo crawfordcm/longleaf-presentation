@@ -15,14 +15,15 @@ The simplest Longleaf workflow. One R script that runs once and saves its output
 
 ### 1. Copy the folder to Longleaf
 
-From your laptop, in the directory that contains `example2_single_job/`:
+Open FileZilla, connect to `sftp://longleaf.unc.edu` with your ONYEN, and drag
+`example2_single_job/` into your home directory on Longleaf. It ends up at
+`/nas/longleaf/home/<onyen>/example2_single_job`.
+
+From a terminal, this does the same thing (replace `<onyen>` with your ONYEN):
 
 ```bash
 rsync -av example2_single_job/ <onyen>@longleaf.unc.edu:example2_single_job/
 ```
-
-Replace `<onyen>` with your ONYEN. This puts the folder in your home directory,
-`/nas/longleaf/home/<onyen>/example2_single_job`. (Use `scp -r` if you prefer.)
 
 ### 2. Log in and go to the folder
 
@@ -68,7 +69,8 @@ module add r
 Rscript -e 'str(readRDS("results/hello_results.rds"))'
 ```
 
-Or copy it back to your laptop:
+Or drag `results/` back to your laptop in FileZilla (press F5 first so the new
+files show up). From a terminal:
 
 ```bash
 rsync -av <onyen>@longleaf.unc.edu:example2_single_job/results/ ./results/
@@ -79,9 +81,9 @@ rsync -av <onyen>@longleaf.unc.edu:example2_single_job/results/ ./results/
 - **Keep everything relative to the submission folder.** SLURM starts the job
   in the directory where you ran `sbatch`, so `results/` and `logs/` just work.
 - **If you must use absolute paths**, your home directory on Longleaf is
-  `/nas/longleaf/home/<onyen>`. Large or temporary output belongs in your work
-  space, `/work/users/<o>/<n>/<onyen>` (first letter, second letter, ONYEN), not
-  in home.
+  `/nas/longleaf/home/<onyen>`. Large or temporary output belongs in your
+  personal data space, `/hickory/users/<o>/<n>/<onyen>` (first letter, second
+  letter, ONYEN), not in home.
 - **Make sure the log directory exists before submitting.** SLURM will not
   create `logs/`; if it is missing the job fails silently with no output.
 

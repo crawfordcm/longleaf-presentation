@@ -10,7 +10,16 @@ description: "A practical workflow for using R and packages on Longleaf."
 
 ## R installations on Longleaf
 
-<!-- Add the verified commands for finding and loading supported R versions. -->
+R is installed as a software module (Module 3), with several versions available. Nothing is loaded when you log in, so every session, and every job script, starts by loading one:
+
+```bash
+module avail r        # list the R modules; the default is marked (D)
+module add r          # load the default version
+module add r/4.4.0    # or pin a specific version
+R --version           # confirm which R you have
+```
+
+Pin the version in any project that will run for a while. The default can change, and your personal package library is tied to the version, as the next section explains.
 
 ## Where packages live
 
@@ -19,7 +28,9 @@ R looks for packages in a short list of folders. On Longleaf, two of them matter
 - **The R module's library.** The packages that ship with R, and any that Research Computing has installed centrally, live inside the R installation that `module add r` loads. Everyone can use them, and nobody can change them.
 - **Your personal library.** Anything you install yourself goes into a folder in your home directory. R creates it for you the first time you install a package. The default location is `~/R/x86_64-pc-linux-gnu-library/4.4`, where `4.4` matches the version of R you loaded.
 
-<!-- Verify the personal-library path on Longleaf: module add r; R -e '.libPaths(); Sys.getenv("R_LIBS_USER")' -->
+::: {.todo}
+**To do:** verify the personal-library path on Longleaf. Run `module add r` and then `R -e '.libPaths(); Sys.getenv("R_LIBS_USER")'`, and correct the path above if it differs.
+:::
 
 Inside R, `.libPaths()` prints these folders in the order R searches them.
 
@@ -57,7 +68,9 @@ Would you like to create a personal library
 to install packages into? (yes/No/cancel) yes
 ```
 
-<!-- Verify the prompt wording and path against a real first install on Longleaf. -->
+::: {.todo}
+**To do:** confirm the two prompts above with one first-time `install.packages()` on Longleaf. If Longleaf pre-creates the personal library, the prompts never appear and this paragraph should say so.
+:::
 
 From then on, every `install.packages()` call goes straight to your personal library without asking. Confirm the package loads and see where it went:
 
@@ -81,11 +94,7 @@ BiocManager::install("limma")
 
 ### Installing from a file you upload
 
-Some packages are not on CRAN: one a collaborator sent you, one you are developing, or one you downloaded from GitHub as a source archive. In that case, copy the package's `.tar.gz` file to Longleaf with `rsync`, `scp`, or the SFTP client from Module 2, then point `install.packages()` at the file instead of a repository:
-
-```bash
-rsync -av mypackage_0.1.0.tar.gz <onyen>@longleaf.unc.edu:
-```
+Some packages are not on CRAN: one a collaborator sent you, one you are developing, or one you downloaded from GitHub as a source archive. In that case, upload the package's `.tar.gz` file to your home directory on Longleaf with FileZilla, then point `install.packages()` at the file instead of a repository:
 
 ```r
 install.packages("~/mypackage_0.1.0.tar.gz", repos = NULL, type = "source")
@@ -155,7 +164,7 @@ If you need graphics windows (for example `plot()`), log in with `ssh -X` and ad
 
 ### From the browser
 
-Open OnDemand at <https://ondemand.rc.unc.edu> has an **RStudio Server** app under *Interactive Apps*. Choose the number of hours, CPUs, memory, and the R module, and RStudio opens on a compute node in a browser tab. UNC recommends requesting at least two CPUs for RStudio sessions.
+Open OnDemand, the web portal introduced in Module 2 at <https://ondemand.rc.unc.edu>, has an **RStudio Server** app under *Interactive Apps*. Choose the number of hours, CPUs, memory, and the R module, and RStudio opens on a compute node in a browser tab. UNC recommends requesting at least two CPUs for RStudio sessions.
 
 ::: {.callout-tip title="Interactive sessions are for development"}
 Anything that takes more than a few minutes, needs to keep running after you disconnect, or will be repeated belongs in a scheduled job. Examples 2 and 3 show how, and an interactive session is the right place to test their scripts before submitting them.
@@ -278,15 +287,14 @@ cat("Finished:  ", format(Sys.time()), "\n")
 
 ### Step by step
 
-1. **Copy the folder to Longleaf and go to it.** This puts it in your home directory.
+1. **Copy the folder to Longleaf and go to it.** In FileZilla, drag `example2_single_job` from your computer into your home directory on Longleaf, as shown in Module 2. Then log in and go to it:
 
    ```bash
-   rsync -av example2_single_job/ <onyen>@longleaf.unc.edu:example2_single_job/
    ssh <onyen>@longleaf.unc.edu
    cd ~/example2_single_job
    ```
 
-2. **Edit `submit_single.sl`.** Set `--mail-user` to your email, or delete the two `--mail-*` lines. Raise `--time` or `--mem` if a real job needs more. Jobs that exceed their limits are killed, so ask for a little more than you expect.
+2. **Edit `submit_single.sl`.** Set `--mail-user` to your email, or delete the two `--mail-*` lines. Raise `--time` or `--mem` if a real job needs more. Jobs that exceed their limits are killed, so ask for a little more than you expect. FileZilla's *View/Edit*, described in Module 2, is the easiest way to make this change.
 
 3. **Submit.** Slurm replies with `Submitted batch job 12345678`. That number is the job ID.
 
@@ -309,9 +317,7 @@ cat("Finished:  ", format(Sys.time()), "\n")
    Rscript -e 'str(readRDS("results/hello_results.rds"))'
    ```
 
-   ```bash
-   rsync -av <onyen>@longleaf.unc.edu:example2_single_job/results/ ./results/
-   ```
+   To work with the file on your laptop, press **F5** in FileZilla so the new files appear, then drag `results` from the Longleaf pane to your computer.
 
 ::: {.callout-warning title="Create the log directory before submitting"}
 Slurm will not create `logs/`. If it is missing, the job fails immediately and leaves no output to explain why. The example folder includes an empty `logs/` for this reason.
@@ -588,10 +594,9 @@ cat("Saved all_results.rds\n")
    wc -l conditions.txt
    ```
 
-2. **Copy the folder to Longleaf and go to it.**
+2. **Copy the folder to Longleaf and go to it.** Drag `example3_conditions_array` into your home directory with FileZilla, then log in and go to it:
 
    ```bash
-   rsync -av example3_conditions_array/ <onyen>@longleaf.unc.edu:example3_conditions_array/
    ssh <onyen>@longleaf.unc.edu
    cd ~/example3_conditions_array
    ```
@@ -631,7 +636,7 @@ cat("Saved all_results.rds\n")
 
 - **Changing which variables are passed.** Three places must agree: the columns of the grid in `make_conditions.R`, the number and order of arguments read in `run_condition.R`, and the column names used to read `conditions.txt` back in `collect_results.R`. The glue script and the submission script do not care how many columns there are.
 - **Strings are fine as values**, such as `high` or `identity`, as long as they contain no spaces. R receives everything as character; convert with `as.integer()` or `as.numeric()` as needed.
-- **Paths.** As in Example 2, everything is relative to the folder you run `sbatch` from. Anything large belongs in your work space rather than your home directory.
+- **Paths.** As in Example 2, everything is relative to the folder you run `sbatch` from. Anything large belongs in your personal data space, `/hickory/users/<o>/<n>/<onyen>` (Module 2), rather than your home directory.
 - **Several methods on the same conditions.** Either add a `method` column to the grid, or keep one `conditions.txt` and write one submission script per method that passes the method name as an extra argument.
 
 ## Conditions for a successful job

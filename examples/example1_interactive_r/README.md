@@ -43,7 +43,7 @@ If you need graphics windows (for example `plot()`), log in with `ssh -X` and ad
 
 ## From the browser
 
-Open OnDemand at https://ondemand.rc.unc.edu has an **RStudio Server** app under
+Open OnDemand, Longleaf's web portal at https://ondemand.rc.unc.edu, has an **RStudio Server** app under
 *Interactive Apps*. Choose the number of hours, CPUs, memory, and the R module,
 and RStudio opens on a compute node in a browser tab. UNC recommends at least two
 CPUs for RStudio sessions.

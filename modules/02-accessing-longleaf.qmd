@@ -1,6 +1,6 @@
 ---
-title: "How Do You Actually Use It?"
-subtitle: "Accounts, login options, the web portal, and file transfer"
+title: "Accessing Longleaf"
+subtitle: "How do you actually use it? Accounts, login options, the web portal, and file transfer"
 description: "The practical routes for obtaining access, connecting to Longleaf, and moving files."
 ---
 
@@ -10,31 +10,116 @@ description: "The practical routes for obtaining access, connecting to Longleaf,
 
 ## Requesting an account
 
-<!-- Add the verified account-request process, eligibility requirements, and expected approval path. -->
+A Longleaf account is separate from your ONYEN and is not created automatically. Request one before the workshop:
+
+1. Open UNC Research Computing's [Request a Cluster Account](https://help.rc.unc.edu/request-a-cluster-account) page.
+2. Choose **Longleaf Cluster** as the subscription type and submit the form.
+3. Wait for the email saying the account has been created. Until it arrives, logins to Longleaf and Open OnDemand fail.
+
+Once the account exists, your username on Longleaf is your ONYEN and the password is your ONYEN password.
 
 ## Connecting to the cluster
 
-<!-- Add links and description for cisco vpn-->
+Longleaf is reachable directly from the campus network. From anywhere else, connect to the UNC VPN first. Every method on this page, including FileZilla, needs that connection.
+
+The VPN client is Cisco Secure Client, distributed by UNC ITS. Install it, connect to `vpn.unc.edu`, and sign in with your ONYEN, your password, and Duo. Search for "VPN" on the [ITS help site](https://help.unc.edu/) for the current installation steps for your operating system.
+
+::: {.todo}
+**To do:** confirm the VPN details above (`vpn.unc.edu`, Duo) against the ITS article and replace the help.unc.edu link with a direct link to it.
+:::
 
 ## Ways to connect
 
 | Method | Best for | What the user sees |
 |---|---|---|
-| Terminal connection | Direct command-line work | A shell prompt on a login node |
-| Web portal | Browser-based interactive work | Files, applications, and interactive sessions |
-| SFTP client | Moving files between systems | A graphical local-and-remote file browser |
+| Terminal (ssh) | Direct command-line work; what Modules 3 and 4 use | A shell prompt on a login node |
+| Open OnDemand | RStudio in the browser, a terminal without installing one, browsing files | A dashboard with Files, Shell, and Interactive Apps |
+| FileZilla | Moving files between your computer and Longleaf | A two-pane file browser: your computer on the left, Longleaf on the right |
 
 ## Logging in from a terminal
 
-<!-- Add the verified Longleaf hostname, authentication requirements, and first-login example. -->
+The terminal is the route the rest of this workshop uses. Modules 3 and 4 run every command from a terminal connected to a login node.
+
+**On a Mac**, open Terminal (in Applications › Utilities) and type:
+
+```bash
+ssh <onyen>@longleaf.unc.edu
+```
+
+**On Windows**, UNC Research Computing recommends [MobaXterm](https://mobaxterm.mobatek.net/) (Home Edition): start a new SSH session with `longleaf.unc.edu` as the remote host, port 22, and your ONYEN as the username. Windows Terminal and PowerShell also have `ssh` built in, so the command above works there too.
+
+The first time you connect, ssh asks whether to trust the host; type `yes`. Then enter your ONYEN password. Nothing appears while you type it, which is normal.
+
+Once connected, the prompt changes to show your ONYEN and the name of a login node. A login node is the place to edit files, load software, and submit jobs. It is shared with everyone else who is logged in, so do not run analyses on it; Module 3 shows how to send them to a compute node.
+
+To leave, type `exit`. If a program needs to open a graphics window, connect with `ssh -X <onyen>@longleaf.unc.edu` instead.
+
+::: {.todo}
+**To do:** add a screenshot of a first login from Terminal, saved as `images/terminal-login.png`.
+:::
 
 ## Working through the browser
 
-<!-- Add a verified portal URL and one annotated screenshot showing the main entry points. -->
+Open OnDemand is Longleaf's web portal at <https://ondemand.rc.unc.edu>. Sign in with your ONYEN and password. It needs a Longleaf account; without one, the page shows instructions for requesting it. If it does not load from off campus, connect to the VPN first.
 
-## Moving files
+The dashboard's menus cover most of what a new user needs:
 
-Introduce a graphical SFTP workflow first, then note when command-line tools are useful for larger or repeatable transfers.
+| Menu | What it offers |
+|---|---|
+| **Files** | A file browser for your home directory and other Longleaf storage, with upload and download by drag and drop. |
+| **Clusters › Shell Access** | A terminal in a browser tab, identical to an ssh session. Useful on a computer without a terminal program. |
+| **Interactive Apps › RStudio Server** | RStudio running on a compute node. You choose the hours, CPUs, memory, and R module; UNC recommends at least two CPUs. Module 4 uses this. |
+| **Jobs › Job Composer** | A form-based way to submit batch jobs. This workshop submits jobs from a terminal instead, so the scripts and paths stay the same everywhere. |
+
+Sessions started from *Interactive Apps* wait in the queue like any other job, so start one a few minutes before you need it.
+
+::: {.todo}
+**To do:** add an annotated screenshot of the OnDemand dashboard showing the Files, Clusters, and Interactive Apps menus, saved as `images/ondemand-dashboard.png`.
+:::
+
+## Moving files with FileZilla
+
+FileZilla is a free file-transfer program for Mac, Windows, and Linux. It shows your computer on the left and Longleaf on the right, and you move files by dragging them across. It uses the same login as the terminal, so there is nothing to set up on Longleaf.
+
+### Install
+
+Download **FileZilla Client** from <https://filezilla-project.org/>. The site also offers FileZilla Server, which you do not want. On Windows, the installer may offer additional software during setup; decline it.
+
+### Connect
+
+The quickest route is the Quickconnect bar at the top of the window:
+
+| Field | Value |
+|---|---|
+| Host | `sftp://longleaf.unc.edu` |
+| Username | your ONYEN |
+| Password | your ONYEN password |
+| Port | `22` |
+
+Click **Quickconnect**. The first time, FileZilla asks whether to trust the server's host key; click **OK**. If the connection times out, confirm that you are on campus or connected to the VPN.
+
+To avoid retyping, save the connection. Open **File › Site Manager**, click **New site**, set *Protocol* to **SFTP - SSH File Transfer Protocol**, enter the host, port, and your ONYEN as the user, set *Logon Type* to **Ask for password**, and click **Connect**.
+
+### Transfer
+
+After connecting, the right pane shows your home directory on Longleaf.
+
+- **Upload:** drag a file or folder from the left pane to the right pane. Dragging a folder copies everything inside it.
+- **Download:** drag from the right pane to the left.
+- **Go somewhere else on Longleaf:** type a path from the next section into the *Remote site* box and press Enter.
+- **See new files:** FileZilla does not notice files a job wrote after you connected. Press **F5** to refresh.
+
+Progress appears in the transfer queue at the bottom of the window.
+
+::: {.todo}
+**To do:** add a screenshot of FileZilla connected to Longleaf with both panes visible, saved as `images/filezilla-connected.png`.
+:::
+
+::: {.callout-tip title="Edit a script in place"}
+Right-click a text file in the Longleaf pane and choose **View/Edit**. FileZilla opens it in an editor on your computer. When you save, it asks whether to upload the changed file; click **Yes**. This is enough for small changes such as setting the email address in a submission script.
+:::
+
+For very large datasets or transfers you repeat often, command-line tools such as `rsync` are easier to script. FileZilla covers everything in this workshop.
 
 ## Where files live
 
@@ -42,19 +127,22 @@ Longleaf's login and compute nodes can access the same shared storage. A script 
 
 The main storage locations for new users are:
 
-- **Home directory:** `/nas/longleaf/home/<onyen>` is a relatively small, backed-up space for scripts, settings, and personal software. It is not intended for data-intensive computing.
-- **Personal data space:** `/hickory/users/<o>/<n>/<onyen>` provides a larger location for active and inactive personal research data. It is not backed up.
+- **Home directory:** `/nas/longleaf/home/<onyen>` is a relatively small (50 GB), backed-up space for scripts, settings, and personal software, including your R packages. It is not intended for data-intensive computing.
+- **Personal data space:** `/hickory/users/<o>/<n>/<onyen>` provides a much larger location (2 TB) for active and inactive personal research data. It is not backed up. `<o>` and `<n>` are the first and second letters of your ONYEN, so the ONYEN `jdoe` has `/hickory/users/j/d/jdoe`.
 - **Project space:** research groups may have shared storage under `/proj`, `/hickory/proj`, or `/vast/som`. Its location and quota depend on the group, and it is not backed up by default.
 
-Some established users also have older `/work` or `/users` directories. UNC is moving new personal storage to `/hickory/users`, so users should check the current Research Computing guidance before choosing a location for important data.
+Accounts created before summer 2026 may also have older `/work` or `/users` directories. New accounts get `/hickory/users` only, and this workshop uses it for anything too large for the home directory.
 
 ## Demonstration sequence
 
-1. Open the chosen access method.
-2. Connect and identify the login environment.
-3. Locate the home and project directories.
-4. Transfer one small example file.
+1. Log in from a terminal and read the prompt.
+2. Sign in to Open OnDemand and open the Files app.
+3. Connect FileZilla and find the home directory.
+4. Upload one small file with FileZilla and list it from the terminal with `ls`.
 
 ## Sources
 
 - [“Getting Started on Longleaf,” UNC Research Computing](https://help.rc.unc.edu/getting-started-on-longleaf/)
+- [“Open OnDemand,” UNC Research Computing](https://help.rc.unc.edu/ondemand/)
+- [“Request a Cluster Account,” UNC Research Computing](https://help.rc.unc.edu/request-a-cluster-account)
+- [FileZilla Client documentation](https://wiki.filezilla-project.org/Documentation)
