@@ -110,22 +110,6 @@ The two lines after the directives are the job itself: load R, then run the scri
 - **The job starts in the directory you ran `sbatch` from.** Relative paths such as `logs/` and `hello_longleaf.R` are resolved there, so submit from inside the project folder.
 - **Slurm does not create the log directory.** If `logs/` does not exist, the job fails immediately and leaves no output to explain why. Create it before submitting.
 
-## Choosing resource requests
-
-Resource requests affect both whether a job succeeds and when it can start:
-
-- **Too little memory or time:** the job may be stopped before it finishes.
-- **Too much memory or time:** unused resources remain unavailable to other users, and the job may wait longer for a suitable opening.
-- **More CPUs:** additional CPUs help only when the program is able to use them.
-
-Start with a reasonable estimate plus a modest margin. After a job finishes, use `sacct` to compare the request with the time and memory the job actually used:
-
-```bash
-sacct -j <job-id> --format=JobID,State,Elapsed,MaxRSS
-```
-
-Use that information to improve the next request rather than repeatedly reserving the largest possible amount.
-
 ## Core Slurm actions
 
 ```bash
@@ -145,6 +129,76 @@ sacct -j <job-id>            # state, exit code, and resource use after it finis
 
 A job that has finished no longer appears in `squeue`. Use `sacct -j <job-id>` to see whether it completed, failed, or was killed for exceeding its limits.
 
+## Your first job
+
+Everything above fits in a two-minute exercise. On a login node, create a file called `first_job.sl` with `nano`:
+
+```bash
+nano first_job.sl
+```
+
+Paste in this script, then press Ctrl+O, Enter, and Ctrl+X to save and leave:
+
+```{.bash filename="first_job.sl"}
+#!/bin/bash
+#SBATCH --job-name=first_job
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=100m
+#SBATCH --time=00:05:00
+#SBATCH --output=first_job_%j.out
+
+echo "Running on $(hostname) as job $SLURM_JOB_ID"
+sleep 90
+echo "Done"
+```
+
+Submit it, then watch it move through the queue:
+
+```bash
+sbatch first_job.sl           # Submitted batch job 12345678
+squeue -u "$USER"             # PD, then R, then gone
+cat first_job_12345678.out    # the two lines the job printed
+```
+
+The first line of the output names a compute node, not the login node: Slurm moved the work. Submit it once more and cancel it while it is running, so that you have done that too:
+
+```bash
+sbatch first_job.sl
+scancel <job-id>
+```
+
+## Reading the output
+
+A finished job leaves two kinds of evidence. The `--output` file holds everything the program printed, and the `--error` file holds error messages. If a script sets only `--output`, both go there. For an R script, `.out` has the `cat()` and `print()` output and `.err` has R's errors and warnings.
+
+`sacct` adds the verdict in its `State` column: `COMPLETED`, `FAILED`, `TIMEOUT`, `OUT_OF_MEMORY`, or `CANCELLED`. Together they cover most of what goes wrong:
+
+| What you see | What it means |
+|---|---|
+| No output file at all | The log directory did not exist when the job started. Create it and resubmit. |
+| Both files empty and the job ended in seconds | The job never reached your program. Check the `module add` line and the script name. |
+| `TIMEOUT`, or `DUE TO TIME LIMIT` in `.err` | Raise `--time`. |
+| `OUT_OF_MEMORY`, or `oom-kill` in `.err` | Raise `--mem`. |
+| `there is no package called 'xyz'` in `.err` | Install the package first. Module 4 shows how. |
+| `FAILED` with an R error in `.err` | The script itself failed. Fix it in an interactive job, then resubmit. |
+
+## Choosing resource requests
+
+Resource requests affect both whether a job succeeds and when it can start:
+
+- **Too little memory or time:** the job may be stopped before it finishes.
+- **Too much memory or time:** unused resources remain unavailable to other users, and the job may wait longer for a suitable opening.
+- **More CPUs:** additional CPUs help only when the program is able to use them.
+
+Start with a reasonable estimate plus a modest margin. After a job finishes, use `sacct` to compare the request with the time and memory the job actually used:
+
+```bash
+sacct -j <job-id> --format=JobID,State,Elapsed,MaxRSS
+```
+
+`MaxRSS` is the peak memory the job used, printed in kilobytes with a `K` suffix. A job that peaked at `1400000K`, about 1.4 GB, can safely ask for 2 GB next time. Use that information to improve the next request rather than repeatedly reserving the largest possible amount.
+
 ## Interactive jobs
 
 Not every job is a script. When you want a prompt on a compute node, to test code or install packages before submitting the real thing, ask Slurm for an **interactive job**:
@@ -154,6 +208,16 @@ srun -t 1:00:00 -p interact -n 1 --cpus-per-task=1 --mem=4g --pty /bin/bash
 ```
 
 `srun` takes the same resource flags as the `#SBATCH` lines, but it waits for the allocation and then opens a shell on the compute node instead of running a script. The prompt changes to show the compute node's name. When you are done, `exit` returns you to the login node and releases the resources. Example 1 in Module 4 uses this to run R interactively.
+
+## Many jobs at once
+
+The high-throughput pattern from Module 1, the same analysis repeated over many files or settings, has a Slurm feature of its own. A **job array** is one submission script that Slurm runs many times, each copy with a different task number in `$SLURM_ARRAY_TASK_ID`:
+
+```bash
+#SBATCH --array=1-12
+```
+
+`squeue` then shows one line per task, and `scancel <job-id>` cancels all of them at once. Example 3 in Module 4 builds a complete simulation study on this one directive.
 
 ## Queue rules and responsible requests
 
@@ -176,11 +240,15 @@ Login nodes are shared entry points. Resource-intensive analyses should run thro
 
 ## Demonstration sequence
 
-1. Inspect a small job script.
-2. Submit it and record the job ID.
-3. Check its state in the queue.
-4. Find the output file.
-5. Show how to cancel a job safely.
+1. Load R with `module add r` and show `module list`.
+2. Create `first_job.sl` with `nano`, submit it, and record the job ID.
+3. Watch it in `squeue` until it runs, then read the output file.
+4. Submit it again and cancel it.
+5. Start an interactive job, show the prompt change, and `exit`.
+
+## What you can do now
+
+You can log in, load R, write a job script, submit it, watch it, read its output, and cancel it. That is every mechanical skill Module 4 needs. Module 4 adds the R: running it interactively, installing packages, and turning one script into twelve jobs.
 
 ## Sources
 

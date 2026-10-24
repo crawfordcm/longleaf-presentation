@@ -239,7 +239,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#requesting-an-account" id="toc-requesting-an-account" class="nav-link active" data-scroll-target="#requesting-an-account">Requesting an account</a></li>
   <li><a href="#connecting-to-the-cluster" id="toc-connecting-to-the-cluster" class="nav-link" data-scroll-target="#connecting-to-the-cluster">Connecting to the cluster</a></li>
-  <li><a href="#ways-to-connect" id="toc-ways-to-connect" class="nav-link" data-scroll-target="#ways-to-connect">Ways to connect</a></li>
+  <li><a href="#ways-to-connect" id="toc-ways-to-connect" class="nav-link" data-scroll-target="#ways-to-connect">Ways to connect</a>
+  <ul class="collapse">
+  <li><a href="#which-should-you-use" id="toc-which-should-you-use" class="nav-link" data-scroll-target="#which-should-you-use">Which should you use?</a></li>
+  </ul></li>
   <li><a href="#logging-in-from-a-terminal" id="toc-logging-in-from-a-terminal" class="nav-link" data-scroll-target="#logging-in-from-a-terminal">Logging in from a terminal</a></li>
   <li><a href="#working-through-the-browser" id="toc-working-through-the-browser" class="nav-link" data-scroll-target="#working-through-the-browser">Working through the browser</a></li>
   <li><a href="#moving-files-with-filezilla" id="toc-moving-files-with-filezilla" class="nav-link" data-scroll-target="#moving-files-with-filezilla">Moving files with FileZilla</a>
@@ -250,6 +253,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#where-files-live" id="toc-where-files-live" class="nav-link" data-scroll-target="#where-files-live">Where files live</a></li>
   <li><a href="#demonstration-sequence" id="toc-demonstration-sequence" class="nav-link" data-scroll-target="#demonstration-sequence">Demonstration sequence</a></li>
+  <li><a href="#what-you-can-do-now" id="toc-what-you-can-do-now" class="nav-link" data-scroll-target="#what-you-can-do-now">What you can do now</a></li>
   <li><a href="#sources" id="toc-sources" class="nav-link" data-scroll-target="#sources">Sources</a></li>
   </ul>
 </nav>
@@ -336,6 +340,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
+<section id="which-should-you-use" class="level3">
+<h3 class="anchored" data-anchor-id="which-should-you-use">Which should you use?</h3>
+<p>All three, for different things. The terminal is where Modules 3 and 4 happen, because submitting jobs is a command-line task. FileZilla is for moving files in and out. Open OnDemand is for RStudio on a compute node, and it doubles as a terminal on a computer with no ssh client.</p>
+</section>
 </section>
 <section id="logging-in-from-a-terminal" class="level2">
 <h2 class="anchored" data-anchor-id="logging-in-from-a-terminal">Logging in from a terminal</h2>
@@ -476,6 +484,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Connect FileZilla and find the home directory.</li>
 <li>Upload one small file with FileZilla and list it from the terminal with <code>ls</code>.</li>
 </ol>
+</section>
+<section id="what-you-can-do-now" class="level2">
+<h2 class="anchored" data-anchor-id="what-you-can-do-now">What you can do now</h2>
+<p>You have an account, you can reach Longleaf from a terminal and from a browser, and you can move files in both directions with FileZilla. Module 3 turns that access into jobs.</p>
 </section>
 <section id="sources" class="level2">
 <h2 class="anchored" data-anchor-id="sources">Sources</h2>

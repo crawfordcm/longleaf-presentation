@@ -52,6 +52,10 @@ A 512 GB solid-state drive holds approximately **100,000 times as much data** as
 
 At 19 tons, the UNIVAC was approximately **14,000 times heavier** than a 2.7-pound laptop.
 
+## From one job to thousands
+
+The UNIVAC ran one job at a time, and researchers handed their work to operators who ran it when the machine was free. Longleaf's arrangement is recognizably the same: you hand your work to a scheduler, which runs it when the resources are free. The differences are scale and automation. Longleaf runs many jobs at once across a large pool of computers, the operators have been replaced by software called Slurm, and you talk to it yourself from a terminal. By Module 4, you will submit twelve jobs with one command and collect their results with another.
+
 ## Sources
 
 - [“7 decades of difference: Carolina's 1st computer and its current cluster,” UNC-Chapel Hill](https://www.unc.edu/discover/7-decades-of-difference-carolinas-1st-computer-and-its-current-cluster-2/)

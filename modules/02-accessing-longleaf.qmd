@@ -36,6 +36,10 @@ The VPN client is Cisco Secure Client, distributed by UNC ITS. Install it, conne
 | Open OnDemand | RStudio in the browser, a terminal without installing one, browsing files | A dashboard with Files, Shell, and Interactive Apps |
 | FileZilla | Moving files between your computer and Longleaf | A two-pane file browser: your computer on the left, Longleaf on the right |
 
+### Which should you use?
+
+All three, for different things. The terminal is where Modules 3 and 4 happen, because submitting jobs is a command-line task. FileZilla is for moving files in and out. Open OnDemand is for RStudio on a compute node, and it doubles as a terminal on a computer with no ssh client.
+
 ## Logging in from a terminal
 
 The terminal is the route the rest of this workshop uses. Modules 3 and 4 run every command from a terminal connected to a login node.
@@ -139,6 +143,10 @@ Accounts created before summer 2026 may also have older `/work` or `/users` dire
 2. Sign in to Open OnDemand and open the Files app.
 3. Connect FileZilla and find the home directory.
 4. Upload one small file with FileZilla and list it from the terminal with `ls`.
+
+## What you can do now
+
+You have an account, you can reach Longleaf from a terminal and from a browser, and you can move files in both directions with FileZilla. Module 3 turns that access into jobs.
 
 ## Sources
 

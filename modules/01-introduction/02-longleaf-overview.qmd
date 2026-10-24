@@ -63,6 +63,16 @@ Examples relevant to psychology, statistics, and related fields include:
 - running an analysis that requires more memory than a laptop provides
 - using research software or GPU resources that are unavailable locally
 
+## Where this workshop ends up
+
+Module 4 is the payoff, and it follows the high-throughput pattern above with R:
+
+1. **Interactive R** on a compute node, for testing and debugging (Example 1).
+2. **One R script as one job**, submitted, monitored, and read back (Example 2).
+3. **A simulation with twelve conditions as twelve jobs**, submitted with one command and collected into one data frame (Example 3).
+
+Modules 2 and 3 exist to make those three steps routine: getting onto the cluster and moving files, then describing, submitting, and reading jobs.
+
 ## A shared resource
 
 Many researchers use Longleaf at the same time. Users describe the work they want to run and the resources it needs. A scheduler then determines when and where that work will run.

@@ -241,11 +241,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#software-modules" id="toc-software-modules" class="nav-link" data-scroll-target="#software-modules">Software modules</a></li>
   <li><a href="#the-slurm-job-lifecycle" id="toc-the-slurm-job-lifecycle" class="nav-link" data-scroll-target="#the-slurm-job-lifecycle">The Slurm job lifecycle</a></li>
   <li><a href="#describing-a-job" id="toc-describing-a-job" class="nav-link" data-scroll-target="#describing-a-job">Describing a job</a></li>
-  <li><a href="#choosing-resource-requests" id="toc-choosing-resource-requests" class="nav-link" data-scroll-target="#choosing-resource-requests">Choosing resource requests</a></li>
   <li><a href="#core-slurm-actions" id="toc-core-slurm-actions" class="nav-link" data-scroll-target="#core-slurm-actions">Core Slurm actions</a></li>
+  <li><a href="#your-first-job" id="toc-your-first-job" class="nav-link" data-scroll-target="#your-first-job">Your first job</a></li>
+  <li><a href="#reading-the-output" id="toc-reading-the-output" class="nav-link" data-scroll-target="#reading-the-output">Reading the output</a></li>
+  <li><a href="#choosing-resource-requests" id="toc-choosing-resource-requests" class="nav-link" data-scroll-target="#choosing-resource-requests">Choosing resource requests</a></li>
   <li><a href="#interactive-jobs" id="toc-interactive-jobs" class="nav-link" data-scroll-target="#interactive-jobs">Interactive jobs</a></li>
+  <li><a href="#many-jobs-at-once" id="toc-many-jobs-at-once" class="nav-link" data-scroll-target="#many-jobs-at-once">Many jobs at once</a></li>
   <li><a href="#queue-rules-and-responsible-requests" id="toc-queue-rules-and-responsible-requests" class="nav-link" data-scroll-target="#queue-rules-and-responsible-requests">Queue rules and responsible requests</a></li>
   <li><a href="#demonstration-sequence" id="toc-demonstration-sequence" class="nav-link" data-scroll-target="#demonstration-sequence">Demonstration sequence</a></li>
+  <li><a href="#what-you-can-do-now" id="toc-what-you-can-do-now" class="nav-link" data-scroll-target="#what-you-can-do-now">What you can do now</a></li>
   <li><a href="#sources" id="toc-sources" class="nav-link" data-scroll-target="#sources">Sources</a></li>
   </ul>
 </nav>
@@ -474,24 +478,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Slurm does not create the log directory.</strong> If <code>logs/</code> does not exist, the job fails immediately and leaves no output to explain why. Create it before submitting.</li>
 </ul>
 </section>
-<section id="choosing-resource-requests" class="level2">
-<h2 class="anchored" data-anchor-id="choosing-resource-requests">Choosing resource requests</h2>
-<p>Resource requests affect both whether a job succeeds and when it can start:</p>
-<ul>
-<li><strong>Too little memory or time:</strong> the job may be stopped before it finishes.</li>
-<li><strong>Too much memory or time:</strong> unused resources remain unavailable to other users, and the job may wait longer for a suitable opening.</li>
-<li><strong>More CPUs:</strong> additional CPUs help only when the program is able to use them.</li>
-</ul>
-<p>Start with a reasonable estimate plus a modest margin. After a job finishes, use <code>sacct</code> to compare the request with the time and memory the job actually used:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sacct</span> <span class="at">-j</span> <span class="op">&lt;</span>job-id<span class="op">&gt;</span> --format=JobID,State,Elapsed,MaxRSS</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Use that information to improve the next request rather than repeatedly reserving the largest possible amount.</p>
-</section>
 <section id="core-slurm-actions" class="level2">
 <h2 class="anchored" data-anchor-id="core-slurm-actions">Core Slurm actions</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> submit_single.sl      <span class="co"># submit; Slurm replies with the job ID</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">squeue</span> <span class="at">-u</span> <span class="st">"</span><span class="va">$USER</span><span class="st">"</span>            <span class="co"># list your pending and running jobs</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">scancel</span> <span class="op">&lt;</span>job-id<span class="op">&gt;</span>             <span class="co"># cancel one job</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">sacct</span> <span class="at">-j</span> <span class="op">&lt;</span>job-id<span class="op">&gt;</span>            <span class="co"># state, exit code, and resource use after it finishes</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> submit_single.sl      <span class="co"># submit; Slurm replies with the job ID</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">squeue</span> <span class="at">-u</span> <span class="st">"</span><span class="va">$USER</span><span class="st">"</span>            <span class="co"># list your pending and running jobs</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">scancel</span> <span class="op">&lt;</span>job-id<span class="op">&gt;</span>             <span class="co"># cancel one job</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">sacct</span> <span class="at">-j</span> <span class="op">&lt;</span>job-id<span class="op">&gt;</span>            <span class="co"># state, exit code, and resource use after it finishes</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><code>squeue</code> shows one line per job with its state in the <code>ST</code> column:</p>
 <table class="caption-top table">
 <colgroup>
@@ -526,11 +518,101 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 <p>A job that has finished no longer appears in <code>squeue</code>. Use <code>sacct -j &lt;job-id&gt;</code> to see whether it completed, failed, or was killed for exceeding its limits.</p>
 </section>
+<section id="your-first-job" class="level2">
+<h2 class="anchored" data-anchor-id="your-first-job">Your first job</h2>
+<p>Everything above fits in a two-minute exercise. On a login node, create a file called <code>first_job.sl</code> with <code>nano</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> first_job.sl</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Paste in this script, then press Ctrl+O, Enter, and Ctrl+X to save and leave:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>first_job.sl</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" data-filename="first_job.sl"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --job-name=first_job</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --ntasks=1</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=1</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=100m</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=00:05:00</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --output=first_job_%j.out</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Running on </span><span class="va">$(</span><span class="fu">hostname</span><span class="va">)</span><span class="st"> as job </span><span class="va">$SLURM_JOB_ID</span><span class="st">"</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="fu">sleep</span> 90</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Done"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Submit it, then watch it move through the queue:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> first_job.sl           <span class="co"># Submitted batch job 12345678</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">squeue</span> <span class="at">-u</span> <span class="st">"</span><span class="va">$USER</span><span class="st">"</span>             <span class="co"># PD, then R, then gone</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> first_job_12345678.out    <span class="co"># the two lines the job printed</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The first line of the output names a compute node, not the login node: Slurm moved the work. Submit it once more and cancel it while it is running, so that you have done that too:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> first_job.sl</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">scancel</span> <span class="op">&lt;</span>job-id<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="reading-the-output" class="level2">
+<h2 class="anchored" data-anchor-id="reading-the-output">Reading the output</h2>
+<p>A finished job leaves two kinds of evidence. The <code>--output</code> file holds everything the program printed, and the <code>--error</code> file holds error messages. If a script sets only <code>--output</code>, both go there. For an R script, <code>.out</code> has the <code>cat()</code> and <code>print()</code> output and <code>.err</code> has R’s errors and warnings.</p>
+<p><code>sacct</code> adds the verdict in its <code>State</code> column: <code>COMPLETED</code>, <code>FAILED</code>, <code>TIMEOUT</code>, <code>OUT_OF_MEMORY</code>, or <code>CANCELLED</code>. Together they cover most of what goes wrong:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>What you see</th>
+<th>What it means</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>No output file at all</td>
+<td>The log directory did not exist when the job started. Create it and resubmit.</td>
+</tr>
+<tr class="even">
+<td>Both files empty and the job ended in seconds</td>
+<td>The job never reached your program. Check the <code>module add</code> line and the script name.</td>
+</tr>
+<tr class="odd">
+<td><code>TIMEOUT</code>, or <code>DUE TO TIME LIMIT</code> in <code>.err</code></td>
+<td>Raise <code>--time</code>.</td>
+</tr>
+<tr class="even">
+<td><code>OUT_OF_MEMORY</code>, or <code>oom-kill</code> in <code>.err</code></td>
+<td>Raise <code>--mem</code>.</td>
+</tr>
+<tr class="odd">
+<td><code>there is no package called 'xyz'</code> in <code>.err</code></td>
+<td>Install the package first. Module 4 shows how.</td>
+</tr>
+<tr class="even">
+<td><code>FAILED</code> with an R error in <code>.err</code></td>
+<td>The script itself failed. Fix it in an interactive job, then resubmit.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="choosing-resource-requests" class="level2">
+<h2 class="anchored" data-anchor-id="choosing-resource-requests">Choosing resource requests</h2>
+<p>Resource requests affect both whether a job succeeds and when it can start:</p>
+<ul>
+<li><strong>Too little memory or time:</strong> the job may be stopped before it finishes.</li>
+<li><strong>Too much memory or time:</strong> unused resources remain unavailable to other users, and the job may wait longer for a suitable opening.</li>
+<li><strong>More CPUs:</strong> additional CPUs help only when the program is able to use them.</li>
+</ul>
+<p>Start with a reasonable estimate plus a modest margin. After a job finishes, use <code>sacct</code> to compare the request with the time and memory the job actually used:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sacct</span> <span class="at">-j</span> <span class="op">&lt;</span>job-id<span class="op">&gt;</span> --format=JobID,State,Elapsed,MaxRSS</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>MaxRSS</code> is the peak memory the job used, printed in kilobytes with a <code>K</code> suffix. A job that peaked at <code>1400000K</code>, about 1.4 GB, can safely ask for 2 GB next time. Use that information to improve the next request rather than repeatedly reserving the largest possible amount.</p>
+</section>
 <section id="interactive-jobs" class="level2">
 <h2 class="anchored" data-anchor-id="interactive-jobs">Interactive jobs</h2>
 <p>Not every job is a script. When you want a prompt on a compute node, to test code or install packages before submitting the real thing, ask Slurm for an <strong>interactive job</strong>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">srun</span> <span class="at">-t</span> 1:00:00 <span class="at">-p</span> interact <span class="at">-n</span> 1 <span class="at">--cpus-per-task</span><span class="op">=</span>1 <span class="at">--mem</span><span class="op">=</span>4g <span class="at">--pty</span> /bin/bash</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">srun</span> <span class="at">-t</span> 1:00:00 <span class="at">-p</span> interact <span class="at">-n</span> 1 <span class="at">--cpus-per-task</span><span class="op">=</span>1 <span class="at">--mem</span><span class="op">=</span>4g <span class="at">--pty</span> /bin/bash</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><code>srun</code> takes the same resource flags as the <code>#SBATCH</code> lines, but it waits for the allocation and then opens a shell on the compute node instead of running a script. The prompt changes to show the compute node’s name. When you are done, <code>exit</code> returns you to the login node and releases the resources. Example 1 in Module 4 uses this to run R interactively.</p>
+</section>
+<section id="many-jobs-at-once" class="level2">
+<h2 class="anchored" data-anchor-id="many-jobs-at-once">Many jobs at once</h2>
+<p>The high-throughput pattern from Module 1, the same analysis repeated over many files or settings, has a Slurm feature of its own. A <strong>job array</strong> is one submission script that Slurm runs many times, each copy with a different task number in <code>$SLURM_ARRAY_TASK_ID</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --array=1-12</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>squeue</code> then shows one line per task, and <code>scancel &lt;job-id&gt;</code> cancels all of them at once. Example 3 in Module 4 builds a complete simulation study on this one directive.</p>
 </section>
 <section id="queue-rules-and-responsible-requests" class="level2">
 <h2 class="anchored" data-anchor-id="queue-rules-and-responsible-requests">Queue rules and responsible requests</h2>
@@ -590,12 +672,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="demonstration-sequence" class="level2">
 <h2 class="anchored" data-anchor-id="demonstration-sequence">Demonstration sequence</h2>
 <ol type="1">
-<li>Inspect a small job script.</li>
-<li>Submit it and record the job ID.</li>
-<li>Check its state in the queue.</li>
-<li>Find the output file.</li>
-<li>Show how to cancel a job safely.</li>
+<li>Load R with <code>module add r</code> and show <code>module list</code>.</li>
+<li>Create <code>first_job.sl</code> with <code>nano</code>, submit it, and record the job ID.</li>
+<li>Watch it in <code>squeue</code> until it runs, then read the output file.</li>
+<li>Submit it again and cancel it.</li>
+<li>Start an interactive job, show the prompt change, and <code>exit</code>.</li>
 </ol>
+</section>
+<section id="what-you-can-do-now" class="level2">
+<h2 class="anchored" data-anchor-id="what-you-can-do-now">What you can do now</h2>
+<p>You can log in, load R, write a job script, submit it, watch it, read its output, and cancel it. That is every mechanical skill Module 4 needs. Module 4 adds the R: running it interactively, installing packages, and turning one script into twelve jobs.</p>
 </section>
 <section id="sources" class="level2">
 <h2 class="anchored" data-anchor-id="sources">Sources</h2>

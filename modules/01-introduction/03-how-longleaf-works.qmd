@@ -94,6 +94,7 @@ For most introductory jobs, the essential requests are:
 | **CPUs** | The processor capacity available to the job |
 | **Memory** | The short-term working space, or RAM, available while the program runs |
 | **Time** | The maximum amount of time the job is allowed to run |
+| **Partition** | Which group of nodes the job may use. Most jobs leave this unset; interactive sessions use `interact` |
 
 Asking for more resources does not automatically make a program run faster. A program must be written to use multiple CPUs, and unused memory does not improve its speed. Requests that are close to what the job actually needs also make it easier for Slurm to find a place for the job to run.
 
@@ -105,6 +106,23 @@ Memory and storage serve different purposes:
 - **Storage** holds scripts, datasets, logs, and results as files. Files remain available after a job ends.
 
 One useful comparison is a desk and a filing cabinet. Memory is the desk where current work is spread out. Storage is the filing cabinet where materials are kept between tasks. A larger desk lets you work with more material at once, but it does not necessarily make the work faster.
+
+## Words you will see again
+
+| Term | Meaning | Introduced in |
+|---|---|---|
+| **Login node** | The shared computer you land on, for editing, moving files, and submitting | Module 2 |
+| **Compute node** | Where jobs run | Module 3 |
+| **Slurm** | The scheduler that assigns jobs to compute nodes | Module 3 |
+| **Job** | A script plus a resource request, submitted with `sbatch` | Module 3 |
+| **Pending, running** | Waiting in the queue; on a compute node | Module 3 |
+| **Partition** | A group of nodes for one kind of work, such as `interact` | Module 3 |
+| **Module** | The command that makes a program such as R available in your session | Module 3 |
+| **Interactive job** | A job that gives you a prompt on a compute node | Module 3 |
+| **Job array** | One script run many times with different settings | Module 4 |
+| **Home directory** | Small, backed-up storage for code and R packages | Module 2 |
+| **Personal data space** | Large storage under `/hickory/users` for data and results | Module 2 |
+| **Personal library** | The folder in your home directory where your R packages install | Module 4 |
 
 ## The essential idea
 

@@ -95,7 +95,7 @@
     "href": "modules/01-introduction/03-how-longleaf-works.html#what-does-a-job-request",
     "title": "How Longleaf Works",
     "section": "What does a job request?",
-    "text": "What does a job request?\nFor most introductory jobs, the essential requests are:\n\n\n\n\n\n\n\nResource\nWhat it means\n\n\n\n\nCPUs\nThe processor capacity available to the job\n\n\nMemory\nThe short-term working space, or RAM, available while the program runs\n\n\nTime\nThe maximum amount of time the job is allowed to run\n\n\n\nAsking for more resources does not automatically make a program run faster. A program must be written to use multiple CPUs, and unused memory does not improve its speed. Requests that are close to what the job actually needs also make it easier for Slurm to find a place for the job to run.",
+    "text": "What does a job request?\nFor most introductory jobs, the essential requests are:\n\n\n\n\n\n\n\nResource\nWhat it means\n\n\n\n\nCPUs\nThe processor capacity available to the job\n\n\nMemory\nThe short-term working space, or RAM, available while the program runs\n\n\nTime\nThe maximum amount of time the job is allowed to run\n\n\nPartition\nWhich group of nodes the job may use. Most jobs leave this unset; interactive sessions use interact\n\n\n\nAsking for more resources does not automatically make a program run faster. A program must be written to use multiple CPUs, and unused memory does not improve its speed. Requests that are close to what the job actually needs also make it easier for Slurm to find a place for the job to run.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
@@ -285,7 +285,7 @@
     "href": "modules/03-interacting-with-longleaf.html#choosing-resource-requests",
     "title": "Interacting with Longleaf",
     "section": "Choosing resource requests",
-    "text": "Choosing resource requests\nResource requests affect both whether a job succeeds and when it can start:\n\nToo little memory or time: the job may be stopped before it finishes.\nToo much memory or time: unused resources remain unavailable to other users, and the job may wait longer for a suitable opening.\nMore CPUs: additional CPUs help only when the program is able to use them.\n\nStart with a reasonable estimate plus a modest margin. After a job finishes, use sacct to compare the request with the time and memory the job actually used:\nsacct -j &lt;job-id&gt; --format=JobID,State,Elapsed,MaxRSS\nUse that information to improve the next request rather than repeatedly reserving the largest possible amount.",
+    "text": "Choosing resource requests\nResource requests affect both whether a job succeeds and when it can start:\n\nToo little memory or time: the job may be stopped before it finishes.\nToo much memory or time: unused resources remain unavailable to other users, and the job may wait longer for a suitable opening.\nMore CPUs: additional CPUs help only when the program is able to use them.\n\nStart with a reasonable estimate plus a modest margin. After a job finishes, use sacct to compare the request with the time and memory the job actually used:\nsacct -j &lt;job-id&gt; --format=JobID,State,Elapsed,MaxRSS\nMaxRSS is the peak memory the job used, printed in kilobytes with a K suffix. A job that peaked at 1400000K, about 1.4 GB, can safely ask for 2 GB next time. Use that information to improve the next request rather than repeatedly reserving the largest possible amount.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
@@ -333,7 +333,7 @@
     "href": "modules/03-interacting-with-longleaf.html#demonstration-sequence",
     "title": "Interacting with Longleaf",
     "section": "Demonstration sequence",
-    "text": "Demonstration sequence\n\nInspect a small job script.\nSubmit it and record the job ID.\nCheck its state in the queue.\nFind the output file.\nShow how to cancel a job safely.",
+    "text": "Demonstration sequence\n\nLoad R with module add r and show module list.\nCreate first_job.sl with nano, submit it, and record the job ID.\nWatch it in squeue until it runs, then read the output file.\nSubmit it again and cancel it.\nStart an interactive job, show the prompt change, and exit.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
@@ -407,7 +407,7 @@
     "href": "modules/02-accessing-longleaf.html#ways-to-connect",
     "title": "Accessing Longleaf",
     "section": "Ways to connect",
-    "text": "Ways to connect\n\n\n\n\n\n\n\n\nMethod\nBest for\nWhat the user sees\n\n\n\n\nTerminal (ssh)\nDirect command-line work; what Modules 3 and 4 use\nA shell prompt on a login node\n\n\nOpen OnDemand\nRStudio in the browser, a terminal without installing one, browsing files\nA dashboard with Files, Shell, and Interactive Apps\n\n\nFileZilla\nMoving files between your computer and Longleaf\nA two-pane file browser: your computer on the left, Longleaf on the right",
+    "text": "Ways to connect\n\n\n\n\n\n\n\n\nMethod\nBest for\nWhat the user sees\n\n\n\n\nTerminal (ssh)\nDirect command-line work; what Modules 3 and 4 use\nA shell prompt on a login node\n\n\nOpen OnDemand\nRStudio in the browser, a terminal without installing one, browsing files\nA dashboard with Files, Shell, and Interactive Apps\n\n\nFileZilla\nMoving files between your computer and Longleaf\nA two-pane file browser: your computer on the left, Longleaf on the right\n\n\n\n\nWhich should you use?\nAll three, for different things. The terminal is where Modules 3 and 4 happen, because submitting jobs is a command-line task. FileZilla is for moving files in and out. Open OnDemand is for RStudio on a compute node, and it doubles as a terminal on a computer with no ssh client.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
@@ -727,6 +727,105 @@
     "title": "Longleaf Overview",
     "section": "A shared resource",
     "text": "A shared resource\nMany researchers use Longleaf at the same time. Users describe the work they want to run and the resources it needs. A scheduler then determines when and where that work will run.\nThe next page follows that process from a user’s computer to a Longleaf compute node.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "1 · Introduction to Longleaf",
+      "1.2 · Longleaf overview"
+    ]
+  },
+  {
+    "objectID": "modules/01-introduction/03-how-longleaf-works.html#words-you-will-see-again",
+    "href": "modules/01-introduction/03-how-longleaf-works.html#words-you-will-see-again",
+    "title": "How Longleaf Works",
+    "section": "Words you will see again",
+    "text": "Words you will see again\n\n\n\n\n\n\n\n\nTerm\nMeaning\nIntroduced in\n\n\n\n\nLogin node\nThe shared computer you land on, for editing, moving files, and submitting\nModule 2\n\n\nCompute node\nWhere jobs run\nModule 3\n\n\nSlurm\nThe scheduler that assigns jobs to compute nodes\nModule 3\n\n\nJob\nA script plus a resource request, submitted with sbatch\nModule 3\n\n\nPending, running\nWaiting in the queue; on a compute node\nModule 3\n\n\nPartition\nA group of nodes for one kind of work, such as interact\nModule 3\n\n\nModule\nThe command that makes a program such as R available in your session\nModule 3\n\n\nInteractive job\nA job that gives you a prompt on a compute node\nModule 3\n\n\nJob array\nOne script run many times with different settings\nModule 4\n\n\nHome directory\nSmall, backed-up storage for code and R packages\nModule 2\n\n\nPersonal data space\nLarge storage under /hickory/users for data and results\nModule 2\n\n\nPersonal library\nThe folder in your home directory where your R packages install\nModule 4",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "1 · Introduction to Longleaf",
+      "1.3 · How Longleaf works"
+    ]
+  },
+  {
+    "objectID": "modules/01-introduction/01-computing-history.html#from-one-job-to-thousands",
+    "href": "modules/01-introduction/01-computing-history.html#from-one-job-to-thousands",
+    "title": "A Brief History of Computing at UNC",
+    "section": "From one job to thousands",
+    "text": "From one job to thousands\nThe UNIVAC ran one job at a time, and researchers handed their work to operators who ran it when the machine was free. Longleaf’s arrangement is recognizably the same: you hand your work to a scheduler, which runs it when the resources are free. The differences are scale and automation. Longleaf runs many jobs at once across a large pool of computers, the operators have been replaced by software called Slurm, and you talk to it yourself from a terminal. By Module 4, you will submit twelve jobs with one command and collect their results with another.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "1 · Introduction to Longleaf",
+      "1.1 · Computing history at UNC"
+    ]
+  },
+  {
+    "objectID": "modules/02-accessing-longleaf.html#what-you-can-do-now",
+    "href": "modules/02-accessing-longleaf.html#what-you-can-do-now",
+    "title": "Accessing Longleaf",
+    "section": "What you can do now",
+    "text": "What you can do now\nYou have an account, you can reach Longleaf from a terminal and from a browser, and you can move files in both directions with FileZilla. Module 3 turns that access into jobs.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "2 · Accessing Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/03-interacting-with-longleaf.html#your-first-job",
+    "href": "modules/03-interacting-with-longleaf.html#your-first-job",
+    "title": "Interacting with Longleaf",
+    "section": "Your first job",
+    "text": "Your first job\nEverything above fits in a two-minute exercise. On a login node, create a file called first_job.sl with nano:\nnano first_job.sl\nPaste in this script, then press Ctrl+O, Enter, and Ctrl+X to save and leave:\n\n\nfirst_job.sl\n\n#!/bin/bash\n#SBATCH --job-name=first_job\n#SBATCH --ntasks=1\n#SBATCH --cpus-per-task=1\n#SBATCH --mem=100m\n#SBATCH --time=00:05:00\n#SBATCH --output=first_job_%j.out\n\necho \"Running on $(hostname) as job $SLURM_JOB_ID\"\nsleep 90\necho \"Done\"\n\nSubmit it, then watch it move through the queue:\nsbatch first_job.sl           # Submitted batch job 12345678\nsqueue -u \"$USER\"             # PD, then R, then gone\ncat first_job_12345678.out    # the two lines the job printed\nThe first line of the output names a compute node, not the login node: Slurm moved the work. Submit it once more and cancel it while it is running, so that you have done that too:\nsbatch first_job.sl\nscancel &lt;job-id&gt;",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "3 · Interacting with Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/03-interacting-with-longleaf.html#reading-the-output",
+    "href": "modules/03-interacting-with-longleaf.html#reading-the-output",
+    "title": "Interacting with Longleaf",
+    "section": "Reading the output",
+    "text": "Reading the output\nA finished job leaves two kinds of evidence. The --output file holds everything the program printed, and the --error file holds error messages. If a script sets only --output, both go there. For an R script, .out has the cat() and print() output and .err has R’s errors and warnings.\nsacct adds the verdict in its State column: COMPLETED, FAILED, TIMEOUT, OUT_OF_MEMORY, or CANCELLED. Together they cover most of what goes wrong:\n\n\n\n\n\n\n\nWhat you see\nWhat it means\n\n\n\n\nNo output file at all\nThe log directory did not exist when the job started. Create it and resubmit.\n\n\nBoth files empty and the job ended in seconds\nThe job never reached your program. Check the module add line and the script name.\n\n\nTIMEOUT, or DUE TO TIME LIMIT in .err\nRaise --time.\n\n\nOUT_OF_MEMORY, or oom-kill in .err\nRaise --mem.\n\n\nthere is no package called 'xyz' in .err\nInstall the package first. Module 4 shows how.\n\n\nFAILED with an R error in .err\nThe script itself failed. Fix it in an interactive job, then resubmit.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "3 · Interacting with Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/03-interacting-with-longleaf.html#many-jobs-at-once",
+    "href": "modules/03-interacting-with-longleaf.html#many-jobs-at-once",
+    "title": "Interacting with Longleaf",
+    "section": "Many jobs at once",
+    "text": "Many jobs at once\nThe high-throughput pattern from Module 1, the same analysis repeated over many files or settings, has a Slurm feature of its own. A job array is one submission script that Slurm runs many times, each copy with a different task number in $SLURM_ARRAY_TASK_ID:\n#SBATCH --array=1-12\nsqueue then shows one line per task, and scancel &lt;job-id&gt; cancels all of them at once. Example 3 in Module 4 builds a complete simulation study on this one directive.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "3 · Interacting with Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/03-interacting-with-longleaf.html#what-you-can-do-now",
+    "href": "modules/03-interacting-with-longleaf.html#what-you-can-do-now",
+    "title": "Interacting with Longleaf",
+    "section": "What you can do now",
+    "text": "What you can do now\nYou can log in, load R, write a job script, submit it, watch it, read its output, and cancel it. That is every mechanical skill Module 4 needs. Module 4 adds the R: running it interactively, installing packages, and turning one script into twelve jobs.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "3 · Interacting with Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/01-introduction/02-longleaf-overview.html#where-this-workshop-ends-up",
+    "href": "modules/01-introduction/02-longleaf-overview.html#where-this-workshop-ends-up",
+    "title": "Longleaf Overview",
+    "section": "Where this workshop ends up",
+    "text": "Where this workshop ends up\nModule 4 is the payoff, and it follows the high-throughput pattern above with R:\n\nInteractive R on a compute node, for testing and debugging (Example 1).\nOne R script as one job, submitted, monitored, and read back (Example 2).\nA simulation with twelve conditions as twelve jobs, submitted with one command and collected into one data frame (Example 3).\n\nModules 2 and 3 exist to make those three steps routine: getting onto the cluster and moving files, then describing, submitting, and reading jobs.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
