@@ -14,9 +14,16 @@ description: "A practical workflow for using R and packages on Longleaf."
 
 ## Where packages live
 
-Explain the difference between packages included with R, centrally installed packages, and packages installed in a user's personal library.
+R looks for packages in a short list of folders. On Longleaf, two of them matter:
 
-<!-- Add verified library paths and the recommended personal-library setup. -->
+- **The R module's library.** The packages that ship with R, and any that Research Computing has installed centrally, live inside the R installation that `module add r` loads. Everyone can use them, and nobody can change them.
+- **Your personal library.** Anything you install yourself goes into a folder in your home directory. R creates it for you the first time you install a package. The default location is `~/R/x86_64-pc-linux-gnu-library/4.4`, where `4.4` matches the version of R you loaded.
+
+<!-- Verify the personal-library path on Longleaf: module add r; R -e '.libPaths(); Sys.getenv("R_LIBS_USER")' -->
+
+Inside R, `.libPaths()` prints these folders in the order R searches them.
+
+Two consequences follow from that layout. Your home directory is shared storage, so a package installed once is available in RStudio Server, interactive sessions, and batch jobs alike, as long as they load the same R module. And the personal library belongs to one R version: patch releases such as 4.4.0 and 4.4.2 share it, but an R module with a different minor version looks in a different folder, so packages installed under the old version are not found until you install them again.
 
 ## Interactive R or a scheduled job?
 
@@ -29,7 +36,64 @@ Explain the difference between packages included with R, centrally installed pac
 
 ## Installing packages
 
-<!-- Add a verified package-installation example and explain any network or compilation constraints. -->
+Install packages from an interactive R session, not from a job script. Start a session as in Example 1, load R, and call `install.packages()`:
+
+```bash
+srun -t 1:00:00 -p interact -n 1 --cpus-per-task=1 --mem=4g --pty /bin/bash
+module add r
+R
+```
+
+```r
+install.packages("jsonlite", repos = "https://cloud.r-project.org")
+```
+
+The `repos` argument skips the CRAN mirror menu that R otherwise shows in a terminal. The first time you install anything, R notices that it cannot write to the module's library and asks two questions. Answer `yes` to both:
+
+```{.default}
+Would you like to use a personal library instead? (yes/No/cancel) yes
+Would you like to create a personal library
+'~/R/x86_64-pc-linux-gnu-library/4.4'
+to install packages into? (yes/No/cancel) yes
+```
+
+<!-- Verify the prompt wording and path against a real first install on Longleaf. -->
+
+From then on, every `install.packages()` call goes straight to your personal library without asking. Confirm the package loads and see where it went:
+
+```r
+library(jsonlite)
+.libPaths()
+```
+
+Packages with compiled code take a few minutes to build. That is normal; wait for the prompt to return.
+
+::: {.callout-tip title="Install once, interactively"}
+A job script should load R and run your code, nothing more. Installing inside a job is slow, and the twelve tasks of a job array all trying to install the same package at once will interfere with each other. Install in an interactive session, confirm `library()` works, then submit.
+:::
+
+Bioconductor packages use their own installer. Install it once from CRAN, then use it for the rest:
+
+```r
+install.packages("BiocManager", repos = "https://cloud.r-project.org")
+BiocManager::install("limma")
+```
+
+### Installing from a file you upload
+
+Some packages are not on CRAN: one a collaborator sent you, one you are developing, or one you downloaded from GitHub as a source archive. In that case, copy the package's `.tar.gz` file to Longleaf with `rsync`, `scp`, or the SFTP client from Module 2, then point `install.packages()` at the file instead of a repository:
+
+```bash
+rsync -av mypackage_0.1.0.tar.gz <onyen>@longleaf.unc.edu:
+```
+
+```r
+install.packages("~/mypackage_0.1.0.tar.gz", repos = NULL, type = "source")
+```
+
+`repos = NULL` tells R to install from the file. R does not download dependencies in this mode, so if the installation stops with `there is no package called 'xyz'`, install `xyz` from CRAN first and run the command again. The package lands in the same personal library as everything else.
+
+If you have the package as a folder rather than an archive, build the archive on your laptop first. From the folder's parent directory, `R CMD build mypackage` produces the `.tar.gz` file to upload.
 
 ## Three examples
 
