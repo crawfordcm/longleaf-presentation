@@ -22,11 +22,7 @@ Once the account exists, your username on Longleaf is your ONYEN and the passwor
 
 Longleaf is reachable directly from the campus network. From anywhere else, connect to the UNC VPN first. Every method on this page, including FileZilla, needs that connection.
 
-The VPN client is Cisco Secure Client, distributed by UNC ITS. Install it, connect to `vpn.unc.edu`, and sign in with your ONYEN, your password, and Duo. Search for "VPN" on the [ITS help site](https://help.unc.edu/) for the current installation steps for your operating system.
-
-::: {.todo}
-**To do:** confirm the VPN details above (`vpn.unc.edu`, Duo) against the ITS article and replace the help.unc.edu link with a direct link to it.
-:::
+UNC ITS distributes and supports the campus VPN client. Open the [UNC VPN Client service page](https://tdx.unc.edu/TDClient/33/Portal/Requests/Service/63/VPN-Client) and follow its VPN knowledge article for the current installation instructions. To connect, use `vpn.unc.edu`. Authenticate with your Carolina Sign-In Key, or use your ONYEN password and complete Duo verification when prompted.
 
 ## Ways to connect
 
@@ -153,4 +149,5 @@ You have an account, you can reach Longleaf from a terminal and from a browser, 
 - [“Getting Started on Longleaf,” UNC Research Computing](https://help.rc.unc.edu/getting-started-on-longleaf/)
 - [“Open OnDemand,” UNC Research Computing](https://help.rc.unc.edu/ondemand/)
 - [“Request a Cluster Account,” UNC Research Computing](https://help.rc.unc.edu/request-a-cluster-account)
+- [“VPN Client,” UNC Information Technology Services](https://tdx.unc.edu/TDClient/33/Portal/Requests/Service/63/VPN-Client)
 - [FileZilla Client documentation](https://wiki.filezilla-project.org/Documentation)
