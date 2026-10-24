@@ -1,45 +1,41 @@
-# Example 1: Interactive R on a compute node
+# Example 1: Interactive R
 
-Interactive sessions are for testing, debugging, and exploring. Nothing here needs
-to be copied to Longleaf; it is a sequence of commands to type.
+Interactive R is for testing, debugging, and exploring. Nothing here needs to be
+copied to Longleaf; it is a sequence of commands to type.
 
 ## From a terminal
 
-Log in, then ask Slurm for an interactive shell on the `interact` partition:
+Log in, load R, and start it:
 
 ```bash
 ssh <onyen>@longleaf.unc.edu
-srun -t 1:00:00 -p interact -n 1 --cpus-per-task=1 --mem=4g --pty /bin/bash
-```
-
-The prompt changes to show a compute node's name once the session starts. Load R
-and start it:
-
-```bash
 module add r
 R
 ```
 
-Inside R, confirm where you are and try a few commands:
+Inside R, confirm which R you have and try a few commands:
 
 ```r
-Sys.info()[["nodename"]]   # a compute node, not a login node
 R.version.string
+Sys.info()[["nodename"]]   # the login node you are on
 x <- rnorm(1e6); mean(x)
 ```
 
-Leave R, then the session, so the node is released for other users:
+Leave R with `q()`.
 
-```r
-q()
-```
+This runs R on the login node, which everyone shares. It is fine for checking
+that R starts, that a package loads, or that a script runs at all. For
+exploratory work that runs for more than a few minutes or needs real memory,
+ask Slurm for an interactive job first and run the same commands there:
 
 ```bash
-exit
+srun -t 1:00:00 -p interact -n 1 --cpus-per-task=1 --mem=4g --pty /bin/bash
+module add r
+R
 ```
 
-If you need graphics windows (for example `plot()`), log in with `ssh -X` and add
-`--x11=first` to the `srun` command.
+The prompt changes to show a compute node's name. `exit` returns you to the
+login node and releases the resources.
 
 ## From the browser
 
@@ -50,8 +46,8 @@ CPUs for RStudio sessions.
 
 ## Testing a job script interactively
 
-Once the Example 2 folder is on Longleaf, an interactive session is the place to
-try its script before submitting it:
+Once the Example 2 folder is on Longleaf, load R and try its script before
+submitting it:
 
 ```bash
 cd ~/example2_single_job

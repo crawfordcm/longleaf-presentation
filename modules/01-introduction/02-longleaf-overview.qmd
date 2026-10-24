@@ -67,7 +67,7 @@ Examples relevant to psychology, statistics, and related fields include:
 
 Module 4 is the payoff, and it follows the high-throughput pattern above with R:
 
-1. **Interactive R** on a compute node, for testing and debugging (Example 1).
+1. **Interactive R**, for testing and debugging (Example 1).
 2. **One R script as one job**, submitted, monitored, and read back (Example 2).
 3. **A simulation with twelve conditions as twelve jobs**, submitted with one command and collected into one data frame (Example 3).
 

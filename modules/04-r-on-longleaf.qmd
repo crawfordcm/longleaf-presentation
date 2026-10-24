@@ -47,10 +47,9 @@ Two consequences follow from that layout. Your home directory is shared storage,
 
 ## Installing packages
 
-Install packages from an interactive R session, not from a job script. Start a session as in Example 1, load R, and call `install.packages()`:
+Install packages from an interactive R session, not from a job script. Load R as in Example 1 and call `install.packages()`:
 
 ```bash
-srun -t 1:00:00 -p interact -n 1 --cpus-per-task=1 --mem=4g --pty /bin/bash
 module add r
 R
 ```
@@ -108,7 +107,7 @@ If you have the package as a folder rather than an archive, build the archive on
 
 The rest of this module follows the progression most projects take:
 
-1. **Interactive R** on a compute node, for testing and debugging.
+1. **Interactive R**, for testing and debugging.
 2. **A single scheduled job** that runs one R script once.
 3. **A batch of scheduled jobs** that run the same script under many parameter settings.
 
@@ -116,51 +115,31 @@ The files for Examples 2 and 3 are in the [`examples/` folder](https://github.co
 
 ## Example 1 · Interactive R
 
-An interactive session gives you a shell, or RStudio, on a compute node. Exploratory work then runs on resources reserved for you instead of competing with everyone else on the login node.
-
-### From a terminal
-
-Log in, then ask Slurm for an interactive shell on the `interact` partition:
+The quickest way to use R on Longleaf is to load it and start it, right where you land after logging in:
 
 ```bash
 ssh <onyen>@longleaf.unc.edu
-srun -t 1:00:00 -p interact -n 1 --cpus-per-task=1 --mem=4g --pty /bin/bash
-```
-
-| Flag | Request |
-|---|---|
-| `-t 1:00:00` | Allow up to one hour; the `interact` partition allows at most 8 hours |
-| `-p interact` | Use the partition reserved for interactive work |
-| `-n 1 --cpus-per-task=1` | One task with one CPU |
-| `--mem=4g` | Reserve 4 GB of memory |
-| `--pty /bin/bash` | Attach a terminal and start a shell in it |
-
-The prompt changes to show a compute node's name once the session starts. Load R and start it:
-
-```bash
 module add r
 R
 ```
 
-Inside R, confirm where you are and try a few commands:
+Inside R, confirm which R you have and try a few commands:
 
 ```r
-Sys.info()[["nodename"]]   # a compute node, not a login node
 R.version.string
+Sys.info()[["nodename"]]   # the login node you are on
 x <- rnorm(1e6); mean(x)
 ```
 
-Leave R, then the session, so the node is released for other users:
+Leave R with `q()`.
 
-```r
-q()
-```
+This is the right way to check that R starts, that a package loads, or that a script runs at all. It is R on the login node, though, which everyone shares. For exploratory work that runs for more than a few minutes or needs real memory, ask Slurm for an interactive job first (Module 3) and run the same two commands there:
 
 ```bash
-exit
+srun -t 1:00:00 -p interact -n 1 --cpus-per-task=1 --mem=4g --pty /bin/bash
+module add r
+R
 ```
-
-If you need graphics windows (for example `plot()`), log in with `ssh -X` and add `--x11=first` to the `srun` command.
 
 ### From the browser
 
@@ -603,7 +582,7 @@ cat("Saved all_results.rds\n")
 
 3. **Edit `submit_array.sl`.** Make `--array=1-12` match the row count. This is the line people forget: too small and some conditions never run, too large and the extra tasks fail with "no line N". Set or delete the `--mail-*` lines, and remember that `--time` and `--mem` apply per task, not to the whole array. For big arrays add a throttle, such as `--array=1-2000%100`, so you do not monopolize the partition.
 
-4. **Test one row interactively before submitting hundreds.** Use an interactive session from Example 1. If this works, the array will work.
+4. **Test one row before submitting hundreds.** Load R as in Example 1 and run row 1 by hand. If this works, the array will work.
 
    ```bash
    module add r

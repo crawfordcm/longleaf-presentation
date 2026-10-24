@@ -207,7 +207,7 @@ Not every job is a script. When you want a prompt on a compute node, to test cod
 srun -t 1:00:00 -p interact -n 1 --cpus-per-task=1 --mem=4g --pty /bin/bash
 ```
 
-`srun` takes the same resource flags as the `#SBATCH` lines, but it waits for the allocation and then opens a shell on the compute node instead of running a script. The prompt changes to show the compute node's name. When you are done, `exit` returns you to the login node and releases the resources. Example 1 in Module 4 uses this to run R interactively.
+`srun` takes the same resource flags as the `#SBATCH` lines, but it waits for the allocation and then opens a shell on the compute node instead of running a script. The prompt changes to show the compute node's name. When you are done, `exit` returns you to the login node and releases the resources. Module 4 points here for interactive R work that is too heavy for the login node.
 
 ## Many jobs at once
 
