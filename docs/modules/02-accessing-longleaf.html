@@ -460,13 +460,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="where-files-live" class="level2">
 <h2 class="anchored" data-anchor-id="where-files-live">Where files live</h2>
 <p>Longleaf’s login and compute nodes can access the same shared storage. A script prepared on a login node can therefore read data and write results while it runs on a compute node.</p>
-<p>The main storage locations for new users are:</p>
+<p>The main storage locations for new users are below. Two of them start with <code>/hickory</code>, the name of Longleaf’s newer storage system. The name is only a label, in the same tree-naming tradition as Longleaf itself. What matters is the contrast: home is small and backed up, hickory is large and not.</p>
 <ul>
 <li><strong>Home directory:</strong> <code>/nas/longleaf/home/&lt;onyen&gt;</code> is a relatively small (50 GB), backed-up space for scripts, settings, and personal software, including your R packages. It is not intended for data-intensive computing.</li>
 <li><strong>Personal data space:</strong> <code>/hickory/users/&lt;o&gt;/&lt;n&gt;/&lt;onyen&gt;</code> provides a much larger location (2 TB) for active and inactive personal research data. It is not backed up. <code>&lt;o&gt;</code> and <code>&lt;n&gt;</code> are the first and second letters of your ONYEN, so the ONYEN <code>jdoe</code> has <code>/hickory/users/j/d/jdoe</code>.</li>
-<li><strong>Project space:</strong> research groups may have shared storage under <code>/proj</code>, <code>/hickory/proj</code>, or <code>/vast/som</code>. Its location and quota depend on the group, and it is not backed up by default.</li>
+<li><strong>Project space:</strong> research groups may have shared storage under <code>/hickory/proj</code> or, for School of Medicine groups, <code>/vast/som</code>. A PI requests it from Research Computing. Its location and quota depend on the group, and it is not backed up by default.</li>
 </ul>
-<p>Accounts created before summer 2026 may also have older <code>/work</code> or <code>/users</code> directories. New accounts get <code>/hickory/users</code> only, and this workshop uses it for anything too large for the home directory.</p>
+<p>Accounts created before summer 2026 may also have older <code>/work</code> or <code>/users</code> directories. UNC stopped creating <code>/work</code> in July 2026 and <code>/users</code> in August 2026, when <code>/hickory/users</code> became the default. This workshop uses <code>/hickory/users</code> for anything too large for the home directory.</p>
 </section>
 <section id="demonstration-sequence" class="level2">
 <h2 class="anchored" data-anchor-id="demonstration-sequence">Demonstration sequence</h2>
