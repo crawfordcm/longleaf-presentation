@@ -54,9 +54,7 @@ Once connected, the prompt changes to show your ONYEN and the name of a login no
 
 To leave, type `exit`. If a program needs to open a graphics window, connect with `ssh -X <onyen>@longleaf.unc.edu` instead.
 
-::: {.todo}
-**To do:** add a screenshot of a first login from Terminal, saved as `images/terminal-login.png`.
-:::
+![A successful SSH login to Longleaf from a terminal.](../images/terminal-login.png){fig-alt="Terminal window showing the UNC system-use notice followed by a successful login to a Longleaf login node" fig-align="center" width="90%"}
 
 ## Working through the browser
 
@@ -73,9 +71,7 @@ The dashboard's menus cover most of what a new user needs:
 
 Sessions started from *Interactive Apps* wait in the queue like any other job, so start one a few minutes before you need it.
 
-::: {.todo}
-**To do:** add an annotated screenshot of the OnDemand dashboard showing the Files, Clusters, and Interactive Apps menus, saved as `images/ondemand-dashboard.png`.
-:::
+![The Open OnDemand dashboard provides browser-based access to files, cluster tools, and interactive applications such as RStudio Server.](../images/ondemand-dashboard.png){fig-alt="Open OnDemand dashboard showing the Files, Clusters, and Interactive Apps menus along with tiles for Jupyter Notebook, MD Desktop, RStudio Server, and MATLAB" fig-align="center" width="100%"}
 
 ## Moving files with FileZilla
 
@@ -111,9 +107,7 @@ After connecting, the right pane shows your home directory on Longleaf.
 
 Progress appears in the transfer queue at the bottom of the window.
 
-::: {.todo}
-**To do:** add a screenshot of FileZilla connected to Longleaf with both panes visible, saved as `images/filezilla-connected.png`.
-:::
+![FileZilla displays files on the local computer in the left pane and files on Longleaf in the right pane.](../images/filezilla-connected.png){fig-alt="FileZilla connected to Longleaf, with a local demonstration folder and example file on the left and the Longleaf home directory on the right" fig-align="center" width="100%"}
 
 ::: {.callout-tip title="Edit a script in place"}
 Right-click a text file in the Longleaf pane and choose **View/Edit**. FileZilla opens it in an editor on your computer. When you save, it asks whether to upload the changed file; click **Yes**. This is enough for small changes such as setting the email address in a submission script.
