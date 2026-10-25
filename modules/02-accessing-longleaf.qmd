@@ -1,12 +1,7 @@
 ---
 title: "Accessing Longleaf"
-subtitle: "How do you actually use it? Accounts, login options, the web portal, and file transfer"
 description: "The practical routes for obtaining access, connecting to Longleaf, and moving files."
 ---
-
-::: {.module-lead}
-**Guiding question:** Which access method should a new Longleaf user choose?
-:::
 
 ## Requesting an account
 

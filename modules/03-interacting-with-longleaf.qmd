@@ -1,12 +1,7 @@
 ---
 title: "Interacting with Longleaf"
-subtitle: "Shell basics, Slurm, and responsible job management"
 description: "A practical introduction to navigating Longleaf and managing scheduled jobs."
 ---
-
-::: {.module-lead}
-**Guiding question:** How does a command become a managed job on a compute node?
-:::
 
 ## Essential shell commands
 
