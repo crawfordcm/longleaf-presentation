@@ -251,7 +251,7 @@
     "href": "modules/03-interacting-with-longleaf.html",
     "title": "Interacting with Longleaf",
     "section": "",
-    "text": "Guiding question: How does a command become a managed job on a compute node?",
+    "text": "Task\nCommand\n\n\n\n\nShow the current directory\npwd\n\n\nList files\nls\n\n\nEnter a directory\ncd directory-name\n\n\nMove up one directory\ncd ..\n\n\nGo to your home directory\ncd ~\n\n\nCreate a directory\nmkdir directory-name\n\n\nPrint a short file\ncat filename\n\n\nShow the last lines of a file\ntail filename\n\n\nPage through a long file\nless filename (press q to quit)\n\n\nCount the lines in a file\nwc -l filename\n\n\nEdit a text file\nnano filename\n\n\nLeave Longleaf\nexit\n\n\n\n~ is shorthand for your home directory, so cd ~/example2_single_job works from anywhere. nano is a small editor that runs in the terminal: edit, press Ctrl+O to save, and Ctrl+X to leave. FileZilla’s View/Edit (Module 2) is the alternative for people who prefer an editor on their own computer.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
@@ -262,8 +262,8 @@
     "objectID": "modules/03-interacting-with-longleaf.html#essential-shell-commands",
     "href": "modules/03-interacting-with-longleaf.html#essential-shell-commands",
     "title": "Interacting with Longleaf",
-    "section": "Essential shell commands",
-    "text": "Essential shell commands\n\n\n\nTask\nCommand\n\n\n\n\nShow the current directory\npwd\n\n\nList files\nls\n\n\nEnter a directory\ncd directory-name\n\n\nMove up one directory\ncd ..\n\n\nGo to your home directory\ncd ~\n\n\nCreate a directory\nmkdir directory-name\n\n\nPrint a short file\ncat filename\n\n\nShow the last lines of a file\ntail filename\n\n\nPage through a long file\nless filename (press q to quit)\n\n\nCount the lines in a file\nwc -l filename\n\n\nEdit a text file\nnano filename\n\n\nLeave Longleaf\nexit\n\n\n\n~ is shorthand for your home directory, so cd ~/example2_single_job works from anywhere. nano is a small editor that runs in the terminal: edit, press Ctrl+O to save, and Ctrl+X to leave. FileZilla’s View/Edit (Module 2) is the alternative for people who prefer an editor on their own computer.",
+    "section": "",
+    "text": "Task\nCommand\n\n\n\n\nShow the current directory\npwd\n\n\nList files\nls\n\n\nEnter a directory\ncd directory-name\n\n\nMove up one directory\ncd ..\n\n\nGo to your home directory\ncd ~\n\n\nCreate a directory\nmkdir directory-name\n\n\nPrint a short file\ncat filename\n\n\nShow the last lines of a file\ntail filename\n\n\nPage through a long file\nless filename (press q to quit)\n\n\nCount the lines in a file\nwc -l filename\n\n\nEdit a text file\nnano filename\n\n\nLeave Longleaf\nexit\n\n\n\n~ is shorthand for your home directory, so cd ~/example2_single_job works from anywhere. nano is a small editor that runs in the terminal: edit, press Ctrl+O to save, and Ctrl+X to leave. FileZilla’s View/Edit (Module 2) is the alternative for people who prefer an editor on their own computer.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
@@ -445,7 +445,7 @@
     "href": "modules/02-accessing-longleaf.html",
     "title": "Accessing Longleaf",
     "section": "",
-    "text": "Guiding question: Which access method should a new Longleaf user choose?",
+    "text": "A Longleaf account is separate from your ONYEN and is not created automatically. Request one before the workshop:\n\nOpen UNC Research Computing’s Request a Cluster Account page.\nChoose Longleaf Cluster as the subscription type and submit the form.\nWait for the email saying the account has been created. Until it arrives, logins to Longleaf and Open OnDemand fail.\n\nOnce the account exists, your username on Longleaf is your ONYEN and the password is your ONYEN password.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
@@ -456,8 +456,8 @@
     "objectID": "modules/02-accessing-longleaf.html#requesting-an-account",
     "href": "modules/02-accessing-longleaf.html#requesting-an-account",
     "title": "Accessing Longleaf",
-    "section": "Requesting an account",
-    "text": "Requesting an account\nA Longleaf account is separate from your ONYEN and is not created automatically. Request one before the workshop:\n\nOpen UNC Research Computing’s Request a Cluster Account page.\nChoose Longleaf Cluster as the subscription type and submit the form.\nWait for the email saying the account has been created. Until it arrives, logins to Longleaf and Open OnDemand fail.\n\nOnce the account exists, your username on Longleaf is your ONYEN and the password is your ONYEN password.",
+    "section": "",
+    "text": "A Longleaf account is separate from your ONYEN and is not created automatically. Request one before the workshop:\n\nOpen UNC Research Computing’s Request a Cluster Account page.\nChoose Longleaf Cluster as the subscription type and submit the form.\nWait for the email saying the account has been created. Until it arrives, logins to Longleaf and Open OnDemand fail.\n\nOnce the account exists, your username on Longleaf is your ONYEN and the password is your ONYEN password.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",

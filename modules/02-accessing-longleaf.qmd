@@ -5,7 +5,7 @@ description: "The practical routes for obtaining access, connecting to Longleaf,
 
 ## Requesting an account
 
-A Longleaf account is separate from your ONYEN and is not created automatically. Request one before the workshop:
+A Longleaf account is separate from your ONYEN and is not created automatically. Complete the following steps to obtain an account:
 
 1. Open UNC Research Computing's [Request a Cluster Account](https://help.rc.unc.edu/request-a-cluster-account) page.
 2. Choose **Longleaf Cluster** as the subscription type and submit the form.
@@ -15,9 +15,9 @@ Once the account exists, your username on Longleaf is your ONYEN and the passwor
 
 ## Connecting to the cluster
 
-Longleaf is reachable directly from the campus network. From anywhere else, connect to the UNC VPN first. Every method on this page, including FileZilla, needs that connection.
+Longleaf is reachable directly from the campus network. From anywhere else, connect to the UNC VPN first. Everything you do with Longleaf needs this connection.
 
-UNC ITS distributes and supports the campus VPN client. Open the [UNC VPN Client service page](https://tdx.unc.edu/TDClient/33/Portal/Requests/Service/63/VPN-Client) and follow its VPN knowledge article for the current installation instructions. To connect, use `vpn.unc.edu`. Authenticate with your Carolina Sign-In Key, or use your ONYEN password and complete Duo verification when prompted.
+UNC ITS distributes and supports the campus VPN client. Open UNC's [Secure Access On- and Off-Campus](https://ccinfo.unc.edu/start-here/secure-access-on-and-off-campus/) page and follow its **VPN Access** link for the current installation instructions. To connect, use `vpn.unc.edu`. Authenticate with your Carolina Sign-In Key, or use your ONYEN password and complete Duo verification when prompted.
 
 ## Ways to connect
 
@@ -138,5 +138,5 @@ You have an account, you can reach Longleaf from a terminal and from a browser, 
 - [“Getting Started on Longleaf,” UNC Research Computing](https://help.rc.unc.edu/getting-started-on-longleaf/)
 - [“Open OnDemand,” UNC Research Computing](https://help.rc.unc.edu/ondemand/)
 - [“Request a Cluster Account,” UNC Research Computing](https://help.rc.unc.edu/request-a-cluster-account)
-- [“VPN Client,” UNC Information Technology Services](https://tdx.unc.edu/TDClient/33/Portal/Requests/Service/63/VPN-Client)
+- [“Secure Access On- and Off-Campus,” UNC ConnectCarolina](https://ccinfo.unc.edu/start-here/secure-access-on-and-off-campus/)
 - [FileZilla Client documentation](https://wiki.filezilla-project.org/Documentation)
