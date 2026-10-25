@@ -302,10 +302,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="connecting-to-the-cluster" class="level2">
 <h2 class="anchored" data-anchor-id="connecting-to-the-cluster">Connecting to the cluster</h2>
 <p>Longleaf is reachable directly from the campus network. From anywhere else, connect to the UNC VPN first. Every method on this page, including FileZilla, needs that connection.</p>
-<p>The VPN client is Cisco Secure Client, distributed by UNC ITS. Install it, connect to <code>vpn.unc.edu</code>, and sign in with your ONYEN, your password, and Duo. Search for “VPN” on the <a href="https://help.unc.edu/">ITS help site</a> for the current installation steps for your operating system.</p>
-<div class="todo">
-<p><strong>To do:</strong> confirm the VPN details above (<code>vpn.unc.edu</code>, Duo) against the ITS article and replace the help.unc.edu link with a direct link to it.</p>
-</div>
+<p>UNC ITS distributes and supports the campus VPN client. Open the <a href="https://tdx.unc.edu/TDClient/33/Portal/Requests/Service/63/VPN-Client">UNC VPN Client service page</a> and follow its VPN knowledge article for the current installation instructions. To connect, use <code>vpn.unc.edu</code>. Authenticate with your Carolina Sign-In Key, or use your ONYEN password and complete Duo verification when prompted.</p>
 </section>
 <section id="ways-to-connect" class="level2">
 <h2 class="anchored" data-anchor-id="ways-to-connect">Ways to connect</h2>
@@ -354,8 +351,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The first time you connect, ssh asks whether to trust the host; type <code>yes</code>. Then enter your ONYEN password. Nothing appears while you type it, which is normal.</p>
 <p>Once connected, the prompt changes to show your ONYEN and the name of a login node. A login node is the place to edit files, load software, and submit jobs. It is shared with everyone else who is logged in, so do not run analyses on it; Module 3 shows how to send them to a compute node.</p>
 <p>To leave, type <code>exit</code>. If a program needs to open a graphics window, connect with <code>ssh -X &lt;onyen&gt;@longleaf.unc.edu</code> instead.</p>
-<div class="todo">
-<p><strong>To do:</strong> add a screenshot of a first login from Terminal, saved as <code>images/terminal-login.png</code>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/terminal-login.png" class="img-fluid figure-img" style="width:90.0%" alt="Terminal window showing the UNC system-use notice followed by a successful login to a Longleaf login node"></p>
+<figcaption>A successful SSH login to Longleaf from a terminal.</figcaption>
+</figure>
 </div>
 </section>
 <section id="working-through-the-browser" class="level2">
@@ -393,8 +393,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 <p>Sessions started from <em>Interactive Apps</em> wait in the queue like any other job, so start one a few minutes before you need it.</p>
-<div class="todo">
-<p><strong>To do:</strong> add an annotated screenshot of the OnDemand dashboard showing the Files, Clusters, and Interactive Apps menus, saved as <code>images/ondemand-dashboard.png</code>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/ondemand-dashboard.png" class="img-fluid figure-img" style="width:100.0%" alt="Open OnDemand dashboard showing the Files, Clusters, and Interactive Apps menus along with tiles for Jupyter Notebook, MD Desktop, RStudio Server, and MATLAB"></p>
+<figcaption>The Open OnDemand dashboard provides browser-based access to files, cluster tools, and interactive applications such as RStudio Server.</figcaption>
+</figure>
 </div>
 </section>
 <section id="moving-files-with-filezilla" class="level2">
@@ -446,8 +449,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>See new files:</strong> FileZilla does not notice files a job wrote after you connected. Press <strong>F5</strong> to refresh.</li>
 </ul>
 <p>Progress appears in the transfer queue at the bottom of the window.</p>
-<div class="todo">
-<p><strong>To do:</strong> add a screenshot of FileZilla connected to Longleaf with both panes visible, saved as <code>images/filezilla-connected.png</code>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/filezilla-connected.png" class="img-fluid figure-img" style="width:100.0%" alt="FileZilla connected to Longleaf, with a local demonstration folder and example file on the left and the Longleaf home directory on the right"></p>
+<figcaption>FileZilla displays files on the local computer in the left pane and files on Longleaf in the right pane.</figcaption>
+</figure>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Edit a script in place">
 <div class="callout-header d-flex align-content-center">
@@ -495,6 +501,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><a href="https://help.rc.unc.edu/getting-started-on-longleaf/">“Getting Started on Longleaf,” UNC Research Computing</a></li>
 <li><a href="https://help.rc.unc.edu/ondemand/">“Open OnDemand,” UNC Research Computing</a></li>
 <li><a href="https://help.rc.unc.edu/request-a-cluster-account">“Request a Cluster Account,” UNC Research Computing</a></li>
+<li><a href="https://tdx.unc.edu/TDClient/33/Portal/Requests/Service/63/VPN-Client">“VPN Client,” UNC Information Technology Services</a></li>
 <li><a href="https://wiki.filezilla-project.org/Documentation">FileZilla Client documentation</a></li>
 </ul>
 
