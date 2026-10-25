@@ -209,8 +209,8 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#what-slurm-does-not-do" id="toc-what-slurm-does-not-do" class="nav-link" data-scroll-target="#what-slurm-does-not-do">What Slurm does not do</a></li>
   <li><a href="#what-does-a-job-request" id="toc-what-does-a-job-request" class="nav-link" data-scroll-target="#what-does-a-job-request">What does a job request?</a></li>
   <li><a href="#memory-and-storage" id="toc-memory-and-storage" class="nav-link" data-scroll-target="#memory-and-storage">Memory and storage</a></li>
-  <li><a href="#words-you-will-see-again" id="toc-words-you-will-see-again" class="nav-link" data-scroll-target="#words-you-will-see-again">Words you will see again</a></li>
-  <li><a href="#the-essential-idea" id="toc-the-essential-idea" class="nav-link" data-scroll-target="#the-essential-idea">The essential idea</a></li>
+  <li><a href="#key-terms" id="toc-key-terms" class="nav-link" data-scroll-target="#key-terms">Key terms</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   <li><a href="#sources" id="toc-sources" class="nav-link" data-scroll-target="#sources">Sources</a></li>
   </ul>
 </nav>
@@ -322,7 +322,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="what-does-a-job-request" class="level2">
 <h2 class="anchored" data-anchor-id="what-does-a-job-request">What does a job request?</h2>
-<p>For most introductory jobs, the essential requests are:</p>
+<p>For most jobs, the essential requests are:</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -364,87 +364,49 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>One useful comparison is a desk and a filing cabinet. Memory is the desk where current work is spread out. Storage is the filing cabinet where materials are kept between tasks. A larger desk lets you work with more material at once, but it does not necessarily make the work faster.</p>
 </section>
-<section id="words-you-will-see-again" class="level2">
-<h2 class="anchored" data-anchor-id="words-you-will-see-again">Words you will see again</h2>
+<section id="key-terms" class="level2">
+<h2 class="anchored" data-anchor-id="key-terms">Key terms</h2>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
+<col style="width: 50%">
+<col style="width: 50%">
 </colgroup>
 <thead>
 <tr class="header">
 <th>Term</th>
 <th>Meaning</th>
-<th>Introduced in</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td><strong>Login node</strong></td>
-<td>The shared computer you land on, for editing, moving files, and submitting</td>
-<td>Module 2</td>
+<td>The shared entry computer used to prepare and submit work</td>
 </tr>
 <tr class="even">
 <td><strong>Compute node</strong></td>
-<td>Where jobs run</td>
-<td>Module 3</td>
+<td>A computer where scheduled work runs</td>
 </tr>
 <tr class="odd">
 <td><strong>Slurm</strong></td>
-<td>The scheduler that assigns jobs to compute nodes</td>
-<td>Module 3</td>
+<td>The system that queues jobs and assigns resources</td>
 </tr>
 <tr class="even">
 <td><strong>Job</strong></td>
-<td>A script plus a resource request, submitted with <code>sbatch</code></td>
-<td>Module 3</td>
+<td>A unit of work submitted to Slurm</td>
 </tr>
 <tr class="odd">
-<td><strong>Pending, running</strong></td>
-<td>Waiting in the queue; on a compute node</td>
-<td>Module 3</td>
-</tr>
-<tr class="even">
 <td><strong>Partition</strong></td>
-<td>A group of nodes for one kind of work, such as <code>interact</code></td>
-<td>Module 3</td>
-</tr>
-<tr class="odd">
-<td><strong>Module</strong></td>
-<td>The command that makes a program such as R available in your session</td>
-<td>Module 3</td>
+<td>A logical group of compute nodes</td>
 </tr>
 <tr class="even">
-<td><strong>Interactive job</strong></td>
-<td>A job that gives you a prompt on a compute node</td>
-<td>Module 3</td>
-</tr>
-<tr class="odd">
-<td><strong>Job array</strong></td>
-<td>One script run many times with different settings</td>
-<td>Module 4</td>
-</tr>
-<tr class="even">
-<td><strong>Home directory</strong></td>
-<td>Small, backed-up storage for code and R packages</td>
-<td>Module 2</td>
-</tr>
-<tr class="odd">
-<td><strong>Personal data space</strong></td>
-<td>Large storage under <code>/hickory/users</code> for data and results</td>
-<td>Module 2</td>
-</tr>
-<tr class="even">
-<td><strong>Personal library</strong></td>
-<td>The folder in your home directory where your R packages install</td>
-<td>Module 4</td>
+<td><strong>Software module</strong></td>
+<td>A way to make installed software available</td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="the-essential-idea" class="level2">
-<h2 class="anchored" data-anchor-id="the-essential-idea">The essential idea</h2>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
 <p>You use a login node to prepare and submit work. Slurm finds appropriate resources, a compute node runs the job, and the results are written to storage.</p>
 <p>Later modules show how to connect to Longleaf, submit a job, and choose appropriate resource requests.</p>
 </section>

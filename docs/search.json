@@ -95,7 +95,7 @@
     "href": "modules/01-introduction/03-how-longleaf-works.html#what-does-a-job-request",
     "title": "How Longleaf Works",
     "section": "What does a job request?",
-    "text": "What does a job request?\nFor most introductory jobs, the essential requests are:\n\n\n\n\n\n\n\nResource\nWhat it means\n\n\n\n\nCPUs\nThe processor capacity available to the job\n\n\nMemory\nThe short-term working space, or RAM, available while the program runs\n\n\nTime\nThe maximum amount of time the job is allowed to run\n\n\nPartition\nWhich group of nodes the job may use. Most jobs leave this unset; interactive sessions use interact\n\n\n\nAsking for more resources does not automatically make a program run faster. A program must be written to use multiple CPUs, and unused memory does not improve its speed. Requests that are close to what the job actually needs also make it easier for Slurm to find a place for the job to run.",
+    "text": "What does a job request?\nFor most jobs, the essential requests are:\n\n\n\n\n\n\n\nResource\nWhat it means\n\n\n\n\nCPUs\nThe processor capacity available to the job\n\n\nMemory\nThe short-term working space, or RAM, available while the program runs\n\n\nTime\nThe maximum amount of time the job is allowed to run\n\n\nPartition\nWhich group of nodes the job may use. Most jobs leave this unset; interactive sessions use interact\n\n\n\nAsking for more resources does not automatically make a program run faster. A program must be written to use multiple CPUs, and unused memory does not improve its speed. Requests that are close to what the job actually needs also make it easier for Slurm to find a place for the job to run.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
@@ -445,7 +445,7 @@
     "href": "modules/02-accessing-longleaf.html",
     "title": "Accessing Longleaf",
     "section": "",
-    "text": "A Longleaf account is separate from your ONYEN and is not created automatically. Request one before the workshop:\n\nOpen UNC Research Computing’s Request a Cluster Account page.\nChoose Longleaf Cluster as the subscription type and submit the form.\nWait for the email saying the account has been created. Until it arrives, logins to Longleaf and Open OnDemand fail.\n\nOnce the account exists, your username on Longleaf is your ONYEN and the password is your ONYEN password.",
+    "text": "A Longleaf account is separate from your ONYEN and is not created automatically. Complete the following steps to obtain an account:\n\nOpen UNC Research Computing’s Request a Cluster Account page.\nChoose Longleaf Cluster as the subscription type and submit the form.\nWait for the email saying the account has been created. Until it arrives, logins to Longleaf and Open OnDemand fail.\n\nOnce the account exists, your username on Longleaf is your ONYEN and the password is your ONYEN password.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
@@ -457,7 +457,7 @@
     "href": "modules/02-accessing-longleaf.html#requesting-an-account",
     "title": "Accessing Longleaf",
     "section": "",
-    "text": "A Longleaf account is separate from your ONYEN and is not created automatically. Request one before the workshop:\n\nOpen UNC Research Computing’s Request a Cluster Account page.\nChoose Longleaf Cluster as the subscription type and submit the form.\nWait for the email saying the account has been created. Until it arrives, logins to Longleaf and Open OnDemand fail.\n\nOnce the account exists, your username on Longleaf is your ONYEN and the password is your ONYEN password.",
+    "text": "A Longleaf account is separate from your ONYEN and is not created automatically. Complete the following steps to obtain an account:\n\nOpen UNC Research Computing’s Request a Cluster Account page.\nChoose Longleaf Cluster as the subscription type and submit the form.\nWait for the email saying the account has been created. Until it arrives, logins to Longleaf and Open OnDemand fail.\n\nOnce the account exists, your username on Longleaf is your ONYEN and the password is your ONYEN password.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
@@ -469,7 +469,7 @@
     "href": "modules/02-accessing-longleaf.html#connecting-to-the-cluster",
     "title": "Accessing Longleaf",
     "section": "Connecting to the cluster",
-    "text": "Connecting to the cluster\nLongleaf is reachable directly from the campus network. From anywhere else, connect to the UNC VPN first. Every method on this page, including FileZilla, needs that connection.\nUNC ITS distributes and supports the campus VPN client. Open the UNC VPN Client service page and follow its VPN knowledge article for the current installation instructions. To connect, use vpn.unc.edu. Authenticate with your Carolina Sign-In Key, or use your ONYEN password and complete Duo verification when prompted.",
+    "text": "Connecting to the cluster\nLongleaf is reachable directly from the campus network. From anywhere else, connect to the UNC VPN first. Everything you do with Longleaf needs this connection.\nUNC ITS distributes and supports the campus VPN client. Open UNC’s Secure Access On- and Off-Campus page and follow its VPN Access link for the current installation instructions. To connect, use vpn.unc.edu. Authenticate with your Carolina Sign-In Key, or use your ONYEN password and complete Duo verification when prompted.",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
@@ -565,7 +565,7 @@
     "href": "modules/02-accessing-longleaf.html#sources",
     "title": "Accessing Longleaf",
     "section": "Sources",
-    "text": "Sources\n\n“Getting Started on Longleaf,” UNC Research Computing\n“Open OnDemand,” UNC Research Computing\n“Request a Cluster Account,” UNC Research Computing\n“VPN Client,” UNC Information Technology Services\nFileZilla Client documentation",
+    "text": "Sources\n\n“Getting Started on Longleaf,” UNC Research Computing\n“Open OnDemand,” UNC Research Computing\n“Request a Cluster Account,” UNC Research Computing\n“Secure Access On- and Off-Campus,” UNC ConnectCarolina\nFileZilla Client documentation",
     "crumbs": [
       "Workshop outline",
       "Workshop modules",
@@ -831,6 +831,44 @@
       "Workshop modules",
       "1 · Introduction to Longleaf",
       "1.2 · Longleaf overview"
+    ]
+  },
+  {
+    "objectID": "modules/02-accessing-longleaf.html#summary",
+    "href": "modules/02-accessing-longleaf.html#summary",
+    "title": "Accessing Longleaf",
+    "section": "Summary",
+    "text": "Summary\n\nRequest a Longleaf account before trying to connect.\nFrom off campus, connect to the UNC VPN first.\nUse SSH for terminal work, Open OnDemand for browser-based tools, and FileZilla for transferring files.\nKeep scripts and settings in your backed-up home directory; use /hickory/users for larger data that is not backed up.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "2 · Accessing Longleaf"
+    ]
+  },
+  {
+    "objectID": "modules/01-introduction/03-how-longleaf-works.html#key-terms",
+    "href": "modules/01-introduction/03-how-longleaf-works.html#key-terms",
+    "title": "How Longleaf Works",
+    "section": "Key terms",
+    "text": "Key terms\n\n\n\n\n\n\n\nTerm\nMeaning\n\n\n\n\nLogin node\nThe shared entry computer used to prepare and submit work\n\n\nCompute node\nA computer where scheduled work runs\n\n\nSlurm\nThe system that queues jobs and assigns resources\n\n\nJob\nA unit of work submitted to Slurm\n\n\nPartition\nA logical group of compute nodes\n\n\nSoftware module\nA way to make installed software available",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "1 · Introduction to Longleaf",
+      "1.3 · How Longleaf works"
+    ]
+  },
+  {
+    "objectID": "modules/01-introduction/03-how-longleaf-works.html#summary",
+    "href": "modules/01-introduction/03-how-longleaf-works.html#summary",
+    "title": "How Longleaf Works",
+    "section": "Summary",
+    "text": "Summary\nYou use a login node to prepare and submit work. Slurm finds appropriate resources, a compute node runs the job, and the results are written to storage.\nLater modules show how to connect to Longleaf, submit a job, and choose appropriate resource requests.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "1 · Introduction to Longleaf",
+      "1.3 · How Longleaf works"
     ]
   }
 ]

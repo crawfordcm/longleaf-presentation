@@ -252,8 +252,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#transfer" id="toc-transfer" class="nav-link" data-scroll-target="#transfer">Transfer</a></li>
   </ul></li>
   <li><a href="#where-files-live" id="toc-where-files-live" class="nav-link" data-scroll-target="#where-files-live">Where files live</a></li>
-  <li><a href="#demonstration-sequence" id="toc-demonstration-sequence" class="nav-link" data-scroll-target="#demonstration-sequence">Demonstration sequence</a></li>
-  <li><a href="#what-you-can-do-now" id="toc-what-you-can-do-now" class="nav-link" data-scroll-target="#what-you-can-do-now">What you can do now</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   <li><a href="#sources" id="toc-sources" class="nav-link" data-scroll-target="#sources">Sources</a></li>
   </ul>
 </nav>
@@ -287,7 +286,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="requesting-an-account" class="level2">
 <h2 class="anchored" data-anchor-id="requesting-an-account">Requesting an account</h2>
-<p>A Longleaf account is separate from your ONYEN and is not created automatically. Request one before the workshop:</p>
+<p>A Longleaf account is separate from your ONYEN and is not created automatically. Complete the following steps to obtain an account:</p>
 <ol type="1">
 <li>Open UNC Research Computing’s <a href="https://help.rc.unc.edu/request-a-cluster-account">Request a Cluster Account</a> page.</li>
 <li>Choose <strong>Longleaf Cluster</strong> as the subscription type and submit the form.</li>
@@ -297,8 +296,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="connecting-to-the-cluster" class="level2">
 <h2 class="anchored" data-anchor-id="connecting-to-the-cluster">Connecting to the cluster</h2>
-<p>Longleaf is reachable directly from the campus network. From anywhere else, connect to the UNC VPN first. Every method on this page, including FileZilla, needs that connection.</p>
-<p>UNC ITS distributes and supports the campus VPN client. Open the <a href="https://tdx.unc.edu/TDClient/33/Portal/Requests/Service/63/VPN-Client">UNC VPN Client service page</a> and follow its VPN knowledge article for the current installation instructions. To connect, use <code>vpn.unc.edu</code>. Authenticate with your Carolina Sign-In Key, or use your ONYEN password and complete Duo verification when prompted.</p>
+<p>Longleaf is reachable directly from the campus network. From anywhere else, connect to the UNC VPN first. Everything you do with Longleaf needs this connection.</p>
+<p>UNC ITS distributes and supports the campus VPN client. Open UNC’s <a href="https://ccinfo.unc.edu/start-here/secure-access-on-and-off-campus/">Secure Access On- and Off-Campus</a> page and follow its <strong>VPN Access</strong> link for the current installation instructions. To connect, use <code>vpn.unc.edu</code>. Authenticate with your Carolina Sign-In Key, or use your ONYEN password and complete Duo verification when prompted.</p>
 </section>
 <section id="ways-to-connect" class="level2">
 <h2 class="anchored" data-anchor-id="ways-to-connect">Ways to connect</h2>
@@ -478,18 +477,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>Accounts created before summer 2026 may also have older <code>/work</code> or <code>/users</code> directories. UNC stopped creating <code>/work</code> in July 2026 and <code>/users</code> in August 2026, when <code>/hickory/users</code> became the default. This workshop uses <code>/hickory/users</code> for anything too large for the home directory.</p>
 </section>
-<section id="demonstration-sequence" class="level2">
-<h2 class="anchored" data-anchor-id="demonstration-sequence">Demonstration sequence</h2>
-<ol type="1">
-<li>Log in from a terminal and read the prompt.</li>
-<li>Sign in to Open OnDemand and open the Files app.</li>
-<li>Connect FileZilla and find the home directory.</li>
-<li>Upload one small file with FileZilla and list it from the terminal with <code>ls</code>.</li>
-</ol>
-</section>
-<section id="what-you-can-do-now" class="level2">
-<h2 class="anchored" data-anchor-id="what-you-can-do-now">What you can do now</h2>
-<p>You have an account, you can reach Longleaf from a terminal and from a browser, and you can move files in both directions with FileZilla. Module 3 turns that access into jobs.</p>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<ul>
+<li>Request a Longleaf account before trying to connect.</li>
+<li>From off campus, connect to the UNC VPN first.</li>
+<li>Use SSH for terminal work, Open OnDemand for browser-based tools, and FileZilla for transferring files.</li>
+<li>Keep scripts and settings in your backed-up home directory; use <code>/hickory/users</code> for larger data that is not backed up.</li>
+</ul>
 </section>
 <section id="sources" class="level2">
 <h2 class="anchored" data-anchor-id="sources">Sources</h2>
@@ -497,7 +492,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><a href="https://help.rc.unc.edu/getting-started-on-longleaf/">“Getting Started on Longleaf,” UNC Research Computing</a></li>
 <li><a href="https://help.rc.unc.edu/ondemand/">“Open OnDemand,” UNC Research Computing</a></li>
 <li><a href="https://help.rc.unc.edu/request-a-cluster-account">“Request a Cluster Account,” UNC Research Computing</a></li>
-<li><a href="https://tdx.unc.edu/TDClient/33/Portal/Requests/Service/63/VPN-Client">“VPN Client,” UNC Information Technology Services</a></li>
+<li><a href="https://ccinfo.unc.edu/start-here/secure-access-on-and-off-campus/">“Secure Access On- and Off-Campus,” UNC ConnectCarolina</a></li>
 <li><a href="https://wiki.filezilla-project.org/Documentation">FileZilla Client documentation</a></li>
 </ul>
 
