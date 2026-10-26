@@ -339,10 +339,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>R looks for packages in a short list of folders. On Longleaf, two of them matter:</p>
 <ul>
 <li><strong>The R module’s library.</strong> The packages that ship with R, and any that Research Computing has installed centrally, live inside the R installation that <code>module add r</code> loads. Everyone can use them, and nobody can change them.</li>
-<li><strong>Your personal library.</strong> Anything you install yourself goes into a folder in your home directory. R creates it for you the first time you install a package. The default location is <code>~/R/x86_64-pc-linux-gnu-library/4.4</code>, where <code>4.4</code> matches the version of R you loaded.</li>
+<li><strong>Your personal library.</strong> Anything you install yourself goes into a folder in your home directory. R creates it for you the first time you install a package. The default location is <code>~/R/x86_64-pc-linux-gnu-library/4.5</code>, where <code>4.5</code> matches the version of R you loaded.</li>
 </ul>
 <p>Inside R, <code>.libPaths()</code> prints these folders in the order R searches them.</p>
-<p>Two consequences follow from that layout. Your home directory is shared storage, so a package installed once is available in RStudio Server, interactive sessions, and batch jobs alike, as long as they load the same R module. And the personal library belongs to one R version: patch releases such as 4.4.0 and 4.4.2 share it, but an R module with a different minor version looks in a different folder, so packages installed under the old version are not found until you install them again.</p>
+<p>Two consequences follow from that layout. Your home directory is shared storage, so a package installed once is available in RStudio Server, interactive sessions, and batch jobs alike, as long as they load the same R module. And the personal library belongs to one R version: patch releases such as 4.5.0 and 4.5.1 share it, but an R module with a different minor version looks in a different folder, so packages installed under the old version are not found until you install them again.</p>
 </section>
 <section id="interactive-r-or-a-scheduled-job" class="level2">
 <h2 class="anchored" data-anchor-id="interactive-r-or-a-scheduled-job">Interactive R or a scheduled job?</h2>
@@ -451,7 +451,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The <code>repos</code> argument skips the CRAN mirror menu that R otherwise shows in a terminal. The first time you install anything, R notices that it cannot write to the module’s library and asks two questions. Answer <code>yes</code> to both:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>Would you like to use a personal library instead? (yes/No/cancel) yes</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>Would you like to create a personal library</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>'~/R/x86_64-pc-linux-gnu-library/4.4'</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>'~/R/x86_64-pc-linux-gnu-library/4.5'</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>to install packages into? (yes/No/cancel) yes</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>R downloads the package and the packages it depends on, builds them, and prints <code>* DONE (lavaan)</code> when it is finished. From then on, every <code>install.packages()</code> call goes straight to your personal library without asking. Confirm the package loads and see where it went:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lavaan)</span>

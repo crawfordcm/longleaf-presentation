@@ -5,8 +5,8 @@ Drafted 2026-10-24; updated the same day after implementing most items. The yell
 ## Remaining (need a Longleaf account)
 
 - [ ] **Module 2 · Screenshots.** A first terminal login (`images/terminal-login.png`), the OnDemand dashboard (`images/ondemand-dashboard.png`), and FileZilla connected with both panes visible (`images/filezilla-connected.png`).
-- [ ] **Module 4 · Personal-library path.** On Longleaf, run `module add r` then `R -e '.libPaths(); Sys.getenv("R_LIBS_USER")'` and correct the path in "Where packages live" if it differs from `~/R/x86_64-pc-linux-gnu-library/4.4`.
-- [ ] **Module 4 · First-install prompts.** Do one first-time `install.packages()` on Longleaf and confirm the two prompts quoted in Example 1 under "Installing a package". If Longleaf pre-creates the library, the prompts never appear and the paragraph should say so.
+- [x] **Module 4 · Personal-library path.** Confirmed 2026-10-26 from a student's session: the default is `~/R/x86_64-pc-linux-gnu-library/4.5` under the current default R module. (A `~/Rlibs` path seen in one account came from that account's own earlier setup, not the cluster default.)
+- [x] **Module 4 · First-install prompts.** Confirmed 2026-10-26: the two prompts appear on a first install, and answering yes to both creates the library above.
 
 ## Done on 2026-10-24
 

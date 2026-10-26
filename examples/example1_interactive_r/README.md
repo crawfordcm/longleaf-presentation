@@ -38,7 +38,7 @@ anything, R cannot write to the module's library and asks two questions. Answer
 ```
 Would you like to use a personal library instead? (yes/No/cancel) yes
 Would you like to create a personal library
-'~/R/x86_64-pc-linux-gnu-library/4.4'
+'~/R/x86_64-pc-linux-gnu-library/4.5'
 to install packages into? (yes/No/cancel) yes
 ```
 

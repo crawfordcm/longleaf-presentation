@@ -25,11 +25,11 @@ R --version           # confirm which R you have
 R looks for packages in a short list of folders. On Longleaf, two of them matter:
 
 - **The R module's library.** The packages that ship with R, and any that Research Computing has installed centrally, live inside the R installation that `module add r` loads. Everyone can use them, and nobody can change them.
-- **Your personal library.** Anything you install yourself goes into a folder in your home directory. R creates it for you the first time you install a package. The default location is `~/R/x86_64-pc-linux-gnu-library/4.4`, where `4.4` matches the version of R you loaded.
+- **Your personal library.** Anything you install yourself goes into a folder in your home directory. R creates it for you the first time you install a package. The default location is `~/R/x86_64-pc-linux-gnu-library/4.5`, where `4.5` matches the version of R you loaded.
 
 Inside R, `.libPaths()` prints these folders in the order R searches them.
 
-Two consequences follow from that layout. Your home directory is shared storage, so a package installed once is available in RStudio Server, interactive sessions, and batch jobs alike, as long as they load the same R module. And the personal library belongs to one R version: patch releases such as 4.4.0 and 4.4.2 share it, but an R module with a different minor version looks in a different folder, so packages installed under the old version are not found until you install them again.
+Two consequences follow from that layout. Your home directory is shared storage, so a package installed once is available in RStudio Server, interactive sessions, and batch jobs alike, as long as they load the same R module. And the personal library belongs to one R version: patch releases such as 4.5.0 and 4.5.1 share it, but an R module with a different minor version looks in a different folder, so packages installed under the old version are not found until you install them again.
 
 ## Interactive R or a scheduled job?
 
@@ -138,7 +138,7 @@ The `repos` argument skips the CRAN mirror menu that R otherwise shows in a term
 ```{.default}
 Would you like to use a personal library instead? (yes/No/cancel) yes
 Would you like to create a personal library
-'~/R/x86_64-pc-linux-gnu-library/4.4'
+'~/R/x86_64-pc-linux-gnu-library/4.5'
 to install packages into? (yes/No/cancel) yes
 ```
 
