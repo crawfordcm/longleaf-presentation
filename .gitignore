@@ -5,6 +5,9 @@
 .quarto/
 
 /.quarto/
+
+# Built by scripts/make_examples_zip.sh on every render; the served copy is docs/examples.zip
+/examples.zip
 **/*.quarto_ipynb
 
 # Repository-local instructions and planning material

@@ -1,7 +1,8 @@
 # Example 1: Interactive R
 
-Interactive R is for testing, debugging, and exploring. Nothing here needs to be
-copied to Longleaf; it is a sequence of commands to type.
+Interactive R is for testing, debugging, exploring, and installing packages.
+Nothing here needs to be copied to Longleaf; it is a sequence of commands to
+type.
 
 ## From a terminal
 
@@ -21,7 +22,40 @@ Sys.info()[["nodename"]]   # the login node you are on
 x <- rnorm(1e6); mean(x)
 ```
 
-Leave R with `q()`.
+## Installing a package
+
+Stay in the same R session. Every package you need on Longleaf gets installed
+this way, so install one now:
+
+```r
+install.packages("lavaan", repos = "https://cloud.r-project.org")
+```
+
+The `repos` argument skips the CRAN mirror menu. The first time you install
+anything, R cannot write to the module's library and asks two questions. Answer
+`yes` to both:
+
+```
+Would you like to use a personal library instead? (yes/No/cancel) yes
+Would you like to create a personal library
+'~/R/x86_64-pc-linux-gnu-library/4.4'
+to install packages into? (yes/No/cancel) yes
+```
+
+R prints `* DONE (lavaan)` when it finishes. Later installs go straight to that
+personal library without asking. Confirm the package loads and see where it
+went:
+
+```r
+library(lavaan)
+find.package("lavaan")   # the folder it was installed into
+```
+
+The folder is inside your home directory, so the package is available to
+RStudio Server and to batch jobs as well, as long as they load the same R
+module. Install packages here, interactively, never inside a job script.
+
+Leave R with `q()`, and answer `n` when it offers to save the workspace.
 
 This runs R on the login node, which everyone shares. It is fine for checking
 that R starts, that a package loads, or that a script runs at all. For

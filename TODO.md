@@ -6,7 +6,7 @@ Drafted 2026-10-24; updated the same day after implementing most items. Every re
 
 - [ ] **Module 2 · Screenshots.** A first terminal login (`images/terminal-login.png`), the OnDemand dashboard (`images/ondemand-dashboard.png`), and FileZilla connected with both panes visible (`images/filezilla-connected.png`).
 - [ ] **Module 4 · Personal-library path.** On Longleaf, run `module add r` then `R -e '.libPaths(); Sys.getenv("R_LIBS_USER")'` and correct the path in "Where packages live" if it differs from `~/R/x86_64-pc-linux-gnu-library/4.4`.
-- [ ] **Module 4 · First-install prompts.** Do one first-time `install.packages()` on Longleaf and confirm the two prompts quoted in "Installing packages". If Longleaf pre-creates the library, the prompts never appear and the paragraph should say so.
+- [ ] **Module 4 · First-install prompts.** Do one first-time `install.packages()` on Longleaf and confirm the two prompts quoted in Example 1 under "Installing a package". If Longleaf pre-creates the library, the prompts never appear and the paragraph should say so.
 
 ## Done on 2026-10-24
 

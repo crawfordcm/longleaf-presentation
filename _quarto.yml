@@ -1,6 +1,8 @@
 project:
   type: website
   output-dir: docs
+  pre-render:
+    - scripts/make_examples_zip.sh
   post-render:
     - touch docs/.nojekyll
   render:
@@ -10,6 +12,7 @@ project:
     - modules/03-interacting-with-longleaf/*.qmd
   resources:
     - examples/
+    - examples.zip
 
 website:
   title: "Getting Started with Longleaf"
