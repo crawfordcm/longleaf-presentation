@@ -332,6 +332,18 @@
     ]
   },
   {
+    "objectID": "modules/04-r-on-longleaf.html#setting-up-a-project-on-longleaf",
+    "href": "modules/04-r-on-longleaf.html#setting-up-a-project-on-longleaf",
+    "title": "R on Longleaf",
+    "section": "Setting up a project on Longleaf",
+    "text": "Setting up a project on Longleaf\nGive every project one folder, and lay it out the same way every time:\nmyproject/\n├── analysis.R        # the R script a job runs\n├── submit.sl         # the Slurm script that runs it\n├── logs/             # what Slurm and R print while the job runs\n└── results/          # what the R script saves on purpose\nScripts sit at the top level. logs/ catches the .out and .err files, and results/ holds the files your code writes. Keeping the two apart means a failed run never buries a good result, and ls results/ shows only things worth keeping. A project that reads input files gets a data/ folder beside them.\nThree habits make the layout work:\n\nSubmit from inside the folder. Slurm starts a job in the directory you ran sbatch from, so cd myproject first. Every relative path in the submission script and in the R code then means the same thing it meant on your laptop.\nUse relative paths in your code. saveRDS(fit, \"results/fit.rds\") works on your laptop and on Longleaf. A hard-coded C:/Users/... or /Users/... path works on neither.\nMirror the folder on your laptop. Build and test the project locally, drag the whole folder to Longleaf with FileZilla, and drag results/ back when the jobs finish. Nothing needs renaming in either direction.\n\nPut the folder in your home directory, /nas/longleaf/home/&lt;onyen&gt;. It is backed up and holds 50 GB, which is plenty for scripts, logs, and modest results. Input data larger than a few gigabytes belongs in your personal data space, /hickory/users/&lt;o&gt;/&lt;n&gt;/&lt;onyen&gt; from Module 2, and the script reads it by its full path:\ndat &lt;- readRDS(\"/hickory/users/j/d/jdoe/survey/wave3.rds\")\nTo create the folder on Longleaf from the terminal:\nmkdir -p ~/myproject/logs ~/myproject/results\ncd ~/myproject\nOr make it on your laptop and upload it with FileZilla. The example2_single_job and example3_conditions_array folders in examples.zip are two projects laid out this way, so copying one and renaming it is the quickest start.",
+    "crumbs": [
+      "Workshop outline",
+      "Workshop modules",
+      "4 · R on Longleaf"
+    ]
+  },
+  {
     "objectID": "modules/04-r-on-longleaf.html#example-1-interactive-r",
     "href": "modules/04-r-on-longleaf.html#example-1-interactive-r",
     "title": "R on Longleaf",
@@ -873,18 +885,6 @@
       "Workshop modules",
       "3 · Interacting with Longleaf",
       "3.2 · Running a Slurm job"
-    ]
-  },
-  {
-    "objectID": "modules/04-r-on-longleaf.html#setting-up-a-project-on-longleaf",
-    "href": "modules/04-r-on-longleaf.html#setting-up-a-project-on-longleaf",
-    "title": "R on Longleaf",
-    "section": "Setting up a project on Longleaf",
-    "text": "Setting up a project on Longleaf\nGive every project one folder, and lay it out the same way every time:\nmyproject/\n├── analysis.R        # the R script a job runs\n├── submit.sl         # the Slurm script that runs it\n├── logs/             # what Slurm and R print while the job runs\n└── results/          # what the R script saves on purpose\nScripts sit at the top level. logs/ catches the .out and .err files, and results/ holds the files your code writes. Keeping the two apart means a failed run never buries a good result, and ls results/ shows only things worth keeping. A project that reads input files gets a data/ folder beside them.\nThree habits make the layout work:\n\nSubmit from inside the folder. Slurm starts a job in the directory you ran sbatch from, so cd myproject first. Every relative path in the submission script and in the R code then means the same thing it meant on your laptop.\nUse relative paths in your code. saveRDS(fit, \"results/fit.rds\") works on your laptop and on Longleaf. A hard-coded C:/Users/... or /Users/... path works on neither.\nMirror the folder on your laptop. Build and test the project locally, drag the whole folder to Longleaf with FileZilla, and drag results/ back when the jobs finish. Nothing needs renaming in either direction.\n\nPut the folder in your home directory, /nas/longleaf/home/&lt;onyen&gt;. It is backed up and holds 50 GB, which is plenty for scripts, logs, and modest results. Input data larger than a few gigabytes belongs in your personal data space, /hickory/users/&lt;o&gt;/&lt;n&gt;/&lt;onyen&gt; from Module 2, and the script reads it by its full path:\ndat &lt;- readRDS(\"/hickory/users/j/d/jdoe/survey/wave3.rds\")\nTo create the folder on Longleaf from the terminal:\nmkdir -p ~/myproject/logs ~/myproject/results\ncd ~/myproject\nOr make it on your laptop and upload it with FileZilla. The example2_single_job and example3_conditions_array folders in examples.zip are two projects laid out this way, so copying one and renaming it is the quickest start.",
-    "crumbs": [
-      "Workshop outline",
-      "Workshop modules",
-      "4 · R on Longleaf"
     ]
   }
 ]
