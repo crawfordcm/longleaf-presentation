@@ -381,6 +381,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="installing-packages">Installing packages</h2>
 <p>Install packages from an interactive R session, not from a job script. Example 1 below walks through it: load R, call <code>install.packages()</code>, answer <code>yes</code> when R offers to create a personal library, and confirm with <code>library()</code>. Anything installed that way lands in your personal library, where every later session and job that loads the same R module can find it.</p>
 <p>Packages with compiled code take a few minutes to build. That is normal; wait for the prompt to return.</p>
+<p>One difference from your laptop: <code>install.packages()</code> does not upgrade a dependency that is already installed somewhere on Longleaf, so an install can stop with a message such as <code>namespace 'gtable' 0.3.0 is being loaded, but &gt;= 0.3.6 is required</code>. Install the named dependency yourself, then install the package again. The <code>pak</code> package automates this. After a one-time <code>install.packages("pak")</code>, use <code>pak::pak("ggplot2")</code> in place of <code>install.packages("ggplot2")</code>, and it upgrades whatever is too old along the way.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Install once, interactively">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">

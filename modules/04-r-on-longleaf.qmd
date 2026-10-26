@@ -46,6 +46,8 @@ Install packages from an interactive R session, not from a job script. Example 1
 
 Packages with compiled code take a few minutes to build. That is normal; wait for the prompt to return.
 
+One difference from your laptop: `install.packages()` does not upgrade a dependency that is already installed somewhere on Longleaf, so an install can stop with a message such as `namespace 'gtable' 0.3.0 is being loaded, but >= 0.3.6 is required`. Install the named dependency yourself, then install the package again. The `pak` package automates this. After a one-time `install.packages("pak")`, use `pak::pak("ggplot2")` in place of `install.packages("ggplot2")`, and it upgrades whatever is too old along the way.
+
 ::: {.callout-tip title="Install once, interactively"}
 A job script should load R and run your code, nothing more. Installing inside a job is slow, and the twelve tasks of a job array all trying to install the same package at once will interfere with each other. Install in an interactive session, confirm `library()` works, then submit.
 :::
