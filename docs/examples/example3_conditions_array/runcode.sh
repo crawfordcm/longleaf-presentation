@@ -19,5 +19,6 @@ fi
 
 echo "Task $1 -> conditions: $input"
 
+module purge
 module add r
 Rscript --vanilla run_condition.R $input

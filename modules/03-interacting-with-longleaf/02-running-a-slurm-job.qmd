@@ -1,0 +1,124 @@
+---
+title: "Running a Slurm job"
+description: "How to describe, submit, monitor, and troubleshoot a first scheduled job."
+---
+
+## The Slurm job lifecycle
+
+::: {.workflow}
+::: {.workflow-step}
+**Describe**
+
+Write the commands and resource request.
+:::
+
+::: {.workflow-step}
+**Submit**
+
+Send the job script to Slurm.
+:::
+
+::: {.workflow-step}
+**Monitor**
+
+Check whether the job is pending or running.
+:::
+
+::: {.workflow-step}
+**Review**
+
+Inspect its output, status, and resource use.
+:::
+:::
+
+## A first job script
+
+A Slurm job is described in a shell script. Lines beginning with `#SBATCH` tell Slurm what the job needs; the remaining lines are the commands that run on a compute node.
+
+The downloadable [`first_job.sl`](../../examples/first_job.sl) example does not require specialized software:
+
+```{.bash filename="first_job.sl"}
+#!/bin/bash
+#SBATCH --job-name=first_job
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=100m
+#SBATCH --time=00:05:00
+#SBATCH --output=first_job_%j.out
+
+echo "Running on $(hostname) as job $SLURM_JOB_ID"
+sleep 90
+echo "Done"
+```
+
+| Directive | Request |
+|---|---|
+| `--job-name` | The name shown in the queue |
+| `--ntasks=1` | Run one copy of the program |
+| `--cpus-per-task=1` | Give that task one CPU |
+| `--mem=100m` | Reserve 100 MB of memory |
+| `--time=00:05:00` | Allow up to five minutes |
+| `--output=first_job_%j.out` | Write output to a file where `%j` becomes the job ID |
+
+The job begins in the directory from which you run `sbatch`. Relative paths in the script are resolved from that directory. Because this script specifies only `--output`, normal output and error messages are written to the same file.
+
+## Submit and monitor
+
+Use these commands in the order that you need them:
+
+```bash
+sbatch first_job.sl
+squeue -u "$USER"
+scancel <job-id>
+sacct -j <job-id> --format=JobID,State,ExitCode,Elapsed
+seff <job-id>
+```
+
+| Command | Purpose |
+|---|---|
+| `sbatch` | Submit a job script; Slurm replies with its job ID |
+| `squeue` | Show your pending and running jobs |
+| `scancel` | Cancel a job that no longer needs to run |
+| `sacct` | Show a completed job's state, exit code, and elapsed time |
+| `seff` | Summarize the CPU and memory efficiency of a completed job |
+
+`squeue` uses short codes for active jobs:
+
+| Code | State | Meaning |
+|---|---|---|
+| `PD` | Pending | Waiting in the queue; the reason column explains why |
+| `R` | Running | Running on a compute node |
+| `CG` | Completing | Finishing its final cleanup before leaving the queue |
+
+When a job disappears from `squeue`, use `sacct` to see whether it was `COMPLETED`, `FAILED`, `CANCELLED`, `TIMEOUT`, or `OUT_OF_MEMORY`.
+
+## Run the example
+
+From the directory containing `first_job.sl`:
+
+```bash
+sbatch first_job.sl           # Slurm prints the new job ID
+squeue -u "$USER"             # watch for PD or R
+cat first_job_12345678.out    # use the job ID that Slurm printed
+```
+
+The output identifies a compute node rather than a login node. Slurm moved the work to an appropriate machine and recorded the result in a file.
+
+## Troubleshooting
+
+Begin with the job state, output file, and exit code rather than assuming a single cause.
+
+| What you see | What to check |
+|---|---|
+| The job remains pending | Read the reason shown by `squeue`; the requested resources may not currently be available |
+| The job fails immediately | Read its output and inspect `State` and `ExitCode` with `sacct` |
+| `command not found` | Check the command spelling, software-module commands, and paths |
+| `TIMEOUT` | Request more time or make the program more efficient |
+| `OUT_OF_MEMORY` | Review memory use with `seff`, then adjust the request |
+| Expected output is missing | Check the job state, submission directory, output filename, and error messages |
+
+## Sources
+
+- [“SLURM Guide,” UNC Research Computing](https://help.rc.unc.edu/slurm-guide/)
+- [“Slurm Workload Manager: Quick Start User Guide,” SchedMD](https://slurm.schedmd.com/quickstart.html)
+- [“Slurm Workload Manager: sacct,” SchedMD](https://slurm.schedmd.com/sacct.html)

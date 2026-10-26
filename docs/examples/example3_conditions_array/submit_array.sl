@@ -19,7 +19,7 @@
 #SBATCH --output=logs/cond_%A_%a.out
 #SBATCH --error=logs/cond_%A_%a.err
 #SBATCH --mail-type=FAIL
-#SBATCH --mail-user=<onyen>@unc.edu
+#SBATCH --mail-user=<email-address>
 
 # %A = the array's master job ID, %a = this task's index, so each task
 # gets its own log file, e.g. logs/cond_12345678_7.out

@@ -63,7 +63,7 @@ How do you actually use it? Requesting an account, logging in, Open OnDemand, an
 
 Essential shell commands, Slurm, job status, cancellation, and responsible resource requests.
 
-[Open module](modules/03-interacting-with-longleaf.qmd){.stretched-link aria-label="Open Interacting with Longleaf"}
+[Open module](modules/03-interacting-with-longleaf/01-working-on-longleaf.qmd){.stretched-link aria-label="Open Interacting with Longleaf"}
 :::
 :::
 

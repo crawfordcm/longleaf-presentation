@@ -15,7 +15,7 @@ R is installed as a software module (Module 3), with several versions available.
 ```bash
 module avail r        # list the R modules; the default is marked (D)
 module add r          # load the default version
-module add r/4.4.0    # or pin a specific version
+module add r/<version> # or pin a version shown by module avail r
 R --version           # confirm which R you have
 ```
 
@@ -181,11 +181,12 @@ The simplest scheduled workflow: one R script that runs once and saves its outpu
 #SBATCH --output=logs/hello_%j.out
 #SBATCH --error=logs/hello_%j.err
 #SBATCH --mail-type=END,FAIL
-#SBATCH --mail-user=<onyen>@unc.edu
+#SBATCH --mail-user=<email-address>
 
 # ---- Load R -----------------------------------------------------------------
-# "module add r" loads the cluster's default R. To pin a version, run
-# "module avail r" on a login node and use, e.g., "module add r/4.4.0".
+# Reset the inherited module environment, then load R. To pin a version, run
+# "module avail r" on a login node and replace <version> below.
+module purge
 module add r
 
 # ---- Run the script ---------------------------------------------------------
@@ -404,7 +405,7 @@ print(grid)
 #SBATCH --output=logs/cond_%A_%a.out
 #SBATCH --error=logs/cond_%A_%a.err
 #SBATCH --mail-type=FAIL
-#SBATCH --mail-user=<onyen>@unc.edu
+#SBATCH --mail-user=<email-address>
 
 # %A = the array's master job ID, %a = this task's index, so each task
 # gets its own log file, e.g. logs/cond_12345678_7.out
@@ -440,6 +441,7 @@ fi
 
 echo "Task $1 -> conditions: $input"
 
+module purge
 module add r
 Rscript --vanilla run_condition.R $input
 ```

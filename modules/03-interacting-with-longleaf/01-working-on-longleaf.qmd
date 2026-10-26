@@ -1,0 +1,64 @@
+---
+title: "Working on Longleaf"
+description: "Essential shell commands and software modules for working on Longleaf."
+---
+
+## Essential shell commands
+
+After logging in, you work at a **shell prompt**. These commands are enough to navigate Longleaf, organize files, and prepare a job:
+
+| Task | Command |
+|---|---|
+| Show the current directory | `pwd` |
+| List files | `ls` |
+| Enter a directory | `cd directory-name` |
+| Move up one directory | `cd ..` |
+| Go to your home directory | `cd ~` |
+| Create a directory | `mkdir directory-name` |
+| Print a short file | `cat filename` |
+| Edit a text file | `nano filename` |
+| Leave Longleaf | `exit` |
+
+`~` is shorthand for your home directory, so `cd ~/example2_single_job` works from anywhere. Commands and filenames are case-sensitive: `Results` and `results` are different names.
+
+`nano` is a small editor that runs in the terminal. Press Ctrl+O and Enter to save, then Ctrl+X to exit. FileZilla's View/Edit feature, introduced in Module 2, is an alternative for people who prefer editing on their own computer.
+
+## Software modules
+
+Basic Linux tools are available when you log in. Longleaf uses **software modules** to provide additional programs and to let different versions of the same program coexist.
+
+| Task | Command |
+|---|---|
+| See available software | `module avail` |
+| Search for R modules | `module avail r` |
+| Load the default R module | `module add r` |
+| Load a particular version | `module add r/<version>` |
+| Show loaded modules | `module list` |
+| Unload all modules | `module purge` |
+
+For example, `module add r` makes the default R installation available in the current session. Use `module avail r` first if a project requires a particular version.
+
+### Put module commands in job scripts
+
+By default, `sbatch` carries much of the environment from the submitting shell into a job. A reproducible script should not depend on whatever happened to be loaded at submission time. UNC recommends explicitly resetting the modules and then loading what the job needs:
+
+```bash
+module purge
+module add r
+```
+
+`module save` can arrange for a preferred set of modules to load at future logins, but batch jobs should still contain their own `module purge` and `module add` commands.
+
+### Pin versions when reproducibility requires it
+
+The default version of a program can change. A short exploratory task may be fine with `module add r`; a project that must be rerun months later should record and load the version it used. Replace `<version>` with one shown by `module avail r`:
+
+```bash
+module purge
+module add r/<version>
+```
+
+## Sources
+
+- [“Getting Started on Longleaf,” UNC Research Computing](https://help.rc.unc.edu/getting-started-on-longleaf/)
+- [“Modules Approach to Software Management,” UNC Research Computing](https://help.rc.unc.edu/modules/)

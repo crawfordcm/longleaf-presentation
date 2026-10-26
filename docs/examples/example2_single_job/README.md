@@ -36,7 +36,7 @@ cd ~/example2_single_job
 
 Open `submit_single.sl` and change:
 
-- `--mail-user=<onyen>@unc.edu` to your email (or delete the two `--mail-*`
+- `--mail-user=<email-address>` to your email (or delete the two `--mail-*`
   lines if you don't want emails).
 - `--time`, `--mem` if your real job needs more. Ask for a little more than you
   expect; jobs that exceed their limits are killed.

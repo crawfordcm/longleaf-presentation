@@ -7,6 +7,7 @@ project:
     - index.qmd
     - modules/*.qmd
     - modules/01-introduction/*.qmd
+    - modules/03-interacting-with-longleaf/*.qmd
   resources:
     - examples/
 
@@ -41,8 +42,14 @@ website:
                 href: modules/01-introduction/03-how-longleaf-works.qmd
           - text: "2 · Accessing Longleaf"
             href: modules/02-accessing-longleaf.qmd
-          - text: "3 · Interacting with Longleaf"
-            href: modules/03-interacting-with-longleaf.qmd
+          - section: "3 · Interacting with Longleaf"
+            contents:
+              - text: "3.1 · Working on Longleaf"
+                href: modules/03-interacting-with-longleaf/01-working-on-longleaf.qmd
+              - text: "3.2 · Running a Slurm job"
+                href: modules/03-interacting-with-longleaf/02-running-a-slurm-job.qmd
+              - text: "3.3 · Resources and workflows"
+                href: modules/03-interacting-with-longleaf/03-resources-and-workflows.qmd
           - text: "4 · R on Longleaf"
             href: modules/04-r-on-longleaf.qmd
   page-footer:

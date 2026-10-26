@@ -1,0 +1,69 @@
+---
+title: "Resources and workflows"
+description: "Resource requests, interactive jobs, job arrays, partitions, and responsible cluster use."
+---
+
+## Choosing resource requests
+
+The resource request affects both whether a job succeeds and how easily Slurm can find space for it:
+
+- `--time` sets the maximum running time.
+- `--mem` reserves memory for the job.
+- `--cpus-per-task` assigns CPUs to one task.
+
+Too little time or memory can cause a job to be stopped before it finishes. Requesting far more than the job uses can make it wait longer and leaves resources unavailable to other users. Additional CPUs help only when the program is designed to use them.
+
+Start with a reasonable estimate and a modest margin. After the job finishes, compare the request with its actual use:
+
+```bash
+seff <job-id>
+sacct -j <job-id> --format=JobID,State,Elapsed,MaxRSS
+```
+
+`seff` provides an approachable summary of CPU and memory efficiency. `MaxRSS` reports peak resident memory and may use suffixes such as `K`, `M`, or `G`. Use these results to refine the next request.
+
+## Interactive jobs
+
+An **interactive job** provides a shell on a compute node. It is useful for testing commands, debugging, installing packages, or doing short exploratory work before submitting a batch job.
+
+```bash
+srun --time=01:00:00 --partition=interact \
+  --ntasks=1 --cpus-per-task=1 --mem=4g \
+  --pty /bin/bash
+```
+
+Slurm waits for the requested resources and then changes the prompt to a compute node. Run `exit` when finished to release the allocation and return to the login node. Long or repeatable analyses should be submitted as batch jobs so they can continue after you disconnect.
+
+## Job arrays
+
+A **job array** applies the same workflow to many files or parameter settings. One submission script is run multiple times, and each task receives a different number in `$SLURM_ARRAY_TASK_ID`:
+
+```bash
+#SBATCH --array=1-12
+```
+
+Arrays are useful for high-throughput work because their tasks can run independently on whatever nodes are available. Test one task before submitting hundreds, and use a concurrency limit such as `--array=1-500%50` when appropriate. Module 4 includes a complete R job-array example.
+
+## Partitions
+
+A **partition** is a logical group or queue of computing resources with a particular purpose or set of limits. Longleaf includes resources for standard CPU jobs, interactive work, data movement, and GPU jobs.
+
+Most ordinary jobs can use the default placement rather than naming a partition. Interactive sessions use the `interact` partition, while specialized jobs may need a partition that provides the required hardware. Available resources and limits can change, so consult UNC Research Computing's current Longleaf documentation for unusual runtime, memory, or GPU requirements.
+
+::: {.callout-warning title="Keep heavy work off login nodes"}
+Login nodes are shared entry points. Use them to organize files, edit scripts, and submit jobs. Resource-intensive analyses should run through Slurm on compute nodes.
+:::
+
+## Summary
+
+- Prepare files and submit jobs from a login node.
+- Slurm sends computational work to compute nodes.
+- Use `squeue` for active jobs and `sacct` or `seff` after completion.
+- Request time, memory, and CPUs based on what the job actually needs.
+- Load required software explicitly inside job scripts.
+
+## Sources
+
+- [“Getting Started on Longleaf,” UNC Research Computing](https://help.rc.unc.edu/getting-started-on-longleaf/)
+- [“SLURM Guide,” UNC Research Computing](https://help.rc.unc.edu/slurm-guide/)
+- [“Longleaf Cluster SLURM examples,” UNC Research Computing](https://help.rc.unc.edu/longleaf-slurm-examples/)

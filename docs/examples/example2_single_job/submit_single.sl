@@ -16,11 +16,12 @@
 #SBATCH --output=logs/hello_%j.out
 #SBATCH --error=logs/hello_%j.err
 #SBATCH --mail-type=END,FAIL
-#SBATCH --mail-user=<onyen>@unc.edu
+#SBATCH --mail-user=<email-address>
 
 # ---- Load R -----------------------------------------------------------------
-# "module add r" loads the cluster's default R. To pin a version, run
-# "module avail r" on a login node and use, e.g., "module add r/4.4.0".
+# Reset the inherited module environment, then load R. To pin a version, run
+# "module avail r" on a login node and replace <version> below.
+module purge
 module add r
 
 # ---- Run the script ---------------------------------------------------------
