@@ -19,7 +19,6 @@ module add r/<version> # or pin a version shown by module avail r
 R --version           # confirm which R you have
 ```
 
-Pin the version in any project that will run for a while. The default can change, and your personal package library is tied to the version, as the next section explains.
 
 ## Where packages live
 
@@ -55,7 +54,7 @@ R
 ```
 
 ```r
-install.packages("jsonlite", repos = "https://cloud.r-project.org")
+install.packages("lavaan", repos = "https://cloud.r-project.org")
 ```
 
 The `repos` argument skips the CRAN mirror menu that R otherwise shows in a terminal. The first time you install anything, R notices that it cannot write to the module's library and asks two questions. Answer `yes` to both:
@@ -74,7 +73,7 @@ to install packages into? (yes/No/cancel) yes
 From then on, every `install.packages()` call goes straight to your personal library without asking. Confirm the package loads and see where it went:
 
 ```r
-library(jsonlite)
+library(lavaan)
 .libPaths()
 ```
 
@@ -84,12 +83,6 @@ Packages with compiled code take a few minutes to build. That is normal; wait fo
 A job script should load R and run your code, nothing more. Installing inside a job is slow, and the twelve tasks of a job array all trying to install the same package at once will interfere with each other. Install in an interactive session, confirm `library()` works, then submit.
 :::
 
-Bioconductor packages use their own installer. Install it once from CRAN, then use it for the rest:
-
-```r
-install.packages("BiocManager", repos = "https://cloud.r-project.org")
-BiocManager::install("limma")
-```
 
 ### Installing from a file you upload
 
@@ -133,21 +126,9 @@ x <- rnorm(1e6); mean(x)
 
 Leave R with `q()`.
 
-This is the right way to check that R starts, that a package loads, or that a script runs at all. It is R on the login node, though, which everyone shares. For exploratory work that runs for more than a few minutes or needs real memory, ask Slurm for an interactive job first (Module 3) and run the same two commands there:
-
-```bash
-srun -t 1:00:00 -p interact -n 1 --cpus-per-task=1 --mem=4g --pty /bin/bash
-module add r
-R
-```
-
 ### From the browser
 
 Open OnDemand, the web portal introduced in Module 2 at <https://ondemand.rc.unc.edu>, has an **RStudio Server** app under *Interactive Apps*. Choose the number of hours, CPUs, memory, and the R module, and RStudio opens on a compute node in a browser tab. UNC recommends requesting at least two CPUs for RStudio sessions.
-
-::: {.callout-tip title="Interactive sessions are for development"}
-Anything that takes more than a few minutes, needs to keep running after you disconnect, or will be repeated belongs in a scheduled job. Examples 2 and 3 show how, and an interactive session is the right place to test their scripts before submitting them.
-:::
 
 ## Example 2 · Submitting a single R job
 
