@@ -341,9 +341,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>The R module’s library.</strong> The packages that ship with R, and any that Research Computing has installed centrally, live inside the R installation that <code>module add r</code> loads. Everyone can use them, and nobody can change them.</li>
 <li><strong>Your personal library.</strong> Anything you install yourself goes into a folder in your home directory. R creates it for you the first time you install a package. The default location is <code>~/R/x86_64-pc-linux-gnu-library/4.4</code>, where <code>4.4</code> matches the version of R you loaded.</li>
 </ul>
-<div class="todo">
-<p><strong>To do:</strong> verify the personal-library path on Longleaf. Run <code>module add r</code> and then <code>R -e '.libPaths(); Sys.getenv("R_LIBS_USER")'</code>, and correct the path above if it differs.</p>
-</div>
 <p>Inside R, <code>.libPaths()</code> prints these folders in the order R searches them.</p>
 <p>Two consequences follow from that layout. Your home directory is shared storage, so a package installed once is available in RStudio Server, interactive sessions, and batch jobs alike, as long as they load the same R module. And the personal library belongs to one R version: patch releases such as 4.4.0 and 4.4.2 share it, but an R module with a different minor version looks in a different folder, so packages installed under the old version are not found until you install them again.</p>
 </section>
@@ -456,9 +453,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>Would you like to create a personal library</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>'~/R/x86_64-pc-linux-gnu-library/4.4'</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>to install packages into? (yes/No/cancel) yes</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="todo">
-<p><strong>To do:</strong> confirm the two prompts above with one first-time <code>install.packages()</code> on Longleaf. If Longleaf pre-creates the personal library, the prompts never appear and this paragraph should say so.</p>
-</div>
 <p>R downloads the package and the packages it depends on, builds them, and prints <code>* DONE (lavaan)</code> when it is finished. From then on, every <code>install.packages()</code> call goes straight to your personal library without asking. Confirm the package loads and see where it went:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lavaan)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find.package</span>(<span class="st">"lavaan"</span>)   <span class="co"># the folder it was installed into</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

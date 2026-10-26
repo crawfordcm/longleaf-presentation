@@ -1,6 +1,6 @@
 # To-do: supporting Module 4 in the earlier modules
 
-Drafted 2026-10-24; updated the same day after implementing most items. Every remaining item also appears as a yellow dashed **To do** box on the page itself. Find them in the source with `grep -rn '{.todo}' index.qmd modules` and delete the box once the item is done.
+Drafted 2026-10-24; updated the same day after implementing most items. The yellow **To do** boxes have been removed from the pages, so the items below are tracked only here.
 
 ## Remaining (need a Longleaf account)
 
