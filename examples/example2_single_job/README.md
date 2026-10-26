@@ -84,8 +84,9 @@ rsync -av <onyen>@longleaf.unc.edu:example2_single_job/results/ ./results/
   `/nas/longleaf/home/<onyen>`. Large or temporary output belongs in your
   personal data space, `/hickory/users/<o>/<n>/<onyen>` (first letter, second
   letter, ONYEN), not in home.
-- **Make sure the log directory exists before submitting.** SLURM will not
-  create `logs/`; if it is missing the job fails silently with no output.
+- **Keep the `logs/` folder.** Slurm 23.02 and newer create it if it is
+  missing; older versions do not, and the job then fails silently with no
+  output. The folder ships empty so the example works either way.
 
 ## Setting variables
 

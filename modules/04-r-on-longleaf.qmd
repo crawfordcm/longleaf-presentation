@@ -19,7 +19,6 @@ module add r/<version> # or pin a version shown by module avail r
 R --version           # confirm which R you have
 ```
 
-Pin the version in any project that will run for a while. The default can change, and your personal package library is tied to the version, as the next section explains.
 
 ## Where packages live
 
@@ -47,49 +46,13 @@ Two consequences follow from that layout. Your home directory is shared storage,
 
 ## Installing packages
 
-Install packages from an interactive R session, not from a job script. Load R as in Example 1 and call `install.packages()`:
-
-```bash
-module add r
-R
-```
-
-```r
-install.packages("jsonlite", repos = "https://cloud.r-project.org")
-```
-
-The `repos` argument skips the CRAN mirror menu that R otherwise shows in a terminal. The first time you install anything, R notices that it cannot write to the module's library and asks two questions. Answer `yes` to both:
-
-```{.default}
-Would you like to use a personal library instead? (yes/No/cancel) yes
-Would you like to create a personal library
-'~/R/x86_64-pc-linux-gnu-library/4.4'
-to install packages into? (yes/No/cancel) yes
-```
-
-::: {.todo}
-**To do:** confirm the two prompts above with one first-time `install.packages()` on Longleaf. If Longleaf pre-creates the personal library, the prompts never appear and this paragraph should say so.
-:::
-
-From then on, every `install.packages()` call goes straight to your personal library without asking. Confirm the package loads and see where it went:
-
-```r
-library(jsonlite)
-.libPaths()
-```
+Install packages from an interactive R session, not from a job script. Example 1 below walks through it: load R, call `install.packages()`, answer `yes` when R offers to create a personal library, and confirm with `library()`. Anything installed that way lands in your personal library, where every later session and job that loads the same R module can find it.
 
 Packages with compiled code take a few minutes to build. That is normal; wait for the prompt to return.
 
 ::: {.callout-tip title="Install once, interactively"}
 A job script should load R and run your code, nothing more. Installing inside a job is slow, and the twelve tasks of a job array all trying to install the same package at once will interfere with each other. Install in an interactive session, confirm `library()` works, then submit.
 :::
-
-Bioconductor packages use their own installer. Install it once from CRAN, then use it for the rest:
-
-```r
-install.packages("BiocManager", repos = "https://cloud.r-project.org")
-BiocManager::install("limma")
-```
 
 ### Installing from a file you upload
 
@@ -107,11 +70,46 @@ If you have the package as a folder rather than an archive, build the archive on
 
 The rest of this module follows the progression most projects take:
 
-1. **Interactive R**, for testing and debugging.
+1. **Interactive R**, for testing, debugging, and installing packages.
 2. **A single scheduled job** that runs one R script once.
 3. **A batch of scheduled jobs** that run the same script under many parameter settings.
 
-The files for Examples 2 and 3 are in the [`examples/` folder](https://github.com/crawfordcm/longleaf-presentation/tree/main/examples) of this site's repository, and each file is linked below. In the commands that follow, replace `<onyen>` with your ONYEN.
+The files for Examples 2 and 3 are in the [`examples/` folder](https://github.com/crawfordcm/longleaf-presentation/tree/main/examples) of this site's repository, and each file is linked below. To get all of them at once, **[download examples.zip](../examples.zip)** and unzip it on your computer. It unpacks to one `examples` folder with a subfolder per example, ready to drag to Longleaf with FileZilla. In the commands that follow, replace `<onyen>` with your ONYEN.
+
+## Setting up a project on Longleaf
+
+Give every project one folder, and lay it out the same way every time:
+
+```{.default}
+myproject/
+├── analysis.R        # the R script a job runs
+├── submit.sl         # the Slurm script that runs it
+├── logs/             # what Slurm and R print while the job runs
+└── results/          # what the R script saves on purpose
+```
+
+Scripts sit at the top level. `logs/` catches the `.out` and `.err` files, and `results/` holds the files your code writes. Keeping the two apart means a failed run never buries a good result, and `ls results/` shows only things worth keeping. A project that reads input files gets a `data/` folder beside them.
+
+Three habits make the layout work:
+
+- **Submit from inside the folder.** Slurm starts a job in the directory you ran `sbatch` from, so `cd myproject` first. Every relative path in the submission script and in the R code then means the same thing it meant on your laptop.
+- **Use relative paths in your code.** `saveRDS(fit, "results/fit.rds")` works on your laptop and on Longleaf. A hard-coded `C:/Users/...` or `/Users/...` path works on neither.
+- **Mirror the folder on your laptop.** Build and test the project locally, drag the whole folder to Longleaf with FileZilla, and drag `results/` back when the jobs finish. Nothing needs renaming in either direction.
+
+Put the folder in your home directory, `/nas/longleaf/home/<onyen>`. It is backed up and holds 50 GB, which is plenty for scripts, logs, and modest results. Input data larger than a few gigabytes belongs in your personal data space, `/hickory/users/<o>/<n>/<onyen>` from Module 2, and the script reads it by its full path:
+
+```r
+dat <- readRDS("/hickory/users/j/d/jdoe/survey/wave3.rds")
+```
+
+To create the folder on Longleaf from the terminal:
+
+```bash
+mkdir -p ~/myproject/logs ~/myproject/results
+cd ~/myproject
+```
+
+Or make it on your laptop and upload it with FileZilla. The `example2_single_job` and `example3_conditions_array` folders in examples.zip are two projects laid out this way, so copying one and renaming it is the quickest start.
 
 ## Example 1 · Interactive R
 
@@ -131,23 +129,39 @@ Sys.info()[["nodename"]]   # the login node you are on
 x <- rnorm(1e6); mean(x)
 ```
 
-Leave R with `q()`.
+### Installing a package
 
-This is the right way to check that R starts, that a package loads, or that a script runs at all. It is R on the login node, though, which everyone shares. For exploratory work that runs for more than a few minutes or needs real memory, ask Slurm for an interactive job first (Module 3) and run the same two commands there:
+Stay in the same R session. This is where every package you need on Longleaf gets installed, so install one now:
 
-```bash
-srun -t 1:00:00 -p interact -n 1 --cpus-per-task=1 --mem=4g --pty /bin/bash
-module add r
-R
+```r
+install.packages("lavaan", repos = "https://cloud.r-project.org")
 ```
+
+The `repos` argument skips the CRAN mirror menu that R otherwise shows in a terminal. The first time you install anything, R notices that it cannot write to the module's library and asks two questions. Answer `yes` to both:
+
+```{.default}
+Would you like to use a personal library instead? (yes/No/cancel) yes
+Would you like to create a personal library
+'~/R/x86_64-pc-linux-gnu-library/4.4'
+to install packages into? (yes/No/cancel) yes
+```
+
+::: {.todo}
+**To do:** confirm the two prompts above with one first-time `install.packages()` on Longleaf. If Longleaf pre-creates the personal library, the prompts never appear and this paragraph should say so.
+:::
+
+R downloads the package and the packages it depends on, builds them, and prints `* DONE (lavaan)` when it is finished. From then on, every `install.packages()` call goes straight to your personal library without asking. Confirm the package loads and see where it went:
+
+```r
+library(lavaan)
+find.package("lavaan")   # the folder it was installed into
+```
+
+The path printed is inside your home directory, so the package is now available to RStudio Server and to the batch jobs in Examples 2 and 3, as long as they load the same R module. Leave R with `q()`, and answer `n` when it offers to save the workspace.
 
 ### From the browser
 
 Open OnDemand, the web portal introduced in Module 2 at <https://ondemand.rc.unc.edu>, has an **RStudio Server** app under *Interactive Apps*. Choose the number of hours, CPUs, memory, and the R module, and RStudio opens on a compute node in a browser tab. UNC recommends requesting at least two CPUs for RStudio sessions.
-
-::: {.callout-tip title="Interactive sessions are for development"}
-Anything that takes more than a few minutes, needs to keep running after you disconnect, or will be repeated belongs in a scheduled job. Examples 2 and 3 show how, and an interactive session is the right place to test their scripts before submitting them.
-:::
 
 ## Example 2 · Submitting a single R job
 
@@ -299,8 +313,8 @@ cat("Finished:  ", format(Sys.time()), "\n")
 
    To work with the file on your laptop, press **F5** in FileZilla so the new files appear, then drag `results` from the Longleaf pane to your computer.
 
-::: {.callout-warning title="Create the log directory before submitting"}
-Slurm will not create `logs/`. If it is missing, the job fails immediately and leaves no output to explain why. The example folder includes an empty `logs/` for this reason.
+::: {.callout-note title="About the `logs/` folder"}
+Slurm 23.02 and newer create the folder named in `--output` if it does not exist. Older versions do not, and the job then fails immediately with no output to explain why. The example folder ships with an empty `logs/` so it works on either.
 :::
 
 ## Example 3 · Submitting a batch of jobs with parameters
