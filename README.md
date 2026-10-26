@@ -2,6 +2,8 @@
 
 This repository contains the source for a 45–60 minute presentation and tutorial website introducing UNC's Longleaf computing cluster. The site is organized as a clickable lesson outline so it can be presented live and revisited later as a practical reference.
 
+**Website:** [Getting Started with Longleaf](https://crawfordcm.github.io/longleaf-presentation/)
+
 ## Workshop outline
 
 1. [Introduction to Longleaf](modules/01-introduction/01-computing-history.qmd)
@@ -18,26 +20,3 @@ This repository contains the source for a 45–60 minute presentation and tutori
 - `styles.css` — the shared visual design
 - `_quarto.yml` — navigation and site settings
 - `docs/` — the generated website used by GitHub Pages
-- `longleaf_brownbag.docx` — the original planning outline
-
-## Preview the site locally
-
-Install [Quarto](https://quarto.org/docs/get-started/) and run:
-
-```bash
-quarto preview
-```
-
-Quarto will open a local preview and update it as the source files change.
-
-## Build the website
-
-```bash
-quarto render
-```
-
-The rendered site is written to `docs/`. To publish with GitHub Pages, configure the repository to deploy from the `docs` folder on the `main` branch.
-
-## Content status
-
-The current files establish the teaching sequence, page structure, and visual system. Longleaf-specific URLs, hostnames, module names, queue rules, package paths, and example resource requests should be checked against current UNC Research Computing guidance before the workshop is delivered.
