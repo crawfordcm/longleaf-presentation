@@ -76,6 +76,41 @@ The rest of this module follows the progression most projects take:
 
 The files for Examples 2 and 3 are in the [`examples/` folder](https://github.com/crawfordcm/longleaf-presentation/tree/main/examples) of this site's repository, and each file is linked below. To get all of them at once, **[download examples.zip](../examples.zip)** and unzip it on your computer. It unpacks to one `examples` folder with a subfolder per example, ready to drag to Longleaf with FileZilla. In the commands that follow, replace `<onyen>` with your ONYEN.
 
+## Setting up a project on Longleaf
+
+Give every project one folder, and lay it out the same way every time:
+
+```{.default}
+myproject/
+├── analysis.R        # the R script a job runs
+├── submit.sl         # the Slurm script that runs it
+├── logs/             # what Slurm and R print while the job runs
+└── results/          # what the R script saves on purpose
+```
+
+Scripts sit at the top level. `logs/` catches the `.out` and `.err` files, and `results/` holds the files your code writes. Keeping the two apart means a failed run never buries a good result, and `ls results/` shows only things worth keeping. A project that reads input files gets a `data/` folder beside them.
+
+Three habits make the layout work:
+
+- **Submit from inside the folder.** Slurm starts a job in the directory you ran `sbatch` from, so `cd myproject` first. Every relative path in the submission script and in the R code then means the same thing it meant on your laptop.
+- **Use relative paths in your code.** `saveRDS(fit, "results/fit.rds")` works on your laptop and on Longleaf. A hard-coded `C:/Users/...` or `/Users/...` path works on neither.
+- **Mirror the folder on your laptop.** Build and test the project locally, drag the whole folder to Longleaf with FileZilla, and drag `results/` back when the jobs finish. Nothing needs renaming in either direction.
+
+Put the folder in your home directory, `/nas/longleaf/home/<onyen>`. It is backed up and holds 50 GB, which is plenty for scripts, logs, and modest results. Input data larger than a few gigabytes belongs in your personal data space, `/hickory/users/<o>/<n>/<onyen>` from Module 2, and the script reads it by its full path:
+
+```r
+dat <- readRDS("/hickory/users/j/d/jdoe/survey/wave3.rds")
+```
+
+To create the folder on Longleaf from the terminal:
+
+```bash
+mkdir -p ~/myproject/logs ~/myproject/results
+cd ~/myproject
+```
+
+Or make it on your laptop and upload it with FileZilla. The `example2_single_job` and `example3_conditions_array` folders in examples.zip are two projects laid out this way, so copying one and renaming it is the quickest start.
+
 ## Example 1 · Interactive R
 
 The quickest way to use R on Longleaf is to load it and start it, right where you land after logging in:

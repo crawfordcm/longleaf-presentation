@@ -5,6 +5,8 @@
 set -e
 cd "$(dirname "$0")/.."
 rm -f examples.zip
-zip -q -r examples.zip examples \
+# -X leaves out per-file metadata (access times, uid/gid) so the zip is
+# byte-identical between renders unless an example file actually changes.
+zip -q -r -X examples.zip examples \
   -x '*.DS_Store' '*/logs/*.out' '*/logs/*.err' '*/results/*.rds'
 echo "examples.zip: $(unzip -l examples.zip | tail -n 1 | awk '{print $2}') entries"
