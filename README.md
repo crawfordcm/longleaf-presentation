@@ -1,6 +1,6 @@
 # Getting Started with Longleaf
 
-This repository contains the source for a 45–60 minute presentation and tutorial website introducing UNC's Longleaf computing cluster. The site is organized as a clickable lesson outline so it can be presented live and revisited later as a practical reference.
+This repository contains the material and website introducing UNC's Longleaf computing cluster. 
 
 **Website:** [Getting Started with Longleaf](https://crawfordcm.github.io/longleaf-presentation/)
 
